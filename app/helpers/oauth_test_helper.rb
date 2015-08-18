@@ -1,0 +1,2 @@
+module OauthTestHelper
+end

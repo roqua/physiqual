@@ -1,0 +1,46 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script>
+$(function () {    
+  $('#container').highcharts({
+    title: {
+      text: 'Steps',
+      x: -20 //center
+    },
+    subtitle: {
+      text: '',
+      x: -20
+    },
+    xAxis: {
+      categories: <%=raw @categories %> 
+    },
+    yAxis: {
+      title: {
+        text: 'Steps'
+      },
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: '#808080'
+      }]
+    },
+    tooltip: {
+      valueSuffix: 'steps'
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+    },
+    series: [{
+      name: 'Frank',
+      data: <%=raw @values %>
+    }]
+  });
+});
+</script>
+
