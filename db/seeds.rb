@@ -9,4 +9,3 @@
 user1 = User.find_or_create_by(email: 'a')
 user2 = User.find_or_create_by(email: 'b')
 user3 = User.find_or_create_by(email: 'c')
-

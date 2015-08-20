@@ -11,26 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713124333) do
-
-  create_table "tokens", force: :cascade do |t|
-    t.string   "token"
-    t.string   "refresh_token"
-    t.datetime "valid_until"
-    t.integer  "user_id",       null: false
-    t.string   "type",          null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+ActiveRecord::Schema.define(version: 20_150_713_124_333) do
+  create_table 'tokens', force: :cascade do |t|
+    t.string 'token'
+    t.string 'refresh_token'
+    t.datetime 'valid_until'
+    t.integer 'user_id',       null: false
+    t.string 'type',          null: false
+    t.datetime 'created_at',    null: false
+    t.datetime 'updated_at',    null: false
   end
 
-  add_index "tokens", ["user_id"], name: "index_tokens_on_user_id"
+  add_index 'tokens', ['user_id'], name: 'index_tokens_on_user_id'
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'email',      null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-
+  add_index 'users', ['email'], name: 'index_users_on_email', unique: true
 end
