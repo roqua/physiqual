@@ -3,3 +3,4 @@ class Imputer
     fail "Subclass does not implement impute! method."
   end
 end
+
