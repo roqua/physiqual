@@ -3,7 +3,6 @@ class FitbitService < DataService
 
   base_uri FitbitToken.base_uri
 
-
   def initialize(token)
     @token = token
     @header = {'Authorization' => "Bearer #{@token.token}"}
