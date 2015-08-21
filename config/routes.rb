@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   resources :oauth_session do
     collection do
-      get ':provider/callback'=> 'oauth_session#callback', as: 'callback'
-      get ':provider/authorize'=> 'oauth_session#authorize', as: 'authorize'
+      get ':provider/callback' => 'oauth_session#callback', as: 'callback'
+      get ':provider/authorize' => 'oauth_session#authorize', as: 'authorize'
     end
   end
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
