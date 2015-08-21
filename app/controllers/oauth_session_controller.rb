@@ -16,19 +16,19 @@ class OauthSessionController < ApplicationController
     interval = 6
     measurements_per_day = 3
     from = 30.days.ago.in_time_zone.beginning_of_day
-    to= 1.days.ago.in_time_zone.end_of_day
+    to = 1.days.ago.in_time_zone.end_of_day
 
     if params[:state] == 'google'
-      json = @google_service.get_steps_in_blocks(from,to, last_measurement_time, measurements_per_day, interval, false)
+      json = @google_service.get_steps_in_blocks(from, to, last_measurement_time, measurements_per_day, interval, false)
     elsif params[:state] == 'fitbit'
-      #json = @fitbit_service.get_steps_in_blocks(from,to, last_measurement_time, measurements_per_day, interval, true)
+      # json = @fitbit_service.get_steps_in_blocks(from,to, last_measurement_time, measurements_per_day, interval, true)
       json = @fitbit_service.get_sleep(to)
     end
     render json: json
-    #results = @google_service.get_steps(10.days.ago, Time.now, 1.hour)
+    # results = @google_service.get_steps(10.days.ago, Time.now, 1.hour)
 
-    #@categories = results.keys.to_json
-    #@values = results.values
+    # @categories = results.keys.to_json
+    # @values = results.values
   end
 
   def authorize
@@ -59,7 +59,7 @@ class OauthSessionController < ApplicationController
   end
 
   def check_token
-    my_tokens = current_user.tokens.select{|x|x.class.csrf_token == params[:state]}
+    my_tokens = current_user.tokens.select { |x| x.class.csrf_token == params[:state] }
     if my_tokens.blank? || my_tokens.first.token.blank?
       redirect_to authorize_oauth_session_index_path(provider: params[:state])
     else
@@ -79,7 +79,7 @@ class OauthSessionController < ApplicationController
   end
 
   def get_token
-    @token = current_user.tokens.select{|x|x.class.csrf_token == params[:provider]}
+    @token = current_user.tokens.select { |x| x.class.csrf_token == params[:provider] }
     head 404 if @token.blank?
     @token = @token.first
   end
@@ -87,6 +87,6 @@ class OauthSessionController < ApplicationController
   private
 
   def sanitize_params
-    params[:provider] = ['google', 'fitbit'].include?(params[:provider]) ? params[:provider] : nil
+    params[:provider] = %w(google fitbit).include?(params[:provider]) ? params[:provider] : nil
   end
 end

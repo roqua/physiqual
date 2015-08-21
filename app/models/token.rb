@@ -36,7 +36,7 @@ class Token < ActiveRecord::Base
 
   def to_hash
     token_hash = {}
-    token_hash["token_type"] = "Bearer"
+    token_hash['token_type'] = 'Bearer'
     token_hash[:access_token] = token
     token_hash[:refresh_token] = refresh_token
     token_hash[:expires_at] = valid_until.to_i

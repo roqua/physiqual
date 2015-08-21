@@ -3,10 +3,9 @@ class FitbitService < DataService
 
   base_uri FitbitToken.base_uri
 
-
   def initialize(token)
     @token = token
-    @header = {'Authorization' => "Bearer #{@token.token}"}
+    @header = { 'Authorization' => "Bearer #{@token.token}" }
   end
 
   def get_profile
@@ -27,8 +26,8 @@ class FitbitService < DataService
   end
 
   private
-  def send_get(url)
 
+  def send_get(url)
     result = self.class.get(url, headers: @header)
     result = result.body
     JSON.parse(result)

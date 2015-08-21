@@ -1,7 +1,6 @@
 class FitbitToken < Token
-
   def get_token(code, url)
-    self.class.client.auth_code.get_token(code, redirect_uri: url, headers: {'Authorization' => "Basic #{encode_key}"})
+    self.class.client.auth_code.get_token(code, redirect_uri: url, headers: { 'Authorization' => "Basic #{encode_key}" })
   end
 
   def refresh
@@ -9,7 +8,7 @@ class FitbitToken < Token
     ENV['OAUTH_DEBUG'] = 'true'
     at = OAuth2::AccessToken.from_hash(self.class.client, to_hash)
     Rails.logger.info pp at.inspect
-    at.refresh!(headers: {'Authorization' => "Basic #{encode_key}"})
+    at.refresh!(headers: { 'Authorization' => "Basic #{encode_key}" })
   end
 
   def self.base_uri
