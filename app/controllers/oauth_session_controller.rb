@@ -9,22 +9,36 @@ class OauthSessionController < ApplicationController
   before_filter :token, only: :callback
 
   def index
-    @google_service = GoogleService.new(@token)
-    @fitbit_service = FitbitService.new(@token)
-
     last_measurement_time = Time.now.change(hour: 22, min: 30)
-    interval = 6
-    measurements_per_day = 3
+    interval = 1
+    measurements_per_day = 23
+    google_service = GoogleService.new(current_user.google_tokens.first)
+    google_service = CachedDataService.new SummarizedDataService.new(google_service,
+                                                                     last_measurement_time,
+                                                                     measurements_per_day,
+                                                                     interval,
+                                                                     false)
+
+    fitbit_service = FitbitService.new(current_user.fitbit_tokens.first)
+    fitbit_service = CachedDataService.new SummarizedDataService.new(fitbit_service,
+                                                                     last_measurement_time,
+                                                                     measurements_per_day,
+                                                                     interval,
+                                                                     false)
+
+    data_aggregator = DataAggregator.new([google_service, fitbit_service])
+
     from = 30.days.ago.in_time_zone.beginning_of_day
     to = 1.days.ago.in_time_zone.end_of_day
 
-    if params[:state] == 'google'
-      json = @google_service.steps_in_blocks(from, to, last_measurement_time, measurements_per_day, interval, false)
-    elsif params[:state] == 'fitbit'
-      # json = @fitbit_service.steps_in_blocks(from,to, last_measurement_time, measurements_per_day, interval, true)
-      json = @fitbit_service.sleep(to)
-    end
-    render json: json
+    # if params[:state] == 'google'
+    # json = @google_service.steps(from, to)
+    # elsif params[:state] == 'fitbit'
+    # json = fitbit_service.steps(from,to)
+    # json = @fitbit_service.sleep(from, to)
+    # end
+    render json: data_aggregator.steps(from, to)
+    # render json: json
     # results = @google_service.steps(10.days.ago, Time.now, 1.hour)
 
     # @categories = results.keys.to_json

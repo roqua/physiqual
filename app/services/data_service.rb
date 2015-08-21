@@ -1,18 +1,26 @@
 class DataService
   DATE_FORMAT = '%Y-%m-%d'
 
-  def steps
+  def steps(_from, _to)
   end
 
-  def heart_rate
+  def heart_rate(_from, _to)
   end
 
-  def sleep
+  def sleep(_from, _to)
   end
 
-  def calories
+  def calories(_from, _to)
   end
 
-  def activities
+  def activities(_from, _to)
+  end
+
+  def key
+    'activities'
+  end
+
+  def date_time
+    'dateTime'
   end
 end

@@ -45,7 +45,7 @@ class Token < ActiveRecord::Base
 
   def retrieve_token!(code, url)
     # This is needed for fitbit
-    access_token = token(code, url)
+    access_token = get_token(code, url)
     self.token = access_token.token
     self.refresh_token = access_token.refresh_token
     self.valid_until = Time.at(access_token.expires_at).in_time_zone
@@ -56,7 +56,7 @@ class Token < ActiveRecord::Base
     Base64.encode64("#{self.class.client_id}:#{self.class.client_secret}")
   end
 
-  def token(code, url)
+  def get_token(code, url)
     self.class.client.auth_code.get_token(code, redirect_uri: url)
   end
 

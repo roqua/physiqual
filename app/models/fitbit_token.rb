@@ -1,5 +1,5 @@
 class FitbitToken < Token
-  def token(code, url)
+  def get_token(code, url)
     self.class.client.auth_code.get_token(code,
                                           redirect_uri: url,
                                           headers: { 'Authorization' => "Basic #{encode_key}" })

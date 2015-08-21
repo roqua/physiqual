@@ -53,9 +53,8 @@ class GoogleService < DataService
     end
     results = {}
 
-    key = 'activities-steps'
     results[key] = []
-    results_hash.each { |date, value| results[key] << { 'dateTime' => date, 'value' => value } }
+    results_hash.each { |date, value| results[key] << { date_time => date, 'value' => value } }
     results
   end
 

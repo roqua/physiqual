@@ -1,5 +1,9 @@
 class DataServiceDecorator < DataService
-  def initialzie(data_service)
+  def initialize(data_service)
     @data_service = data_service
   end
+
+  protected
+
+  attr_reader :data_service
 end
