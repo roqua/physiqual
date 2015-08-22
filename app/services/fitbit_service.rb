@@ -16,22 +16,29 @@ class FitbitService < DataService
     send_get('/profile.json')
   end
 
-  def sleep(from)
-    from = from.strftime(DATE_FORMAT)
+  def heart_rate(from, to)
+    activity = 'heart'
+    {key => activity_call(from, to, activity)[key].map{|value| {'dateTime' => value['dateTime'], 'value' => value['value']['restingHeartRate']}}}
+  end
 
-    send_get("/sleep/date/#{from}.json")
+  def sleep(from, to)
+    from = from.strftime(DATE_FORMAT)
+    to = to.strftime(DATE_FORMAT)
+
+    send_get("/sleep/date/#{from}/#{to}.json")
   end
 
   def steps(from, to)
-    from = from.strftime(DATE_FORMAT)
-    to = to.strftime(DATE_FORMAT)
-    steps = send_get("/activities/steps/date/#{from}/#{to}.json")
-    retval = {}
-    retval[key] = steps['activities-steps']
-    retval
+    activity_call(from, to, 'steps')
   end
 
   private
+  def activity_call(from, to, activity)
+    from = from.strftime(DATE_FORMAT)
+    to = to.strftime(DATE_FORMAT)
+    data = send_get("/activities/#{activity}/date/#{from}/#{to}.json")
+    {key => data["activities-#{activity}"] }
+  end
 
   def send_get(url)
     result = self.class.get(url, headers: @header)

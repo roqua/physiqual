@@ -9,7 +9,10 @@ class SummarizedDataService < DataServiceDecorator
 
   def heart_rate(from, to)
     heart_rate = data_service.heart_rate(from, to)
-    cluster_in_buckets(heart_rate, from, to)
+    offset = 0
+    max = 300
+    k = 2
+    soft_histogram(cluster_in_buckets(heart_rate, from, to), offset, max, k )
   end
 
   def sleep(from, to)
@@ -24,10 +27,26 @@ class SummarizedDataService < DataServiceDecorator
 
   def steps(from, to)
     steps = data_service.steps(from, to)
-    cluster_in_buckets(steps, from, to)
+    sum_values(cluster_in_buckets(steps, from, to))
   end
 
   private
+
+  def sum_values(data)
+    Hash[data.keys.map {|key| [key, data[key].sum]}]
+  end
+
+  def soft_histogram(data, min, max, k)
+    Hash[data.keys.map do |key|
+      histogram = Hash.new(0)
+      data[key].each do |current|
+        (current-k..current+k).each{|buck| histogram[buck] +=1}
+      end
+      histogram.delete_if {|hist_key, _value| hist_key < min || hist_key > max}
+      max_value = histogram.max.nil? ? nil : histogram.max_by{|_k,v| v}.first
+      [key, max_value]
+    end]
+  end
 
   def cluster_in_buckets(data, from, to)
     buckets = generate_buckets(from, to)
@@ -45,7 +64,7 @@ class SummarizedDataService < DataServiceDecorator
       # Don't take the night into account
       next unless entry[date_time] >= (buckets.keys[current_bucket] - @interval.hours) || @use_night
 
-      buckets[buckets.keys[current_bucket]] += entry['value'].to_i
+      buckets[buckets.keys[current_bucket]] << entry['value'].to_i
     end
     buckets
   end
@@ -60,7 +79,7 @@ class SummarizedDataService < DataServiceDecorator
                            min: @last_measurement_time.min)
 
         # Only use dates that are in the past
-        [date, 0] if date < Time.zone.now
+        [date, []] if date < Time.zone.now
       end.compact.reverse
     end]
   end
