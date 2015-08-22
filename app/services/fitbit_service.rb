@@ -21,8 +21,7 @@ class FitbitService < DataService
   def steps(from, to)
     from = from.strftime(DATE_FORMAT)
     to = to.strftime(DATE_FORMAT)
-
-    steps = send_get("/activities/steps/date/#{from}/#{to}.json")
+    steps = send_get("/activities/steps/date/#{from}/#{to}/1m.json")
     retval = {}
     retval[key] = steps['activities-steps']
     retval
