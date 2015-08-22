@@ -39,6 +39,9 @@ gem 'dotenv-rails'
 
 gem 'active_interaction', '~> 2.1.1'
 
+# Imputation
+gem 'spliner'
+
 gem 'codeclimate-test-reporter', group: :test, require: nil
 
 group :development, :test do
