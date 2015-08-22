@@ -8,6 +8,10 @@ class GoogleService < DataService
     @header = { 'Authorization' => "Bearer #{@token.token}" }
   end
 
+  def self.service_name
+    'google'
+  end
+
   def sources
     @datasources = self.class.get('/dataSources', headers: @header).body
     @datasources = JSON.parse(@datasources)

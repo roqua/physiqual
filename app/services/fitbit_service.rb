@@ -8,6 +8,10 @@ class FitbitService < DataService
     @header = { 'Authorization' => "Bearer #{@token.token}" }
   end
 
+  def self.service_name
+    'fitbit'
+  end
+
   def profile
     send_get('/profile.json')
   end
@@ -21,7 +25,7 @@ class FitbitService < DataService
   def steps(from, to)
     from = from.strftime(DATE_FORMAT)
     to = to.strftime(DATE_FORMAT)
-    steps = send_get("/activities/steps/date/#{from}/#{to}/1m.json")
+    steps = send_get("/activities/steps/date/#{from}/#{to}.json")
     retval = {}
     retval[key] = steps['activities-steps']
     retval

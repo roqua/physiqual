@@ -1,5 +1,8 @@
 class DataService
   DATE_FORMAT = '%Y-%m-%d'
+  def self.service_name
+    'general dataservice'
+  end
 
   def steps(_from, _to)
   end
