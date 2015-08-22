@@ -12,6 +12,6 @@ class SplineImputer < Imputer
     y_array.compact!
 
     spline = Spliner::Spliner.new x_array, y_array
-    (0...len).map{|x| spline[x] }
+    (0...len).map { |x| spline[x] }
   end
 end

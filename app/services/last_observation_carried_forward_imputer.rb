@@ -6,4 +6,3 @@ class LastObservationCarriedForwardImputer < Imputer
     array
   end
 end
-

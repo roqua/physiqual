@@ -3,4 +3,3 @@ class MockImputer < Imputer
     array
   end
 end
-
