@@ -15,7 +15,8 @@ class OauthSessionController < ApplicationController
 
     services = current_user.tokens.map do |token|
       service = DataServiceFactory.fabricate!(token.class.csrf_token, token)
-      CachedDataService.new SummarizedDataService.new(service, last_measurement_time, measurements_per_day, interval, false)
+      service = SummarizedDataService.new(service, last_measurement_time, measurements_per_day, interval, false)
+      CachedDataService.new service
     end.compact
 
     data_aggregator = DataAggregator.new(services, MockImputer.new)
@@ -24,8 +25,8 @@ class OauthSessionController < ApplicationController
     to = 1.days.ago.in_time_zone.end_of_day
 
     render json: data_aggregator.heart_rate(from, to)
-    #render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
-    #render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
+    # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
+    # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
   end
 
   def authorize

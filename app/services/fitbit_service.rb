@@ -18,7 +18,11 @@ class FitbitService < DataService
 
   def heart_rate(from, to)
     activity = 'heart'
-    {key => activity_call(from, to, activity)[key].map{|value| {'dateTime' => value['dateTime'], 'value' => value['value']['restingHeartRate']}}}
+    {
+      key => activity_call(from, to, activity)[key].map do |value|
+        { 'dateTime' => value['dateTime'], 'value' => value['value']['restingHeartRate'] }
+      end
+    }
   end
 
   def sleep(from, to)
@@ -33,11 +37,12 @@ class FitbitService < DataService
   end
 
   private
+
   def activity_call(from, to, activity)
     from = from.strftime(DATE_FORMAT)
     to = to.strftime(DATE_FORMAT)
     data = send_get("/activities/#{activity}/date/#{from}/#{to}.json")
-    {key => data["activities-#{activity}"] }
+    { key => data["activities-#{activity}"] }
   end
 
   def send_get(url)

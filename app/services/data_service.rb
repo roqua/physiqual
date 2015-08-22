@@ -5,23 +5,23 @@ class DataService
   end
 
   def steps(_from, _to)
-    fail "Subclass does not implement steps method."
+    fail 'Subclass does not implement steps method.'
   end
 
   def heart_rate(_from, _to)
-    fail "Subclass does not implement heart_rate method."
+    fail 'Subclass does not implement heart_rate method.'
   end
 
   def sleep(_from, _to)
-    fail "Subclass does not implement sleep method."
+    fail 'Subclass does not implement sleep method.'
   end
 
   def calories(_from, _to)
-    fail "Subclass does not implement calories method."
+    fail 'Subclass does not implement calories method.'
   end
 
   def activities(_from, _to)
-    fail "Subclass does not implement activities method."
+    fail 'Subclass does not implement activities method.'
   end
 
   def key

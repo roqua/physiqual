@@ -12,7 +12,7 @@ class SummarizedDataService < DataServiceDecorator
     offset = 0
     max = 300
     k = 2
-    soft_histogram(cluster_in_buckets(heart_rate, from, to), offset, max, k )
+    soft_histogram(cluster_in_buckets(heart_rate, from, to), offset, max, k)
   end
 
   def sleep(from, to)
@@ -33,17 +33,17 @@ class SummarizedDataService < DataServiceDecorator
   private
 
   def sum_values(data)
-    Hash[data.keys.map {|key| [key, data[key].sum]}]
+    Hash[data.keys.map { |key| [key, data[key].sum] }]
   end
 
   def soft_histogram(data, min, max, k)
     Hash[data.keys.map do |key|
       histogram = Hash.new(0)
       data[key].each do |current|
-        (current-k..current+k).each{|buck| histogram[buck] +=1}
+        (current - k..current + k).each { |buck| histogram[buck] += 1 }
       end
-      histogram.delete_if {|hist_key, _value| hist_key < min || hist_key > max}
-      max_value = histogram.max.nil? ? nil : histogram.max_by{|_k,v| v}.first
+      histogram.delete_if { |hist_key, _value| hist_key < min || hist_key > max }
+      max_value = histogram.max.nil? ? nil : histogram.max_by { |_k, v| v }.first
       [key, max_value]
     end]
   end

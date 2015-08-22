@@ -40,4 +40,3 @@ class DataAggregator
     @imputer.impute! @data_services.map { |service| yield(service) }
   end
 end
-
