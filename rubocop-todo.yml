@@ -1,1 +1,6 @@
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/AbcSize:
+  Enabled: false
 

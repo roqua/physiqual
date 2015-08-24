@@ -8,24 +8,42 @@ class FitbitService < DataService
     @header = { 'Authorization' => "Bearer #{@token.token}" }
   end
 
-  def get_profile
+  def self.service_name
+    'fitbit'
+  end
+
+  def profile
     send_get('/profile.json')
   end
 
-  def get_sleep(from)
-    from = from.strftime(DATE_FORMAT)
-
-    send_get("/sleep/date/#{from}.json")
+  def heart_rate(from, to)
+    activity = 'heart'
+    {
+      key => activity_call(from, to, activity)[key].map do |value|
+        { 'dateTime' => value['dateTime'], 'value' => value['value']['restingHeartRate'] }
+      end
+    }
   end
 
-  def get_steps(from, to)
+  def sleep(from, to)
     from = from.strftime(DATE_FORMAT)
     to = to.strftime(DATE_FORMAT)
 
-    send_get("/activities/steps/date/#{from}/#{to}.json")
+    send_get("/sleep/date/#{from}/#{to}.json")
+  end
+
+  def steps(from, to)
+    activity_call(from, to, 'steps')
   end
 
   private
+
+  def activity_call(from, to, activity)
+    from = from.strftime(DATE_FORMAT)
+    to = to.strftime(DATE_FORMAT)
+    data = send_get("/activities/#{activity}/date/#{from}/#{to}.json")
+    { key => data["activities-#{activity}"] }
+  end
 
   def send_get(url)
     result = self.class.get(url, headers: @header)

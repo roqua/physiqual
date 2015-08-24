@@ -6,29 +6,27 @@ class OauthSessionController < ApplicationController
 
   before_filter :check_token, only: :index
   before_filter :set_token, only: :authorize
-  before_filter :get_token, only: :callback
+  before_filter :token, only: :callback
 
   def index
-    @google_service = GoogleService.new(@token)
-    @fitbit_service = FitbitService.new(@token)
-
     last_measurement_time = Time.now.change(hour: 22, min: 30)
-    interval = 6
-    measurements_per_day = 3
+    interval = 1
+    measurements_per_day = 23
+
+    services = current_user.tokens.map do |token|
+      service = DataServiceFactory.fabricate!(token.class.csrf_token, token)
+      service = SummarizedDataService.new(service, last_measurement_time, measurements_per_day, interval, false)
+      CachedDataService.new service
+    end.compact
+
+    data_aggregator = DataAggregator.new(services, MockImputer.new)
+
     from = 30.days.ago.in_time_zone.beginning_of_day
     to = 1.days.ago.in_time_zone.end_of_day
 
-    if params[:state] == 'google'
-      json = @google_service.get_steps_in_blocks(from, to, last_measurement_time, measurements_per_day, interval, false)
-    elsif params[:state] == 'fitbit'
-      # json = @fitbit_service.get_steps_in_blocks(from,to, last_measurement_time, measurements_per_day, interval, true)
-      json = @fitbit_service.get_sleep(to)
-    end
-    render json: json
-    # results = @google_service.get_steps(10.days.ago, Time.now, 1.hour)
-
-    # @categories = results.keys.to_json
-    # @values = results.values
+    render json: data_aggregator.heart_rate(from, to)
+    # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
+    # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
   end
 
   def authorize
@@ -78,7 +76,7 @@ class OauthSessionController < ApplicationController
     end
   end
 
-  def get_token
+  def token
     @token = current_user.tokens.select { |x| x.class.csrf_token == params[:provider] }
     head 404 if @token.blank?
     @token = @token.first

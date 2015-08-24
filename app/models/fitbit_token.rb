@@ -1,6 +1,8 @@
 class FitbitToken < Token
   def get_token(code, url)
-    self.class.client.auth_code.get_token(code, redirect_uri: url, headers: { 'Authorization' => "Basic #{encode_key}" })
+    self.class.client.auth_code.get_token(code,
+                                          redirect_uri: url,
+                                          headers: { 'Authorization' => "Basic #{encode_key}" })
   end
 
   def refresh
@@ -20,7 +22,7 @@ class FitbitToken < Token
   end
 
   def self.csrf_token
-    'fitbit'
+    FitbitService.service_name
   end
 
   def self.client_id
