@@ -10,8 +10,8 @@ class OauthSessionController < ApplicationController
 
   def index
     last_measurement_time = Time.now.change(hour: 22, min: 30)
-    interval = 1
-    measurements_per_day = 23
+    interval = 6
+    measurements_per_day = 3
 
     services = current_user.tokens.map do |token|
       service = DataServiceFactory.fabricate!(token.class.csrf_token, token)
@@ -19,7 +19,7 @@ class OauthSessionController < ApplicationController
       CachedDataService.new service
     end.compact
 
-    data_aggregator = DataAggregator.new(services, MockImputer.new)
+    data_aggregator = DataAggregator.new(services, [SplineImputer.new, MeanImputer.new])
 
     from = 30.days.ago.in_time_zone.beginning_of_day
     to = 1.days.ago.in_time_zone.end_of_day
