@@ -3,7 +3,7 @@ class MeanImputer < Imputer
     mean = array.compact
     mean = mean.sum / mean.length
     array.each_with_index do |current, index|
-      array[index] = mean if current.nil?
+      array[index] = mean if need_imputation? current
     end
     array
   end

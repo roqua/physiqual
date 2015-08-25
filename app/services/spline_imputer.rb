@@ -3,7 +3,7 @@ class SplineImputer < Imputer
     len = y_array.length
     x_array = []
     y_array = y_array.map.with_index do |current, index|
-      if current
+      unless need_imputation? current
         x_array[index] = index.to_f
         current.to_f
       end

@@ -1,7 +1,7 @@
 class DataAggregator
-  def initialize(data_services, imputer)
+  def initialize(data_services, imputers)
     @data_services = data_services
-    @imputer = imputer
+    @imputers = [imputers].flatten
   end
 
   def steps(from, to)
@@ -26,17 +26,25 @@ class DataAggregator
   private
 
   def run_function(result)
-    aggregated_result = Hash.new(0)
+    aggregated_result = Hash.new(-1)
     result.each do |service_result|
       service_result.keys.each do |data_entry_key|
         current_value = yield(aggregated_result, service_result, data_entry_key)
         aggregated_result[data_entry_key] = current_value.nil? ? aggregated_result[data_entry_key] : current_value
       end
     end
-    aggregated_result
+    impute_results(aggregated_result)
+  end
+
+  def impute_results(result)
+    @imputers.each do |imputer|
+      imputed_values = imputer.impute! result.values
+      result.keys.each_with_index { |key, index| result[key] = imputed_values[index] }
+    end
+    result
   end
 
   def retrieve_data_of_all_services
-    @imputer.impute! @data_services.map { |service| yield(service) }
+    @data_services.map { |service| yield(service) }
   end
 end

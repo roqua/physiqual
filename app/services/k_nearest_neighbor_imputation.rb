@@ -5,7 +5,7 @@ class KNearestNeighborImputer < Imputer
 
   def impute!(array)
     array.each_with_index do |current, index|
-      next if current
+      next unless need_imputation? current
       (index..k).each do |val|
         array[val]
       end
