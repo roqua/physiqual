@@ -1,5 +1,5 @@
-shared_examples_for "an imputer" do
-  let(:instance) { described_class.new}
+shared_examples_for 'an imputer' do
+  let(:instance) { described_class.new }
   it 'should define an impute! funcion' do
     expect(instance.methods).to include :impute!
   end
@@ -11,7 +11,7 @@ shared_examples_for "an imputer" do
     end
 
     it 'with a regular array' do
-      @elements = [1,2,3,4,5]
+      @elements = [1, 2, 3, 4, 5]
     end
 
     it 'with an array of nils' do
