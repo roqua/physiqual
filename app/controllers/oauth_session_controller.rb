@@ -1,5 +1,6 @@
 require 'oauth2'
 class OauthSessionController < ApplicationController
+
   http_basic_authenticate_with name: 'test', password: 'framando', only: :index
 
   before_filter :sanitize_params, only: [:authorize, :callback]
@@ -9,22 +10,12 @@ class OauthSessionController < ApplicationController
   before_filter :token, only: :callback
 
   def index
-    last_measurement_time = Time.now.change(hour: 22, min: 30)
-    interval = 6
-    measurements_per_day = 3
-
-    services = current_user.tokens.map do |token|
-      service = DataServiceFactory.fabricate!(token.class.csrf_token, token)
-      service = SummarizedDataService.new(service, last_measurement_time, measurements_per_day, interval, false)
-      CachedDataService.new service
-    end.compact
-
-    data_aggregator = DataAggregator.new(services, [SplineImputer.new, MeanImputer.new])
-
     from = 30.days.ago.in_time_zone.beginning_of_day
     to = 1.days.ago.in_time_zone.end_of_day
-
-    render json: data_aggregator.heart_rate(from, to)
+    #render json: DataServices::GoogleService.new(current_user.google_tokens.first).activity(from, to) and return
+    last_measurement_time = Time.now.change(hour: 22, min: 30)
+    text = [Exporters::CsvExporter.new.export(current_user, last_measurement_time, from, to), Exporters::JsonExporter.new.export(current_user, last_measurement_time, from, to)]
+    render text: text
     # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
     # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
   end

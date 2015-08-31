@@ -22,7 +22,7 @@ class FitbitToken < Token
   end
 
   def self.csrf_token
-    FitbitService.service_name
+    'fitbit'
   end
 
   def self.client_id

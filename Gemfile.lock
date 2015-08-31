@@ -79,6 +79,7 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    interpolator (0.15)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -214,6 +215,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   httparty
+  interpolator
   jbuilder (~> 2.0)
   jquery-rails
   oauth2

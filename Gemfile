@@ -41,6 +41,7 @@ gem 'active_interaction', '~> 2.1.1'
 
 # Imputation
 gem 'spliner'
+gem 'interpolator'
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
 
