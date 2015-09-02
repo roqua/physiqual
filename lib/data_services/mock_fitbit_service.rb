@@ -1,5 +1,6 @@
 module DataServices
   class MockFitbitService < DataService
+    # rubocop:disable Metrics/MethodLength
     def service_name
       'fitbit'
     end
@@ -46,5 +47,6 @@ module DataServices
 
     def steps(_from, _to)
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

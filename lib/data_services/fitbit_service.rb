@@ -36,11 +36,11 @@ module DataServices
     end
 
     def calories(_from, _to)
-      fail Errors::NotSupportedError.new 'Calories not supported by fitbit!'
+      fail Errors::NotSupportedError, 'Calories not supported by fitbit!'
     end
 
     def activities(_from, _to)
-      fail Errors::NotSupportedError.new 'Activities Not supported by fitbit!'
+      fail Errors::NotSupportedError, 'Activities Not supported by fitbit!'
     end
 
     private
@@ -53,7 +53,7 @@ module DataServices
       data["activities-#{activity}"].each do |entry|
         value = entry['value']
         value = !value.is_a?(Hash) && value.to_s == value.to_i.to_s ? value.to_i : value
-        result << { date_time_field => entry['dateTime'] , values_field => [value] }
+        result << { date_time_field => entry['dateTime'], values_field => [value] }
       end
       result
     end

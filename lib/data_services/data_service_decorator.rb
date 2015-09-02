@@ -5,8 +5,6 @@ module DataServices
       super
     end
 
-    def data_service
-      @data_service
-    end
+    attr_reader :data_service
   end
 end

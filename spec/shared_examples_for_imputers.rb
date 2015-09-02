@@ -32,14 +32,14 @@ shared_examples_for 'an imputer' do
 
   describe 'the input contains strings' do
     it 'should return the original array if it contains one string' do
-      elements = [1,2,3,4,5,'jaf',8]
+      elements = [1, 2, 3, 4, 5, 'jaf', 8]
       result = described_class.impute! elements
       expect(result).to eq(elements)
     end
   end
 
   it 'only imputes if missing values remain' do
-    elements = [1,2,3,4,5,8]
+    elements = [1, 2, 3, 4, 5, 8]
     expect_any_instance_of(described_class).to_not receive(:process_impute)
     result = described_class.impute! elements
     expect(result).to eq(elements)
@@ -47,13 +47,13 @@ shared_examples_for 'an imputer' do
 
   describe 'with missing values' do
     it 'imputes if missing values remain' do
-      elements = [1,2,3,nil,5,8]
+      elements = [1, 2, 3, nil, 5, 8]
       expect_any_instance_of(described_class).to receive(:process_impute)
       described_class.impute! elements
     end
 
     it 'imputes if -1s remain' do
-      elements = [1,2,3,-1,5,8]
+      elements = [1, 2, 3, -1, 5, 8]
       expect_any_instance_of(described_class).to receive(:process_impute)
       described_class.impute! elements
     end

@@ -17,11 +17,11 @@ module Imputers
       # Return if only nils
       return array if array.compact.blank?
 
-      #Return if no nils or -1's
-      return array if !array.any? {|elem| [nil, -1].include?(elem) }
+      # Return if no nils or -1's
+      return array unless array.any? { |elem| [nil, -1].include?(elem) }
 
       # Return if it contains strings
-      return array if array.any? {|elem| elem.is_a? String }
+      return array if array.any? { |elem| elem.is_a? String }
       impute_callback array: array
     end
 

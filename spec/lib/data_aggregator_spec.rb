@@ -68,7 +68,7 @@ describe DataAggregator do
     end
 
     it 'fails with a message if no services are defined' do
-      instance = described_class.new [nil, nil, nil], 'imputers'
+      _instance = described_class.new [nil, nil, nil], 'imputers'
       # expect(instance.send(:retrieve_data_of_all_services) { |serv| serv}).to raise_error
     end
   end

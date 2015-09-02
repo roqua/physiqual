@@ -1,4 +1,5 @@
 module DataServices
+  # rubocop:disable Metrics/ClassLength, Metrics/MethodLength
   class GoogleService < DataService
     include HTTParty
 
@@ -36,11 +37,11 @@ module DataServices
     end
 
     def sleep(_from, _to)
-      fail Errors::NotSupportedError.new 'Sleep not supported by google fit!'
+      fail Errors::NotSupportedError, 'Sleep not supported by google fit!'
     end
 
     def calories(_from, _to)
-      fail Errors::NotSupportedError.new 'Calories not supported by google fit'
+      fail Errors::NotSupportedError, 'Calories not supported by google fit'
     end
 
     private
@@ -61,7 +62,9 @@ module DataServices
       end
       results = []
 
-      results_hash.each { |date, value| results << {date_time_field => date, values_field => [(block_given? ? yield(value) : value)] } }
+      results_hash.each do |date, value|
+        results << { date_time_field => date, values_field => [(block_given? ? yield(value) : value)] }
+      end
       results
     end
 
@@ -199,4 +202,5 @@ module DataServices
       activities[number]
     end
   end
+  # rubocop:enable Metrics/ClassLength, Metrics/MethodLength
 end

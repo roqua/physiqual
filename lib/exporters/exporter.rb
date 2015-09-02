@@ -4,13 +4,7 @@ module Exporters
       interval = 6
       measurements_per_day = 3
 
-      services = user.tokens.map do |token|
-        next if !token.complete?
-        service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, token)
-        service = DataServices::SummarizedDataService.new(service, last_measurement_time, measurements_per_day, interval, true)
-        DataServices::CachedDataService.new service
-      end.compact
-
+      services = create_services(user.tokens, last_measurement_time, interval, measurements_per_day)
       data_aggregator = DataAggregator.new(services, [Imputers::MeanImputer])
       activities = data_aggregator.activities(from, to)
       heart_rate = data_aggregator.heart_rate(from, to)
@@ -26,6 +20,20 @@ module Exporters
         result[date][:activities] = activities[date]
       end
       result
+    end
+
+    private
+
+    def create_services(tokens, last_measurement_time, interval, measurements_per_day)
+      tokens.map do |token|
+        next unless token.complete?
+        service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, token)
+        service = DataServices::SummarizedDataService.new(service,
+                                                          last_measurement_time,
+                                                          measurements_per_day,
+                                                          interval, true)
+        DataServices::CachedDataService.new service
+      end.compact
     end
   end
 end
