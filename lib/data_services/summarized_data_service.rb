@@ -1,5 +1,5 @@
 module DataServices
-  class SummarizedDataService < SimpleDelegator
+  class SummarizedDataService < DataServiceDecorator
     def initialize(data_service, last_measurement_time, measurements_per_day, interval, use_night)
       super(data_service)
       @last_measurement_time = last_measurement_time
@@ -9,11 +9,11 @@ module DataServices
     end
 
     def service_name
-      "summarized_#{__getobj__.service_name}"
+      "summarized_#{data_service.service_name}"
     end
 
     def heart_rate(from, to)
-      heart_rate = __getobj__.heart_rate(from, to)
+      heart_rate = data_service.heart_rate(from, to)
       offset = 0
       max = 300
       k = 2
@@ -21,44 +21,55 @@ module DataServices
     end
 
     def sleep(from, to)
-      sleep = __getobj__.sleep(from, to)
+      sleep = data_service.sleep(from, to)
       cluster_in_buckets(sleep, from, to)
     end
 
     def calories(from, to)
-      calories = __getobj__.calories(from, to)
+      calories = data_service.calories(from, to)
       cluster_in_buckets(calories, from, to)
     end
 
     def steps(from, to)
-      steps = __getobj__.steps(from, to)
+      steps = data_service.steps(from, to)
       sum_values(cluster_in_buckets(steps, from, to))
     end
 
     def activities(from, to)
-      activities = __getobj__.activities(from, to)
-      take_first_value(cluster_in_buckets(activities, from, to))
+      activities = data_service.activities(from, to)
+      histogram(cluster_in_buckets(activities, from, to))
     end
 
     private
 
     def take_first_value(data)
-      Hash[data.keys.map { |key| [key, data[key].first] }]
+      Hash[data.keys.map { |key| [key, [data[key].first]] }]
+    end
+
+    def histogram(data)
+      Hash[data.keys.map do |key|
+        result = Hash.new(0)
+        data[key].each { |val| result[val] += 1 }
+        max_value = result.blank? ? nil : result.max_by { |_k, v| v }.first
+        [key, [max_value]]
+      end]
     end
 
     def sum_values(data)
-      Hash[data.keys.map { |key| [key, data[key].sum] }]
+      Hash[data.keys.map { |key| [key, [data[key].sum]] }]
     end
 
     def soft_histogram(data, min, max, k)
       Hash[data.keys.map do |key|
         histogram = Hash.new(0)
-        data[key].each do |current|
-          (current - k..current + k).each { |buck| histogram[buck] += 1 }
+        data[key].each do |values|
+          values.each do |current|
+            (current - k..current + k).each { |buck| histogram[buck] += 1 } if current
+          end
         end
         histogram.delete_if { |hist_key, _value| hist_key < min || hist_key > max }
         max_value = histogram.max.nil? ? nil : histogram.max_by { |_k, v| v }.first
-        [key, max_value]
+        [key, [max_value]]
       end]
     end
 
@@ -66,19 +77,19 @@ module DataServices
       buckets = generate_buckets(from, to)
       current_bucket = 0
 
-      data[key].each do |entry|
-        next unless entry[date_time]
+      data.each do |entry|
+        next unless entry[date_time_field]
 
-        while current_bucket < buckets.size && entry[date_time] > buckets.keys[current_bucket]
+        while current_bucket < buckets.size && entry[date_time_field] > buckets.keys[current_bucket]
           current_bucket += 1
         end
 
         break if current_bucket == buckets.size
 
         # Don't take the night into account
-        next unless entry[date_time] >= (buckets.keys[current_bucket] - @interval.hours) || @use_night
-
-        buckets[buckets.keys[current_bucket]] << entry['value'].to_i
+        next unless entry[date_time_field] >= (buckets.keys[current_bucket] - @interval.hours) || @use_night
+        values = entry[values_field]
+        buckets[buckets.keys[current_bucket]] << values
       end
       buckets
     end

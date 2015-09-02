@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :token do
-    token "the_token"
-    refresh_token  "the_refresh_token"
+    token 'the_token'
+    refresh_token 'the_refresh_token'
     valid_until Time.now.in_time_zone
     user
 

@@ -6,8 +6,8 @@ module DataServices
   describe CachedDataService do
     it_behaves_like 'a data_service decorator'
     let(:token) { FactoryGirl.create(:fitbit_token) }
-    let(:service) { MockFitbitService.new}
-    let(:instance) { CachedDataService.new(service)}
+    let(:service) { MockFitbitService.new }
+    let(:instance) { CachedDataService.new(service) }
     let(:from) { 10.days.ago.in_time_zone.beginning_of_day }
     let(:to)   { 1.days.ago.in_time_zone.end_of_day }
 

@@ -60,6 +60,12 @@ class Token < ActiveRecord::Base
     self.class.client.auth_code.get_token(code, redirect_uri: url)
   end
 
+  def complete?
+    complete = !token.blank?
+    complete &= !refresh_token.blank?
+    complete
+  end
+
   def self.csrf_token
     fail 'Subclass does not implement csrf method'
   end

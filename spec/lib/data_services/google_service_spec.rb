@@ -7,4 +7,3 @@ module DataServices
     it_behaves_like 'a data_service'
   end
 end
-

@@ -29,8 +29,12 @@ module DataServices
       'activities'
     end
 
-    def date_time
+    def date_time_field
       'dateTime'
+    end
+
+    def values_field
+      'values'
     end
   end
 end

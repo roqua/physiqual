@@ -1,6 +1,6 @@
 module Imputers
   class MockImputer < Imputer
-    def impute!(array)
+    def process_impute(array)
       array
     end
   end

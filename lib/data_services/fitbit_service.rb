@@ -19,11 +19,9 @@ module DataServices
 
     def heart_rate(from, to)
       activity = 'heart'
-      {
-        key => activity_call(from, to, activity)[key].map do |value|
-          { 'dateTime' => value['dateTime'], 'value' => value['value']['restingHeartRate'] }
-        end
-      }
+      activity_call(from, to, activity).map do |hash|
+        { date_time_field => hash[date_time_field], values_field => [hash[values_field].first['restingHeartRate']] }
+      end
     end
 
     def sleep(from, to)
@@ -37,8 +35,12 @@ module DataServices
       activity_call(from, to, 'steps')
     end
 
-    def activities(from, to)
-      raise RuntimeError
+    def calories(_from, _to)
+      fail Errors::NotSupportedError.new 'Calories not supported by fitbit!'
+    end
+
+    def activities(_from, _to)
+      fail Errors::NotSupportedError.new 'Activities Not supported by fitbit!'
     end
 
     private
@@ -47,7 +49,13 @@ module DataServices
       from = from.strftime(DATE_FORMAT)
       to = to.strftime(DATE_FORMAT)
       data = send_get("/activities/#{activity}/date/#{from}/#{to}.json")
-      { key => data["activities-#{activity}"] }
+      result = []
+      data["activities-#{activity}"].each do |entry|
+        value = entry['value']
+        value = !value.is_a?(Hash) && value.to_s == value.to_i.to_s ? value.to_i : value
+        result << { date_time_field => entry['dateTime'] , values_field => [value] }
+      end
+      result
     end
 
     def send_get(url)

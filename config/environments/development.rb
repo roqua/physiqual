@@ -38,4 +38,5 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.web_console.whitelisted_ips = %w(145.97.182.139 129.125.147.39 82.73.161.225)
 end
