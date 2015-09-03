@@ -5,6 +5,10 @@ FactoryGirl.define do
     valid_until Time.now.in_time_zone
     user
 
+    trait :mock do
+      type 'mock_token'
+    end
+
     trait :google do
       type GoogleToken.csrf_token
     end

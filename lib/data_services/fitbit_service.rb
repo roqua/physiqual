@@ -1,12 +1,7 @@
 module DataServices
   class FitbitService < DataService
-    include HTTParty
-
-    base_uri FitbitToken.base_uri
-
-    def initialize(token)
-      @token = token
-      @header = { 'Authorization' => "Bearer #{@token.token}" }
+    def initialize(session)
+      @session = session
     end
 
     def service_name
@@ -14,7 +9,7 @@ module DataServices
     end
 
     def profile
-      send_get('/profile.json')
+      @session.get('/profile.json')
     end
 
     def heart_rate(from, to)
@@ -28,7 +23,7 @@ module DataServices
       from = from.strftime(DATE_FORMAT)
       to = to.strftime(DATE_FORMAT)
 
-      send_get("/sleep/date/#{from}/#{to}.json")
+      @session.get("/sleep/date/#{from}/#{to}.json")
     end
 
     def steps(from, to)
@@ -48,7 +43,7 @@ module DataServices
     def activity_call(from, to, activity)
       from = from.strftime(DATE_FORMAT)
       to = to.strftime(DATE_FORMAT)
-      data = send_get("/activities/#{activity}/date/#{from}/#{to}.json")
+      data = @session.get("/activities/#{activity}/date/#{from}/#{to}.json")
       result = []
       data["activities-#{activity}"].each do |entry|
         value = entry['value']
@@ -56,12 +51,6 @@ module DataServices
         result << { date_time_field => entry['dateTime'], values_field => [value] }
       end
       result
-    end
-
-    def send_get(url)
-      result = self.class.get(url, headers: @header)
-      result = result.body
-      JSON.parse(result)
     end
   end
 end

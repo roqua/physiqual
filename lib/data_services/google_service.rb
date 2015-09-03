@@ -1,13 +1,8 @@
 module DataServices
   # rubocop:disable Metrics/ClassLength, Metrics/MethodLength
   class GoogleService < DataService
-    include HTTParty
-
-    base_uri GoogleToken.base_uri
-
-    def initialize(token)
-      @token = token
-      @header = { 'Authorization' => "Bearer #{@token.token}" }
+    def initialize(session)
+      @session = session
     end
 
     def service_name
@@ -15,8 +10,7 @@ module DataServices
     end
 
     def sources
-      @datasources = self.class.get('/dataSources', headers: @header).body
-      @datasources = JSON.parse(@datasources)
+      @datasources = @session.get('/dataSources')
       @datasources = @datasources['dataSource'].map { |x| [x['dataType']['name'], x['dataStreamId']] }
       @datasources
     end
@@ -69,13 +63,7 @@ module DataServices
     end
 
     def access_datasource(id, from, to)
-      send_get("/dataSources/#{id}/datasets/#{from}-#{to}")
-    end
-
-    def send_get(url)
-      result = self.class.get(url, headers: @header)
-      result = result.body
-      JSON.parse(result)
+      @session.get("/dataSources/#{id}/datasets/#{from}-#{to}")
     end
 
     def convert_time_to_nanos(time)

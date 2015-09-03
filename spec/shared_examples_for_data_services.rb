@@ -5,8 +5,8 @@ module DataServices
     it 'should define the extended methods funcion' do
       expect(instance.service_name).to_not eq DataService.new.service_name
     end
-    it 'initializes with HTTParty' do
-      expect(described_class.ancestors).to include HTTParty
+    it 'initializes without HTTParty, should be injected' do
+      expect(described_class.ancestors).to_not include HTTParty
     end
   end
 end
