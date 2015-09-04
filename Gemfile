@@ -41,8 +41,14 @@ gem 'active_interaction', '~> 2.1.1'
 
 # Imputation
 gem 'spliner'
+gem 'interpolator'
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
+
+group :test do
+  # Webmock is needed to disable any outgoing traffic
+  gem 'webmock'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,9 +60,17 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  gem 'spring-commands-rspec'
+
   gem 'rspec-rails', '~> 3.0'
 
   gem 'rubocop'
+
+  # Freeze and change time for tests
+  gem 'timecop'
+
+  # vcr to capture service responses
+  gem 'vcr'
 
   gem 'factory_girl_rails'
 end

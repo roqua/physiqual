@@ -1,9 +1,13 @@
 FactoryGirl.define do
   factory :token do
-    token "the_token"
-    refresh_token  "the_refresh_token"
+    token 'the_token'
+    refresh_token 'the_refresh_token'
     valid_until Time.now.in_time_zone
     user
+
+    trait :mock do
+      type 'mock_token'
+    end
 
     trait :google do
       type GoogleToken.csrf_token
@@ -13,7 +17,8 @@ FactoryGirl.define do
       type FitbitToken.csrf_token
     end
 
-    factory :fitbit_token, traits: [:fitbit]
-    factory :google_token, traits: [:google]
+    factory :mock_token, traits: [:mock]
+    factory :fitbit_token, class: FitbitToken, traits: [:fitbit]
+    factory :google_token, class: GoogleToken, traits: [:google]
   end
 end

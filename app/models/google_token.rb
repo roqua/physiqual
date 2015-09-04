@@ -9,7 +9,7 @@ class GoogleToken < Token
   end
 
   def self.csrf_token
-    GoogleService.service_name
+    'google'
   end
 
   def self.client_id
