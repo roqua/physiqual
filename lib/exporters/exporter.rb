@@ -27,7 +27,7 @@ module Exporters
     def create_services(tokens, last_measurement_time, interval, measurements_per_day)
       tokens.map do |token|
         next unless token.complete?
-        session = Sessions::TokenAuthorizedSession.new(token)
+        session = Sessions::TokenAuthorizedSession.new(token.token, token.class.base_uri)
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
         service = DataServices::SummarizedDataService.new(service,
                                                           last_measurement_time,

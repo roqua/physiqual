@@ -1,3 +1,2 @@
 module Sessions
-  
 end

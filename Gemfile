@@ -67,5 +67,8 @@ group :development, :test do
   # Freeze and change time for tests
   gem 'timecop'
 
+  # vcr to capture service responses
+  gem 'vcr'
+
   gem 'factory_girl_rails'
 end

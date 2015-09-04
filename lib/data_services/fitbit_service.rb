@@ -48,7 +48,7 @@ module DataServices
       data["activities-#{activity}"].each do |entry|
         value = entry['value']
         value = !value.is_a?(Hash) && value.to_s == value.to_i.to_s ? value.to_i : value
-        result << { date_time_field => entry['dateTime'], values_field => [value] }
+        result << { date_time_field => entry['dateTime'].to_time, values_field => [value] }
       end
       result
     end

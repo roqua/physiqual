@@ -6,6 +6,7 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'spec_helper'
 require 'webmock/rspec'
+require 'vcr'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -29,6 +30,12 @@ ActiveRecord::Migration.maintain_test_schema!
 
 # Do not allow any network connections in tests, mock them
 WebMock.disable_net_connect!(allow_localhost: true)
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  c.allow_http_connections_when_no_cassette = false
+end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

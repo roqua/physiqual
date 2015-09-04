@@ -17,7 +17,8 @@ FactoryGirl.define do
       type FitbitToken.csrf_token
     end
 
-    factory :fitbit_token, traits: [:fitbit]
-    factory :google_token, traits: [:google]
+    factory :mock_token, traits: [:mock]
+    factory :fitbit_token, class: FitbitToken, traits: [:fitbit]
+    factory :google_token, class: GoogleToken, traits: [:google]
   end
 end
