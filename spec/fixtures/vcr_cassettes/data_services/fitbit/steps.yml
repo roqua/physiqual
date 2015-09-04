@@ -27,11 +27,11 @@ http_interactions:
       Fitbit-Rate-Limit-Limit:
       - '150'
       Fitbit-Rate-Limit-Remaining:
-      - '142'
+      - '127'
       Fitbit-Rate-Limit-Reset:
-      - '419'
+      - '1781'
       Set-Cookie:
-      - JSESSIONID=EEA30041A2728E770B19AE5099C7B1E6.fitbit1; Path=/; HttpOnly
+      - JSESSIONID=3D08BB2685905E04980F1C1009D5908E.fitbit1; Path=/; HttpOnly
       Content-Type:
       - application/json;charset=UTF-8
       Content-Language:
@@ -41,12 +41,12 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Date:
-      - Fri, 04 Sep 2015 09:53:01 GMT
+      - Fri, 04 Sep 2015 12:30:19 GMT
       X-Frame-Options:
       - SAMEORIGIN
     body:
       encoding: UTF-8
       string: '{"activities-steps":[{"dateTime":"2015-07-04","value":"0"},{"dateTime":"2015-07-05","value":"0"},{"dateTime":"2015-07-06","value":"0"},{"dateTime":"2015-07-07","value":"0"},{"dateTime":"2015-07-08","value":"0"},{"dateTime":"2015-07-09","value":"0"},{"dateTime":"2015-07-10","value":"0"},{"dateTime":"2015-07-11","value":"0"},{"dateTime":"2015-07-12","value":"0"},{"dateTime":"2015-07-13","value":"1327"},{"dateTime":"2015-07-14","value":"5822"},{"dateTime":"2015-07-15","value":"23138"},{"dateTime":"2015-07-16","value":"10065"},{"dateTime":"2015-07-17","value":"12685"},{"dateTime":"2015-07-18","value":"6971"},{"dateTime":"2015-07-19","value":"3550"},{"dateTime":"2015-07-20","value":"16557"},{"dateTime":"2015-07-21","value":"16569"},{"dateTime":"2015-07-22","value":"24082"},{"dateTime":"2015-07-23","value":"9197"},{"dateTime":"2015-07-24","value":"12886"},{"dateTime":"2015-07-25","value":"20603"},{"dateTime":"2015-07-26","value":"2265"},{"dateTime":"2015-07-27","value":"8957"},{"dateTime":"2015-07-28","value":"8375"},{"dateTime":"2015-07-29","value":"17382"},{"dateTime":"2015-07-30","value":"8622"},{"dateTime":"2015-07-31","value":"14950"},{"dateTime":"2015-08-01","value":"24899"},{"dateTime":"2015-08-02","value":"8399"},{"dateTime":"2015-08-03","value":"18393"},{"dateTime":"2015-08-04","value":"6901"}]}'
     http_version: 
-  recorded_at: Fri, 04 Sep 2015 09:53:01 GMT
+  recorded_at: Fri, 04 Sep 2015 12:30:19 GMT
 recorded_with: VCR 2.9.3

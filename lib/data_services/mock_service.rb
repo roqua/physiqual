@@ -1,8 +1,12 @@
 module DataServices
-  class MockFitbitService < DataService
+  class MockService < DataService
     # rubocop:disable Metrics/MethodLength
+    def initialize(_session)
+      @precision = 10.minutes
+    end
+
     def service_name
-      'fitbit'
+      'mock'
     end
 
     def profile
@@ -39,14 +43,41 @@ module DataServices
       }
     end
 
-    def heart_rate(_from, _to)
+    def heart_rate(from, to)
+      generate_time_series(from, to)
     end
 
-    def sleep(_from, _to)
+    def activities(from, to)
+      generate_time_series(from, to)
     end
 
-    def steps(_from, _to)
+    def sleep(from, to)
+      generate_time_series(from, to)
+    end
+
+    def calories(from, to)
+      generate_time_series(from, to)
+    end
+
+    def steps(from, to)
+      generate_time_series(from, to)
     end
     # rubocop:enable Metrics/MethodLength
+    #
+
+    private
+
+    def generate_time_series(from, to)
+      time = from
+      res = []
+      while time < to
+        res << {
+          date_time_field => time,
+          values_field => [rand(100)]
+        }
+        time += @precision
+      end
+      res
+    end
   end
 end

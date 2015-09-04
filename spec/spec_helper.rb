@@ -19,14 +19,21 @@ require 'rubygems'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-ENV['GOOGLE_CLIENT_ID'] = '730887188777-quufh6i0ec6trnged6cg5d7s705bnkd1.apps.googleusercontent.com'
-ENV['GOOGLE_CLIENT_SECRET'] = '4mrwEfQEOFAU4IHtOTcARE3g'
-ENV['FITBIT_CLIENT_ID'] = '229LSY'
-ENV['FITBIT_CLIENT_SECRET'] = '8b83301999d71c081677ae307b58a715'
 # Codeclimate integration
 if ENV['CODECLIMATE_REPO_TOKEN']
   require 'codeclimate-test-reporter'
   CodeClimate::TestReporter.start
+end
+
+require 'webmock/rspec'
+require 'vcr'
+# Do not allow any network connections in tests, mock them
+WebMock.disable_net_connect!(allow_localhost: true)
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  c.allow_http_connections_when_no_cassette = false
 end
 
 RSpec.configure do |config|

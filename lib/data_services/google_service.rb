@@ -34,16 +34,17 @@ module DataServices
       fail Errors::NotSupportedError, 'Sleep not supported by google fit!'
     end
 
-    def calories(_from, _to)
-      fail Errors::NotSupportedError, 'Calories not supported by google fit'
+    def calories(from, to)
+      calories_url = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
+      activity_data(from, to, calories_url, 'intVal')
     end
 
     private
 
     def activity_data(from, to, url, value_type)
-      from = convert_time_to_nanos(from)
-      to = convert_time_to_nanos(to)
-      res = access_datasource(url, from, to)
+      from_nanos = convert_time_to_nanos(from)
+      to_nanos = convert_time_to_nanos(to)
+      res = access_datasource(url, from_nanos, to_nanos)
       res = res['point']
       results_hash = Hash.new(0)
 
@@ -51,6 +52,9 @@ module DataServices
         start = (entry['startTimeNanos'].to_i / 10e8).to_i
         endd = (entry['endTimeNanos'].to_i / 10e8).to_i
         actual_timestep = Time.at((start + endd) / 2)
+
+        # If the current timestep is higher than the final timestep, don't include it
+        next if actual_timestep > to
         value = entry['value'].first[value_type].to_i
         results_hash[actual_timestep] += value
       end

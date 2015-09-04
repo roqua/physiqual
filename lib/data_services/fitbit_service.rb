@@ -19,11 +19,11 @@ module DataServices
       end
     end
 
-    def sleep(from, to)
+    def sleep(from, _to)
       from = from.strftime(DATE_FORMAT)
-      to = to.strftime(DATE_FORMAT)
-
-      @session.get("/sleep/date/#{from}/#{to}.json")
+      data = @session.get("/sleep/date/#{from}.json")
+      puts data
+      data
     end
 
     def steps(from, to)

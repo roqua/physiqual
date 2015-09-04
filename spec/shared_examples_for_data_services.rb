@@ -1,34 +1,82 @@
+require 'shared_context_for_data_services'
+
 module DataServices
-  shared_examples_for 'a data_service' do
-    let(:token) { FactoryGirl.create(:google_token) }
-    let(:instance) { described_class.new(token) }
+  shared_examples_for 'a data_service' do |vcrs|
     it 'should define the extended methods funcion' do
-      expect(instance.service_name).to_not eq DataService.new.service_name
+      expect(subject.service_name).to_not eq DataService.new.service_name
     end
     it 'initializes without HTTParty, should be injected' do
       expect(described_class.ancestors).to_not include HTTParty
     end
-  end
 
-  shared_context 'data_service context' do
-    def check_result_format(result)
-      expect(result).to be_a Array
-      result.each do |entry|
-        expect(entry).to be_a Hash
-        expect(entry.keys.length).to eq 2
-        expect(entry.keys).to include DataService.new.date_time_field
-        expect(entry.keys).to include DataService.new.values_field
-        expect(entry[DataService.new.values_field]).to be_a Array
-        expect(entry[DataService.new.date_time_field]).to be_a Time
+    describe 'steps' do
+      before { @result = run_with_vcr(vcrs, :steps) { subject.steps(from, to) } }
+
+      it 'returns the steps in the correct format' do
+        check_result_format(@result)
+      end
+
+      it 'gets the steps from the correct date till the correct date' do
+        check_start_end_date(@result, from, to)
       end
     end
 
-    def check_start_end_date(result, from, to)
-      dates = result.map { |x| x[DataService.new.date_time_field] }
-      lowest_date = dates.min
-      highest_date = dates.max
-      expect(lowest_date).to be_between(from, to)
-      expect(highest_date).to be_between(from, to)
+    describe 'heart_rate' do
+      before { @result = run_with_vcr(vcrs, :heart_rate) { subject.heart_rate(from, to) } }
+
+      it 'returns the heart_rate in the correct format' do
+        check_result_format(@result)
+      end
+
+      it 'gets the heart_rate from the correct date till the correct date' do
+        check_start_end_date(@result, from, to)
+      end
+    end
+
+    describe 'activities' do
+      around(:each) do |test|
+        @result = run_with_vcr(vcrs, :activities) { subject.activities(from, to) }
+        @result == false ? test.skip : test.run
+      end
+
+      it 'returns the activities in the correct format' do
+        check_result_format(@result)
+      end
+
+      it 'gets the activities from the correct date till the correct date' do
+        check_start_end_date(@result, from, to)
+      end
+    end
+
+    describe 'calories' do
+      around(:each) do |test|
+        @result = run_with_vcr(vcrs, :calories) { subject.calories(from, to) }
+        @result == false ? test.skip : test.run
+      end
+
+      it 'returns the activities in the correct format' do
+        check_result_format(@result)
+      end
+
+      it 'gets the activities from the correct date till the correct date' do
+        check_start_end_date(@result, from, to)
+      end
+    end
+
+    def run_with_vcr(vcrs, type)
+      result = ''
+      begin
+        if vcrs
+          VCR.use_cassette(vcrs[type]) do
+            result = yield
+          end
+        else
+          result = yield
+        end
+      rescue Errors::NotSupportedError
+        result = false
+      end
+      result
     end
   end
 end

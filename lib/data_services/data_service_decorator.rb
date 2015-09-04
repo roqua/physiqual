@@ -1,10 +1,8 @@
 module DataServices
-  class DataServiceDecorator < SimpleDelegator
-    def initialize(data_service)
-      @data_service = data_service
-      super
+  class DataServiceDecorator < DelegateClass(DataService)
+    delegate :output_entry, to: :__getobj__
+    def data_service
+      __getobj__
     end
-
-    attr_reader :data_service
   end
 end

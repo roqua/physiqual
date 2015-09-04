@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/sleep/date/2015-07-04.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer the_token
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Fitbit-Rate-Limit-Limit:
+      - '150'
+      Fitbit-Rate-Limit-Remaining:
+      - '123'
+      Fitbit-Rate-Limit-Reset:
+      - '1778'
+      Set-Cookie:
+      - JSESSIONID=3F0AAA7E35908939CE8E92005AA11964.fitbit1; Path=/; HttpOnly
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Language:
+      - en
+      Content-Length:
+      - '88'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 04 Sep 2015 12:30:21 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: '{"sleep":[],"summary":{"totalMinutesAsleep":0,"totalSleepRecords":0,"totalTimeInBed":0}}'
+    http_version: 
+  recorded_at: Fri, 04 Sep 2015 12:30:22 GMT
+recorded_with: VCR 2.9.3

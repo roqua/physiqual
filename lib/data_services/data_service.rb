@@ -36,5 +36,12 @@ module DataServices
     def values_field
       'values'
     end
+
+    def output_entry(date, values)
+      {
+        date_time_field => date,
+        values_field => [values].flatten
+      }
+    end
   end
 end
