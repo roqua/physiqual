@@ -19,14 +19,14 @@ describe DataAggregator do
     end
 
     it 'Runs the impute function on all provided imputers' do
-      imputers.each { |imp| expect(imp).to receive(:impute!).once  { [1, 2, 3, nil] } }
+      imputers.each { |imp| expect(imp).to receive(:impute!).once { [1, 2, 3, nil] } }
 
       instance = described_class.new 'services', imputers
       instance.send(:impute_results, 1 => 1, 2 => 2, 3 => 3, 4 => nil)
     end
 
     it 'Changes the values of the result according to the result of the imputers' do
-      imputers.each { |imp| expect(imp).to receive(:impute!).once  { [1, 2, nil, 4] } }
+      imputers.each { |imp| expect(imp).to receive(:impute!).once { [1, 2, nil, 4] } }
 
       instance = described_class.new 'services', imputers
       result = instance.send(:impute_results, 1 => 1, 2 => 2, 3 => 3, 4 => nil)
