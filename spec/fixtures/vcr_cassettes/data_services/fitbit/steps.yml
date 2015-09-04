@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NDEzNjIyNzMsInNjb3BlcyI6InJ3ZWkgcnBybyByaHIgcm51dCBybG9jIHJzbGUgcnNldCByYWN0IHJzb2MiLCJzdWIiOiIzTEo0RjkiLCJhdWQiOiIyMjlMU1kiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJpYXQiOjE0NDEzNTg2NzN9.SMM-qrw01Kv5R85ibd8XajhNa800ml0CNuBcBogxgSE
+      - Bearer the_token
   response:
     status:
       code: 200
