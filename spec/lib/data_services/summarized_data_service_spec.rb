@@ -30,10 +30,10 @@ module DataServices
     end
 
     describe 'cluster_in_buckets' do
-      let(:data){ service.steps(from, to) }
-      let(:from_subset){(to - 1.day).beginning_of_day }
-      let(:to_subset) {  (to - 1.day).end_of_day }
-      let(:data_subset){ data.select!{ |x| x[subject.date_time_field].to_date == (from_subset).to_date } }
+      let(:data) { service.steps(from, to) }
+      let(:from_subset) { (to - 1.day).beginning_of_day }
+      let(:to_subset) { (to - 1.day).end_of_day }
+      let(:data_subset) { data.select! { |x| x[subject.date_time_field].to_date == (from_subset).to_date } }
 
       it 'should output the correct format' do
         @result = subject.send(:cluster_in_buckets, data, from, to)
@@ -45,9 +45,9 @@ module DataServices
 
         last_measuremnt_date_time = from_subset.change(hour: last_measurement_time.hour, min: last_measurement_time.min)
         (0...measurements_per_day).each do |meas|
-          beginn = last_measuremnt_date_time - ((meas+1) * interval).hours
+          beginn = last_measuremnt_date_time - ((meas + 1) * interval).hours
           endd = last_measuremnt_date_time - (meas * interval).hours
-          res << data.select{ |x| x[subject.date_time_field] <= endd && x[subject.date_time_field] > beginn}
+          res << data.select { |x| x[subject.date_time_field] <= endd && x[subject.date_time_field] > beginn }
         end
 
         # The results in this example are the other way around, reverse them
@@ -56,7 +56,7 @@ module DataServices
         full_result = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
         res.each_with_index do |current_res, index|
           # The results can be sorted, as the order in the values does not matter
-          expected = current_res.map{|x|x[subject.values_field]}.flatten.sort
+          expected = current_res.map { |x| x[subject.values_field] }.flatten.sort
           result = full_result[index][subject.values_field].sort
           expect(result.size).to eq expected.size
           expect(result).to eq expected
@@ -84,7 +84,7 @@ module DataServices
         it { expect(@full_with_night.size).to be > (@full_without_night.length) }
 
         # Should be a superset
-        it { expect(@full_without_night - @full_with_night).to be_blank}
+        it { expect(@full_without_night - @full_with_night).to be_blank }
       end
     end
 
@@ -129,8 +129,8 @@ module DataServices
 
       describe 'sum_values' do
         it 'should sum the values according to the buckets' do
-          result = subject.send(:sum_values, @data).map{|x| x[subject.values_field]}
-          expected = @data.map{|x| [x[subject.values_field].sum]}
+          result = subject.send(:sum_values, @data).map { |x| x[subject.values_field] }
+          expected = @data.map { |x| [x[subject.values_field].sum] }
 
           expected.zip(result) do |value, result_value|
             expect(value).to eq(result_value)

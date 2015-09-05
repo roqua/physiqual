@@ -7,35 +7,39 @@ class DataAggregator
   def steps(from, to)
     result = retrieve_data_of_all_services { |service| service.steps(from, to) }
     run_function(result) do |steps, data_entry|
-      [steps[data_entry[DataServices::DataService::DATE_TIME_FIELD]], data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max if valid_result? data_entry[DataServices::DataService::VALUES_FIELD]
+      [steps[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
+       data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max
     end
   end
 
   def heart_rate(from, to)
     result = retrieve_data_of_all_services { |service| service.heart_rate(from, to) }
     run_function(result) do |heart_rates, data_entry|
-      [heart_rates[data_entry[DataServices::DataService::DATE_TIME_FIELD]], data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max if valid_result? data_entry[DataServices::DataService::VALUES_FIELD]
+      [heart_rates[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
+       data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max
     end
   end
 
   def sleep(from, to)
     result = retrieve_data_of_all_services { |service| service.sleep(from, to) }
     run_function(result) do |sleep_data, data_entry|
-      [sleep_data[data_entry[DataServices::DataService::DATE_TIME_FIELD]], data_entry[DataServices::DataService::VALUES_FIELD]].max if valid_result? data_entry[DataServices::DataService::VALUES_FIELD]
+      [sleep_data[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
+       data_entry[DataServices::DataService::VALUES_FIELD]].max
     end
   end
 
   def calories(from, to)
     result = retrieve_data_of_all_services { |service| service.calories(from, to) }
     run_function(result) do |calories, data_entry|
-      [calories[data_entry[DataServices::DataService::DATE_TIME_FIELD]], data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max if valid_result? data_entry[DataServices::DataService::VALUES_FIELD]
+      [calories[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
+       data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max
     end
   end
 
   def activities(from, to)
     result = retrieve_data_of_all_services { |service| service.activities(from, to) }
-    run_function(result) do |activities, data_entry|
-       data_entry[DataServices::DataService::VALUES_FIELD] if valid_result? data_entry[DataServices::DataService::VALUES_FIELD]
+    run_function(result) do |_activities, data_entry|
+      data_entry[DataServices::DataService::VALUES_FIELD]
     end
   end
 
@@ -49,8 +53,15 @@ class DataAggregator
     aggregated_result = Hash.new(-1)
     result.compact.each do |service_result|
       service_result.each do |data_entry|
-        current_value = yield(aggregated_result, data_entry)
-        aggregated_result[data_entry[DataServices::DataService::DATE_TIME_FIELD]] = current_value.nil? ? aggregated_result[data_entry[DataServices::DataService::DATE_TIME_FIELD]] : current_value
+        if valid_result? data_entry[DataServices::DataService::VALUES_FIELD]
+          current_value = yield(aggregated_result, data_entry)
+        end
+
+        if current_value.nil?
+          current_value = aggregated_result[data_entry[DataServices::DataService::DATE_TIME_FIELD]]
+        end
+
+        aggregated_result[data_entry[DataServices::DataService::DATE_TIME_FIELD]] = current_value
       end
     end
     impute_results(aggregated_result)

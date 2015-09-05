@@ -76,8 +76,8 @@ module DataServices
       current_bucket = 0
 
       # Sort both arrays
-      buckets.sort_by! {|entry| entry[date_time_field] }
-      data.sort_by! {|entry| entry[date_time_field] }
+      buckets.sort_by! { |entry| entry[date_time_field] }
+      data.sort_by! { |entry| entry[date_time_field] }
 
       data.each do |entry|
         next unless entry[date_time_field]
