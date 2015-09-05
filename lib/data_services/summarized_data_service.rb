@@ -62,7 +62,6 @@ module DataServices
     def soft_histogram(data, min, max, k)
       data.map do |entry|
         histogram = Hash.new(0)
-        puts entry if entry[values_field].is_a? Integer
         entry[values_field].each do |current|
           (current - k..current + k).each { |buck| histogram[buck] += 1 } if current
         end
@@ -76,6 +75,10 @@ module DataServices
       buckets = generate_buckets(from, to)
       current_bucket = 0
 
+      # Sort both arrays
+      buckets.sort_by! {|entry| entry[date_time_field] }
+      data.sort_by! {|entry| entry[date_time_field] }
+
       data.each do |entry|
         next unless entry[date_time_field]
 
@@ -86,10 +89,10 @@ module DataServices
         break if current_bucket == buckets.size
 
         # Don't take the night into account
-        next unless entry[date_time_field] >= (buckets[current_bucket][date_time_field] - @interval.hours) || @use_night
+        next unless entry[date_time_field] > (buckets[current_bucket][date_time_field] - @interval.hours) || @use_night
         values = entry[values_field]
         buckets[current_bucket][values_field] << values
-        buckets[current_bucket][values_field].flatten!
+        buckets[current_bucket][values_field] = buckets[current_bucket][values_field].flatten
       end
       buckets
     end
@@ -105,8 +108,8 @@ module DataServices
 
           # Only use dates that are in the past
           result << output_entry(date.to_time, []) if date < Time.zone.now
-        end.compact.reverse
-        result
+        end.compact
+        result.reverse
       end
     end
   end

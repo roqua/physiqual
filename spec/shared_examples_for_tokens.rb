@@ -61,9 +61,9 @@ shared_examples_for 'a token' do
   end
 
   describe 'retrieve_token' do
-    let(:access_token) { double "access_token" }
-    let(:code){ 'code'}
-    let(:url) { 'url'}
+    let(:access_token) { double 'access_token' }
+    let(:code) { 'code' }
+    let(:url) { 'url' }
     before do
       allow(access_token).to receive(:token).and_return('the_token')
       allow(access_token).to receive(:refresh_token).and_return('the_refresh_token')

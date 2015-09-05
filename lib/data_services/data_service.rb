@@ -1,6 +1,9 @@
 module DataServices
   class DataService
     DATE_FORMAT = '%Y-%m-%d'
+    DATE_TIME_FIELD = 'dateTime'
+    VALUES_FIELD = 'values'
+
     def service_name
       'general dataservice'
     end
@@ -25,16 +28,12 @@ module DataServices
       fail 'Subclass does not implement activities method.'
     end
 
-    def key
-      'activities'
-    end
-
     def date_time_field
-      'dateTime'
+      DATE_TIME_FIELD
     end
 
     def values_field
-      'values'
+      VALUES_FIELD
     end
 
     def output_entry(date, values)

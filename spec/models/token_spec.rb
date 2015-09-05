@@ -1,3 +1,2 @@
 describe Token do
-  
 end
