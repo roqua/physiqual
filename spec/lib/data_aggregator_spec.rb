@@ -68,8 +68,34 @@ describe DataAggregator do
     end
 
     it 'fails with a message if no services are defined' do
-      _instance = described_class.new [nil, nil, nil], 'imputers'
-      # expect(instance.send(:retrieve_data_of_all_services) { |serv| serv}).to raise_error
+      instance = described_class.new [nil, nil, nil], 'imputers'
+      expect { instance.send(:retrieve_data_of_all_services) }.to raise_error 'No services defined'
+    end
+
+    describe 'can deal with services that might not define the function' do
+      let(:service1) { double('Service1') }
+      let(:service2) { double('Service2') }
+      let(:result)   { 'Called Service1' }
+      let(:msg) { 'warn msg' }
+      let(:instance) { described_class.new [service1, service2], 'imputers' }
+
+      before do
+        expect(service1).to receive(:defined_method).and_return(result).once
+        expect(service2).to receive(:defined_method).and_raise(Errors::NotSupportedError, msg).once
+      end
+
+      it 'does not raise an error' do
+        expect { instance.send(:retrieve_data_of_all_services) { |serv| serv.defined_method } }.to_not raise_error
+      end
+
+      it 'logs the message' do
+        expect(Rails.logger).to receive(:warn).with(msg)
+        expect(instance.send(:retrieve_data_of_all_services) { |serv| serv.defined_method }).to eq [result, nil]
+      end
+
+      it 'returns nil for the service not supporting the method' do
+        expect(instance.send(:retrieve_data_of_all_services) { |serv| serv.defined_method }).to eq [result, nil]
+      end
     end
   end
 end
