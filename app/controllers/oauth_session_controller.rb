@@ -11,8 +11,9 @@ class OauthSessionController < ApplicationController
   def index
     from = 30.days.ago.in_time_zone.beginning_of_day
     to = 1.days.ago.in_time_zone.end_of_day
-    # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
-    # render json: DataServices::GoogleService.new(session).sources and return
+    #session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
+    #render json: DataServices::GoogleService.new(session).sleep(from, to) and return
+    #render json: DataServices::GoogleService.new(session).sources and return
     # render json: DataServices::GoogleService.new(session).calories(from, to) and return
     last_measurement_time = Time.now.change(hour: 22, min: 30)
     # measurements_per_day = 3
@@ -21,7 +22,7 @@ class OauthSessionController < ApplicationController
     # render json: service.heart_rate(from, to) and return
     # render json: DataServices::SummarizedDataService.new(service,
     # last_measurement_time, measurements_per_day, interval, false).steps(from, to) and return
-    text = Exporters::JsonExporter.new.export(current_user, last_measurement_time, from, to)
+    text = Exporters::CsvExporter.new.export(current_user, last_measurement_time, from, to)
     render json: text
     # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
     # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
@@ -56,8 +57,9 @@ class OauthSessionController < ApplicationController
 
   def check_token
     my_tokens = current_user.tokens
-    if my_tokens.blank? || my_tokens.first.token.blank?
-      redirect_to authorize_oauth_session_index_path(provider: params[:state])
+    current_token = params[:provider] ? current_user.tokens.select { |x| x.class.csrf_token == params[:provider] } : false
+    if my_tokens.blank? || my_tokens.first.token.blank? || current_token
+      redirect_to authorize_oauth_session_index_path(provider: params[:provider])
     else
       my_tokens.each { |token| token.refresh! if token.expired? && token.complete? }
       @token = my_tokens.first
