@@ -1,6 +1,6 @@
 module BucketGenerators
   module BucketGenerator
-    def generate(from, to)
+    def generate(_from, _to)
       fail 'Not implemented by subclass'
     end
 

@@ -1,6 +1,6 @@
 module BucketGenerators
   class DailyBucketGenerator
-    include BucketGenerator 
+    include BucketGenerator
     def initialize(measurement_moments)
       @measurement_moments = measurement_moments
     end

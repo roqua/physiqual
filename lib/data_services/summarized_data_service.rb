@@ -7,8 +7,8 @@ module DataServices
       @interval = interval
       @use_night = use_night
       @bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(measurements_per_day,
-                                                                       interval,
-                                                                       last_measurement_time)
+                                                                           interval,
+                                                                           last_measurement_time)
     end
 
     def service_name

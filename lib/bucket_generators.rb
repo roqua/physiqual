@@ -1,3 +1,2 @@
 module BucketGenerators
-  
 end

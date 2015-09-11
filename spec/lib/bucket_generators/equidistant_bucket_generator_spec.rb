@@ -3,7 +3,6 @@ require 'rails_helper'
 require 'shared_context_for_data_services'
 module BucketGenerators
   describe EquidistantBucketGenerator do
-
     let(:interval) { 6 }
     let(:measurements_per_day) { 3 }
     let(:last_measurement_time) { Time.now.change(hour: 22, min: 30, usec: 0) }
@@ -25,7 +24,7 @@ module BucketGenerators
         current = from.to_date
         @dates.each_with_index do |date, index|
           expect(date.to_date).to eq current
-          current += 1.day if ((index+1) % measurements_per_day) == 0
+          current += 1.day if ((index + 1) % measurements_per_day) == 0
         end
       end
 
@@ -36,7 +35,7 @@ module BucketGenerators
           expect(date.hour).to eq current.hour
           expect(date.min).to eq current.min
           current += interval.hours
-          current = current.change(hour: start.hour, min: start.min) if ((index+1) % measurements_per_day) == 0
+          current = current.change(hour: start.hour, min: start.min) if ((index + 1) % measurements_per_day) == 0
         end
       end
     end

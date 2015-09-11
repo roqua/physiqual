@@ -9,11 +9,11 @@ class OauthSessionController < ApplicationController
   before_filter :token, only: :callback
 
   def index
-    from = 30.days.ago.in_time_zone.beginning_of_day
+    from = 60.days.ago.in_time_zone.beginning_of_day
     to = 1.days.ago.in_time_zone.end_of_day
-    #session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
-    #render json: DataServices::GoogleService.new(session).sleep(from, to) and return
-    #render json: DataServices::GoogleService.new(session).sources and return
+    #    session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)
+    #   render json: DataServices::FitbitService.new(session).heart_rate(from, to) and return
+    # render json: DataServices::GoogleService.new(session).sources and return
     # render json: DataServices::GoogleService.new(session).calories(from, to) and return
     last_measurement_time = Time.now.change(hour: 22, min: 30)
     # measurements_per_day = 3
@@ -57,8 +57,8 @@ class OauthSessionController < ApplicationController
 
   def check_token
     my_tokens = current_user.tokens
-    current_token = params[:provider] ? current_user.tokens.select { |x| x.class.csrf_token == params[:provider] } : false
-    if my_tokens.blank? || my_tokens.first.token.blank? || current_token
+    provider_tokens = current_user.find_tokens(params[:provider])
+    if my_tokens.blank? || my_tokens.first.token.blank? || provider_tokens
       redirect_to authorize_oauth_session_index_path(provider: params[:provider])
     else
       my_tokens.each { |token| token.refresh! if token.expired? && token.complete? }
@@ -77,7 +77,7 @@ class OauthSessionController < ApplicationController
   end
 
   def token
-    @token = current_user.tokens.select { |x| x.class.csrf_token == params[:provider] }
+    @token = current_user.find_tokens params[:provider]
     head 404 if @token.blank?
     @token = @token.first
   end

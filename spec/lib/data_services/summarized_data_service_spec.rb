@@ -22,7 +22,6 @@ module DataServices
     it_behaves_like 'a data_service'
     include_context 'data_service context'
 
-
     describe 'cluster_in_buckets' do
       let(:data) { service.steps(from, to) }
       let(:from_subset) { (to - 1.day).beginning_of_day }

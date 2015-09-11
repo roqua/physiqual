@@ -30,9 +30,9 @@ module DataServices
       activity_data(from, to, activity_url, 'intVal') { |value| convert_number_to_activity(value) }
     end
 
-    def sleep(from, to)
-      #sleep_url = 'derived:com.google.activity.segment:com.urbandroid.sleep:session_activity_segment'
-      #access_datasource sleep_url, convert_time_to_nanos(from), convert_time_to_nanos(to)
+    def sleep(_from, _to)
+      # sleep_url = 'derived:com.google.activity.segment:com.urbandroid.sleep:session_activity_segment'
+      # access_datasource sleep_url, convert_time_to_nanos(from), convert_time_to_nanos(to)
       fail Errors::NotSupportedError, 'Sleep not supported by google fit!'
     end
 
@@ -193,7 +193,7 @@ module DataServices
           100 => 'Yoga',
           101 => 'Zumba' }
 
-        activities[number]
+      activities[number]
     end
   end
   # rubocop:enable Metrics/ClassLength, Metrics/MethodLength

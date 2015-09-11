@@ -3,12 +3,14 @@ require 'rails_helper'
 require 'shared_context_for_data_services'
 module BucketGenerators
   describe DailyBucketGenerator do
-    let(:measurement_times) { [
-      Time.zone.now.change(hour: 03, min: 03, usec: 0),
-      Time.zone.now.change(hour: 8, min: 55, usec: 0),
-      Time.zone.now.change(hour: 10, min: 10, usec: 0),
-      Time.zone.now.change(hour: 23, min: 30, usec: 0),
-    ] }
+    let(:measurement_times) do
+      [
+        Time.zone.now.change(hour: 03, min: 03, usec: 0),
+        Time.zone.now.change(hour: 8, min: 55, usec: 0),
+        Time.zone.now.change(hour: 10, min: 10, usec: 0),
+        Time.zone.now.change(hour: 23, min: 30, usec: 0)
+      ]
+    end
     let(:subject) { described_class.new(measurement_times) }
 
     include_context 'data_service context'
@@ -27,7 +29,7 @@ module BucketGenerators
         current = from.to_date
         @dates.each_with_index do |date, index|
           expect(date.to_date).to eq current
-          current += 1.day if ((index+1) % measurement_times.count) == 0
+          current += 1.day if ((index + 1) % measurement_times.count) == 0
         end
       end
 
