@@ -41,11 +41,11 @@ module DataServices
 
     private
 
-    def activity_call(from, to, activity)
+    def activity_call(from, to, _activity)
       from = from.strftime(DATE_FORMAT)
       to = to.strftime(DATE_FORMAT)
 
-      if(intraday)
+      if intraday
         data = intraday_summary(from, to)
       else
         data = daily_summary(from, to)
@@ -58,9 +58,9 @@ module DataServices
       process_entries(data["activities-#{activity}"])
     end
 
-    def intraday_summary(from,to,activity )
+    def intraday_summary(from, to, activity)
       results = []
-      (from.to_date..to.to_date).each do |date|
+      (from.to_date..to.to_date).each do |_date|
         data = @session.get("/activities/#{activity}/date/#{from}/1d/1min.json")
         results << process_entries(data["activities-#{activity}-intraday"])
       end
