@@ -27,8 +27,9 @@ module DataServices
       it 'should store the correct data', focus: true do
         return_val = []
         (from.to_date..to.to_date).each do |date|
-          (1..24).do |hour|
+          (1..24).each do |hour|
           return_val << {'activities-heart-intraday'=>[{'value'=>123, 'dateTime'=> date.to_time}, {'value'=>123, 'dateTime'=> Time.now}]}
+          end
         end
         expect(session).to receive(:get).and_return(return_val)
         puts subject.send(:intraday_summary, from, to, 'heart')
