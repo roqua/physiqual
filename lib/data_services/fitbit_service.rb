@@ -43,7 +43,7 @@ module DataServices
     def activity_call(from, to, activity)
       from = from.strftime(DATE_FORMAT)
       to = to.strftime(DATE_FORMAT)
-      data = @session.get("/activities/#{activity}/date/#{from}/#{to}/1min.json")
+      data = @session.get("/activities/#{activity}/date/#{from}/#{to}.json")
       result = []
       data["activities-#{activity}"].each do |entry|
         value = entry['value']
