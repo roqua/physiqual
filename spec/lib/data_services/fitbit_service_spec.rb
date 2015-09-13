@@ -19,20 +19,27 @@ module DataServices
       it 'gets the data the data for each days' do
         # The period should contain the same number of days as below, but also include the last one (i.e. +1)
         period = (to.to_date - from.to_date).to_i + 1
-        return_val = { 'activities-heart-intraday' => [{ 'value' => 123, 'dateTime' => Time.now }, { 'value' => 123, 'dateTime' => Time.now }] }
+        return_val = { 'activities-heart-intraday' =>
+                       [{ 'value' => 123, 'dateTime' => Time.now }, { 'value' => 123, 'dateTime' => Time.now }]
+        }
         expect(session).to receive(:get).exactly(period).times.and_return(return_val)
         subject.send(:intraday_summary, from, to, 'heart')
       end
 
-      it 'should store the correct data', focus: true do
+      it 'should store the correct data' do
         return_val = []
         (from.to_date..to.to_date).each do |date|
-          (1..24).each do |_hour|
-            return_val << { 'activities-heart-intraday' => [{ 'value' => 123, 'dateTime' => date.to_time }, { 'value' => 123, 'dateTime' => Time.now }] }
+          daily_values = []
+          (0..23).each do |hour|
+            daily_values << { 'value' => 123, 'dateTime' => date.to_time.change(hour: hour) }
           end
+          return_val << { 'activities-heart-intraday' => daily_values }
         end
-        expect(session).to receive(:get).and_return(return_val)
-        puts subject.send(:intraday_summary, from, to, 'heart')
+        expect(session).to receive(:get).and_return(*return_val)
+        result = subject.send(:intraday_summary, from, to, 'heart')
+
+        # The period should contain the same number of days as below, but also include the last one (i.e. +1)
+        expect(result.count).to eq(((to.to_date - from.to_date).to_i + 1) * 24)
       end
     end
 

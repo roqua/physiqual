@@ -22,9 +22,7 @@ module DataServices
 
     def sleep(from, _to)
       from = from.strftime(DATE_FORMAT)
-      data = @session.get("/sleep/date/#{from}.json")
-      puts data
-      data
+      @session.get("/sleep/date/#{from}.json")
     end
 
     def steps(from, to)
@@ -41,14 +39,14 @@ module DataServices
 
     private
 
-    def activity_call(from, to, _activity)
+    def activity_call(from, to, activity)
       from = from.strftime(DATE_FORMAT)
       to = to.strftime(DATE_FORMAT)
 
-      if intraday
-        data = intraday_summary(from, to)
+      if @intraday
+        result = intraday_summary(from, to, activity)
       else
-        data = daily_summary(from, to)
+        result = daily_summary(from, to, activity)
       end
       result
     end
