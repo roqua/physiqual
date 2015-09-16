@@ -5,7 +5,7 @@ module Exporters
       measurements_per_day = 3
 
       services = create_services(user.tokens, last_measurement_time, interval, measurements_per_day)
-      data_aggregator = DataAggregator.new(services, [Imputers::MeanImputer])
+      data_aggregator = DataAggregator.new(services, [Imputers::CatMullImputer])
       activities = data_aggregator.activities(from, to)
       heart_rate = data_aggregator.heart_rate(from, to)
       steps = data_aggregator.steps(from, to)
