@@ -58,8 +58,8 @@ module DataServices
 
     def intraday_summary(from, to, activity)
       results = []
-      (from.to_date..to.to_date).each do |_date|
-        data = @session.get("/activities/#{activity}/date/#{from}/1d/1min.json")
+      (from.to_date..to.to_date).each do |date|
+        data = @session.get("/activities/#{activity}/date/#{date}/1d/1min.json")
         results << process_entries(data["activities-#{activity}-intraday"])
       end
       results.flatten

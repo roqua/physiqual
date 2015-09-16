@@ -50,7 +50,7 @@ module DataServices
       data.map do |entry|
         result = Hash.new(0)
         entry[values_field].each { |val| result[val] += 1 }
-        max_value = result.blank? ? nil : result.max_by { |_k, v| v }.first
+        max_value = max_from_hash(result)
         output_entry(entry[date_time_field], max_value)
       end
     end
@@ -66,9 +66,16 @@ module DataServices
           (current - k..current + k).each { |buck| histogram[buck] += 1 } if current
         end
         histogram.delete_if { |hist_key, _value| hist_key < min || hist_key > max }
-        max_value = histogram.max.nil? ? nil : histogram.max_by { |_k, v| v }.first
+        max_value = max_from_hash(histogram)
         output_entry(entry[date_time_field], max_value)
       end
+    end
+
+    def max_from_hash(provided_hash)
+      max_values = provided_hash.max.nil? ? nil : provided_hash.map { |key, v| key if v == provided_hash.values.max }.compact
+      max_values.sort!
+      number_of_elements = max_values.length
+      (max_values[(number_of_elements - 1) / 2] + max_values[number_of_elements / 2]) / 2.0
     end
 
     def cluster_in_buckets(data, from, to)

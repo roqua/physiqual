@@ -9,12 +9,12 @@ class OauthSessionController < ApplicationController
   before_filter :token, only: :callback
 
   def index
-    from = 30.days.ago.in_time_zone.beginning_of_day
-    to = 1.days.ago.in_time_zone.end_of_day
-    # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
-    # render json: DataServices::GoogleService.new(session).sources and return
+    from = Time.new(2015,8,3).in_time_zone.beginning_of_day
+    to = Time.new(2015,9,2).in_time_zone.end_of_day
+    #session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
+    #render json: DataServices::GoogleService.new(session).steps(from, to) and return
     # render json: DataServices::GoogleService.new(session).calories(from, to) and return
-    last_measurement_time = Time.now.change(hour: 22, min: 30)
+    last_measurement_time = Time.now.change(hour: 22, min: 00)
     # measurements_per_day = 3
     # interval = 6
     # service = DataServices::FitbitService.new(current_user.fitbit_tokens.first)
