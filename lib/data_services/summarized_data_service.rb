@@ -73,6 +73,7 @@ module DataServices
 
     def max_from_hash(provided_hash)
       max_values = provided_hash.max.nil? ? nil : provided_hash.map { |key, v| key if v == provided_hash.values.max }.compact
+      return nil unless max_values
       max_values.sort!
       number_of_elements = max_values.length
       (max_values[(number_of_elements - 1) / 2] + max_values[number_of_elements / 2]) / 2.0

@@ -98,7 +98,7 @@ module DataServices
       end
     end
 
-    describe 'activity_call', focus: true do
+    describe 'activity_call' do
       let(:activity) {'heart'}
       let(:from_formatted) { from.strftime(DataService::DATE_FORMAT) }
       let(:to_formatted) { to.strftime(DataService::DATE_FORMAT) }

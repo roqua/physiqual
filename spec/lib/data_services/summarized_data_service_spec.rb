@@ -88,6 +88,20 @@ module DataServices
       end
     end
 
+    describe 'max_from_hash' do
+      it 'always gets the median max value on a tie' do
+        data = {1=>1, 2=>1, 3=>1, 4=>1}
+        result = subject.send(:max_from_hash, data)
+        expect(result).to eq(2.5)
+      end
+
+      it 'returns the highest value from a hash of values' do
+        data = {1=>1, 2=>1, 3=>1, 4=>1, 5=>2}
+        result = subject.send(:max_from_hash, data)
+        expect(result).to eq(5)
+      end
+    end
+
     describe 'with generated buckets' do
       before do
         @data = service.steps(from, to)
@@ -130,24 +144,18 @@ module DataServices
       describe 'histogram' do
         it 'behaves like a histogram' do
           data =[{subject.values_field => [1,2,3,4]}]
-          result = subject.send(:soft_histogram, data, min, max, k)
-          expect(result.first[subject.values_field]).to eq([2.5])
+          expected = {1=>1, 2=>1, 3=>1, 4=>1}
+          expect(subject).to receive(:max_from_hash).with(expected)
+          subject.send(:histogram, data)
         end
       end
-describe 'max_from_hash' do
-        it 'always gets the median max value on a tie' do
-          data =[{subject.values_field => [1,2,3,4]}]
-          result = subject.send(:soft_histogram, data, min, max, k)
-          expect(result.first[subject.values_field]).to eq([2.5])
-        end
-end
 
-      describe 'soft_histogram', focus: true do
+      describe 'soft_histogram' do
         let(:min) { 0 }
         let(:max) { 300 }
         let(:k) { 1 }
 
-        it 'should also increase the k surrounding buckets', focus: true do
+        it 'should also increase the k surrounding buckets' do
           data =[{subject.values_field => [5, 7]}]
           expected = {4=>1, 5=>1, 6=>2, 7=>1, 8=>1}
           expect(subject).to receive(:max_from_hash).with(expected)
