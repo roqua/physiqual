@@ -90,13 +90,13 @@ module DataServices
 
     describe 'max_from_hash' do
       it 'always gets the median max value on a tie' do
-        data = {1=>1, 2=>1, 3=>1, 4=>1}
+        data = { 1 => 1, 2 => 1, 3 => 1, 4 => 1 }
         result = subject.send(:max_from_hash, data)
         expect(result).to eq(2.5)
       end
 
       it 'returns the highest value from a hash of values' do
-        data = {1=>1, 2=>1, 3=>1, 4=>1, 5=>2}
+        data = { 1 => 1, 2 => 1, 3 => 1, 4 => 1, 5 => 2 }
         result = subject.send(:max_from_hash, data)
         expect(result).to eq(5)
       end
@@ -143,8 +143,8 @@ module DataServices
 
       describe 'histogram' do
         it 'behaves like a histogram' do
-          data =[{subject.values_field => [1,2,3,4]}]
-          expected = {1=>1, 2=>1, 3=>1, 4=>1}
+          data = [{ subject.values_field => [1, 2, 3, 4] }]
+          expected = { 1 => 1, 2 => 1, 3 => 1, 4 => 1 }
           expect(subject).to receive(:max_from_hash).with(expected)
           subject.send(:histogram, data)
         end
@@ -156,52 +156,53 @@ module DataServices
         let(:k) { 1 }
 
         it 'should also increase the k surrounding buckets' do
-          data =[{subject.values_field => [5, 7]}]
-          expected = {4=>1, 5=>1, 6=>2, 7=>1, 8=>1}
+          data = [{ subject.values_field => [5, 7] }]
+          expected = { 4 => 1, 5 => 1, 6 => 2, 7 => 1, 8 => 1 }
           expect(subject).to receive(:max_from_hash).with(expected)
           subject.send(:soft_histogram, data, min, max, k)
         end
 
         it 'should take the max into account' do
           min = 10
-          data =[{subject.values_field => [15,8,8,8,8]}]
-          expected = {14=>1, 15=>1, 16=>1}
+          data = [{ subject.values_field => [15, 8, 8, 8, 8] }]
+          expected = { 14 => 1, 15 => 1, 16 => 1 }
           expect(subject).to receive(:max_from_hash).with(expected)
           subject.send(:soft_histogram, data, min, max, k)
 
           min = 9
-          expected = {9=>4, 14=>1, 15=>1, 16=>1}
+          expected = { 9 => 4, 14 => 1, 15 => 1, 16 => 1 }
           expect(subject).to receive(:max_from_hash).with(expected)
           subject.send(:soft_histogram, data, min, max, k)
         end
 
         it 'should take the max into account' do
           max = 10
-          data =[{subject.values_field => [5,12,12,12,12]}]
-          expected = {4=>1, 5=>1, 6=>1}
+          data = [{ subject.values_field => [5, 12, 12, 12, 12] }]
+          expected = { 4 => 1, 5 => 1, 6 => 1 }
           expect(subject).to receive(:max_from_hash).with(expected)
-          subject.send(:soft_histogram, data,min , max, k)
+          subject.send(:soft_histogram, data, min, max, k)
 
           max = 11
-          expected = {4=>1, 5=>1, 6=>1, 11=>4}
+          expected = { 4 => 1, 5 => 1, 6 => 1, 11 => 4 }
           expect(subject).to receive(:max_from_hash).with(expected)
           subject.send(:soft_histogram, data, min, max, k)
         end
 
         it 'should produce the expected result' do
-          k=2
+          k = 2
           min = 5
           max = 20
-          data =[{subject.values_field => [1, 1, 1, 2, 2, 3, 4, 4, 5, 8, 10, 12, 12, 12, 66]}]
-          expected = {5=>4, 6=>4, 7=>2, 10=>5, 11=>4, 12=>4, 13=>3, 14=>3, 8=>2, 9=>2}
+          data = [{ subject.values_field => [1, 1, 1, 2, 2, 3, 4, 4, 5, 8, 10, 12, 12, 12, 66] }]
+          expected = { 5 => 4, 6 => 4, 7 => 2, 10 => 5, 11 => 4, 12 => 4, 13 => 3, 14 => 3, 8 => 2, 9 => 2 }
           expect(subject).to receive(:max_from_hash).with(expected).and_call_original
-          result = subject.send(:soft_histogram, data,min , max, k)
+          result = subject.send(:soft_histogram, data, min, max, k)
           expect(result.first[subject.values_field]).to eq([10])
 
           min = 0
-          expected = {3=>9, 4=>6, 5=>4, 6=>4, 7=>2, 10=>5, 11=>4, 12=>4, 13=>3, 14=>3, 8=>2, 9=>2, 0=>5, 1=>6, 2=>8}
+          expected = { 3 => 9, 4 => 6, 5 => 4, 6 => 4, 7 => 2, 10 => 5, 11 => 4, 12 => 4, 13 => 3, 14 => 3, 8 => 2,
+                       9 => 2, 0 => 5, 1 => 6, 2 => 8 }
           expect(subject).to receive(:max_from_hash).with(expected).and_call_original
-          result = subject.send(:soft_histogram, data,min , max, k)
+          result = subject.send(:soft_histogram, data, min, max, k)
           expect(result.first[subject.values_field]).to eq([3])
         end
       end
