@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.find_or_create_by(email: 'a')
-user2 = User.find_or_create_by(email: 'b')
-user3 = User.find_or_create_by(email: 'c')
+if Rails.env.development? || Rails.env.test?
+  user1 = User.find_or_create_by(email: 'a')
+  user2 = User.find_or_create_by(email: 'b')
+  user3 = User.find_or_create_by(email: 'c')
+end

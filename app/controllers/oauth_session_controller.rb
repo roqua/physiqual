@@ -1,6 +1,5 @@
 require 'oauth2'
 class OauthSessionController < ApplicationController
-  http_basic_authenticate_with name: 'test', password: 'framando', only: :index
 
   before_filter :sanitize_params, only: [:authorize, :callback]
 
