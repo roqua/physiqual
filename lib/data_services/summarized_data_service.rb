@@ -76,6 +76,7 @@ module DataServices
       max_values = provided_hash.map { |key, v| key if v == provided_hash.values.max }.compact
       max_values.sort!
       number_of_elements = max_values.length
+      return max_values.first if max_values.any? { |elem| elem.is_a? String }
       (max_values[(number_of_elements - 1) / 2] + max_values[number_of_elements / 2]) / 2.0
     end
 
