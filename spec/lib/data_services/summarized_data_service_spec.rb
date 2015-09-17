@@ -101,13 +101,13 @@ module DataServices
         expect(result).to eq(5)
       end
 
-      it 'returns the most occuring string if it has only strings', focus: true do
+      it 'returns the most occuring string if it has only strings' do
         data = { 'test 1' => 1, 'test2' => 1, 'test3' => 1, 'test4' => 2 }
         result = subject.send(:max_from_hash, data)
         expect(result).to eq('test4')
       end
 
-      it 'returns the first string if there is a draw', focus: true do
+      it 'returns the first string if there is a draw' do
         data = { 'test 1' => 1, 'test2' => 1, 'test3' => 1 }
         result = subject.send(:max_from_hash, data)
         expect(result).to eq('test 1')
