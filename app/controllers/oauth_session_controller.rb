@@ -19,7 +19,7 @@ class OauthSessionController < ApplicationController
     # render json: service.heart_rate(from, to) and return
     # render json: DataServices::SummarizedDataService.new(service,
     # last_measurement_time, measurements_per_day, interval, false).steps(from, to) and return
-    text = Exporters::JsonExporter.new.export(current_user, last_measurement_time, from, to)
+    text = Exporters::CsvExporter.new.export(current_user, last_measurement_time, from, to)
     render json: text
     # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
     # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)

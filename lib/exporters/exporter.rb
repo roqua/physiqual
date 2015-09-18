@@ -1,6 +1,6 @@
 module Exporters
   class Exporter
-    def export_me(user, last_measurement_time, from, to)
+    def export_data(user, last_measurement_time, from, to)
       interval = 6
       measurements_per_day = 3
 
