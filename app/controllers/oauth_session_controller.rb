@@ -16,8 +16,6 @@ class OauthSessionController < ApplicationController
     last_measurement_time = Time.now.change(hour: 22, min: 00)
     # measurements_per_day = 3
     # interval = 6
-    # measurements_per_day = 3
-    # interval = 6
     # service = DataServices::FitbitService.new(current_user.fitbit_tokens.first)
     # render json: service.heart_rate(from, to) and return
     # render json: DataServices::SummarizedDataService.new(service,
