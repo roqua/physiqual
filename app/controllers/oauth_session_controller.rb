@@ -1,6 +1,5 @@
 require 'oauth2'
 class OauthSessionController < ApplicationController
-
   before_filter :sanitize_params, only: [:authorize, :callback]
 
   before_filter :check_token, only: :index

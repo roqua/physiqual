@@ -6,6 +6,9 @@ module DataServices
       @measurements_per_day = measurements_per_day
       @interval = interval
       @use_night = use_night
+      @bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(measurements_per_day,
+                                                                           interval,
+                                                                           last_measurement_time)
     end
 
     def service_name
@@ -81,7 +84,7 @@ module DataServices
     end
 
     def cluster_in_buckets(data, from, to)
-      buckets = generate_buckets(from, to)
+      buckets = @bucket_generator.generate(from, to)
       current_bucket = 0
 
       # Sort both arrays
@@ -104,22 +107,6 @@ module DataServices
         buckets[current_bucket][values_field] = buckets[current_bucket][values_field].flatten
       end
       buckets
-    end
-
-    def generate_buckets(from, to)
-      from = from.beginning_of_day.to_datetime
-      to = to.beginning_of_day.to_datetime
-      result = []
-      (from..to).flat_map do |date|
-        (0...@measurements_per_day).map do |measurement|
-          date = date.change(hour: @last_measurement_time.hour - (measurement * @interval),
-                             min: @last_measurement_time.min)
-
-          # Only use dates that are in the past
-          result << output_entry(date.to_time, []) if date < Time.zone.now
-        end.compact
-        result.reverse
-      end
     end
   end
 end
