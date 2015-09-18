@@ -90,7 +90,7 @@ shared_examples_for 'a token' do
     end
   end
 
-  describe 'get_token', focus: true do
+  describe 'get_token' do
   end
 
   describe 'complete' do

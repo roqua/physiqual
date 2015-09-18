@@ -1,5 +1,6 @@
 module DataServices
   class FitbitService < DataService
+    @intraday = true
     def initialize(session)
       @session = session
     end
@@ -21,9 +22,7 @@ module DataServices
 
     def sleep(from, _to)
       from = from.strftime(DATE_FORMAT)
-      data = @session.get("/sleep/date/#{from}.json")
-      puts data
-      data
+      @session.get("/sleep/date/#{from}.json")
     end
 
     def steps(from, to)
@@ -43,9 +42,32 @@ module DataServices
     def activity_call(from, to, activity)
       from = from.strftime(DATE_FORMAT)
       to = to.strftime(DATE_FORMAT)
+
+      if @intraday
+        result = intraday_summary(from, to, activity)
+      else
+        result = daily_summary(from, to, activity)
+      end
+      result
+    end
+
+    def daily_summary(from, to, activity)
       data = @session.get("/activities/#{activity}/date/#{from}/#{to}.json")
+      process_entries(data["activities-#{activity}"])
+    end
+
+    def intraday_summary(from, to, activity)
+      results = []
+      (from.to_date..to.to_date).each do |date|
+        data = @session.get("/activities/#{activity}/date/#{date}/1d/1min.json")
+        results << process_entries(data["activities-#{activity}-intraday"])
+      end
+      results.flatten
+    end
+
+    def process_entries(entries)
       result = []
-      data["activities-#{activity}"].each do |entry|
+      entries.each do |entry|
         value = entry['value']
         value = !value.is_a?(Hash) && value.to_s == value.to_i.to_s ? value.to_i : value
         result << { date_time_field => entry['dateTime'].to_time, values_field => [value] }
