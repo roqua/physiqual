@@ -1,0 +1,116 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<h1>PhysiQual dashboard</h1>
+
+<div class="container-fluid">
+  <div class='row'>
+    <div class="col-md-6" id="steps" style="height: 400px; margin: 0 auto"></div>
+    <div class="col-md-6" id="activities" style="height: 400px; margin: 0 auto"></div>
+  </div>
+</div>
+
+<script>
+<%#TODO: Get data using AJAX%>
+var values = <%=raw @values%>;
+var categories = Object.keys(values);
+var steps = [];
+var heart_rate = [];
+var activities = [];
+var calories = [];
+
+categories.forEach(function(date){
+  heart_rate.push(values[date].heart_rate);
+  steps.push(values[date].steps);
+  activities.push(values[date].activities);
+  calories.push(values[date].calories);
+});
+
+var activity_counts = {};
+
+activities.forEach(function(activity) {
+  activity = activity === -1 ? 'Missing' : activity;
+  activity_counts[activity] = activity_counts[activity] ?
+  { 'name': activity, 'y':activity_counts[activity].y + 1 }:
+  { 'name': activity, 'y': 1 };
+});
+
+$(function () {
+  $('#steps').highcharts({
+    title: {
+      text: 'Steps, heart rate and calories',
+      x: -20 //center
+    },
+    subtitle: {
+      text: '',
+      x: -20
+    },
+    xAxis: {
+      categories: categories
+    },
+    yAxis: {
+      title: {
+        text: ''
+      },
+      min: 0,
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: '#808080'
+      }]
+    },
+    tooltip: {
+      valueSuffix: ' ({series.name})'
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+    },
+    series: [{
+      name: 'Steps',
+      data: steps
+    },{
+      name: 'Heart rate',
+      data: heart_rate
+    },{
+      name: 'Calories',
+      data: calories
+    }]
+  });
+});
+
+$(function () {
+  // Build the chart
+  $('#activities').highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+    },
+    title: {
+      text: 'Activities'
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
+        },
+        showInLegend: true
+      }
+    },
+    series: [{
+      name: "Activity",
+      colorByPoint: true,
+      data: Object.keys(activity_counts).map(function(entry){return activity_counts[entry]})
+    }]
+  });
+});
+</script>
+
