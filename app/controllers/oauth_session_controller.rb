@@ -22,7 +22,7 @@ class OauthSessionController < ApplicationController
     respond_to do |format|
       format.html { @values = Exporters::JsonExporter.new.export(current_user, last_measurement_time, from, to) }
       format.json { render json: Exporters::JsonExporter.new.export(current_user, last_measurement_time, from, to) }
-      format.csv {render text: Exporters::CsvExporter.new.export(current_user, last_measurement_time, from, to) }
+      format.csv { render text: Exporters::CsvExporter.new.export(current_user, last_measurement_time, from, to) }
     end
     # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
     # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
