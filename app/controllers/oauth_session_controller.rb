@@ -56,6 +56,7 @@ class OauthSessionController < ApplicationController
   def check_token
     my_tokens = current_user.tokens
     if my_tokens.blank? || my_tokens.first.token.blank?
+      redirect_to authorize_oauth_session_index_path(provider: params[:state])
     else
       my_tokens.each { |token| token.refresh! if token.expired? && token.complete? }
       @token = my_tokens.first
