@@ -17,19 +17,19 @@ module Exporters
       end
 
       it 'should respond with CSV' do
-        expect(is_csv? @result).to be_truthy
+        expect(csv? @result).to be_truthy
       end
 
       it 'should have the correct header' do
-        expect(@result).to include("Date")
+        expect(@result).to include('Date')
         mock_result.first.second.keys.each do |key|
           expect(@result).to include("#{key}")
         end
       end
     end
 
-    #TODO: Implement correct check whether the result is valid CSV
-    def is_csv?(csv)
+    # TODO: Implement correct check whether the result is valid CSV
+    def csv?(csv)
       valid = csv.include?(';')
       valid |= csv.include?(',')
       valid &= csv.include?("\n")

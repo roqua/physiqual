@@ -8,7 +8,6 @@ module Exporters
 
     describe 'export_data' do
       xit 'should be tested when ready' do
-
       end
     end
 
@@ -18,17 +17,17 @@ module Exporters
 
       it 'should create services for each correct token provided' do
         tokens = [FactoryGirl.build(:fitbit_token), FactoryGirl.build(:google_token)]
-        expect(tokens.all? {|tok| tok.complete?}).to be_truthy
+        expect(tokens.all?(&:complete?)).to be_truthy
 
         result = subject.send(:create_services, tokens, last_measurement_time, interval, measurements_per_day)
         expect(result.length).to eq(2)
       end
 
       describe 'with incomplete services' do
-        let(:tokens) {[FactoryGirl.build(:fitbit_token), FactoryGirl.build(:google_token)]}
+        let(:tokens) { [FactoryGirl.build(:fitbit_token), FactoryGirl.build(:google_token)] }
         before do
           allow(tokens.first).to receive(:complete?).and_return(false)
-          expect(tokens.all? {|tok| tok.complete?}).to be_falsey
+          expect(tokens.all?(&:complete?)).to be_falsey
 
           @result = subject.send(:create_services, tokens, last_measurement_time, interval, measurements_per_day)
         end
