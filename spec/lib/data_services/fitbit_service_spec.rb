@@ -6,7 +6,7 @@ module DataServices
   describe FitbitService do
     include_context 'data_service context'
 
-    let(:token) { FactoryGirl.build(:fitbit_token, token: "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NDI3MzgzNTMsInNjb3BlcyI6InJ3ZWkgcnBybyByaHIgcmxvYyBybnV0IHJzbGUgcnNldCByYWN0IHJzb2MiLCJzdWIiOiIzTEo0RjkiLCJhdWQiOiIyMjlMU1kiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJpYXQiOjE0NDI3MzQ3NTN9.jnH9coLKYyBRZIAWGC5CG9yRAp6bL8GFj5L5T2_iwp0") }
+    let(:token) { FactoryGirl.build(:fitbit_token) }
     let(:session) { Sessions::TokenAuthorizedSession.new(token.token, FitbitToken.base_uri) }
     let(:subject) { described_class.new(session) }
     let(:time_format) { '%I:%M%p' }
