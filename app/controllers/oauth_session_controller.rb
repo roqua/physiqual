@@ -10,8 +10,10 @@ class OauthSessionController < ApplicationController
     from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
     to = Time.new(2015, 9, 2).in_time_zone.end_of_day
     # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
+    session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)
     # render json: DataServices::GoogleService.new(session).steps(from, to) and return
     # render json: DataServices::GoogleService.new(session).calories(from, to) and return
+    render json: DataServices::FitbitService.new(session).calories(from, to) and return
     last_measurement_time = Time.now.change(hour: 22, min: 00)
     # measurements_per_day = 3
     # interval = 6

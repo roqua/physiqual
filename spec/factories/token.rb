@@ -3,7 +3,7 @@ FactoryGirl.define do
     token 'the_token'
     refresh_token 'the_refresh_token'
     valid_until Time.now.in_time_zone
-    user
+    association :user, strategy: :build
 
     trait :mock do
       type 'mock_token'
