@@ -10,13 +10,13 @@ module DataServices
     let(:session) { Sessions::TokenAuthorizedSession.new(token.token, FitbitToken.base_uri) }
     let(:subject) { described_class.new(session) }
     let(:time_format) { '%I:%M%p' }
-    before {subject.instance_variable_set(:@intraday, false)}
+    before { subject.instance_variable_set(:@intraday, false) }
     it_behaves_like 'a data_service',
-      steps:          'data_services/fitbit/steps',
-      heart_rate:     'data_services/fitbit/heart_rate',
-      sleep:          'data_services/fitbit/sleep',
-      activities:     'data_services/fitbit/activities',
-      calories:       'data_services/fitbit/calories'
+                    steps:          'data_services/fitbit/steps',
+                    heart_rate:     'data_services/fitbit/heart_rate',
+                    sleep:          'data_services/fitbit/sleep',
+                    activities:     'data_services/fitbit/activities',
+                    calories:       'data_services/fitbit/calories'
 
     describe 'intraday_summary' do
       it 'should have the intraday variable defined' do
@@ -32,8 +32,8 @@ module DataServices
         period = (to.to_date - from.to_date).to_i + 1
         return_val = { 'activities-heart-intraday' => {
           'dataset' => [
-            { 'value' => 123, 'time' => Time.now.strftime(time_format)},
-            { 'value' => 123, 'time' => Time.now.strftime(time_format)}
+            { 'value' => 123, 'time' => Time.now.strftime(time_format) },
+            { 'value' => 123, 'time' => Time.now.strftime(time_format) }
           ]
         }
         }
@@ -49,7 +49,7 @@ module DataServices
           (0..23).each do |hour|
             daily_values << { 'value' => 123, 'time' => date.to_time.change(hour: hour).strftime(time_format) }
           end
-          return_val << { 'activities-heart-intraday' => {'dataset'=> daily_values } }
+          return_val << { 'activities-heart-intraday' => { 'dataset' => daily_values } }
         end
         expect(session).to receive(:get).and_return(*return_val)
         result = subject.send(:intraday_summary, from, to, 'activities', 'heart')
@@ -65,10 +65,10 @@ module DataServices
         (from.to_date..to.to_date).each do |date|
           url = "/#{resource}/#{activity}/date/#{date}/1d/1min.json"
           expect(session).to receive(:get).with(url).and_return("#{resource}-#{activity}-intraday" =>
-                                                                {'datasource' => [123]})
-          expect(subject).to receive(:process_intraday_entries).with({'datasource' => [123]}, date).exactly(1).times
+                                                                { 'datasource' => [123] })
+          expect(subject).to receive(:process_intraday_entries).with({ 'datasource' => [123] }, date).exactly(1).times
         end
-        subject.send(:intraday_summary, from, to,resource, activity)
+        subject.send(:intraday_summary, from, to, resource, activity)
       end
     end
 

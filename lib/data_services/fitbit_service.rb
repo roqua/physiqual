@@ -24,7 +24,7 @@ module DataServices
     def sleep(from, to)
       resource = 'sleep'
       subresource = 'minutesAsleep'
-      return activity_call(from, to, resource, subresource)
+      activity_call(from, to, resource, subresource)
     end
 
     def steps(from, to)
