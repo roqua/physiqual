@@ -16,12 +16,18 @@ GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 FITBIT_CLIENT_ID=
 FITBIT_CLIENT_SECRET=
+SSL_CERT_FILE=/usr/lib/ssl/certs/ca-certificates.crt
 
 On production also define:
 SECRET_KEY_BASE=some long string
 
-###### Google Fit integration
+If your system has no SSL_CERT_FILE, you can get one from http://curl.haxx.se/ca/cacert.pem
+
+
+
+http://physiqual.dev/oauth_session/google/authorize?email=a
+##### Google Fit integration
 googleclient id en secret komt van console.developers.google.com
 onder apis & auth
 
-###### Fitbit integration
+##### Fitbit integration
