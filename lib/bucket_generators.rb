@@ -1,0 +1,2 @@
+module BucketGenerators
+end

@@ -22,13 +22,6 @@ module DataServices
     it_behaves_like 'a data_service'
     include_context 'data_service context'
 
-    describe 'generate_buckets' do
-      it 'should output the correct format' do
-        @result = subject.send(:generate_buckets, from, to)
-        check_result_format(@result)
-      end
-    end
-
     describe 'cluster_in_buckets' do
       let(:data) { service.steps(from, to) }
       let(:from_subset) { (to - 1.day).beginning_of_day }

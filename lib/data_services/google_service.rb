@@ -31,6 +31,8 @@ module DataServices
     end
 
     def sleep(_from, _to)
+      # sleep_url = 'derived:com.google.activity.segment:com.urbandroid.sleep:session_activity_segment'
+      # access_datasource sleep_url, convert_time_to_nanos(from), convert_time_to_nanos(to)
       fail Errors::NotSupportedError, 'Sleep not supported by google fit!'
     end
 

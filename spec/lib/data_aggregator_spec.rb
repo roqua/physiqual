@@ -85,16 +85,16 @@ describe DataAggregator do
       end
 
       it 'does not raise an error' do
-        expect { instance.send(:retrieve_data_of_all_services) { |serv| serv.defined_method } }.to_not raise_error
+        expect { instance.send(:retrieve_data_of_all_services, &:defined_method) }.to_not raise_error
       end
 
       it 'logs the message' do
         expect(Rails.logger).to receive(:warn).with(msg)
-        expect(instance.send(:retrieve_data_of_all_services) { |serv| serv.defined_method }).to eq [result, nil]
+        expect(instance.send(:retrieve_data_of_all_services, &:defined_method)).to eq [result, nil]
       end
 
       it 'returns nil for the service not supporting the method' do
-        expect(instance.send(:retrieve_data_of_all_services) { |serv| serv.defined_method }).to eq [result, nil]
+        expect(instance.send(:retrieve_data_of_all_services, &:defined_method)).to eq [result, nil]
       end
     end
   end
