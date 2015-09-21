@@ -52,7 +52,7 @@ end
 
 # Enable better error handling
 group :development do
-  gem 'meta_request', '~> 0.2.1', :require => 'meta_request'
+  gem 'meta_request', '~> 0.2.1', require: 'meta_request'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
