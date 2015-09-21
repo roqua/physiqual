@@ -8,6 +8,7 @@ class OauthSessionController < ApplicationController
 
   def index
     from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
+    # TODO: The below line should also be .beginning of day for 90 measurements. Now you get 93.
     to = Time.new(2015, 9, 2).in_time_zone.end_of_day
     # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
     # session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)

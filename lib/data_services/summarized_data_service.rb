@@ -94,6 +94,7 @@ module DataServices
       data.each do |entry|
         next unless entry[date_time_field]
 
+        # TODO: Binary search?
         while current_bucket < buckets.size && entry[date_time_field] > buckets[current_bucket][date_time_field]
           current_bucket += 1
         end
@@ -104,6 +105,8 @@ module DataServices
         next unless entry[date_time_field] > (buckets[current_bucket][date_time_field] - @interval.hours) || @use_night
         values = entry[values_field]
         buckets[current_bucket][values_field] << values
+        # TODO: Should be no need to flatten the entire thing every time.
+        # TODO: Just flatten whatever you add before adding it and check that your concat works correctly.
         buckets[current_bucket][values_field] = buckets[current_bucket][values_field].flatten
       end
       buckets
