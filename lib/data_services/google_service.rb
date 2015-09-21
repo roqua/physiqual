@@ -48,7 +48,7 @@ module DataServices
       to_nanos = convert_time_to_nanos(to)
       res = access_datasource(url, from_nanos, to_nanos)
       res = res['point']
-      return [] if res.nil? || res.empty?
+      return [] if res.blank?
       results_hash = Hash.new(0)
 
       res.each do |entry|

@@ -14,9 +14,6 @@ module Imputers
     private
 
     def impute!(array)
-      # Return if only nils
-      return array if array.compact.blank?
-
       # Return an array of nils if all values need imputation (makes the above line redundant)
       return Array.new(array.size, nil) if array.all? { |elem| need_imputation?(elem) }
 
