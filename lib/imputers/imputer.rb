@@ -17,6 +17,9 @@ module Imputers
       # Return if only nils
       return array if array.compact.blank?
 
+      # Return an array of nils if all values need imputation (makes the above line redundant)
+      return Array.new(array.size, nil) if array.all? { |elem| need_imputation?(elem) }
+
       # Return if no nils or -1's
       return array unless array.any? { |elem| [nil, -1].include?(elem) }
 
