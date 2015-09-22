@@ -34,7 +34,7 @@ module Imputers
     protected
 
     def need_imputation?(value)
-      value.nil? || value < 0
+      [nil, -1].include? value
     end
   end
 end
