@@ -20,8 +20,6 @@ module Imputers
       # Return if no nils or -1's
       return array unless array.any? { |elem| need_imputation?(elem) }
 
-      # Return if it contains strings
-      return array if array.any? { |elem| elem.is_a? String }
       impute_callback array: array
     end
 
@@ -34,6 +32,8 @@ module Imputers
     protected
 
     def need_imputation?(value)
+      # Currently we do not support imputation of strings
+      return false if value.is_a? String
       [nil, -1].include? value
     end
   end
