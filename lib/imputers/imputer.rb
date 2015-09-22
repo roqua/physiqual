@@ -18,7 +18,7 @@ module Imputers
       return Array.new(array.size, nil) if array.all? { |elem| need_imputation?(elem) }
 
       # Return if no nils or -1's
-      return array unless array.any? { |elem| [nil, -1].include?(elem) }
+      return array unless array.any? { |elem| need_imputation?(elem) }
 
       # Return if it contains strings
       return array if array.any? { |elem| elem.is_a? String }
