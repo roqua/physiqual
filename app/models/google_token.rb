@@ -5,7 +5,8 @@ class GoogleToken < Token
 
   def self.scope
     'https://www.googleapis.com/auth/fitness.activity.read '\
-    'https://www.googleapis.com/auth/fitness.body.read'
+    'https://www.googleapis.com/auth/fitness.body.read '\
+    'https://www.googleapis.com/auth/fitness.location.read'
   end
 
   def self.csrf_token

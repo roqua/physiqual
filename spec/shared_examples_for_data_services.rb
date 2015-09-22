@@ -33,6 +33,21 @@ module DataServices
       end
     end
 
+    describe 'sleep' do
+      around(:each) do |test|
+        @result = run_with_vcr(vcrs, :sleep) { subject.sleep(from, to) }
+        @result == false ? test.skip : test.run
+      end
+
+      it 'returns the activities in the correct format' do
+        check_result_format(@result)
+      end
+
+      it 'gets the activities from the correct date till the correct date' do
+        check_start_end_date(@result, from, to)
+      end
+    end
+
     describe 'activities' do
       around(:each) do |test|
         @result = run_with_vcr(vcrs, :activities) { subject.activities(from, to) }

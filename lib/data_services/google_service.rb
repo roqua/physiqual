@@ -30,10 +30,30 @@ module DataServices
       activity_data(from, to, activity_url, 'intVal') { |value| convert_number_to_activity(value) }
     end
 
-    def sleep(_from, _to)
-      # sleep_url = 'derived:com.google.activity.segment:com.urbandroid.sleep:session_activity_segment'
-      # access_datasource sleep_url, convert_time_to_nanos(from), convert_time_to_nanos(to)
-      fail Errors::NotSupportedError, 'Sleep not supported by google fit!'
+    def sleep(from, to)
+      sleep_url = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
+
+      from_nanos = convert_time_to_nanos(from)
+      to_nanos = convert_time_to_nanos(to)
+      res = access_datasource(sleep_url, from_nanos, to_nanos)
+
+      return [] if res.empty?
+      res = res['point']
+      results = []
+      results_hash = Hash.new(0)
+      res.each do |entry|
+        # 72 = sleeping
+        next unless entry['value'].first['intVal'] == 72
+        start = (entry['startTimeNanos'].to_i / 10e8).to_i
+        endd = (entry['endTimeNanos'].to_i / 10e8).to_i
+        actual_date = Time.at(endd).in_time_zone.beginning_of_day
+        results_hash[actual_date] += (endd-start)/60
+      end
+
+      results_hash.each do |date, value|
+        results << { date_time_field => date, values_field => [value] }
+      end
+      results
     end
 
     def calories(from, to)
@@ -194,7 +214,7 @@ module DataServices
           100 => 'Yoga',
           101 => 'Zumba' }
 
-      activities[number]
+        activities[number]
     end
   end
   # rubocop:enable Metrics/ClassLength, Metrics/MethodLength
