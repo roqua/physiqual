@@ -30,7 +30,7 @@ shared_examples_for 'an imputer' do
     result.each_with_index { |val, _index| expect(val).to be_nil }
   end
 
-  describe 'the input contains strings' do
+  describe 'the input contains strings', focus: true do
     it 'should return the original array if it contains one string' do
       elements = [1, 2, 3, 4, 5, 'jaf', nil, -1]
       result = described_class.impute! elements
