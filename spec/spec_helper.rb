@@ -38,6 +38,11 @@ VCR.configure do |c|
 end
 
 RSpec.configure do |config|
+  # Let rspec fail if there is a focus committed
+  config.before(:example, :focus) do
+    fail 'This example was committed with `:focus` and should not have been'
+  end if ENV['CI']
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
