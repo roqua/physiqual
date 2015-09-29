@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/2015-07-04/2015-08-04.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer the_token
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Fitbit-Rate-Limit-Limit:
+      - '150'
+      Fitbit-Rate-Limit-Remaining:
+      - '149'
+      Fitbit-Rate-Limit-Reset:
+      - '893'
+      Set-Cookie:
+      - JSESSIONID=0707729E4A851043F6B633067AEDBE78.fitbit1; Path=/; HttpOnly
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Language:
+      - en
+      Content-Length:
+      - '1285'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 22 Sep 2015 15:45:06 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: '{"sleep-minutesAsleep":[{"dateTime":"2015-07-04","value":"0"},{"dateTime":"2015-07-05","value":"0"},{"dateTime":"2015-07-06","value":"0"},{"dateTime":"2015-07-07","value":"0"},{"dateTime":"2015-07-08","value":"0"},{"dateTime":"2015-07-09","value":"0"},{"dateTime":"2015-07-10","value":"0"},{"dateTime":"2015-07-11","value":"0"},{"dateTime":"2015-07-12","value":"0"},{"dateTime":"2015-07-13","value":"0"},{"dateTime":"2015-07-14","value":"536"},{"dateTime":"2015-07-15","value":"571"},{"dateTime":"2015-07-16","value":"495"},{"dateTime":"2015-07-17","value":"563"},{"dateTime":"2015-07-18","value":"422"},{"dateTime":"2015-07-19","value":"502"},{"dateTime":"2015-07-20","value":"523"},{"dateTime":"2015-07-21","value":"594"},{"dateTime":"2015-07-22","value":"531"},{"dateTime":"2015-07-23","value":"290"},{"dateTime":"2015-07-24","value":"467"},{"dateTime":"2015-07-25","value":"419"},{"dateTime":"2015-07-26","value":"541"},{"dateTime":"2015-07-27","value":"593"},{"dateTime":"2015-07-28","value":"481"},{"dateTime":"2015-07-29","value":"557"},{"dateTime":"2015-07-30","value":"509"},{"dateTime":"2015-07-31","value":"509"},{"dateTime":"2015-08-01","value":"245"},{"dateTime":"2015-08-02","value":"454"},{"dateTime":"2015-08-03","value":"468"},{"dateTime":"2015-08-04","value":"504"}]}'
+    http_version: 
+  recorded_at: Tue, 22 Sep 2015 15:45:07 GMT
+recorded_with: VCR 2.9.3

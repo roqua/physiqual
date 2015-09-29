@@ -19,7 +19,30 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.4"
 
-  s.add_development_dependency "sqlite3"
+  s.add_dependency 'oauth2'
+  s.add_dependency 'httparty'
+  s.add_dependency 'dotenv-rails'
+  s.add_dependency 'active_interaction', '~> 2.1.1'
+
+  # imputation
+  s.add_dependency 'spliner'
+  s.add_dependency 'interpolator'
+
+  s.add_development_dependency 'codeclimate-test-reporter'
+  s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'factory_girl_rails'
+
+  s.add_development_dependency 'webmock'
+  s.add_development_dependency 'spring'
+
+  s.add_development_dependency 'spring-commands-rspec'
+
+  s.add_development_dependency 'rubocop'
+
+  # freeze and change time for tests
+  s.add_development_dependency 'timecop'
+
+  # vcr to capture service responses
+  s.add_development_dependency 'vcr'
 end
