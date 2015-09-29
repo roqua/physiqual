@@ -47,7 +47,7 @@ module DataServices
         start = (entry['startTimeNanos'].to_i / 10e8).to_i
         endd = (entry['endTimeNanos'].to_i / 10e8).to_i
         actual_date = Time.at(endd).in_time_zone.beginning_of_day
-        results_hash[actual_date] += (endd-start)/60
+        results_hash[actual_date] += (endd - start) / 60
       end
 
       results_hash.each do |date, value|
@@ -214,7 +214,7 @@ module DataServices
           100 => 'Yoga',
           101 => 'Zumba' }
 
-        activities[number]
+      activities[number]
     end
   end
   # rubocop:enable Metrics/ClassLength, Metrics/MethodLength
