@@ -32,7 +32,7 @@ shared_examples_for 'an imputer' do
 
   describe 'the input contains strings' do
     it 'should return the original array if it contains one string' do
-      elements = [1, 2, 3, 4, 5, 'jaf', 8]
+      elements = [1, 2, 3, 4, 5, 'jaf', nil, -1]
       result = described_class.impute! elements
       expect(result).to eq(elements)
     end

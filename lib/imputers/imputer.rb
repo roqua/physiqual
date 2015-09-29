@@ -14,14 +14,15 @@ module Imputers
     private
 
     def impute!(array)
-      # Return if only nils
-      return array if array.compact.blank?
+      # Return an array of nils if all values need imputation (makes the above line redundant)
+      return Array.new(array.size, nil) if array.all? { |elem| need_imputation?(elem) }
 
       # Return if no nils or -1's
-      return array unless array.any? { |elem| [nil, -1].include?(elem) }
+      return array unless array.any? { |elem| need_imputation?(elem) }
 
-      # Return if it contains strings
+      # Return array if the array contains a string
       return array if array.any? { |elem| elem.is_a? String }
+
       impute_callback array: array
     end
 
@@ -34,7 +35,7 @@ module Imputers
     protected
 
     def need_imputation?(value)
-      value.nil? || value < 0
+      [nil, -1].include? value
     end
   end
 end

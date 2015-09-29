@@ -50,6 +50,13 @@ group :test do
   gem 'webmock'
 end
 
+# Enable better error handling
+group :development do
+  gem 'meta_request', '~> 0.2.1', require: 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
