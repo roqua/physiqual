@@ -26,6 +26,7 @@ if ENV['CODECLIMATE_REPO_TOKEN']
 end
 
 require 'webmock/rspec'
+require 'factory_girl_rails'
 require 'vcr'
 # Do not allow any network connections in tests, mock them
 WebMock.disable_net_connect!(allow_localhost: true)
