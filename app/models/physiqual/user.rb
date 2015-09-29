@@ -1,5 +1,7 @@
 module Physiqual
   class User < ActiveRecord::Base
+    self.table_name = 'physiqual_users'
+
     has_many :tokens
     has_many :google_tokens
     has_many :fitbit_tokens
