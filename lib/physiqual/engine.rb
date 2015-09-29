@@ -1,8 +1,8 @@
 module Physiqual
   class Engine < ::Rails::Engine
-     isolate_namespace Physiqual
+    isolate_namespace Physiqual
 
-     config.generators do |g|
+    config.generators do |g|
       g.test_framework      :rspec,        :fixture => false
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
       g.assets false

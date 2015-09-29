@@ -1,2 +1,0 @@
-describe Token do
-end
