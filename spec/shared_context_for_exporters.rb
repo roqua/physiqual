@@ -1,7 +1,7 @@
 module Physiqual
   module Exporters
     shared_context 'exporter context' do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:physiqual_user) }
       let(:last_measurement_time) { Time.now.change(hour: 22, min: 00) }
       let(:from) { Time.new(2015, 7, 4, 0, 0).in_time_zone }
       let(:to) { Time.new(2015, 8, 4, 0, 0).in_time_zone }

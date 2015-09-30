@@ -1,3 +1,5 @@
+require 'spliner'
+
 module Physiqual
   module Imputers
     class SplineImputer < Imputer

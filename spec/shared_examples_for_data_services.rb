@@ -1,6 +1,7 @@
+require 'httparty'
+require 'shared_context_for_data_services'
+
 module Physiqual
-  require 'shared_context_for_data_services'
-  
   module DataServices
     shared_examples_for 'a data_service' do |vcrs|
       it 'should define the extended methods funcion' do

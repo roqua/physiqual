@@ -1,3 +1,5 @@
+require 'csv'
+
 module Physiqual
   module Exporters
     class CsvExporter < Exporter

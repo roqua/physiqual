@@ -1,10 +1,10 @@
 module Physiqual
   class Token < ActiveRecord::Base
     self.table_name = 'physiqual_tokens'
-    belongs_to :physiqual_user
+    belongs_to :physiqual_user, class_name: 'Physiqual::User'
     # validates :token, presence: true
     # validates :refresh_token, presence: true
-    validates :user_id, presence: true
+    validates :physiqual_user_id, presence: true
     # validates :valid_until, presence: true
 
     def expired?
