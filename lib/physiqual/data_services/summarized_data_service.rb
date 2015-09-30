@@ -103,8 +103,9 @@ module Physiqual
           break if current_bucket == buckets.size
 
           # Don't take the night into account
-          next unless @use_night
-          next unless entry[date_time_field] > (buckets[current_bucket][date_time_field] - @interval.hours)
+          unless entry[date_time_field] > (buckets[current_bucket][date_time_field] - @interval.hours) || @use_night
+            next
+          end
           values = entry[values_field]
           buckets[current_bucket][values_field] << values
           # TODO: Should be no need to flatten the entire thing every time.
