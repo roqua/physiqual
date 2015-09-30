@@ -50,3 +50,6 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# Gemfile.lock should not be included in git when creating an engine or gem.
+Gemfile.lock
