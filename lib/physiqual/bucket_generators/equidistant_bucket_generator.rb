@@ -7,7 +7,7 @@ module Physiqual
         @interval = interval
         @last_measurement_time = last_measurement_time
       end
-  
+
       def generate(from, to)
         from = from.beginning_of_day.to_datetime
         to = to.beginning_of_day.to_datetime
@@ -17,7 +17,7 @@ module Physiqual
           (0...@measurements_per_day).map do |measurement|
             current = date.to_time.change(hour: start + (measurement * @interval),
                                           min: @last_measurement_time.min)
-  
+
             # Only use dates that are in the past
             result << output_entry(current.to_time, []) if date < Time.zone.now
           end

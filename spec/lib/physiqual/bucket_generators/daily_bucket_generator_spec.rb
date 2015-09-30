@@ -1,6 +1,6 @@
 module Physiqual
   require 'rails_helper'
-  
+
   require 'shared_context_for_data_services'
   module BucketGenerators
     describe DailyBucketGenerator do
@@ -13,19 +13,19 @@ module Physiqual
         ]
       end
       let(:subject) { described_class.new(measurement_times) }
-  
+
       include_context 'data_service context'
-  
+
       describe 'generate' do
         before do
           @result = subject.generate(from, to)
           @dates = @result.map { |x| x[DataServices::DataService::DATE_TIME_FIELD] }
         end
-  
+
         it 'should output the correct format' do
           check_result_format(@result)
         end
-  
+
         it 'should generate date buckets as expected' do
           current = from.to_date
           @dates.each_with_index do |date, index|
@@ -33,7 +33,7 @@ module Physiqual
             current += 1.day if ((index + 1) % measurement_times.count) == 0
           end
         end
-  
+
         it 'should generate time buckets as expected' do
           @dates.each_with_index do |date, index|
             time_index = (index % measurement_times.count)

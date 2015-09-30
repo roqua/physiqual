@@ -4,7 +4,7 @@ module Physiqual
       def generate(_from, _to)
         fail 'Not implemented by subclass'
       end
-  
+
       # TODO: This is copied from dataservice. Remove it here and find a better place to store it.
       def output_entry(date, values)
         {

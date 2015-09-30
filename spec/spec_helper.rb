@@ -77,7 +77,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
-  #config.order = "random"
+  # config.order = "random"
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

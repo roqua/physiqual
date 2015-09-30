@@ -1,12 +1,12 @@
 module Physiqual
   require 'rails_helper'
-  
+
   require 'shared_examples_for_data_services'
-  
+
   module DataServices
     describe FitbitService do
       include_context 'data_service context'
-  
+
       let(:token) { FactoryGirl.build(:fitbit_token) }
       let(:session) { Sessions::TokenAuthorizedSession.new(token.token, FitbitToken.base_uri) }
       let(:subject) { described_class.new(session) }
@@ -18,7 +18,7 @@ module Physiqual
                       sleep:          'data_services/fitbit/sleep',
                       activities:     'data_services/fitbit/activities',
                       calories:       'data_services/fitbit/calories'
-  
+
       describe 'intraday_summary' do
         it 'should have the intraday variable defined' do
           intraday_variable = subject.instance_variable_get(:@intraday)
@@ -26,7 +26,7 @@ module Physiqual
           result = intraday_variable == true || intraday_variable == false
           expect(result).to be_truthy
         end
-  
+
         it 'gets the data the data for each days' do
           subject.instance_variable_set(:@intraday, false)
           # The period should contain the same number of days as below, but also include the last one (i.e. +1)
@@ -41,7 +41,7 @@ module Physiqual
           expect(session).to receive(:get).exactly(period).times.and_return(return_val)
           subject.send(:intraday_summary, from, to, 'activities', 'heart')
         end
-  
+
         it 'should store the correct data' do
           subject.instance_variable_set(:@intraday, false)
           return_val = []
@@ -54,11 +54,11 @@ module Physiqual
           end
           expect(session).to receive(:get).and_return(*return_val)
           result = subject.send(:intraday_summary, from, to, 'activities', 'heart')
-  
+
           # The period should contain the same number of days as below, but also include the last one (i.e. +1)
           expect(result.count).to eq(((to.to_date - from.to_date).to_i + 1) * 24)
         end
-  
+
         it 'should call the route as containing the activity, from and 1min' do
           subject.instance_variable_set(:@intraday, false)
           resource = 'activities'
@@ -72,7 +72,7 @@ module Physiqual
           subject.send(:intraday_summary, from, to, resource, activity)
         end
       end
-  
+
       describe 'daily_summy' do
         it 'should call the route as containing the activity, from and to' do
           resource = 'activities'
@@ -83,7 +83,7 @@ module Physiqual
           subject.send(:daily_summary, from, to, resource, activity)
         end
       end
-  
+
       describe 'process_entries' do
         let(:datetimefield) { 'dateTime' }
         let(:valuefield) { 'value' }
@@ -92,44 +92,44 @@ module Physiqual
                      { datetimefield => from, valuefield => 132 },
                      { datetimefield => from, valuefield => 132 }]
           result = subject.send(:process_entries, entries)
-  
+
           expected = [{ subject.date_time_field => from, subject.values_field => [132] },
                       { subject.date_time_field =>  from, subject.values_field => [132] },
                       { subject.date_time_field =>  from, subject.values_field => [132] }]
           expect(result).to eq expected
         end
-  
+
         it 'converts convertable strings to ints' do
           integer = 123
           entries = [{ datetimefield => from, valuefield => "#{integer}" }]
           result = subject.send(:process_entries, entries)
           expected = [{ subject.date_time_field => from, subject.values_field => [integer] }]
-  
+
           expect(result).to eq expected
         end
-  
+
         it 'converts non-convertable strings not to ints' do
           teststring = 'test-string'
           entries = [{ datetimefield => from, valuefield => teststring }]
           result = subject.send(:process_entries, entries)
           expected = [{ subject.date_time_field => from, subject.values_field => [teststring] }]
-  
+
           expect(result).to eq expected
         end
       end
-  
+
       describe 'activity_call' do
         let(:activity) { 'heart' }
         let(:resource) { 'activities' }
         let(:from_formatted) { from.strftime(DataService::DATE_FORMAT) }
         let(:to_formatted) { to.strftime(DataService::DATE_FORMAT) }
-  
+
         it 'calls intraday summary if intraday is true' do
           subject.instance_variable_set(:@intraday, true)
           expect(subject).to receive(:intraday_summary).with(from_formatted, to_formatted, resource, activity)
           subject.send(:activity_call, from, to, resource, activity)
         end
-  
+
         it 'calls daily summary if intraday is false' do
           subject.instance_variable_set(:@intraday, false)
           expect(subject).to receive(:daily_summary).with(from_formatted, to_formatted, resource, activity)

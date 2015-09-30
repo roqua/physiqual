@@ -16,7 +16,7 @@ module Physiqual
         end
         x_array.compact!
         y_array.compact!
-  
+
         spline = Spliner::Spliner.new x_array, y_array, extrapolate: '100%', emethod: :hold
         res = (0...len).map { |x| spline[x] }
         Rails.logger.info res

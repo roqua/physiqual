@@ -1,12 +1,12 @@
 module Physiqual
   require 'rails_helper'
-  
+
   require 'shared_examples_for_imputers'
-  
+
   module Imputers
     describe SplineImputer do
       it_behaves_like 'an imputer'
-  
+
       it 'should impute values' do
         y_array = [1, 2, 3, 4, 5, 6, nil, nil, 9, 10]
         expected = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]

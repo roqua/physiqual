@@ -5,11 +5,11 @@ module Physiqual
       def initialize(_session)
         @precision = 10.minutes
       end
-  
+
       def service_name
         'mock'
       end
-  
+
       def profile
         {
           user: {
@@ -43,31 +43,31 @@ module Physiqual
           }
         }
       end
-  
+
       def heart_rate(from, to)
         generate_time_series(from, to)
       end
-  
+
       def activities(from, to)
         generate_time_series(from, to)
       end
-  
+
       def sleep(from, to)
         generate_time_series(from, to)
       end
-  
+
       def calories(from, to)
         generate_time_series(from, to)
       end
-  
+
       def steps(from, to)
         generate_time_series(from, to)
       end
       # rubocop:enable Metrics/MethodLength
       #
-  
+
       private
-  
+
       def generate_time_series(from, to)
         time = from
         res = []

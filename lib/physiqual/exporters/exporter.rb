@@ -5,7 +5,7 @@ module Physiqual
         # TODO: These variables below should be configurable (how?)
         interval = 6
         measurements_per_day = 3
-  
+
         services = create_services(user.tokens, last_measurement_time, interval, measurements_per_day)
         # TODO: Should the set of imputers used be configurable too?
         data_aggregator = DataAggregator.new(services, [Imputers::CatMullImputer])
@@ -24,9 +24,9 @@ module Physiqual
         end
         result
       end
-  
+
       private
-  
+
       def create_services(tokens, last_measurement_time, interval, measurements_per_day)
         tokens.map do |token|
           next unless token.complete?

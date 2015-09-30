@@ -15,7 +15,7 @@ module Physiqual
           expect(entry[DataService.new.values_field].any? { |x| x.is_a? Array }).to be_falsey
         end
       end
-  
+
       def check_start_end_date(result, from, to)
         dates = result.map { |x| x[DataService.new.date_time_field] }
         lowest_date = dates.min

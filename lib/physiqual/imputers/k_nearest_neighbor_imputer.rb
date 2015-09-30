@@ -4,11 +4,11 @@ module Physiqual
       def initialize
         @k = 2
       end
-  
+
       def number_of_neighbors(k)
         @k = k
       end
-  
+
       def process_impute(array)
         array.each_with_index do |current, index|
           next unless need_imputation? current
