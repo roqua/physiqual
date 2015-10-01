@@ -11,26 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713124333) do
-
-  create_table "physiqual_tokens", force: :cascade do |t|
-    t.string   "token"
-    t.string   "refresh_token"
-    t.datetime "valid_until"
-    t.integer  "physiqual_user_id", null: false
-    t.string   "type",              null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+ActiveRecord::Schema.define(version: 20_150_713_124_333) do
+  create_table 'physiqual_tokens', force: :cascade do |t|
+    t.string 'token'
+    t.string 'refresh_token'
+    t.datetime 'valid_until'
+    t.integer 'physiqual_user_id', null: false
+    t.string 'type', null: false
+    t.datetime 'created_at',        null: false
+    t.datetime 'updated_at',        null: false
   end
 
-  add_index "physiqual_tokens", ["physiqual_user_id"], name: "index_physiqual_tokens_on_physiqual_user_id"
+  add_index 'physiqual_tokens', ['physiqual_user_id'], name: 'index_physiqual_tokens_on_physiqual_user_id'
 
-  create_table "physiqual_users", force: :cascade do |t|
-    t.string   "email",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'physiqual_users', force: :cascade do |t|
+    t.string 'email', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_index "physiqual_users", ["email"], name: "index_physiqual_users_on_email", unique: true
-
+  add_index 'physiqual_users', ['email'], name: 'index_physiqual_users_on_email', unique: true
 end
