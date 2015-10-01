@@ -9,7 +9,7 @@ module Physiqual
     mattr_accessor :host_protocol
   end
 
-  def self.configure(&block)
+  def self.configure(&_block)
     yield self
   end
 
