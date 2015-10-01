@@ -1,5 +1,5 @@
+require 'oauth2'
 module Physiqual
-  require 'oauth2'
   class OauthSessionController < ApplicationController
     before_filter :sanitize_params, only: [:authorize, :callback]
 
@@ -85,7 +85,7 @@ module Physiqual
     end
 
     def token
-      @token = current_user.tokens.select { |x| x.class.csrf_token == params[:provider] }
+      @token = current_user.physiqual_tokens.select { |x| x.class.csrf_token == params[:provider] }
       head 404 if @token.blank?
       @token = @token.first
     end

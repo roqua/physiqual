@@ -1,6 +1,6 @@
-module Physiqual
-  require 'interpolator'
+require 'interpolator'
 
+module Physiqual
   module Imputers
     class CatMullImputer < Imputer
       def process_impute(array)

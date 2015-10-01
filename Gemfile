@@ -14,3 +14,12 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 gem 'pry'
 gem 'pry-byebug'
+
+# Dummy gems
+group :development do
+  gem 'meta_request', '~> 0.2.1', require: 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'dotenv-rails'
+end
+

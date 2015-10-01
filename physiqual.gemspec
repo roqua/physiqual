@@ -21,12 +21,14 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'oauth2'
   s.add_dependency 'httparty'
-  s.add_dependency 'dotenv-rails'
   s.add_dependency 'active_interaction', '~> 2.1.1'
 
   # imputation
   s.add_dependency 'spliner'
   s.add_dependency 'interpolator'
+
+  # Jquery
+  s.add_dependency 'jquery-rails'
 
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'sqlite3'
