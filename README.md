@@ -1,16 +1,33 @@
-# physiqual
-Ruby Engine for merging multiple datasources with diary questionnaire data
+# Physiqual
+Ruby Engine for merging multiple data sources with diary questionnaire data
 
 [![Code Climate](https://codeclimate.com/github/roqua/physiqual/badges/gpa.svg)](https://codeclimate.com/github/roqua/physiqual) [![Test Coverage](https://codeclimate.com/github/roqua/physiqual/badges/coverage.svg)](https://codeclimate.com/github/roqua/physiqual/coverage) [![Dependency Status](https://gemnasium.com/roqua/physiqual.svg)](https://gemnasium.com/roqua/physiqual) [![Circle CI](https://circleci.com/gh/roqua/physiqual/tree/master.svg?style=svg)](https://circleci.com/gh/roqua/physiqual/tree/master)
 
-- physiqual.dev.vhost.conf aanmaken
-- physiqual.dev in /etc/hosts zetten
-- bi
-- be rake db:setup
-- be rails server
-- touch .env
+## Installation
+Add Physiqual to your Gemfile. Currently Physiqual is not yet on RubyGems, this will happen after Physiqual is in a more stable beta state.
 
-Create initializer in `config/initializers/physiqual.rb` and add the config as follows:
+```ruby
+  gem 'physiqual', github: 'roqua/physiqual'
+```
+
+Install the dependencies by running:
+```ruby
+  bundle
+```
+
+Initialize the database
+``` ruby
+  bundle exec rake db:setup
+```
+
+Mount the engine in the `config/routes.rb` file (in the `Rails.application.routes.draw` block)
+``` ruby
+  mount Physiqual::Engine => '/physiqual'
+```
+
+## Configuration
+First create your an application on Google and Fitbit with the correct access levels and copy the key and ID from those services. Create initializer in `config/initializers/physiqual.rb` and add the configuration as follows, using the ID and secret retrieved from the services:
+
 ```ruby
 Physiqual.configure do |config|
   config.google_client_id     = ENV['GOOGLE_CLIENT_ID']
@@ -22,24 +39,47 @@ Physiqual.configure do |config|
   config.host_protocol        = ENV['HOST_PROTOCOL'] || 'http'
 end
 ```
-You can either set the actual values here, or use environment values (like in the example).
 
-HOST_URL=physiqual.dev
-HOST_PROTOCOL=http
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-FITBIT_CLIENT_ID=
-FITBIT_CLIENT_SECRET=
-SSL_CERT_FILE=/usr/lib/ssl/certs/ca-certificates.crt
+Now you should be able to start your server.
 
-On production also define:
-SECRET_KEY_BASE=some long string
+## Dummy
+If you would like to run the dummy application, make a full checkout of Physiqual
+```bash
+  git clone git@github.com:roqua/physiqual --shallow
+```
+
+And `cd` to `spec/dummy`. From this directory you can either run `bundle exec rails s` or create an apache v-host on passenger to run the server, for example:
+
+```bash
+  cd /etc/apache2/other
+  touch physiqual.dev.vhost.conf
+```
+
+And add to this file a virtualhost configuration, for example:
+
+```bash
+<VirtualHost *:80>
+  ServerName physiqual.dev
+  ServerAdmin info@physiqual.dev
+  DocumentRoot "<YOUR DIRECTORY>/physiqual/spec/dummy/public"
+  RailsEnv development
+  PassengerRuby /Users/frbl/.rvm/gems/ruby-2.2.1/wrappers/ruby
+  <Directory "<YOUR DIRECTORY>/physiqual/spec/dummy/public">
+    Options FollowSymLinks Multiviews
+    MultiviewsMatch Any
+    AllowOverride None
+    Require all granted
+  </Directory>
+</VirtualHost>
+```
+
+you should now be able to surf to, for example: `http://physiqual.dev/oauth_session/google/authorize?email=a`
+
+## Troubleshooting
+
+You might run into some issues with regards to SSL warnings and errors. In that case, add the curl ca certificates to the environment variables, e.g., in osx:
+```bash
+  SSL_CERT_FILE=/usr/lib/ssl/certs/ca-certificates.crt
+```
 
 If your system has no SSL_CERT_FILE, you can get one from http://curl.haxx.se/ca/cacert.pem
-
-http://physiqual.dev/oauth_session/google/authorize?email=a
-##### Google Fit integration
-googleclient id en secret komt van console.developers.google.com
-onder apis & auth
-
-##### Fitbit integration
