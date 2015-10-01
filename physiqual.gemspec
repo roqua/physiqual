@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'oauth2'
   s.add_dependency 'httparty'
-  s.add_dependency 'active_interaction', '~> 2.1.1'
+  s.add_dependency 'active_interaction', '~> 2.1.2'
 
   # imputation
   s.add_dependency 'spliner'
