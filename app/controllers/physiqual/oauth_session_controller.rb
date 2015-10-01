@@ -65,7 +65,7 @@ module Physiqual
     end
 
     def check_token
-      my_tokens = current_user.tokens
+      my_tokens = current_user.physiqual_tokens
       if my_tokens.blank? || my_tokens.first.token.blank?
         redirect_to authorize_oauth_session_index_path(provider: params[:state])
       else

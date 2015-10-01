@@ -25855,3 +25855,2471 @@ Calling {"Authorization"=>"Bearer the_token"}
   [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-09-30 18:33:12.123019"], ["updated_at", "2015-09-30 18:33:12.123019"]]
   [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
   [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+warn msg
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+warn msg
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (8.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+sleep of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+activities of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+activities of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+sleep of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.345267"], ["updated_at", "2015-10-01 08:11:39.345267"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007f9763737da8>
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.350813"], ["updated_at", "2015-10-01 08:11:39.350813"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007f97651856d8>
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.353630"], ["updated_at", "2015-10-01 08:11:39.353630"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007f9765343e70>
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.362994"], ["updated_at", "2015-10-01 08:11:39.362994"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.365684"], ["updated_at", "2015-10-01 08:11:39.365684"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+[1.0, 1.0, 2.0, 3.0, 3.8838661893593383, 4.805838785335144, 6.0, 7.557779903715591, 9.0, 9.0, 5.0, 1.0, 3.0, 3.0]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.394975"], ["updated_at", "2015-10-01 08:11:39.394975"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.397491"], ["updated_at", "2015-10-01 08:11:39.397491"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.399671"], ["updated_at", "2015-10-01 08:11:39.399671"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.401739"], ["updated_at", "2015-10-01 08:11:39.401739"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.403691"], ["updated_at", "2015-10-01 08:11:39.403691"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.405583"], ["updated_at", "2015-10-01 08:11:39.405583"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.407627"], ["updated_at", "2015-10-01 08:11:39.407627"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["valid_until", "2015-09-21 08:11:39.408456"], ["created_at", "2015-10-01 08:11:39.408456"], ["updated_at", "2015-10-01 08:11:39.408456"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.411598"], ["updated_at", "2015-10-01 08:11:39.411598"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 08:11:39.412796"], ["updated_at", "2015-10-01 08:11:39.412796"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.415166"], ["updated_at", "2015-10-01 08:11:39.415166"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["valid_until", "2015-10-01 09:11:39.416078"], ["created_at", "2015-10-01 08:11:39.416078"], ["updated_at", "2015-10-01 08:11:39.416078"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.419192"], ["updated_at", "2015-10-01 08:11:39.419192"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.421535"], ["updated_at", "2015-10-01 08:11:39.421535"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "token", "refresh_token", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 09:11:39.000000"], ["created_at", "2015-10-01 08:11:39.423571"], ["updated_at", "2015-10-01 08:11:39.423571"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.426121"], ["updated_at", "2015-10-01 08:11:39.426121"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 08:11:39.427586"], ["updated_at", "2015-10-01 08:11:39.427586"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "physiqual_tokens" SET "token" = ?, "refresh_token" = ?, "valid_until" = ?, "updated_at" = ? WHERE "physiqual_tokens"."id" = ?  [["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 09:11:39.000000"], ["updated_at", "2015-10-01 08:11:39.429722"], ["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPhysiqual::FitbitToken Load (0.1ms)[0m  SELECT  "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.438530"], ["updated_at", "2015-10-01 08:11:39.438530"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.440868"], ["updated_at", "2015-10-01 08:11:39.440868"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.443067"], ["updated_at", "2015-10-01 08:11:39.443067"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.445286"], ["updated_at", "2015-10-01 08:11:39.445286"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.447174"], ["updated_at", "2015-10-01 08:11:39.447174"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.448953"], ["updated_at", "2015-10-01 08:11:39.448953"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.450730"], ["updated_at", "2015-10-01 08:11:39.450730"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.452546"], ["updated_at", "2015-10-01 08:11:39.452546"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.454366"], ["updated_at", "2015-10-01 08:11:39.454366"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.456298"], ["updated_at", "2015-10-01 08:11:39.456298"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["valid_until", "2015-09-21 08:11:39.457085"], ["created_at", "2015-10-01 08:11:39.457085"], ["updated_at", "2015-10-01 08:11:39.457085"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.459911"], ["updated_at", "2015-10-01 08:11:39.459911"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 08:11:39.460960"], ["updated_at", "2015-10-01 08:11:39.460960"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.463163"], ["updated_at", "2015-10-01 08:11:39.463163"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["valid_until", "2015-10-01 09:11:39.463983"], ["created_at", "2015-10-01 08:11:39.463983"], ["updated_at", "2015-10-01 08:11:39.463983"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.466750"], ["updated_at", "2015-10-01 08:11:39.466750"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.468758"], ["updated_at", "2015-10-01 08:11:39.468758"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "token", "refresh_token", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 09:11:39.000000"], ["created_at", "2015-10-01 08:11:39.470458"], ["updated_at", "2015-10-01 08:11:39.470458"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.472977"], ["updated_at", "2015-10-01 08:11:39.472977"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 08:11:39.474224"], ["updated_at", "2015-10-01 08:11:39.474224"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "physiqual_tokens" SET "token" = ?, "refresh_token" = ?, "valid_until" = ?, "updated_at" = ? WHERE "physiqual_tokens"."id" = ?  [["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 09:11:39.000000"], ["updated_at", "2015-10-01 08:11:39.475898"], ["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPhysiqual::GoogleToken Load (0.1ms)[0m  SELECT  "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::GoogleToken') AND "physiqual_tokens"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.478784"], ["updated_at", "2015-10-01 08:11:39.478784"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.480836"], ["updated_at", "2015-10-01 08:11:39.480836"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 08:11:39.482756"], ["updated_at", "2015-10-01 08:11:39.482756"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+warn msg
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+warn msg
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+sleep of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+activities of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+activities of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+sleep of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (2.6ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.494455"], ["updated_at", "2015-10-01 09:07:26.494455"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007fbeec832d10>
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.499630"], ["updated_at", "2015-10-01 09:07:26.499630"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007fbeea962660>
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.502144"], ["updated_at", "2015-10-01 09:07:26.502144"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007fbeeb7f0998>
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.510698"], ["updated_at", "2015-10-01 09:07:26.510698"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.512966"], ["updated_at", "2015-10-01 09:07:26.512966"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+[1.0, 1.0, 2.0, 3.0, 3.8838661893593383, 4.805838785335144, 6.0, 7.557779903715591, 9.0, 9.0, 5.0, 1.0, 3.0, 3.0]
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.540580"], ["updated_at", "2015-10-01 09:07:26.540580"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.542205"], ["updated_at", "2015-10-01 09:07:26.542205"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.543614"], ["updated_at", "2015-10-01 09:07:26.543614"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.544928"], ["updated_at", "2015-10-01 09:07:26.544928"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.546360"], ["updated_at", "2015-10-01 09:07:26.546360"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.547727"], ["updated_at", "2015-10-01 09:07:26.547727"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.549227"], ["updated_at", "2015-10-01 09:07:26.549227"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["valid_until", "2015-09-21 09:07:26.549973"], ["created_at", "2015-10-01 09:07:26.549973"], ["updated_at", "2015-10-01 09:07:26.549973"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.552217"], ["updated_at", "2015-10-01 09:07:26.552217"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:07:26.553198"], ["updated_at", "2015-10-01 09:07:26.553198"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.554794"], ["updated_at", "2015-10-01 09:07:26.554794"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["valid_until", "2015-10-01 10:07:26.555460"], ["created_at", "2015-10-01 09:07:26.555460"], ["updated_at", "2015-10-01 09:07:26.555460"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.557457"], ["updated_at", "2015-10-01 09:07:26.557457"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.559015"], ["updated_at", "2015-10-01 09:07:26.559015"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "token", "refresh_token", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:07:26.000000"], ["created_at", "2015-10-01 09:07:26.560662"], ["updated_at", "2015-10-01 09:07:26.560662"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.562233"], ["updated_at", "2015-10-01 09:07:26.562233"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:07:26.563359"], ["updated_at", "2015-10-01 09:07:26.563359"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "physiqual_tokens" SET "token" = ?, "refresh_token" = ?, "valid_until" = ?, "updated_at" = ? WHERE "physiqual_tokens"."id" = ?  [["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:07:26.000000"], ["updated_at", "2015-10-01 09:07:26.564764"], ["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35mPhysiqual::FitbitToken Load (0.1ms)[0m  SELECT  "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.571884"], ["updated_at", "2015-10-01 09:07:26.571884"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.573480"], ["updated_at", "2015-10-01 09:07:26.573480"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.575074"], ["updated_at", "2015-10-01 09:07:26.575074"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.576890"], ["updated_at", "2015-10-01 09:07:26.576890"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.578536"], ["updated_at", "2015-10-01 09:07:26.578536"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.580069"], ["updated_at", "2015-10-01 09:07:26.580069"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.581651"], ["updated_at", "2015-10-01 09:07:26.581651"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.583207"], ["updated_at", "2015-10-01 09:07:26.583207"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.584817"], ["updated_at", "2015-10-01 09:07:26.584817"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.586516"], ["updated_at", "2015-10-01 09:07:26.586516"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["valid_until", "2015-09-21 09:07:26.587219"], ["created_at", "2015-10-01 09:07:26.587219"], ["updated_at", "2015-10-01 09:07:26.587219"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.589482"], ["updated_at", "2015-10-01 09:07:26.589482"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:07:26.590510"], ["updated_at", "2015-10-01 09:07:26.590510"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.592045"], ["updated_at", "2015-10-01 09:07:26.592045"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["valid_until", "2015-10-01 10:07:26.592765"], ["created_at", "2015-10-01 09:07:26.592765"], ["updated_at", "2015-10-01 09:07:26.592765"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.594809"], ["updated_at", "2015-10-01 09:07:26.594809"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.596418"], ["updated_at", "2015-10-01 09:07:26.596418"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "token", "refresh_token", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:07:26.000000"], ["created_at", "2015-10-01 09:07:26.598053"], ["updated_at", "2015-10-01 09:07:26.598053"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.599715"], ["updated_at", "2015-10-01 09:07:26.599715"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:07:26.601097"], ["updated_at", "2015-10-01 09:07:26.601097"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "physiqual_tokens" SET "token" = ?, "refresh_token" = ?, "valid_until" = ?, "updated_at" = ? WHERE "physiqual_tokens"."id" = ?  [["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:07:26.000000"], ["updated_at", "2015-10-01 09:07:26.602601"], ["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35mPhysiqual::GoogleToken Load (0.1ms)[0m  SELECT  "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::GoogleToken') AND "physiqual_tokens"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.605160"], ["updated_at", "2015-10-01 09:07:26.605160"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.606817"], ["updated_at", "2015-10-01 09:07:26.606817"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:07:26.608376"], ["updated_at", "2015-10-01 09:07:26.608376"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+warn msg
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+warn msg
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+sleep of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+activities of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+activities of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+sleep of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (2.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.610950"], ["updated_at", "2015-10-01 09:12:44.610950"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007ff089c39228>
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.616030"], ["updated_at", "2015-10-01 09:12:44.616030"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007ff089c01d50>
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.618190"], ["updated_at", "2015-10-01 09:12:44.618190"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007ff089bd8b80>
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.625755"], ["updated_at", "2015-10-01 09:12:44.625755"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.628003"], ["updated_at", "2015-10-01 09:12:44.628003"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+[1.0, 1.0, 2.0, 3.0, 3.8838661893593383, 4.805838785335144, 6.0, 7.557779903715591, 9.0, 9.0, 5.0, 1.0, 3.0, 3.0]
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.655080"], ["updated_at", "2015-10-01 09:12:44.655080"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.656795"], ["updated_at", "2015-10-01 09:12:44.656795"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.658211"], ["updated_at", "2015-10-01 09:12:44.658211"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.659584"], ["updated_at", "2015-10-01 09:12:44.659584"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.661116"], ["updated_at", "2015-10-01 09:12:44.661116"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.662557"], ["updated_at", "2015-10-01 09:12:44.662557"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.664053"], ["updated_at", "2015-10-01 09:12:44.664053"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["valid_until", "2015-09-21 09:12:44.664730"], ["created_at", "2015-10-01 09:12:44.664730"], ["updated_at", "2015-10-01 09:12:44.664730"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.666886"], ["updated_at", "2015-10-01 09:12:44.666886"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:12:44.667798"], ["updated_at", "2015-10-01 09:12:44.667798"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.669206"], ["updated_at", "2015-10-01 09:12:44.669206"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["valid_until", "2015-10-01 10:12:44.669900"], ["created_at", "2015-10-01 09:12:44.669900"], ["updated_at", "2015-10-01 09:12:44.669900"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.671747"], ["updated_at", "2015-10-01 09:12:44.671747"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.673227"], ["updated_at", "2015-10-01 09:12:44.673227"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "token", "refresh_token", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:12:44.000000"], ["created_at", "2015-10-01 09:12:44.674701"], ["updated_at", "2015-10-01 09:12:44.674701"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.676337"], ["updated_at", "2015-10-01 09:12:44.676337"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:12:44.677359"], ["updated_at", "2015-10-01 09:12:44.677359"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "physiqual_tokens" SET "token" = ?, "refresh_token" = ?, "valid_until" = ?, "updated_at" = ? WHERE "physiqual_tokens"."id" = ?  [["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:12:44.000000"], ["updated_at", "2015-10-01 09:12:44.678714"], ["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35mPhysiqual::FitbitToken Load (0.1ms)[0m  SELECT  "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.685771"], ["updated_at", "2015-10-01 09:12:44.685771"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.687286"], ["updated_at", "2015-10-01 09:12:44.687286"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.688722"], ["updated_at", "2015-10-01 09:12:44.688722"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.690345"], ["updated_at", "2015-10-01 09:12:44.690345"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.691818"], ["updated_at", "2015-10-01 09:12:44.691818"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.693252"], ["updated_at", "2015-10-01 09:12:44.693252"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.694691"], ["updated_at", "2015-10-01 09:12:44.694691"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.696293"], ["updated_at", "2015-10-01 09:12:44.696293"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.697668"], ["updated_at", "2015-10-01 09:12:44.697668"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.699141"], ["updated_at", "2015-10-01 09:12:44.699141"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["valid_until", "2015-09-21 09:12:44.699799"], ["created_at", "2015-10-01 09:12:44.699799"], ["updated_at", "2015-10-01 09:12:44.699799"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.701779"], ["updated_at", "2015-10-01 09:12:44.701779"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:12:44.702702"], ["updated_at", "2015-10-01 09:12:44.702702"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.704119"], ["updated_at", "2015-10-01 09:12:44.704119"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["valid_until", "2015-10-01 10:12:44.704841"], ["created_at", "2015-10-01 09:12:44.704841"], ["updated_at", "2015-10-01 09:12:44.704841"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.707007"], ["updated_at", "2015-10-01 09:12:44.707007"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.708633"], ["updated_at", "2015-10-01 09:12:44.708633"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "token", "refresh_token", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:12:44.000000"], ["created_at", "2015-10-01 09:12:44.710117"], ["updated_at", "2015-10-01 09:12:44.710117"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.711709"], ["updated_at", "2015-10-01 09:12:44.711709"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:12:44.712729"], ["updated_at", "2015-10-01 09:12:44.712729"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "physiqual_tokens" SET "token" = ?, "refresh_token" = ?, "valid_until" = ?, "updated_at" = ? WHERE "physiqual_tokens"."id" = ?  [["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:12:44.000000"], ["updated_at", "2015-10-01 09:12:44.714157"], ["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35mPhysiqual::GoogleToken Load (0.1ms)[0m  SELECT  "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::GoogleToken') AND "physiqual_tokens"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.716741"], ["updated_at", "2015-10-01 09:12:44.716741"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.718179"], ["updated_at", "2015-10-01 09:12:44.718179"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_3
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_2
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:12:44.719648"], ["updated_at", "2015-10-01 09:12:44.719648"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_3[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_2
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+warn msg
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+warn msg
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+sleep of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+activities of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+activities of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+heart_rate of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+sleep of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+calories of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+steps of cached_mock not from cache.. 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Calling {"Authorization"=>"Bearer the_token"}
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.376835"], ["updated_at", "2015-10-01 09:13:27.376835"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007fae773002c8>
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.382852"], ["updated_at", "2015-10-01 09:13:27.382852"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007fae6f765be0>
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.385426"], ["updated_at", "2015-10-01 09:13:27.385426"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+{"2015-08-03 10:00:00 +0200"=>{:heart_rate=>87.0, :steps=>924, :calories=>17, :activities=>"Walking"}, "2015-08-03 16:00:00 +0200"=>{:heart_rate=>49.0, :steps=>540, :calories=>46, :activities=>"Moving"}, "2015-08-03 22:00:00 +0200"=>{:heart_rate=>68.0, :steps=>270, :calories=>53, :activities=>"Moving"}}
+#<CSV:0x007fae702083e0>
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.393131"], ["updated_at", "2015-10-01 09:13:27.393131"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.395760"], ["updated_at", "2015-10-01 09:13:27.395760"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+[1.0, 1.0, 2.0, 3.0, 3.8838661893593383, 4.805838785335144, 6.0, 7.557779903715591, 9.0, 9.0, 5.0, 1.0, 3.0, 3.0]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.423641"], ["updated_at", "2015-10-01 09:13:27.423641"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.426593"], ["updated_at", "2015-10-01 09:13:27.426593"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.429207"], ["updated_at", "2015-10-01 09:13:27.429207"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.431484"], ["updated_at", "2015-10-01 09:13:27.431484"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.433451"], ["updated_at", "2015-10-01 09:13:27.433451"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.435237"], ["updated_at", "2015-10-01 09:13:27.435237"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.437204"], ["updated_at", "2015-10-01 09:13:27.437204"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["valid_until", "2015-09-21 09:13:27.437963"], ["created_at", "2015-10-01 09:13:27.437963"], ["updated_at", "2015-10-01 09:13:27.437963"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.440988"], ["updated_at", "2015-10-01 09:13:27.440988"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:13:27.442196"], ["updated_at", "2015-10-01 09:13:27.442196"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.444390"], ["updated_at", "2015-10-01 09:13:27.444390"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["valid_until", "2015-10-01 10:13:27.445288"], ["created_at", "2015-10-01 09:13:27.445288"], ["updated_at", "2015-10-01 09:13:27.445288"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.448185"], ["updated_at", "2015-10-01 09:13:27.448185"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.450137"], ["updated_at", "2015-10-01 09:13:27.450137"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "token", "refresh_token", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:13:27.000000"], ["created_at", "2015-10-01 09:13:27.451848"], ["updated_at", "2015-10-01 09:13:27.451848"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.453940"], ["updated_at", "2015-10-01 09:13:27.453940"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:13:27.455126"], ["updated_at", "2015-10-01 09:13:27.455126"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "physiqual_tokens" SET "token" = ?, "refresh_token" = ?, "valid_until" = ?, "updated_at" = ? WHERE "physiqual_tokens"."id" = ?  [["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:13:27.000000"], ["updated_at", "2015-10-01 09:13:27.456698"], ["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPhysiqual::FitbitToken Load (0.1ms)[0m  SELECT  "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.463790"], ["updated_at", "2015-10-01 09:13:27.463790"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.465797"], ["updated_at", "2015-10-01 09:13:27.465797"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.467504"], ["updated_at", "2015-10-01 09:13:27.467504"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.469517"], ["updated_at", "2015-10-01 09:13:27.469517"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.471358"], ["updated_at", "2015-10-01 09:13:27.471358"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.473354"], ["updated_at", "2015-10-01 09:13:27.473354"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.475460"], ["updated_at", "2015-10-01 09:13:27.475460"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.477306"], ["updated_at", "2015-10-01 09:13:27.477306"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.479075"], ["updated_at", "2015-10-01 09:13:27.479075"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.480914"], ["updated_at", "2015-10-01 09:13:27.480914"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["valid_until", "2015-09-21 09:13:27.481670"], ["created_at", "2015-10-01 09:13:27.481670"], ["updated_at", "2015-10-01 09:13:27.481670"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.485538"], ["updated_at", "2015-10-01 09:13:27.485538"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:13:27.487108"], ["updated_at", "2015-10-01 09:13:27.487108"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.490304"], ["updated_at", "2015-10-01 09:13:27.490304"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["valid_until", "2015-10-01 10:13:27.491463"], ["created_at", "2015-10-01 09:13:27.491463"], ["updated_at", "2015-10-01 09:13:27.491463"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.494716"], ["updated_at", "2015-10-01 09:13:27.494716"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.497026"], ["updated_at", "2015-10-01 09:13:27.497026"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "token", "refresh_token", "valid_until", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:13:27.000000"], ["created_at", "2015-10-01 09:13:27.498789"], ["updated_at", "2015-10-01 09:13:27.498789"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.501443"], ["updated_at", "2015-10-01 09:13:27.501443"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::GoogleToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:13:27.502823"], ["updated_at", "2015-10-01 09:13:27.502823"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "physiqual_tokens" SET "token" = ?, "refresh_token" = ?, "valid_until" = ?, "updated_at" = ? WHERE "physiqual_tokens"."id" = ?  [["token", "the_token"], ["refresh_token", "the_refresh_token"], ["valid_until", "2015-10-01 10:13:27.000000"], ["updated_at", "2015-10-01 09:13:27.504644"], ["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPhysiqual::GoogleToken Load (0.1ms)[0m  SELECT  "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::GoogleToken') AND "physiqual_tokens"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.507809"], ["updated_at", "2015-10-01 09:13:27.507809"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.510203"], ["updated_at", "2015-10-01 09:13:27.510203"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "john@doe.com"], ["created_at", "2015-10-01 09:13:27.512082"], ["updated_at", "2015-10-01 09:13:27.512082"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction

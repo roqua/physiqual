@@ -1,6 +1,7 @@
 module Physiqual
   class Token < ActiveRecord::Base
     self.table_name = 'physiqual_tokens'
+
     belongs_to :physiqual_user, class_name: 'Physiqual::User'
     # validates :token, presence: true
     # validates :refresh_token, presence: true

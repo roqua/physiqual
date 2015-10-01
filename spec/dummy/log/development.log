@@ -87,3 +87,1595 @@ SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqu
 SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
   [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
   [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+
+
+Started GET "/" for ::1 at 2015-09-30 20:38:08 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/railties-4.2.4/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for ::1 at 2015-09-30 20:38:23 +0200
+
+ActionController::RoutingError (No route matches [GET] "/oauth_session"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.4ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (7.6ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (73.7ms)
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for ::1 at 2015-09-30 20:38:35 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.4ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 1.8ms)
+
+NoMethodError (undefined method `id' for nil:NilClass):
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:55:in `current_user'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:68:in `check_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (1.6ms)[0m  [1mDROP TABLE "physiqual_tokens"[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "physiqual_tokens" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "token" varchar, "refresh_token" varchar, "valid_until" datetime, "physiqual_user_id" integer NOT NULL, "type" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  CREATE  INDEX "index_physiqual_tokens_on_physiqual_user_id" ON "physiqual_tokens" ("physiqual_user_id")
+  [1m[36m (1.1ms)[0m  [1mDROP TABLE "physiqual_users"[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "physiqual_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_physiqual_users_on_email" ON "physiqual_users" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.3ms)[0m  [1mDROP TABLE "physiqual_tokens"[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "physiqual_tokens" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "token" varchar, "refresh_token" varchar, "valid_until" datetime, "physiqual_user_id" integer NOT NULL, "type" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  CREATE  INDEX "index_physiqual_tokens_on_physiqual_user_id" ON "physiqual_tokens" ("physiqual_user_id")
+  [1m[36m (1.0ms)[0m  [1mDROP TABLE "physiqual_users"[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "physiqual_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_physiqual_users_on_email" ON "physiqual_users" ("email")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/physiqual/oauth_session?email=a&state=fitbit" for ::1 at 2015-09-30 20:46:31 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"a", "state"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "a"]]
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 1.2ms)
+
+NoMethodError (undefined method `id' for nil:NilClass):
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:55:in `current_user'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:68:in `check_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (7.3ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.4ms)
+  [1m[36mPhysiqual::User Load (1.4ms)[0m  [1mSELECT "physiqual_users".* FROM "physiqual_users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "physiqual_users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "frank.blaauw@gmail.com"], ["created_at", "2015-09-30 18:55:22.021543"], ["updated_at", "2015-09-30 18:55:22.021543"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for ::1 at 2015-09-30 20:55:34 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"fitbit"}
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms)
+
+NoMethodError (undefined method `tokens' for #<Physiqual::User:0x007f884f9635f0>):
+  activemodel (4.2.4) lib/active_model/attribute_methods.rb:433:in `method_missing'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:68:in `check_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.6ms)
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_physiqual_tokens_on_physiqual_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_physiqual_tokens_on_physiqual_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_physiqual_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_physiqual_users_on_email' AND type='index'
+[0m
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for ::1 at 2015-10-01 10:13:08 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 1.5ms)
+
+NoMethodError (undefined method `tokens' for #<Physiqual::User:0x007fb3bd6287c0>):
+  activemodel (4.2.4) lib/active_model/attribute_methods.rb:433:in `method_missing'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:68:in `check_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.7ms)
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for ::1 at 2015-10-01 10:13:49 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mPhysiqual::Token Load (0.2ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.8ms)
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?):
+  sqlite3 (1.3.10) lib/sqlite3/database.rb:91:in `initialize'
+  sqlite3 (1.3.10) lib/sqlite3/database.rb:91:in `new'
+  sqlite3 (1.3.10) lib/sqlite3/database.rb:91:in `prepare'
+  activerecord (4.2.4) lib/active_record/connection_adapters/sqlite3_adapter.rb:306:in `block in exec_query'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract_adapter.rb:473:in `block in log'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract_adapter.rb:467:in `log'
+  activerecord (4.2.4) lib/active_record/connection_adapters/sqlite3_adapter.rb:293:in `exec_query'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:351:in `select'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:32:in `select_all'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/query_cache.rb:68:in `block in select_all'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/query_cache.rb:83:in `cache_sql'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/query_cache.rb:68:in `select_all'
+  activerecord (4.2.4) lib/active_record/querying.rb:39:in `find_by_sql'
+  activerecord (4.2.4) lib/active_record/statement_cache.rb:107:in `execute'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:445:in `get_records'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:449:in `find_target'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:392:in `load_target'
+  activerecord (4.2.4) lib/active_record/associations/collection_proxy.rb:45:in `load_target'
+  activerecord (4.2.4) lib/active_record/associations/collection_proxy.rb:945:in `to_ary'
+  activerecord (4.2.4) lib/active_record/relation.rb:622:in `blank?'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:69:in `check_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (29.3ms)
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for ::1 at 2015-10-01 10:15:02 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"fitbit"}
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+  [1m[35mPhysiqual::Token Load (0.2ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?):
+  sqlite3 (1.3.10) lib/sqlite3/database.rb:91:in `initialize'
+  sqlite3 (1.3.10) lib/sqlite3/database.rb:91:in `new'
+  sqlite3 (1.3.10) lib/sqlite3/database.rb:91:in `prepare'
+  activerecord (4.2.4) lib/active_record/connection_adapters/sqlite3_adapter.rb:306:in `block in exec_query'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract_adapter.rb:473:in `block in log'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract_adapter.rb:467:in `log'
+  activerecord (4.2.4) lib/active_record/connection_adapters/sqlite3_adapter.rb:293:in `exec_query'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:351:in `select'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:32:in `select_all'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/query_cache.rb:68:in `block in select_all'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/query_cache.rb:83:in `cache_sql'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/query_cache.rb:68:in `select_all'
+  activerecord (4.2.4) lib/active_record/querying.rb:39:in `find_by_sql'
+  activerecord (4.2.4) lib/active_record/statement_cache.rb:107:in `execute'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:445:in `get_records'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:449:in `find_target'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:392:in `load_target'
+  activerecord (4.2.4) lib/active_record/associations/collection_proxy.rb:45:in `load_target'
+  activerecord (4.2.4) lib/active_record/associations/collection_proxy.rb:945:in `to_ary'
+  activerecord (4.2.4) lib/active_record/relation.rb:622:in `blank?'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:69:in `check_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (29.1ms)
+  [1m[36mPhysiqual::User Load (1.0ms)[0m  [1mSELECT "physiqual_users".* FROM "physiqual_users"[0m
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::Token Load (0.5ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.2ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::Token Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.2ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.2ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.2ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.2ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::Token Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ? AND "physiqual_tokens"."physiqual_user_type" = ?[0m  [["physiqual_user_id", 1], [nil, "Physiqual::User"]]
+SQLite3::SQLException: no such column: physiqual_tokens.physiqual_user_type: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ? AND "physiqual_tokens"."physiqual_user_type" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::Token Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ?[0m  [["physiqual_user_id", 1]]
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::Token Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ?[0m  [["physiqual_user_id", 1]]
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for ::1 at 2015-10-01 11:08:00 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mPhysiqual::Token Load (0.2ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ?[0m  [["physiqual_user_id", 1]]
+Redirected to http://localhost:3000/physiqual/oauth_session/fitbit/authorize
+Filter chain halted as :check_token rendered or redirected
+Completed 302 Found in 28ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/physiqual/oauth_session/fitbit/authorize" for ::1 at 2015-10-01 11:08:00 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"provider"=>"fitbit"}
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.7ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute 'user_id' for Physiqual::FitbitToken.):
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:59:in `rescue in _assign_attribute'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:54:in `_assign_attribute'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:41:in `block in assign_attributes'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:35:in `each'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:35:in `assign_attributes'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:169:in `initialize_attributes'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:251:in `block in build_record'
+  activerecord (4.2.4) lib/active_record/core.rb:283:in `initialize'
+  activerecord (4.2.4) lib/active_record/inheritance.rb:61:in `new'
+  activerecord (4.2.4) lib/active_record/inheritance.rb:61:in `new'
+  activerecord (4.2.4) lib/active_record/reflection.rb:131:in `build_association'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:250:in `build_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:493:in `block in _create_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:183:in `block in transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/transaction.rb:184:in `within_new_transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.4) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:182:in `transaction'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:492:in `_create_record'
+  activerecord (4.2.4) lib/active_record/associations/has_many_association.rb:187:in `_create_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:153:in `create'
+  activerecord (4.2.4) lib/active_record/associations/collection_proxy.rb:290:in `create'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:81:in `set_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.6ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (39.9ms)
+
+
+Started GET "/physiqual/oauth_session/fitbit/authorize" for ::1 at 2015-10-01 11:14:19 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"provider"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute 'user_id' for Physiqual::FitbitToken.):
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:59:in `rescue in _assign_attribute'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:54:in `_assign_attribute'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:41:in `block in assign_attributes'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:35:in `each'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:35:in `assign_attributes'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:169:in `initialize_attributes'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:251:in `block in build_record'
+  activerecord (4.2.4) lib/active_record/core.rb:283:in `initialize'
+  activerecord (4.2.4) lib/active_record/inheritance.rb:61:in `new'
+  activerecord (4.2.4) lib/active_record/inheritance.rb:61:in `new'
+  activerecord (4.2.4) lib/active_record/reflection.rb:131:in `build_association'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:250:in `build_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:493:in `block in _create_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:183:in `block in transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/transaction.rb:184:in `within_new_transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.4) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:182:in `transaction'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:492:in `_create_record'
+  activerecord (4.2.4) lib/active_record/associations/has_many_association.rb:187:in `_create_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:153:in `create'
+  activerecord (4.2.4) lib/active_record/associations/collection_proxy.rb:290:in `create'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:81:in `set_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.8ms)
+
+
+Started GET "/physiqual/oauth_session/fitbit/authorize?email=frank.blaauw@gmail.com" for ::1 at 2015-10-01 11:14:32 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "provider"=>"fitbit"}
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute 'user_id' for Physiqual::FitbitToken.):
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:59:in `rescue in _assign_attribute'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:54:in `_assign_attribute'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:41:in `block in assign_attributes'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:35:in `each'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:35:in `assign_attributes'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:169:in `initialize_attributes'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:251:in `block in build_record'
+  activerecord (4.2.4) lib/active_record/core.rb:283:in `initialize'
+  activerecord (4.2.4) lib/active_record/inheritance.rb:61:in `new'
+  activerecord (4.2.4) lib/active_record/inheritance.rb:61:in `new'
+  activerecord (4.2.4) lib/active_record/reflection.rb:131:in `build_association'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:250:in `build_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:493:in `block in _create_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:183:in `block in transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/transaction.rb:184:in `within_new_transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.4) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:182:in `transaction'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:492:in `_create_record'
+  activerecord (4.2.4) lib/active_record/associations/has_many_association.rb:187:in `_create_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:153:in `create'
+  activerecord (4.2.4) lib/active_record/associations/collection_proxy.rb:290:in `create'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:81:in `set_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (29.9ms)
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for ::1 at 2015-10-01 11:14:58 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPhysiqual::Token Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ?[0m  [["physiqual_user_id", 1]]
+Redirected to http://localhost:3000/physiqual/oauth_session/fitbit/authorize
+Filter chain halted as :check_token rendered or redirected
+Completed 302 Found in 82ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/physiqual/oauth_session/fitbit/authorize" for ::1 at 2015-10-01 11:14:58 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"provider"=>"fitbit"}
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute 'user_id' for Physiqual::FitbitToken.):
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:59:in `rescue in _assign_attribute'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:54:in `_assign_attribute'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:41:in `block in assign_attributes'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:35:in `each'
+  activerecord (4.2.4) lib/active_record/attribute_assignment.rb:35:in `assign_attributes'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:169:in `initialize_attributes'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:251:in `block in build_record'
+  activerecord (4.2.4) lib/active_record/core.rb:283:in `initialize'
+  activerecord (4.2.4) lib/active_record/inheritance.rb:61:in `new'
+  activerecord (4.2.4) lib/active_record/inheritance.rb:61:in `new'
+  activerecord (4.2.4) lib/active_record/reflection.rb:131:in `build_association'
+  activerecord (4.2.4) lib/active_record/associations/association.rb:250:in `build_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:493:in `block in _create_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:183:in `block in transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/transaction.rb:184:in `within_new_transaction'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.4) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:182:in `transaction'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:492:in `_create_record'
+  activerecord (4.2.4) lib/active_record/associations/has_many_association.rb:187:in `_create_record'
+  activerecord (4.2.4) lib/active_record/associations/collection_association.rb:153:in `create'
+  activerecord (4.2.4) lib/active_record/associations/collection_proxy.rb:290:in `create'
+  /Users/frbl/Workspace/roqua/physiqual/app/controllers/physiqual/oauth_session_controller.rb:81:in `set_token'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  actionpack (4.2.4) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/frbl/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.1ms)
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::Token Load (0.2ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ?[0m  [["physiqual_user_id", 1]]
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.3ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.2ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::FitbitToken Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: physiqual_tokens.user_id: SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."user_id" = ?
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::Token Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ?[0m  [["physiqual_user_id", 1]]
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users"  ORDER BY "physiqual_users"."id" ASC LIMIT 1[0m
+  [1m[35mPhysiqual::FitbitToken Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."type" IN ('Physiqual::FitbitToken') AND "physiqual_tokens"."physiqual_user_id" = ?  [["physiqual_user_id", 1]]
+
+
+Started GET "/physiqual/oauth_session/fitbit/authorize" for ::1 at 2015-10-01 11:26:16 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"provider"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:26:16.738177"], ["updated_at", "2015-10-01 09:26:16.738177"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to https://api.fitbit.com/oauth2/authorize?access_type=offline&approval_prompt=force&client_id=&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fphysiqual%2Foauth_session%2Ffitbit%2Fcallback&response_type=code&scope=activity+heartrate+location+nutrition+profile+settings+sleep+social+weight&state=fitbit
+Completed 302 Found in 95ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for 127.0.0.1 at 2015-10-01 11:31:16 +0200
+
+ActionController::RoutingError (No route matches [GET] "/oauth_session"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.0ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (63.3ms)
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for 127.0.0.1 at 2015-10-01 11:31:24 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"fitbit"}
+  [1m[36mPhysiqual::User Load (0.2ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mPhysiqual::Token Load (0.1ms)[0m  [1mSELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ?[0m  [["physiqual_user_id", 1]]
+Redirected to http://physiqual.dev/physiqual/oauth_session/fitbit/authorize
+Filter chain halted as :check_token rendered or redirected
+Completed 302 Found in 61ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/physiqual/oauth_session/fitbit/authorize" for 127.0.0.1 at 2015-10-01 11:31:24 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"provider"=>"fitbit"}
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:31:24.542363"], ["updated_at", "2015-10-01 09:31:24.542363"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Redirected to https://api.fitbit.com/oauth2/authorize?access_type=offline&approval_prompt=force&client_id=&redirect_uri=http%3A%2F%2Fphysiqual.dev%2Fphysiqual%2Foauth_session%2Ffitbit%2Fcallback&response_type=code&scope=activity+heartrate+location+nutrition+profile+settings+sleep+social+weight&state=fitbit
+Completed 302 Found in 13ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for 127.0.0.1 at 2015-10-01 11:33:07 +0200
+
+ActionController::RoutingError (No route matches [GET] "/oauth_session"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (43.6ms)
+
+
+Started GET "/oauth_session?email=frank.blaauw@gmail.com&state=fitbit" for 127.0.0.1 at 2015-10-01 11:33:10 +0200
+
+ActionController::RoutingError (No route matches [GET] "/oauth_session"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (41.9ms)
+
+
+Started GET "/physiqual/oauth_session?email=frank.blaauw@gmail.com&state=google" for 127.0.0.1 at 2015-10-01 11:33:25 +0200
+Processing by Physiqual::OauthSessionController#index as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"google"}
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPhysiqual::Token Load (0.1ms)[0m  SELECT "physiqual_tokens".* FROM "physiqual_tokens" WHERE "physiqual_tokens"."physiqual_user_id" = ?  [["physiqual_user_id", 1]]
+Redirected to http://physiqual.dev/physiqual/oauth_session/google/authorize
+Filter chain halted as :check_token rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/physiqual/oauth_session/google/authorize" for 127.0.0.1 at 2015-10-01 11:33:25 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"provider"=>"google"}
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:33:25.544472"], ["updated_at", "2015-10-01 09:33:25.544472"]]
+  [1m[35m (17.6ms)[0m  commit transaction
+Redirected to https://api.fitbit.com/oauth2/authorize?access_type=offline&approval_prompt=force&client_id=&redirect_uri=http%3A%2F%2Fphysiqual.dev%2Fphysiqual%2Foauth_session%2Ffitbit%2Fcallback&response_type=code&scope=activity+heartrate+location+nutrition+profile+settings+sleep+social+weight&state=fitbit
+Completed 302 Found in 23ms (ActiveRecord: 18.0ms)
+
+
+Started GET "/physiqual/oauth_session/authorize/google?email=frank.blaauw@gmail.com&state=google" for 127.0.0.1 at 2015-10-01 11:33:46 +0200
+
+ActionController::RoutingError (No route matches [GET] "/physiqual/oauth_session/authorize/google"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (44.0ms)
+
+
+Started GET "/physiqual/oauth_session/authorize/google?email=frank.blaauw@gmail.com&state=google" for 127.0.0.1 at 2015-10-01 11:33:56 +0200
+
+ActionController::RoutingError (No route matches [GET] "/physiqual/oauth_session/authorize/google"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  /Users/frbl/.rvm/gems/ruby-2.2.0/gems/passenger-4.0.57/lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/frbl/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (42.6ms)
+
+
+Started GET "/physiqual/oauth_session/google/authorize?email=frank.blaauw@gmail.com&state=google" for 127.0.0.1 at 2015-10-01 11:34:06 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"google", "provider"=>"google"}
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:34:06.473169"], ["updated_at", "2015-10-01 09:34:06.473169"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Redirected to https://api.fitbit.com/oauth2/authorize?access_type=offline&approval_prompt=force&client_id=&redirect_uri=http%3A%2F%2Fphysiqual.dev%2Fphysiqual%2Foauth_session%2Ffitbit%2Fcallback&response_type=code&scope=activity+heartrate+location+nutrition+profile+settings+sleep+social+weight&state=fitbit
+Completed 302 Found in 6ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/physiqual/oauth_session/google/authorize?email=frank.blaauw@gmail.com&state=google" for 127.0.0.1 at 2015-10-01 11:34:09 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"google", "provider"=>"google"}
+  [1m[35mPhysiqual::User Load (0.2ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:34:09.522407"], ["updated_at", "2015-10-01 09:34:09.522407"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to https://api.fitbit.com/oauth2/authorize?access_type=offline&approval_prompt=force&client_id=&redirect_uri=http%3A%2F%2Fphysiqual.dev%2Fphysiqual%2Foauth_session%2Ffitbit%2Fcallback&response_type=code&scope=activity+heartrate+location+nutrition+profile+settings+sleep+social+weight&state=fitbit
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/physiqual/oauth_session/google/authorize?email=frank.blaauw@gmail.com&state=google" for 127.0.0.1 at 2015-10-01 11:34:45 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"google", "provider"=>"google"}
+  [1m[36mPhysiqual::User Load (0.1ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1[0m  [["email", "frank.blaauw@gmail.com"]]
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:34:45.752791"], ["updated_at", "2015-10-01 09:34:45.752791"]]
+  [1m[36m (12.1ms)[0m  [1mcommit transaction[0m
+Redirected to https://api.fitbit.com/oauth2/authorize?access_type=offline&approval_prompt=force&client_id=&redirect_uri=http%3A%2F%2Fphysiqual.dev%2Fphysiqual%2Foauth_session%2Ffitbit%2Fcallback&response_type=code&scope=activity+heartrate+location+nutrition+profile+settings+sleep+social+weight&state=fitbit
+Completed 302 Found in 16ms (ActiveRecord: 12.6ms)
+
+
+Started GET "/physiqual/oauth_session/google/authorize?email=frank.blaauw@gmail.com&state=google" for 127.0.0.1 at 2015-10-01 11:35:19 +0200
+Processing by Physiqual::OauthSessionController#authorize as HTML
+  Parameters: {"email"=>"frank.blaauw@gmail.com", "state"=>"google", "provider"=>"google"}
+  [1m[35mPhysiqual::User Load (0.1ms)[0m  SELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."email" = ? LIMIT 1  [["email", "frank.blaauw@gmail.com"]]
+  [1m[36mPhysiqual::User Load (0.0ms)[0m  [1mSELECT  "physiqual_users".* FROM "physiqual_users" WHERE "physiqual_users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "physiqual_tokens" ("type", "physiqual_user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["type", "Physiqual::FitbitToken"], ["physiqual_user_id", 1], ["created_at", "2015-10-01 09:35:19.083001"], ["updated_at", "2015-10-01 09:35:19.083001"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Redirected to https://api.fitbit.com/oauth2/authorize?access_type=offline&approval_prompt=force&client_id=&redirect_uri=http%3A%2F%2Fphysiqual.dev%2Fphysiqual%2Foauth_session%2Ffitbit%2Fcallback&response_type=code&scope=activity+heartrate+location+nutrition+profile+settings+sleep+social+weight&state=fitbit
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)

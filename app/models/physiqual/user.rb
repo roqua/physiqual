@@ -2,9 +2,9 @@ module Physiqual
   class User < ActiveRecord::Base
     self.table_name = 'physiqual_users'
 
-    has_many :physiqual_tokens, class_name: 'Physiqual::Token'
-    has_many :google_tokens
-    has_many :fitbit_tokens
+    has_many :physiqual_tokens, foreign_key: 'physiqual_user_id', class_name: 'Physiqual::Token'
+    has_many :google_tokens, foreign_key: 'physiqual_user_id', class_name: 'Physiqual::FitbitToken'
+    has_many :fitbit_tokens, foreign_key: 'physiqual_user_id', class_name: 'Physiqual::FitbitToken'
     validates :email, presence: true
 
     def find_tokens(csrf_token)
