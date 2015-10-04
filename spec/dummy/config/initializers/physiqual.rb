@@ -14,8 +14,8 @@ Physiqual.configure do |config|
   # EMA Settings
   config.measurements_per_day = 3 # Number of measurements per day, from the end of day downwards
   config.interval             = 6 # Number of hours between measurements
-  config.use_night            = false # Should the night be included in the first measurement of the day, if there was no questionnaire
+  config.use_night            = false
 
   # Imputation
-  config.imputers             = [Physiqual::Imputers::CatMullImputer] # List of imputers to use, choose from: CatMullImputer, KNearestNeighborImputer, LastObservationCarriedForwardImputer, MeanImputer, Spline mputer or MockImputer (doesn't actually impute). Prefix with Physiqual::Imputers::
+  config.imputers             = [Physiqual::Imputers::CatMullImputer]
 end

@@ -48,7 +48,14 @@ Physiqual.configure do |config|
   config.use_night            = false # Should the night be included in the first measurement of the day, if there was no questionnaire
 
   # Imputation
-  config.imputers             = [Physiqual::Imputers] # List of imputers to use, choose from: CatMullImputer, KNearestNeighborImputer, LastObservationCarriedForwardImputer, MeanImputer, Spline mputer or MockImputer (doesn't actually impute). Prefix with Physiqual::Imputers::
+  # List of imputers to use, prefix with Physiqual::Imputers::, choose from:
+  # - CatMullImputer
+  # - KNearestNeighborImputer
+  # - LastObservationCarriedForwardImputer
+  # - MeanImputer
+  # - SplineImputer
+  # - MockImputer (doesn't actually impute).
+  config.imputers             = [Physiqual::Imputers]
 end
 ```
 
