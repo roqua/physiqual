@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 module Physiqual
+  puts 'Running seeds'
   if Rails.env.development? || Rails.env.test?
     User.find_or_create_by(email: 'a')
     User.find_or_create_by(email: 'b')

@@ -7,6 +7,10 @@ module Physiqual
     mattr_accessor :fitbit_client_secret
     mattr_accessor :host_url
     mattr_accessor :host_protocol
+    mattr_accessor :measurements_per_day
+    mattr_accessor :interval
+    mattr_accessor :use_night
+    mattr_accessor :imputers
   end
 
   def self.configure(&_block)
