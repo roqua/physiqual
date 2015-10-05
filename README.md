@@ -55,7 +55,7 @@ Physiqual.configure do |config|
   # - MeanImputer
   # - SplineImputer
   # - MockImputer (doesn't actually impute).
-  config.imputers             = [Physiqual::Imputers]
+  config.imputers             = [Physiqual::Imputers::CatMullImputer]
 end
 ```
 
