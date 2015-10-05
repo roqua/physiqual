@@ -35,7 +35,7 @@ module Physiqual
                                                             Physiqual.interval,
                                                             Physiqual.measurements_per_day,
                                                             Physiqual.use_night)
-          # TODO: This use_night thing above should be configurable.
+
           DataServices::CachedDataService.new service
         end.compact
       end
