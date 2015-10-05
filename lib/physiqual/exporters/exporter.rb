@@ -2,8 +2,6 @@ module Physiqual
   module Exporters
     class Exporter
       def export_data(user, last_measurement_time, from, to)
-        # TODO: These variables below should be configurable (how?)
-
         services = create_services(user.physiqual_tokens, last_measurement_time)
         # TODO: Should the set of imputers used be configurable too?
         data_aggregator = DataAggregator.new(services, Physiqual.imputers)
