@@ -5,18 +5,18 @@ module Physiqual
     let(:user) { FactoryGirl.create(:physiqual_user) }
     describe 'before filters' do
       it 'calls the check_token method when calling index' do
-        expect(subject).to receive(:check_token) { raise StandardError.new('stop_execution') }
-        expect {get :index, email: user.email}.to raise_error('stop_execution')
+        expect(subject).to receive(:check_token) { fail StandardError.new('stop_execution') }
+        expect { get :index, email: user.email }.to raise_error('stop_execution')
       end
 
       it 'calls the set_token when calling authorize' do
-        expect(subject).to receive(:set_token) { raise StandardError.new('stop_execution') }
-        expect {get :authorize}.to raise_error('stop_execution')
+        expect(subject).to receive(:set_token) { fail StandardError.new('stop_execution') }
+        expect { get :authorize }.to raise_error('stop_execution')
       end
 
       it 'calls the token when calling callback' do
-        expect(subject).to receive(:token) { raise StandardError.new('stop_execution') }
-        expect {get :callback}.to raise_error('stop_execution')
+        expect(subject).to receive(:token) { fail StandardError.new('stop_execution') }
+        expect { get :callback }.to raise_error('stop_execution')
       end
     end
 
@@ -39,64 +39,59 @@ module Physiqual
         end
 
         it 'has the correct base url' do
-
-          expect(response).to redirect_to %r(\A#{GoogleToken.oauth_site}#{GoogleToken.authorize_url})
+          expect(response).to redirect_to /\A#{GoogleToken.oauth_site}#{GoogleToken.authorize_url}/
         end
 
         it 'adds the correct redirect url' do
           url = CGI.escape subject.callback_oauth_session_index_url(provider: GoogleToken.csrf_token)
-          expect(response).to redirect_to %r(redirect_uri=#{url})
+          expect(response).to redirect_to /redirect_uri=#{url}/
         end
 
         it 'adds the correct state' do
-          expect(response).to redirect_to %r(state=#{GoogleToken.csrf_token})
+          expect(response).to redirect_to /state=#{GoogleToken.csrf_token}/
         end
 
         it 'adds the correct scope' do
           GoogleToken.scope.split(' ').each do |scope|
-            expect(response).to redirect_to %r(#{CGI.escape scope})
+            expect(response).to redirect_to /#{CGI.escape scope}/
           end
         end
       end
       describe 'redirects to the correct fitbit url' do
         before :each do
-
           expect(subject).to receive(:current_user).and_return(user)
           get :authorize, provider: FitbitToken.csrf_token
         end
 
         it 'has the correct base url' do
-
-          expect(response).to redirect_to %r(\A#{FitbitToken.oauth_site}#{FitbitToken.authorize_url})
+          expect(response).to redirect_to /\A#{FitbitToken.oauth_site}#{FitbitToken.authorize_url}/
         end
 
         it 'adds the correct redirect url' do
           url = CGI.escape subject.callback_oauth_session_index_url(provider: FitbitToken.csrf_token)
-          expect(response).to redirect_to %r(redirect_uri=#{url})
+          expect(response).to redirect_to /redirect_uri=#{url}/
         end
 
         it 'adds the correct state' do
-          expect(response).to redirect_to %r(state=#{FitbitToken.csrf_token})
+          expect(response).to redirect_to /state=#{FitbitToken.csrf_token}/
         end
 
         it 'adds the correct scope' do
           FitbitToken.scope.split(' ').each do |scope|
-            expect(response).to redirect_to %r(#{scope})
+            expect(response).to redirect_to /#{scope}/
           end
         end
       end
     end
 
     describe 'callback' do
-
     end
 
     describe 'current_user' do
-
     end
 
     describe 'check_token' do
-      let(:provider) { GoogleToken.csrf_token}
+      let(:provider) { GoogleToken.csrf_token }
       before :each do
         expect(subject).to receive(:current_user).and_return(user)
         subject.params[:state] = provider
@@ -113,7 +108,7 @@ module Physiqual
 
         it 'redirects to the authorize path if the user only has incomplete token' do
           user.google_tokens.create
-          user.google_tokens.each {|tok| expect(tok.complete?).to be_falsey}
+          user.google_tokens.each { |tok| expect(tok.complete?).to be_falsey }
 
           expect(subject).to receive(:redirect_to).with(subject.authorize_oauth_session_index_path(provider: provider))
         end
@@ -126,14 +121,14 @@ module Physiqual
         end
 
         after :each do
-          user.google_tokens.each {|tok| expect(tok.complete?).to be_truthy}
+          user.google_tokens.each { |tok| expect(tok.complete?).to be_truthy }
         end
 
         it 'redirects to the authorize path if the user only has incomplete token' do
           token = FactoryGirl.build(:physiqual_token, :google, physiqual_user: user)
           user.physiqual_tokens << token
           user.save!
-          user.google_tokens.each {|tok| expect(tok.expired?).to be_falsey}
+          user.google_tokens.each { |tok| expect(tok.expired?).to be_falsey }
         end
 
         it 'refreshes all expired tokens, also if one provider is called' do
@@ -143,17 +138,17 @@ module Physiqual
           user.physiqual_tokens << token2
 
           user.save!
-          user.physiqual_tokens.each {|tok| expect(tok.expired?).to be_truthy}
-          user.physiqual_tokens.each {|tok| expect(tok).to receive(:refresh!).and_return(true)}
+          user.physiqual_tokens.each { |tok| expect(tok.expired?).to be_truthy }
+          user.physiqual_tokens.each { |tok| expect(tok).to receive(:refresh!).and_return(true) }
         end
       end
     end
 
     describe 'set_token' do
-      let(:provider) { GoogleToken.csrf_token}
+      let(:provider) { GoogleToken.csrf_token }
       it 'heads 404 if there is no provider' do
-        expect(subject).to receive(:head).with(404) { raise StandardError.new('stop_execution') }
-        expect {subject.send(:set_token)}.to raise_error('stop_execution')
+        expect(subject).to receive(:head).with(404) { fail StandardError.new('stop_execution') }
+        expect { subject.send(:set_token) }.to raise_error('stop_execution')
       end
 
       it 'sets a new token if there are no tokens' do
@@ -176,15 +171,12 @@ module Physiqual
     end
 
     describe 'token' do
-
     end
 
     describe 'get_or_create_token' do
-
     end
 
     describe 'sanitize_params' do
-
     end
   end
 end

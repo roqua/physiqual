@@ -83,8 +83,7 @@ RSpec.configure do |config|
   # config.order = "random"
 
   # RSPEC and controllers in engines don't really play well together. This line monkeypatches the get put post delete
-  config.include EngineControllerPatch, :type => :controller
-
+  config.include EngineControllerPatch, type: :controller
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -101,4 +100,3 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
-

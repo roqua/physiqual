@@ -65,7 +65,7 @@ module Physiqual
     end
 
     def check_token
-      #my_tokens = current_user.physiqual_tokens
+      # my_tokens = current_user.physiqual_tokens
       my_tokens = provider_tokens(params[:state])
 
       if my_tokens.blank? || !my_tokens.first.complete?
@@ -100,7 +100,7 @@ module Physiqual
 
     def get_or_create_token(tokens)
       return tokens.first unless tokens.blank?
-      return tokens.create
+      tokens.create
     end
 
     def sanitize_params

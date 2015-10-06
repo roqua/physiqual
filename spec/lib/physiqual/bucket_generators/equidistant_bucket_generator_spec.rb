@@ -3,7 +3,7 @@ require 'rails_helper'
 require 'shared_context_for_data_services'
 module Physiqual
   module BucketGenerators
-   describe EquidistantBucketGenerator do
+    describe EquidistantBucketGenerator do
       let(:interval) { 6 }
       let(:measurements_per_day) { 3 }
       let(:last_measurement_time) { Time.now.change(hour: 22, min: 30, usec: 0) }
