@@ -1,7 +1,7 @@
-module Physiqual
-  require 'rails_helper'
+require 'rails_helper'
 
-  require 'shared_context_for_data_services'
+require 'shared_context_for_data_services'
+module Physiqual
   module BucketGenerators
     describe DailyBucketGenerator do
       let(:measurement_times) do
