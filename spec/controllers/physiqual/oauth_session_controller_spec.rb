@@ -5,17 +5,17 @@ module Physiqual
     let(:user) { FactoryGirl.create(:physiqual_user) }
     describe 'before filters' do
       it 'calls the check_token method when calling index' do
-        expect(subject).to receive(:check_token) { fail StandardError.new('stop_execution') }
+        expect(subject).to receive(:check_token) { fail(StandardError, 'stop_execution') }
         expect { get :index, email: user.email }.to raise_error('stop_execution')
       end
 
       it 'calls the set_token when calling authorize' do
-        expect(subject).to receive(:set_token) { fail StandardError.new('stop_execution') }
+        expect(subject).to receive(:set_token) { fail(StandardError, 'stop_execution') }
         expect { get :authorize }.to raise_error('stop_execution')
       end
 
       it 'calls the token when calling callback' do
-        expect(subject).to receive(:token) { fail StandardError.new('stop_execution') }
+        expect(subject).to receive(:token) { fail(StandardError, 'stop_execution') }
         expect { get :callback }.to raise_error('stop_execution')
       end
     end
@@ -39,21 +39,21 @@ module Physiqual
         end
 
         it 'has the correct base url' do
-          expect(response).to redirect_to (/\A#{GoogleToken.oauth_site}#{GoogleToken.authorize_url}/)
+          expect(response).to redirect_to(/\A#{GoogleToken.oauth_site}#{GoogleToken.authorize_url}/)
         end
 
         it 'adds the correct redirect url' do
           url = CGI.escape subject.callback_oauth_session_index_url(provider: GoogleToken.csrf_token)
-          expect(response).to redirect_to (/redirect_uri=#{url}/)
+          expect(response).to redirect_to(/redirect_uri=#{url}/)
         end
 
         it 'adds the correct state' do
-          expect(response).to redirect_to (/state=#{GoogleToken.csrf_token}/)
+          expect(response).to redirect_to(/state=#{GoogleToken.csrf_token}/)
         end
 
         it 'adds the correct scope' do
           GoogleToken.scope.split(' ').each do |scope|
-            expect(response).to redirect_to (/#{CGI.escape scope}/)
+            expect(response).to redirect_to(/#{CGI.escape scope}/)
           end
         end
       end
@@ -64,21 +64,21 @@ module Physiqual
         end
 
         it 'has the correct base url' do
-          expect(response).to redirect_to (/\A#{FitbitToken.oauth_site}#{FitbitToken.authorize_url}/)
+          expect(response).to redirect_to(/\A#{FitbitToken.oauth_site}#{FitbitToken.authorize_url}/)
         end
 
         it 'adds the correct redirect url' do
           url = CGI.escape subject.callback_oauth_session_index_url(provider: FitbitToken.csrf_token)
-          expect(response).to redirect_to (/redirect_uri=#{url}/)
+          expect(response).to redirect_to(/redirect_uri=#{url}/)
         end
 
         it 'adds the correct state' do
-          expect(response).to redirect_to (/state=#{FitbitToken.csrf_token}/)
+          expect(response).to redirect_to(/state=#{FitbitToken.csrf_token}/)
         end
 
         it 'adds the correct scope' do
           FitbitToken.scope.split(' ').each do |scope|
-            expect(response).to redirect_to (/#{scope}/)
+            expect(response).to redirect_to(/#{scope}/)
           end
         end
       end
@@ -147,7 +147,7 @@ module Physiqual
     describe 'set_token' do
       let(:provider) { GoogleToken.csrf_token }
       it 'heads 404 if there is no provider' do
-        expect(subject).to receive(:head).with(404) { fail StandardError.new('stop_execution') }
+        expect(subject).to receive(:head).with(404) { fail(StandardError, 'stop_execution') }
         expect { subject.send(:set_token) }.to raise_error('stop_execution')
       end
 
