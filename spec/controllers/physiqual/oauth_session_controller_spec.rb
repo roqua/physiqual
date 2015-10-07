@@ -39,21 +39,21 @@ module Physiqual
         end
 
         it 'has the correct base url' do
-          expect(response).to redirect_to /\A#{GoogleToken.oauth_site}#{GoogleToken.authorize_url}/
+          expect(response).to redirect_to (/\A#{GoogleToken.oauth_site}#{GoogleToken.authorize_url}/)
         end
 
         it 'adds the correct redirect url' do
           url = CGI.escape subject.callback_oauth_session_index_url(provider: GoogleToken.csrf_token)
-          expect(response).to redirect_to /redirect_uri=#{url}/
+          expect(response).to redirect_to (/redirect_uri=#{url}/)
         end
 
         it 'adds the correct state' do
-          expect(response).to redirect_to /state=#{GoogleToken.csrf_token}/
+          expect(response).to redirect_to (/state=#{GoogleToken.csrf_token}/)
         end
 
         it 'adds the correct scope' do
           GoogleToken.scope.split(' ').each do |scope|
-            expect(response).to redirect_to /#{CGI.escape scope}/
+            expect(response).to redirect_to (/#{CGI.escape scope}/)
           end
         end
       end
@@ -64,21 +64,21 @@ module Physiqual
         end
 
         it 'has the correct base url' do
-          expect(response).to redirect_to /\A#{FitbitToken.oauth_site}#{FitbitToken.authorize_url}/
+          expect(response).to redirect_to (/\A#{FitbitToken.oauth_site}#{FitbitToken.authorize_url}/)
         end
 
         it 'adds the correct redirect url' do
           url = CGI.escape subject.callback_oauth_session_index_url(provider: FitbitToken.csrf_token)
-          expect(response).to redirect_to /redirect_uri=#{url}/
+          expect(response).to redirect_to (/redirect_uri=#{url}/)
         end
 
         it 'adds the correct state' do
-          expect(response).to redirect_to /state=#{FitbitToken.csrf_token}/
+          expect(response).to redirect_to (/state=#{FitbitToken.csrf_token}/)
         end
 
         it 'adds the correct scope' do
           FitbitToken.scope.split(' ').each do |scope|
-            expect(response).to redirect_to /#{scope}/
+            expect(response).to redirect_to (/#{scope}/)
           end
         end
       end
