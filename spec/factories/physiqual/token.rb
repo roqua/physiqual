@@ -18,7 +18,7 @@ FactoryGirl.define do
     end
 
     factory :mock_token, traits: [:mock]
-    factory :fitbit_token, class: Physiqual::FitbitToken, traits: [:fitbit]
-    factory :google_token, class: Physiqual::GoogleToken, traits: [:google]
+    factory :fitbit_token, class: Physiqual::FitbitToken, parent: :physiqual_token, traits: [:fitbit]
+    factory :google_token, class: Physiqual::GoogleToken, parent: :physiqual_token, traits: [:google]
   end
 end

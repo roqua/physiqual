@@ -85,6 +85,8 @@ module Physiqual
     def token
       @token = current_user.physiqual_tokens.select { |x| x.class.csrf_token == params[:provider] }
       head 404 if @token.blank?
+
+      # @token should always have length == 1
       @token = @token.first
     end
 

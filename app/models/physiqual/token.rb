@@ -6,6 +6,7 @@ module Physiqual
     # validates :token, presence: true
     # validates :refresh_token, presence: true
     validates :physiqual_user_id, presence: true
+    validates_uniqueness_of :physiqual_user_id, scope: :type
     # validates :valid_until, presence: true
 
     def expired?

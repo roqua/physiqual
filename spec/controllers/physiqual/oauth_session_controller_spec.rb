@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# rubocop:disable Metrics/ModuleLength
 module Physiqual
   describe OauthSessionController do
     let(:user) { FactoryGirl.create(:physiqual_user) }
@@ -171,12 +171,92 @@ module Physiqual
     end
 
     describe 'token' do
+      let(:provider) { GoogleToken.csrf_token }
+
+      before :each do
+        expect(subject).to receive(:current_user).and_return(user)
+        subject.params[:provider] = provider
+      end
+
+      it 'should set the @ token variable with ' do
+        token = FactoryGirl.create(:google_token, physiqual_user: user)
+        subject.send(:token)
+        expect(subject.instance_variable_get(:@token)).to eq(token)
+      end
+
+      it 'should head 404 if no tokens are present' do
+        expect(subject).to receive(:head).with(404)
+        subject.send(:token)
+      end
+    end
+
+    describe 'provider_tokens' do
+      let(:google) { GoogleToken.csrf_token }
+      let(:fitbit) { FitbitToken.csrf_token }
+      let(:google_token) { FactoryGirl.build(:google_token, physiqual_user: user) }
+      let(:fitbit_token) { FactoryGirl.build(:fitbit_token, physiqual_user: user) }
+
+      before :each do
+        user.physiqual_tokens << google_token
+        user.physiqual_tokens << fitbit_token
+      end
+
+      it 'returns the fitbit token if fitbit is the provider' do
+        expect(subject).to receive(:current_user).and_return(user)
+        result = subject.send(:provider_tokens, google)
+        expect(result).to eq([google_token])
+      end
+
+      it 'returns the google token if google is the provider' do
+        expect(subject).to receive(:current_user).and_return(user)
+        result = subject.send(:provider_tokens, fitbit)
+        expect(result).to eq([fitbit_token])
+      end
+
+      it 'returns nil if the provider is different' do
+        expect(subject).to_not receive(:current_user)
+        result = subject.send(:provider_tokens, 'somethin-which-is-not-a-token')
+        expect(result).to eq(nil)
+      end
     end
 
     describe 'get_or_create_token' do
+      let(:google_token) { FactoryGirl.build(:google_token, physiqual_user: user) }
+      let(:fitbit_token) { FactoryGirl.build(:fitbit_token, physiqual_user: user) }
+
+      it 'returns the token if it exists' do
+        result = subject.send(:get_or_create_token, [google_token])
+        expect(result).to eq(google_token)
+      end
+
+      it 'creates a token with the correct class if it does not exist' do
+        tokens = user.google_tokens
+        result = subject.send(:get_or_create_token, tokens)
+        expect(result).to be_a(Token)
+        expect(result).to be_a(GoogleToken)
+
+        tokens = user.fitbit_tokens
+        result = subject.send(:get_or_create_token, tokens)
+        expect(result).to be_a(Token)
+        expect(result).to be_a(FitbitToken)
+      end
     end
 
     describe 'sanitize_params' do
+      it 'removes providers which are not correct' do
+        fake_provider = 'fake-provider'
+        subject.params[:provider] = fake_provider
+        subject.send(:sanitize_params)
+        expect(subject.params[:provider]).to be_nil
+      end
+
+      it 'leaves providers which are correct' do
+        provider = GoogleToken.csrf_token
+        subject.params[:provider] = provider
+        subject.send(:sanitize_params)
+        expect(subject.params[:provider]).to include(provider)
+      end
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength
