@@ -7,11 +7,11 @@ require 'physiqual/version'
 Gem::Specification.new do |s|
   s.name        = 'physiqual'
   s.version     = Physiqual::VERSION
-  s.authors     = ['Frank Blaauw']
-  s.email       = ['frank.blaauw@gmail.com']
-  s.homepage    = 'TODO'
-  s.summary     = 'TODO: Summary of Physiqual.'
-  s.description = 'TODO: Description of Physiqual.'
+  s.authors     = ['Frank Blaauw', 'Ando Emerencia', 'Maria Schenk']
+  s.email       = ['frank.blaauw@gmail.com', 'ando.emerencia@gmail.com', 'h.m.schenk@umcg.nl']
+  s.homepage    = 'http://physiqual.com'
+  s.summary     = 'Ruby Engine for merging various datasources with diary questionnaire data'
+  s.description = 'Ruby Engine for merging various datasources with diary questionnaire data'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
