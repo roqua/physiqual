@@ -3,6 +3,8 @@ require 'rails_helper'
 module Physiqual
   describe OauthSessionController do
     let(:user) { FactoryGirl.create(:physiqual_user) }
+    # routes { Physiqual::Engine.routes }
+
     describe 'before filters' do
       it 'calls the check_token method when calling index' do
         expect(subject).to receive(:check_token) { fail(StandardError, 'stop_execution') }
@@ -24,12 +26,6 @@ module Physiqual
       it 'heads 404 if no provider is given' do
         get :authorize
         expect(response.status).to eq(404)
-      end
-
-      it 'redirects to the correct google url' do
-        expect(subject).to receive(:current_user).and_return(user)
-        get :authorize, provider: GoogleToken.csrf_token
-        expect(response).to redirect_to('https://accounts.google.com/o/oauth2/auth?access_type=offline&approval_prompt=force&client_id=&redirect_uri=http%3A%2F%2Ftest.host%2Fphysiqual%2Foauth_session%2Fgoogle%2Fcallback&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.activity.read+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&state=google')
       end
 
       describe 'redirects to the correct google url' do

@@ -23,6 +23,10 @@ module EngineControllerPatch
 
   def process_action(action, parameters = nil, session = nil, flash = nil, method = 'GET')
     parameters ||= {}
-    process(action, method, parameters.merge!(use_route: :physiqual), session, flash)
+    if Rails::VERSION::MAJOR < 4
+      process(action, parameters.merge!(use_route: :physiqual), session, flash, method)
+    else
+      process(action, method, parameters.merge!(use_route: :physiqual), session, flash)
+    end
   end
 end

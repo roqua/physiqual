@@ -1,6 +1,13 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  ENV['HOST_URL'] = 'physiqual.dev'
+  ENV['HOST_PROTOCOL'] = 'http'
+  ENV['GOOGLE_CLIENT_ID'] = 'google_client_id'
+  ENV['GOOGLE_CLIENT_SECRET'] = 'google_client_secret'
+  ENV['FITBIT_CLIENT_ID'] = 'fitbit_client_id'
+  ENV['FITBIT_CLIENT_SECRET'] = 'fitbit_client_secret'
+
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
