@@ -1,7 +1,7 @@
-module Physiqual
-  require 'rails_helper'
+require 'rails_helper'
 
-  require 'shared_context_for_data_services'
+require 'shared_context_for_data_services'
+module Physiqual
   module BucketGenerators
     describe EquidistantBucketGenerator do
       let(:interval) { 6 }
@@ -27,6 +27,11 @@ module Physiqual
             expect(date.to_date).to eq current
             current += 1.day if ((index + 1) % measurements_per_day) == 0
           end
+        end
+
+        it 'should generate the correct number of buckets' do
+          # +1 because of the last day, which is not included
+          expect(@result.length).to eq(measurements_per_day * ((to.to_date - from.to_date).to_i + 1))
         end
 
         it 'should generate time buckets as expected' do

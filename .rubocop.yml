@@ -3,7 +3,9 @@ inherit_from: rubocop-todo.yml
 AllCops:
   Exclude:
     - 'config/**/*'
+    - 'spec/dummy/config/**/*'
     - 'db/**/*'
+    - 'spec/dummy/db/**/*'
     - 'script/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'

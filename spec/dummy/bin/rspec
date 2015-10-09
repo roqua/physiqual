@@ -4,6 +4,5 @@ begin
 rescue LoadError => e
   puts e
 end
-require_relative '../config/boot'
-require 'rake'
-Rake.application.run
+require 'bundler/setup'
+load Gem.bin_path('rspec-core', 'rspec')

@@ -32,8 +32,8 @@ module Physiqual
           service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
           service = DataServices::SummarizedDataService.new(service,
                                                             last_measurement_time,
-                                                            Physiqual.interval,
                                                             Physiqual.measurements_per_day,
+                                                            Physiqual.interval,
                                                             Physiqual.use_night)
 
           DataServices::CachedDataService.new service

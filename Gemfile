@@ -14,6 +14,7 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 gem 'pry'
 gem 'pry-byebug'
+gem 'ruby-debug-passenger'
 
 # Dummy gems
 group :development do

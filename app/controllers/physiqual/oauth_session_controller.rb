@@ -9,8 +9,7 @@ module Physiqual
 
     def index
       from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
-      # TODO: The below line should also be .beginning of day for 90 measurements. Now you get 93.
-      to = Time.new(2015, 9, 2).in_time_zone.end_of_day
+      to = Time.new(2015, 9, 1).in_time_zone.beginning_of_day
       # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
       # session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)
       # render json: DataServices::GoogleService.new(session).steps(from, to) and return
@@ -43,7 +42,7 @@ module Physiqual
     end
 
     def callback
-      Rails.logger.info @token
+      Rails.logger.info @token.inspect
       @token.retrieve_token!(params[:code], callback_oauth_session_index_url)
       redirect_to oauth_session_index_path state: params[:state]
     end
@@ -65,35 +64,49 @@ module Physiqual
     end
 
     def check_token
-      my_tokens = current_user.physiqual_tokens
-      if my_tokens.blank? || my_tokens.first.token.blank?
+      # my_tokens = current_user.physiqual_tokens
+      my_tokens = provider_tokens(params[:state])
+
+      if my_tokens.blank? || !my_tokens.first.complete?
         redirect_to authorize_oauth_session_index_path(provider: params[:state])
       else
-        my_tokens.each { |token| token.refresh! if token.expired? && token.complete? }
-        @token = my_tokens.first
+        # Refresh all tokens here?
+        current_user.physiqual_tokens.each { |token| token.refresh! if token.expired? && token.complete? }
       end
     end
 
     def set_token
-      if params[:provider] == GoogleToken.csrf_token
-        @token = current_user.google_tokens.create
-      elsif params[:provider] == FitbitToken.csrf_token
-        @token = current_user.fitbit_tokens.create
-      else
-        head 404
-      end
+      tokens = provider_tokens params[:provider]
+      head 404 and return if tokens.nil?
+      @token = get_or_create_token(tokens)
     end
 
     def token
       @token = current_user.physiqual_tokens.select { |x| x.class.csrf_token == params[:provider] }
       head 404 if @token.blank?
+
+      # @token should always have length == 1
       @token = @token.first
     end
 
-    private
+    def provider_tokens(provider)
+      tokens = nil
+      if provider == GoogleToken.csrf_token
+        tokens = current_user.google_tokens
+      elsif provider == FitbitToken.csrf_token
+        tokens = current_user.fitbit_tokens
+      end
+      tokens
+    end
+
+    def get_or_create_token(tokens)
+      return tokens.first unless tokens.blank?
+      tokens.create
+    end
 
     def sanitize_params
-      params[:provider] = %w(google fitbit).include?(params[:provider]) ? params[:provider] : nil
+      token_options = [GoogleToken.csrf_token, FitbitToken.csrf_token]
+      params[:provider] = token_options.include?(params[:provider]) ? params[:provider] : nil
     end
   end
 end
