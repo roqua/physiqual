@@ -30,6 +30,10 @@ module Physiqual
         from_cache(:activities) { data_service.activities(from, to) }
       end
 
+      def distance(from, to)
+        from_cache(:distance) { data_service.distance(from, to) }
+      end
+
       private
 
       def from_cache(type)

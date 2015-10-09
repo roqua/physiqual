@@ -25,6 +25,10 @@ module Physiqual
         fail 'Subclass does not implement calories method.'
       end
 
+      def distance(_from, _to)
+        fail 'Subclass does not implement distance method.'
+      end
+
       def activities(_from, _to)
         fail 'Subclass does not implement activities method.'
       end

@@ -17,12 +17,14 @@ var steps = [];
 var heart_rate = [];
 var activities = [];
 var calories = [];
+var distance = [];
 
 categories.forEach(function(date){
   heart_rate.push(values[date].heart_rate);
   steps.push(values[date].steps);
   activities.push(values[date].activities);
   calories.push(values[date].calories);
+  distance.push(values[date].distance);
 });
 
 var activity_counts = {};
@@ -73,6 +75,9 @@ $(function () {
     },{
       name: 'Heart rate',
       data: heart_rate
+    },{
+      name: 'Distance',
+      data: distance
     },{
       name: 'Calories',
       data: calories

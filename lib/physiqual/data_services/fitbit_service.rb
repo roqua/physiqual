@@ -14,10 +14,18 @@ module Physiqual
         @session.get('/profile.json')
       end
 
+      def distance(_from, _to)
+        fail Errors::NotSupportedError, 'Distance Not supported by fitbit!'
+        # resource = 'activities'
+        # activity = 'distance'
+        # activity_call(from, to, resource, activity)
+      end
+
       def heart_rate(from, to)
         resource = 'activities'
         activity = 'heart'
         activity_call(from, to, resource, activity).map do |hash|
+          Rails.logger.info hash
           { date_time_field => hash[date_time_field], values_field => [hash[values_field].first['restingHeartRate']] }
         end
       end
@@ -51,6 +59,9 @@ module Physiqual
       def activity_call(from, to, resource, subresource)
         from = from.strftime(DATE_FORMAT)
         to = to.strftime(DATE_FORMAT)
+        Rails.logger.info('Calling')
+        Rails.logger.info(resource)
+        Rails.logger.info(subresource)
         if @intraday
           result = intraday_summary(from, to, resource, subresource)
         else
@@ -67,7 +78,9 @@ module Physiqual
       def intraday_summary(from, to, resource, subresource)
         results = []
         (from.to_date..to.to_date).each do |date|
+          Rails.logger.info date
           data = @session.get("/#{resource}/#{subresource}/date/#{date}/1d/1min.json")
+          Rails.logger.info data
           results << process_intraday_entries(data["#{resource}-#{subresource}-intraday"], date)
         end
         results.flatten

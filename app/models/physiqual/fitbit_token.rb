@@ -36,7 +36,7 @@ module Physiqual
     end
 
     def self.authorize_url
-      '/oauth2/authorize'
+      'https://www.fitbit.com/oauth2/authorize'
     end
 
     def self.token_url
