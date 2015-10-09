@@ -1,12 +1,13 @@
 module Physiqual
   module DataServices
     class SummarizedDataService < DataServiceDecorator
-      def initialize(data_service, last_measurement_time, measurements_per_day, interval, use_night)
+      def initialize(data_service, last_measurement_time, measurements_per_day, interval,
+                     hours_before_first_measurement)
         super(data_service)
         @last_measurement_time = last_measurement_time
         @measurements_per_day = measurements_per_day
         @interval = interval
-        @use_night = use_night
+        @hours_before_first_measurement = hours_before_first_measurement
         @bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(measurements_per_day,
                                                                              interval,
                                                                              last_measurement_time)
@@ -103,7 +104,8 @@ module Physiqual
           break if current_bucket == buckets.size
 
           # Don't take the night into account
-          unless entry[date_time_field] > (buckets[current_bucket][date_time_field] - @interval.hours) || @use_night
+          unless entry[date_time_field] > (buckets[current_bucket][date_time_field] -
+                  @hours_before_first_measurement.hours)
             next
           end
           values = entry[values_field]

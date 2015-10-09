@@ -34,7 +34,7 @@ module Physiqual
                                                             last_measurement_time,
                                                             Physiqual.measurements_per_day,
                                                             Physiqual.interval,
-                                                            Physiqual.use_night)
+                                                            Physiqual.hours_before_first_measurement)
 
           DataServices::CachedDataService.new service
         end.compact
