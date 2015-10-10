@@ -14,16 +14,16 @@ module Physiqual
         bucket_start = -1
         bucket_end = -1
         result = []
-        while true do
+        loop do
           @measurements_per_day.times do |measurement_index|
-            if measurement_index == 0 then
+            if measurement_index == 0
               bucket_start = first_measurement_of_the_day
               bucket_end   = bucket_start + @hours_before_first_measurement.hours
             else
               bucket_start = bucket_end
               bucket_end   = bucket_start + @interval.hours
             end
-            return result if (bucket_end > to || bucket_end >= currently)
+            return result if bucket_end > to || bucket_end >= currently
             result << output_entry(bucket_start, bucket_end, [])
           end
           first_measurement_of_the_day += 1.day

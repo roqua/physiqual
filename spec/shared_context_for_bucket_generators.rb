@@ -12,7 +12,8 @@ module Physiqual
           expect(entry.keys).to include Physiqual::DataServices::DataService.new.date_time_start_field
           expect(entry.keys).to include Physiqual::DataServices::DataService.new.values_field
           expect(entry[Physiqual::DataServices::DataService.new.date_time_field]).to be_a ActiveSupport::TimeWithZone
-          expect(entry[Physiqual::DataServices::DataService.new.date_time_start_field]).to be_a ActiveSupport::TimeWithZone
+          expect(entry[Physiqual::DataServices::DataService.new.date_time_start_field]).to be_a(
+            ActiveSupport::TimeWithZone)
           expect(entry[Physiqual::DataServices::DataService.new.values_field]).to be_a Array
           expect(entry[Physiqual::DataServices::DataService.new.values_field].any? { |x| x.is_a? Array }).to be_falsey
         end
