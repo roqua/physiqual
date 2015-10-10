@@ -16,9 +16,9 @@ module Physiqual
       let(:service) { MockService.new(nil) }
       let(:subject) do
         SummarizedDataService.new(service,
-                                  last_measurement_time,
                                   measurements_per_day,
-                                  interval, interval) # use_night == false
+                                  interval,
+                                  interval) # use_night == false
       end
 
       it_behaves_like 'a data_service'
@@ -26,28 +26,22 @@ module Physiqual
 
       describe 'cluster_in_buckets' do
         let(:data) { service.steps(from, to) }
-        let(:from_subset) { (to - 1.day).beginning_of_day }
-        let(:to_subset) { (to - 1.day).end_of_day }
+        let(:from_subset) { (to - 1.day).change(hour: 10, min: 30) - interval.hours }
+        let(:to_subset) { (to - 1.day).change(hour: 22, min: 30) }
         let(:data_subset) { data.select! { |x| x[subject.date_time_field].to_date == (from_subset).to_date } }
 
         it 'should output the correct format' do
-          @result = subject.send(:cluster_in_buckets, data, from, to)
+          @result = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
           check_result_format(@result)
         end
 
         it 'should correctly cluster the data into buckets' do
           res = []
-
-          last_measuremnt_date_time = from_subset.change(hour: last_measurement_time.hour,
-                                                         min: last_measurement_time.min)
           (0...measurements_per_day).each do |meas|
-            beginn = last_measuremnt_date_time - ((meas + 1) * interval).hours
-            endd = last_measuremnt_date_time - (meas * interval).hours
+            beginn = from_subset + (meas * interval).hours
+            endd = from_subset + ((meas + 1) * interval).hours
             res << data.select { |x| x[subject.date_time_field] <= endd && x[subject.date_time_field] > beginn }
           end
-
-          # The results in this example are the other way around, reverse them
-          res.reverse!
 
           full_result = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
           res.each_with_index do |current_res, index|
@@ -62,14 +56,12 @@ module Physiqual
         describe 'should take the night flag into account' do
           before do
             subject = SummarizedDataService.new(service,
-                                                last_measurement_time,
                                                 measurements_per_day,
                                                 interval, hours_before_first_measurement)
             full_with_night = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
             @full_with_night = full_with_night.first[subject.values_field].sort
 
             subject = SummarizedDataService.new(service,
-                                                last_measurement_time,
                                                 measurements_per_day,
                                                 interval, interval)
             full_without_night = subject.send(:cluster_in_buckets, data, from_subset, to_subset)

@@ -8,8 +8,8 @@ module Physiqual
     before_filter :token, only: :callback
 
     def index
-      from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
-      to = Time.new(2015, 9, 1).in_time_zone.beginning_of_day
+      #from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
+      #to = Time.new(2015, 9, 1).in_time_zone.beginning_of_day
       # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
       # session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)
       # render json: DataServices::GoogleService.new(session).steps(from, to) and return
@@ -18,17 +18,20 @@ module Physiqual
       # render json: DataServices::GoogleService.new(session).sources and return
       # render json: DataServices::GoogleService.new(session).calories(from, to) and return
       # render json: DataServices::FitbitService.new(session).calories(from, to) and return
-      last_measurement_time = Time.now.change(hour: 22, min: 00)
+      #last_measurement_time = Time.now.change(hour: 22, min: 00)
       # measurements_per_day = 3
       # interval = 6
       # service = DataServices::FitbitService.new(current_user.fitbit_tokens.first)
       # render json: service.heart_rate(from, to) and return
       # render json: DataServices::SummarizedDataService.new(service,
       # last_measurement_time, measurements_per_day, interval, false).steps(from, to) and return
+
+      first_measurement = Time.new(2015, 8, 3, 10, 00).in_time_zone
+      number_of_days = 30
       respond_to do |format|
-        format.html { @values = Exporters::JsonExporter.new.export(current_user, last_measurement_time, from, to) }
-        format.json { render json: Exporters::JsonExporter.new.export(current_user, last_measurement_time, from, to) }
-        format.csv { render text: Exporters::CsvExporter.new.export(current_user, last_measurement_time, from, to) }
+        format.html { @values = Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
+        format.json { render json: Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
+        format.csv { render text: Exporters::CsvExporter.new.export(current_user, first_measurement, number_of_days) }
       end
       # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
       # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)

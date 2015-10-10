@@ -11,10 +11,10 @@ module Physiqual
       describe 'export' do
         before do
           allow_any_instance_of(Exporter)
-            .to receive(:export_data).with(user, last_measurement_time, from, to)
+            .to receive(:export_data).with(user, first_measurement, number_of_days)
             .and_return(mock_result)
 
-          @result = subject.export(user, last_measurement_time, from, to)
+          @result = subject.export(user, first_measurement, number_of_days)
         end
 
         it 'should respond with CSV' do
