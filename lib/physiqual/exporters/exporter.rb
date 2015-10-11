@@ -13,18 +13,18 @@ module Physiqual
         heart_rate = data_aggregator.heart_rate(from, to)
         steps = data_aggregator.steps(from, to)
         calories = data_aggregator.calories(from, to)
-        distance = data_aggregator.distance(from, to)
+        #distance = data_aggregator.distance(from, to)
 
         result = {}
         # TODO: Waarom index je dit op de dates steps en itereer je niet gewoon over alle dates?
-        steps.keys.each do |date|
+        heart_rate.keys.each do |date|
           result[date] = {}
           result[date][:heart_rate] = heart_rate[date]
           result[date][:steps] = steps[date]
           # result[date][:sleep] = steps[date]
           result[date][:calories] = calories[date]
           result[date][:activities] = activities[date]
-          result[date][:distance] = distance[date]
+          #result[date][:distance] = distance[date]
         end
         result
       end

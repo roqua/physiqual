@@ -8,14 +8,12 @@ module Physiqual
     before_filter :token, only: :callback
 
     def index
-      #frank = true
-      #if frank
-        #from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
-        #to = Time.new(2015, 9, 1).in_time_zone.beginning_of_day
-      #else
-        #from = Time.new(2015, 7, 15).in_time_zone.beginning_of_day
-        #to = Time.new(2015, 7, 17).in_time_zone.end_of_day
-      #end
+      frank = false
+      if frank
+        first_measurement = Time.new(2015, 8, 3, 10, 00).in_time_zone
+      else
+        first_measurement = Time.new(2015, 7, 15, 10, 30).in_time_zone
+      end
       # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
       # session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)
       # render json: DataServices::GoogleService.new(session).steps(from, to) and return
@@ -33,7 +31,6 @@ module Physiqual
       # render json: DataServices::SummarizedDataService.new(service,
       # last_measurement_time, measurements_per_day, interval, false).steps(from, to) and return
 
-      first_measurement = Time.new(2015, 8, 3, 10, 00).in_time_zone
       number_of_days = 30
       respond_to do |format|
         format.html { @values = Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }

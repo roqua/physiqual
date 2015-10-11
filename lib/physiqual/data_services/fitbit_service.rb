@@ -24,10 +24,12 @@ module Physiqual
       def heart_rate(from, to)
         resource = 'activities'
         activity = 'heart'
-        activity_call(from, to, resource, activity).map do |hash|
-          Rails.logger.info hash
-          { date_time_field => hash[date_time_field], values_field => [hash[values_field].first['restingHeartRate']] }
-        end
+        activity_call(from, to, resource, activity)
+        #activity_call(from, to, resource, activity).map do |hash|
+          #Rails.logger.info 'Hash:'
+          #Rails.logger.info hash
+          #{ date_time_field => hash[date_time_field], values_field => [hash[values_field].first['restingHeartRate']] }
+        #end
       end
 
       def sleep(from, to)
@@ -59,9 +61,6 @@ module Physiqual
       def activity_call(from, to, resource, subresource)
         from = from.strftime(DATE_FORMAT)
         to = to.strftime(DATE_FORMAT)
-        Rails.logger.info('Calling')
-        Rails.logger.info(resource)
-        Rails.logger.info(subresource)
         if @intraday
           result = intraday_summary(from, to, resource, subresource)
         else
@@ -78,9 +77,7 @@ module Physiqual
       def intraday_summary(from, to, resource, subresource)
         results = []
         (from.to_date..to.to_date).each do |date|
-          Rails.logger.info date
           data = @session.get("/#{resource}/#{subresource}/date/#{date}/1d/1min.json")
-          Rails.logger.info data
           results << process_intraday_entries(data["#{resource}-#{subresource}-intraday"], date)
         end
         results.flatten
@@ -92,7 +89,9 @@ module Physiqual
         entries.each do |entry|
           value = entry['value']
           value = convert_to_int_if_needed(value)
-          date = Time.parse("#{date} #{entry['time']}")
+
+          #TODO: DOes this generate the correct date?
+          date = Time.parse("#{date.to_date} #{entry['time']}")
           result << { date_time_field => date, values_field => [value] }
         end
         result
