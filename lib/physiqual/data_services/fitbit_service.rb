@@ -14,11 +14,10 @@ module Physiqual
         @session.get('/profile.json')
       end
 
-      def distance(_from, _to)
-        fail Errors::NotSupportedError, 'Distance Not supported by fitbit!'
-        # resource = 'activities'
-        # activity = 'distance'
-        # activity_call(from, to, resource, activity)
+      def distance(from, to)
+        resource = 'activities'
+        activity = 'distance'
+        activity_call(from, to, resource, activity)
       end
 
       def heart_rate(from, to)
@@ -26,9 +25,9 @@ module Physiqual
         activity = 'heart'
         activity_call(from, to, resource, activity)
         #activity_call(from, to, resource, activity).map do |hash|
-          #Rails.logger.info 'Hash:'
-          #Rails.logger.info hash
-          #{ date_time_field => hash[date_time_field], values_field => [hash[values_field].first['restingHeartRate']] }
+        #Rails.logger.info 'Hash:'
+        #Rails.logger.info hash
+        #{ date_time_field => hash[date_time_field], values_field => [hash[values_field].first['restingHeartRate']] }
         #end
       end
 
