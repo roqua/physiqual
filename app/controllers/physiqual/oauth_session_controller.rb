@@ -25,7 +25,7 @@ module Physiqual
       # render json: DataServices::GoogleService.new(session).sources and return
       # render json: DataServices::GoogleService.new(session).calories(from, to) and return
       # render json: DataServices::FitbitService.new(session).calories(from, to) and return
-      last_measurement_time = Time.now.change(hour: 24, min: 00)
+      last_measurement_time = Time.now.change(hour: 22, min: 00)
       # measurements_per_day = 3
       # interval = 6
       # service = DataServices::FitbitService.new(current_user.fitbit_tokens.first)
