@@ -9,7 +9,7 @@ module Physiqual
     mattr_accessor :host_protocol
     mattr_accessor :measurements_per_day
     mattr_accessor :interval
-    mattr_accessor :use_night
+    mattr_accessor :hours_before_first_measurement
     mattr_accessor :imputers
   end
 

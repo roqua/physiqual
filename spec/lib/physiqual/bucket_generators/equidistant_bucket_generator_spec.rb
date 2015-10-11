@@ -6,10 +6,10 @@ module Physiqual
     describe EquidistantBucketGenerator do
       let(:interval) { 6 }
       let(:measurements_per_day) { 3 }
-      let(:last_measurement_time) { Time.now.change(hour: 22, min: 30, usec: 0) }
-      let(:subject) { described_class.new(measurements_per_day, interval, last_measurement_time) }
+      let(:hours_before_first_measurement) { 6 }
+      let(:subject) { described_class.new(measurements_per_day, interval, hours_before_first_measurement) }
 
-      include_context 'data_service context'
+      include_context 'bucket_generator context'
 
       describe 'generate' do
         before do
@@ -35,7 +35,7 @@ module Physiqual
         end
 
         it 'should generate time buckets as expected' do
-          start = last_measurement_time - (interval * (measurements_per_day - 1)).hours
+          start = from + hours_before_first_measurement.hours
           current = start.dup
           @dates.each_with_index do |date, index|
             expect(date.hour).to eq current.hour

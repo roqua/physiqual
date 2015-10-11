@@ -21,7 +21,7 @@ module Physiqual
         it 'should create services for each correct token provided' do
           tokens = [FactoryGirl.build(:fitbit_token), FactoryGirl.build(:google_token)]
           expect(tokens.all?(&:complete?)).to be_truthy
-          result = subject.send(:create_services, tokens, last_measurement_time)
+          result = subject.send(:create_services, tokens)
           expect(result.length).to eq(2)
         end
 
@@ -31,7 +31,7 @@ module Physiqual
             allow(tokens.first).to receive(:complete?).and_return(false)
             expect(tokens.all?(&:complete?)).to be_falsey
 
-            @result = subject.send(:create_services, tokens, last_measurement_time)
+            @result = subject.send(:create_services, tokens)
           end
 
           it 'should not create a service for a token which is not complete' do

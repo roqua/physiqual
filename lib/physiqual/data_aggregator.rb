@@ -32,6 +32,7 @@ module Physiqual
     def sleep(from, to)
       result = retrieve_data_of_all_services { |service| service.sleep(from, to) }
       run_function(result) do |sleep_data, data_entry|
+        # TODO: Mist hier een .flatten?
         [sleep_data[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
          data_entry[DataServices::DataService::VALUES_FIELD]].max
       end

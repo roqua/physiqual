@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-require 'shared_context_for_data_services'
+require 'shared_context_for_bucket_generators'
 module Physiqual
   module BucketGenerators
     describe DailyBucketGenerator do
@@ -12,9 +12,10 @@ module Physiqual
           Time.zone.now.change(hour: 23, min: 30, usec: 0)
         ]
       end
-      let(:subject) { described_class.new(measurement_times) }
+      let(:hours_before_first_measurement) { 6 }
+      let(:subject) { described_class.new(measurement_times, hours_before_first_measurement) }
 
-      include_context 'data_service context'
+      include_context 'bucket_generator context'
 
       describe 'generate' do
         before do
