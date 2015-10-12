@@ -14,12 +14,19 @@ module Physiqual
       let(:measurements_per_day) { 3 }
       let(:hours_before_first_measurement) { 12 } # previously: use_night == true
       let(:service) { MockService.new(nil) }
-      let(:subject) do
-        SummarizedDataService.new(service,
-                                  measurements_per_day,
-                                  interval,
-                                  interval) # use_night == false
+      let(:bucket_generator_without_night) do
+        BucketGenerators::EquidistantBucketGenerator.new(
+          measurements_per_day,
+          interval,
+          interval)
       end
+      let(:bucket_generator_with_night) do
+        BucketGenerators::EquidistantBucketGenerator.new(
+          measurements_per_day,
+          interval,
+          hours_before_first_measurement)
+      end
+      let(:subject) { SummarizedDataService.new(service, bucket_generator_without_night) }
 
       it_behaves_like 'a data_service'
       include_context 'data_service context'
@@ -55,15 +62,11 @@ module Physiqual
 
         describe 'should take the night flag into account' do
           before do
-            subject = SummarizedDataService.new(service,
-                                                measurements_per_day,
-                                                interval, hours_before_first_measurement)
+            subject = SummarizedDataService.new(service, bucket_generator_with_night)
             full_with_night = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
             @full_with_night = full_with_night.first[subject.values_field].sort
 
-            subject = SummarizedDataService.new(service,
-                                                measurements_per_day,
-                                                interval, interval)
+            subject = SummarizedDataService.new(service, bucket_generator_without_night)
             full_without_night = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
             @full_without_night = full_without_night.first[subject.values_field].sort
           end

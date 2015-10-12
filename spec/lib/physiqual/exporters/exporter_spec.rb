@@ -16,12 +16,17 @@ module Physiqual
         before :each do
           allow(Physiqual).to receive(:interval).and_return(6)
           allow(Physiqual).to receive(:measurements_per_day).and_return(3)
+          allow(Physiqual).to receive(:hours_before_first_measurement).and_return(6)
         end
 
         it 'should create services for each correct token provided' do
           tokens = [FactoryGirl.build(:fitbit_token), FactoryGirl.build(:google_token)]
           expect(tokens.all?(&:complete?)).to be_truthy
-          result = subject.send(:create_services, tokens)
+          bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
+            Physiqual.measurements_per_day,
+            Physiqual.interval,
+            Physiqual.hours_before_first_measurement)
+          result = subject.send(:create_services, tokens, bucket_generator)
           expect(result.length).to eq(2)
         end
 
@@ -30,8 +35,11 @@ module Physiqual
           before do
             allow(tokens.first).to receive(:complete?).and_return(false)
             expect(tokens.all?(&:complete?)).to be_falsey
-
-            @result = subject.send(:create_services, tokens)
+            bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
+              Physiqual.measurements_per_day,
+              Physiqual.interval,
+              Physiqual.hours_before_first_measurement)
+            @result = subject.send(:create_services, tokens, bucket_generator)
           end
 
           it 'should not create a service for a token which is not complete' do

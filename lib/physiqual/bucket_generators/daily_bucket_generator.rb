@@ -16,7 +16,7 @@ module Physiqual
           @measurement_moments.each_with_index do |measurement, measurement_index|
             bucket_start = bucket_end
             bucket_end = date.to_time.change(hour: measurement.hour,
-                                             min: measurement.min).to_time.in_time_zone
+                                             min: measurement.min).in_time_zone
             bucket_start = bucket_end - @hours_before_first_measurement.hours if measurement_index == 0
 
             # Only use dates that are in the past
