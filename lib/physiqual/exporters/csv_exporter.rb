@@ -3,8 +3,8 @@ require 'csv'
 module Physiqual
   module Exporters
     class CsvExporter < Exporter
-      def export(user, last_measurement_time, from, to)
-        result = export_data(user, last_measurement_time, from, to)
+      def export(user, first_measurement, number_of_days)
+        result = export_data(user, first_measurement, number_of_days)
         Rails.logger.debug result
 
         csv_string = CSV.generate do |csv|

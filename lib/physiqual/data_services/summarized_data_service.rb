@@ -1,15 +1,9 @@
 module Physiqual
   module DataServices
     class SummarizedDataService < DataServiceDecorator
-      def initialize(data_service, last_measurement_time, measurements_per_day, interval, use_night)
+      def initialize(data_service, bucket_generator)
         super(data_service)
-        @last_measurement_time = last_measurement_time
-        @measurements_per_day = measurements_per_day
-        @interval = interval
-        @use_night = use_night
-        @bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(measurements_per_day,
-                                                                             interval,
-                                                                             last_measurement_time)
+        @bucket_generator = bucket_generator
       end
 
       def service_name
@@ -88,29 +82,27 @@ module Physiqual
         buckets = @bucket_generator.generate(from, to)
         current_bucket = 0
 
-        # Sort both arrays
-        buckets.sort_by! { |entry| entry[date_time_field] }
+        # Sort data array
         data.sort_by! { |entry| entry[date_time_field] }
 
         data.each do |entry|
           next unless entry[date_time_field]
 
-          # TODO: Binary search?
           while current_bucket < buckets.size && entry[date_time_field] > buckets[current_bucket][date_time_field]
             current_bucket += 1
           end
 
           break if current_bucket == buckets.size
 
-          # Don't take the night into account
-          unless entry[date_time_field] > (buckets[current_bucket][date_time_field] - @interval.hours) || @use_night
+          unless entry[date_time_field] > buckets[current_bucket][date_time_start_field]
             next
           end
           values = entry[values_field]
-          buckets[current_bucket][values_field] << values
-          # TODO: Should be no need to flatten the entire thing every time.
-          # TODO: Just flatten whatever you add before adding it and check that your concat works correctly.
-          buckets[current_bucket][values_field] = buckets[current_bucket][values_field].flatten
+          buckets[current_bucket][values_field].push(*values)
+        end
+        # remove the extra information
+        buckets.each_with_index do |_bucket, bucket_index|
+          buckets[bucket_index].delete(date_time_start_field)
         end
         buckets
       end

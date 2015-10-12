@@ -2,9 +2,8 @@ module Physiqual
   module Exporters
     shared_context 'exporter context' do
       let(:user) { FactoryGirl.create(:physiqual_user) }
-      let(:last_measurement_time) { Time.now.change(hour: 22, min: 00) }
-      let(:from) { Time.new(2015, 7, 4, 0, 0).in_time_zone }
-      let(:to) { Time.new(2015, 8, 4, 0, 0).in_time_zone }
+      let(:first_measurement) { Time.new(2015, 7, 4, 10, 0).in_time_zone }
+      let(:number_of_days) { 1 }
       let(:mock_result) do
         {
           '2015-08-03 10:00:00 +0200' => { heart_rate: 87.0, steps: 924, calories: 17, activities: 'Walking' },
