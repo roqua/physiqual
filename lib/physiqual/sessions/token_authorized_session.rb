@@ -1,19 +1,13 @@
 module Physiqual
   module Sessions
-    class TokenAuthorizedSession
+    class TokenAuthorizedSession < Session
       def initialize(token, base_uri)
         @base_uri = base_uri
         @header = { 'Authorization' => "Bearer #{token}" }
       end
 
       def get(path, params = {})
-        Rails.logger.debug "Calling #{@header}"
-        result = HTTParty.get(full_url_for(path),
-                              query: params,
-                              headers: @header)
-        Rails.logger.info result.inspect
-        Rails.logger.info result.headers.inspect
-        JSON.parse(result.body)
+        send_get(full_url_for(path), params, @header)
       end
 
       private
