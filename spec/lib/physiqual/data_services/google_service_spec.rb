@@ -14,6 +14,7 @@ module Physiqual
       it_behaves_like 'a data_service',       steps:          'data_services/google/steps',
                                               heart_rate:     'data_services/google/heart_rate',
                                               sleep:          'data_services/google/sleep',
+                                              distance:       'data_services/google/distance',
                                               activities:     'data_services/google/activities',
                                               calories:       'data_services/google/calories'
     end

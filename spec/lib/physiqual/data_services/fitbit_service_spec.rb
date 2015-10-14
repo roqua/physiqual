@@ -16,6 +16,7 @@ module Physiqual
                       steps:          'data_services/fitbit/steps',
                       heart_rate:     'data_services/fitbit/heart_rate',
                       sleep:          'data_services/fitbit/sleep',
+                      distance:       'data_services/fitbit/distance',
                       activities:     'data_services/fitbit/activities',
                       calories:       'data_services/fitbit/calories'
 
