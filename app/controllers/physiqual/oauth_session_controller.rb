@@ -75,7 +75,8 @@ module Physiqual
     end
 
     def email_not_found
-      render status: 404, plain: "ERROR: No user exists for the specified email address (or no email address was specified)."
+      render status: 404, plain: 'ERROR: No user exists for the specified email ' \
+                                 'address (or no email address was specified).'
     end
 
     def check_token
