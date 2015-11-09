@@ -7,6 +7,8 @@ module Physiqual
     before_filter :set_token, only: :authorize
     before_filter :token, only: :callback
 
+    rescue_from Errors::EmailNotFoundError, with: :email_not_found
+
     def index
       # from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
       # to = Time.new(2015, 9, 1).in_time_zone.beginning_of_day
@@ -54,16 +56,26 @@ module Physiqual
 
     def current_user
       return @current_user if @current_user
-      if params[:email] && User.find_by_email(params[:email]).id != session['user_id']
+      if params[:email] && check_email(params[:email]) && User.find_by_email(params[:email]).id != session['user_id']
         session.delete('user_id')
       end
       if session['user_id']
         @current_user ||= User.find(session['user_id'])
       else
+        check_email(params[:email])
         @current_user ||= User.find_by_email(params[:email])
         session['user_id'] = @current_user.id
       end
       @current_user
+    end
+
+    def check_email(email)
+      fail Errors::EmailNotFoundError unless User.find_by_email(email)
+      true
+    end
+
+    def email_not_found
+      render status: 404, plain: "ERROR: No user exists for the specified email address (or no email address was specified)."
     end
 
     def check_token

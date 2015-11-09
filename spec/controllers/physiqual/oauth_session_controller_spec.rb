@@ -84,6 +84,18 @@ module Physiqual
     end
 
     describe 'current_user' do
+      let(:provider) { GoogleToken.csrf_token }
+      it 'accepts a known email address' do
+        subject.params[:state] = provider
+        subject.params[:email] = user.email
+        subject.send(:current_user) # shouldn't raise anything
+      end
+
+      it 'does not accept an unknown email address' do
+        subject.params[:state] = provider
+        subject.params[:email] = 'test@example.com'
+        expect { subject.send(:current_user) }.to raise_error(Errors::EmailNotFoundError)
+      end
     end
 
     describe 'check_token' do
