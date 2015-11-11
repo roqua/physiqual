@@ -11,13 +11,13 @@ module Physiqual
         expect { get :index, email: user.email }.to raise_error('stop_execution')
       end
 
-      it 'calls the set_token when calling authorize' do
-        expect(subject).to receive(:set_token) { fail(StandardError, 'stop_execution') }
+      it 'calls the find_or_create_token method when calling authorize' do
+        expect(subject).to receive(:find_or_create_token) { fail(StandardError, 'stop_execution') }
         expect { get :authorize }.to raise_error('stop_execution')
       end
 
-      it 'calls the token when calling callback' do
-        expect(subject).to receive(:token) { fail(StandardError, 'stop_execution') }
+      it 'calls the find_token method when calling callback' do
+        expect(subject).to receive(:find_token) { fail(StandardError, 'stop_execution') }
         expect { get :callback }.to raise_error('stop_execution')
       end
     end
@@ -84,6 +84,18 @@ module Physiqual
     end
 
     describe 'current_user' do
+      let(:provider) { GoogleToken.csrf_token }
+      it 'accepts a known email address' do
+        subject.params[:state] = provider
+        subject.params[:email] = user.email
+        subject.send(:current_user) # shouldn't raise anything
+      end
+
+      it 'does not accept an unknown email address' do
+        subject.params[:state] = provider
+        subject.params[:email] = 'test@example.com'
+        expect { subject.send(:current_user) }.to raise_error(Errors::EmailNotFoundError)
+      end
     end
 
     describe 'check_token' do
@@ -142,15 +154,14 @@ module Physiqual
 
     describe 'set_token' do
       let(:provider) { GoogleToken.csrf_token }
-      it 'heads 404 if there is no provider' do
-        expect(subject).to receive(:head).with(404) { fail(StandardError, 'stop_execution') }
-        expect { subject.send(:set_token) }.to raise_error('stop_execution')
+      it 'raise an error if there is no provider' do
+        expect { subject.send(:find_or_create_token) }.to raise_error(Errors::ServiceProviderNotFoundError)
       end
 
       it 'sets a new token if there are no tokens' do
         expect(subject).to receive(:current_user).and_return(user)
         subject.params[:provider] = provider
-        subject.send(:set_token)
+        subject.send(:find_or_create_token)
         expect(subject.instance_variable_get(:@token)).to_not be_nil
       end
 
@@ -161,7 +172,7 @@ module Physiqual
         user.save!
 
         subject.params[:provider] = provider
-        subject.send(:set_token)
+        subject.send(:find_or_create_token)
         expect(subject.instance_variable_get(:@token)).to_not be_nil
       end
     end
@@ -176,13 +187,12 @@ module Physiqual
 
       it 'should set the @ token variable with ' do
         token = FactoryGirl.create(:google_token, physiqual_user: user)
-        subject.send(:token)
+        subject.send(:find_token)
         expect(subject.instance_variable_get(:@token)).to eq(token)
       end
 
-      it 'should head 404 if no tokens are present' do
-        expect(subject).to receive(:head).with(404)
-        subject.send(:token)
+      it 'should raise an error if no tokens are present' do
+        expect { subject.send(:find_token) }.to raise_error(Errors::NoTokenExistsError)
       end
     end
 
@@ -209,10 +219,11 @@ module Physiqual
         expect(result).to eq([fitbit_token])
       end
 
-      it 'returns nil if the provider is different' do
+      it 'raises an error if the provider is different' do
         expect(subject).to_not receive(:current_user)
-        result = subject.send(:provider_tokens, 'somethin-which-is-not-a-token')
-        expect(result).to eq(nil)
+        expect do
+          subject.send(:provider_tokens, 'somethin-which-is-not-a-provider')
+        end.to raise_error(Errors::ServiceProviderNotFoundError)
       end
     end
 
