@@ -8,7 +8,7 @@ module Physiqual
         elsif @service_provider == FitbitToken.csrf_token
           tokens = user.fitbit_tokens
         end
-        return {}.to_json unless !tokens.blank? && tokens.first.complete?
+        return [] unless !tokens.blank? && tokens.first.complete?
         token = tokens.first
         session = Sessions::TokenAuthorizedSession.new(token.token, token.class.base_uri)
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
