@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ModuleLength
 module Physiqual
   require 'rails_helper'
 
@@ -102,6 +103,42 @@ module Physiqual
           data = { 'test 1' => 1, 'test2' => 1, 'test3' => 1 }
           result = subject.send(:max_from_hash, data)
           expect(result).to eq('test 1')
+        end
+      end
+
+      describe 'representative_value_for_array' do
+        it 'always gets the highest value closest to the mean of the values on a tie' do
+          data = [1, 2, 3, 4]
+          result = subject.send(:representative_value_for_array, data)
+          expect(result).to eq(3)
+        end
+
+        it 'returns the highest value from a hash of values' do
+          data = [5]
+          result = subject.send(:representative_value_for_array, data)
+          expect(result).to eq(5)
+        end
+      end
+
+      describe 'closest_value' do
+        it 'returns the value when both values are the same' do
+          result = subject.send(:closest_value, 3, 3, 3)
+          expect(result).to eq(3)
+        end
+
+        it 'returns the larger value if the values are equidistant from mean' do
+          result = subject.send(:closest_value, 4, 3, 3.5)
+          expect(result).to eq(4)
+        end
+
+        it 'returns the smaller value if it is closer to the mean' do
+          result = subject.send(:closest_value, 4, 3, 3.4)
+          expect(result).to eq(3)
+        end
+
+        it 'returns the larger value if it is closer to the mean' do
+          result = subject.send(:closest_value, 4, 3, 3.7)
+          expect(result).to eq(4)
         end
       end
 
@@ -224,3 +261,4 @@ module Physiqual
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength

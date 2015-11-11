@@ -79,6 +79,10 @@ module Physiqual
         return nil unless provided_hash.max
         max_values = provided_hash.map { |key, v| key if v == provided_hash.values.max }.compact
         return max_values.first if max_values.any? { |elem| elem.is_a? String }
+        representative_value_for_array(max_values)
+      end
+
+      def representative_value_for_array(max_values)
         max_values.sort!
         number_of_elements = max_values.length
         average_max_value = max_values.sum.to_f / number_of_elements
