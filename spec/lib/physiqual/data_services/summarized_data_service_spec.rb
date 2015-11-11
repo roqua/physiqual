@@ -80,10 +80,10 @@ module Physiqual
       end
 
       describe 'max_from_hash' do
-        it 'always gets the median max value on a tie' do
+        it 'always gets the highest value closest to the mean of the max values on a tie' do
           data = { 1 => 1, 2 => 1, 3 => 1, 4 => 1 }
           result = subject.send(:max_from_hash, data)
-          expect(result).to eq(2.5)
+          expect(result).to eq(3)
         end
 
         it 'returns the highest value from a hash of values' do

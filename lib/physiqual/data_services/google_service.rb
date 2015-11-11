@@ -1,6 +1,6 @@
 module Physiqual
   module DataServices
-    # rubocop:disable Metrics/ClassLength, Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength
     class GoogleService < DataService
       def initialize(session)
         @session = session
@@ -218,6 +218,6 @@ module Physiqual
         activities[number]
       end
     end
-    # rubocop:enable Metrics/ClassLength, Metrics/MethodLength
+    # rubocop:enable Metrics/MethodLength
   end
 end

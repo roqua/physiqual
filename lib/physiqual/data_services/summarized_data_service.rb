@@ -70,12 +70,38 @@ module Physiqual
       end
 
       def max_from_hash(provided_hash)
+        # The returned value is the maximum of the "soft histogram" technique.
+        # In case of a tie, we choose the value that lies closest to their mean.
+        # When there are two such values, we return the maximum of the two.
+        #
+        # This guarantees that we always return a value that was measured and
+        # not the result of intrapolation.
         return nil unless provided_hash.max
         max_values = provided_hash.map { |key, v| key if v == provided_hash.values.max }.compact
+        return max_values.first if max_values.any? { |elem| elem.is_a? String }
         max_values.sort!
         number_of_elements = max_values.length
-        return max_values.first if max_values.any? { |elem| elem.is_a? String }
-        (max_values[(number_of_elements - 1) / 2] + max_values[number_of_elements / 2]) / 2.0
+        average_max_value = max_values.sum.to_f / number_of_elements
+        largest_value_smaller_than_mean = max_values[0]
+        smallest_value_larger_than_mean = max_values[-1]
+        number_of_elements.times do |i|
+          largest_value_smaller_than_mean = max_values[i] if max_values[i] < average_max_value
+          smallest_value_larger_than_mean = max_values[number_of_elements - i - 1] if
+                  max_values[number_of_elements - i - 1] >= average_max_value
+        end
+        closest_value(smallest_value_larger_than_mean, largest_value_smaller_than_mean, average_max_value)
+      end
+
+      def closest_value(smallest_value_larger_than_mean, largest_value_smaller_than_mean, average_max_value)
+        if (smallest_value_larger_than_mean - largest_value_smaller_than_mean).abs < 1e-6
+          smallest_value_larger_than_mean
+        elsif smallest_value_larger_than_mean - average_max_value == average_max_value - largest_value_smaller_than_mean
+          smallest_value_larger_than_mean
+        elsif smallest_value_larger_than_mean - average_max_value > average_max_value - largest_value_smaller_than_mean
+          largest_value_smaller_than_mean
+        else
+          smallest_value_larger_than_mean
+        end
       end
 
       def cluster_in_buckets(data, from, to)
