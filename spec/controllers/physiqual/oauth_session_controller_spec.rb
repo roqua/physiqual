@@ -11,12 +11,12 @@ module Physiqual
         expect { get :index, email: user.email }.to raise_error('stop_execution')
       end
 
-      it 'calls the set_token when calling authorize' do
+      it 'calls the find_or_create_token method when calling authorize' do
         expect(subject).to receive(:find_or_create_token) { fail(StandardError, 'stop_execution') }
         expect { get :authorize }.to raise_error('stop_execution')
       end
 
-      it 'calls the token when calling callback' do
+      it 'calls the find_token method when calling callback' do
         expect(subject).to receive(:find_token) { fail(StandardError, 'stop_execution') }
         expect { get :callback }.to raise_error('stop_execution')
       end
