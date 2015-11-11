@@ -84,27 +84,37 @@ module Physiqual
 
       def representative_value_for_array(max_values)
         max_values.sort!
-        number_of_elements = max_values.length
-        average_max_value = max_values.sum.to_f / number_of_elements
-        largest_value_smaller_than_mean = max_values[0]
-        smallest_value_larger_than_mean = max_values[-1]
-        number_of_elements.times do |i|
-          largest_value_smaller_than_mean = max_values[i] if max_values[i] < average_max_value
-          smallest_value_larger_than_mean = max_values[number_of_elements - i - 1] if
-                  max_values[number_of_elements - i - 1] >= average_max_value
-        end
-        closest_value(smallest_value_larger_than_mean, largest_value_smaller_than_mean, average_max_value)
+        average_max_value = max_values.sum.to_f / max_values.size
+        lower_bound, upper_bound = lower_and_upper_bounds(max_values, average_max_value)
+        closest_value(max_values[lower_bound], max_values[upper_bound], average_max_value)
       end
 
-      def closest_value(smallest_value_larger_than_mean, largest_value_smaller_than_mean, average_max_value)
-        if (smallest_value_larger_than_mean - largest_value_smaller_than_mean).abs < 1e-6
-          smallest_value_larger_than_mean
-        elsif smallest_value_larger_than_mean - average_max_value == average_max_value - largest_value_smaller_than_mean
-          smallest_value_larger_than_mean
-        elsif smallest_value_larger_than_mean - average_max_value > average_max_value - largest_value_smaller_than_mean
-          largest_value_smaller_than_mean
+      def lower_and_upper_bounds(arr, value)
+        return [0, 0] if arr.size == 1
+        return [0, 0] if value <= arr[0] # does not occur, included for correctness only
+        return [arr.size - 1, arr.size - 1] if value > arr[-1] # does not occur, included for correctness only
+        l = 0
+        r = arr.size - 1
+        while l + 1 != r
+          m = (l + r) >> 1
+          if arr[m] >= value
+            r = m
+          else
+            l = m
+          end
+        end
+        [l, r]
+      end
+
+      def closest_value(lower_bound, upper_bound, average_max_value)
+        if (upper_bound - lower_bound).abs < 1e-6
+          upper_bound
+        elsif upper_bound - average_max_value == average_max_value - lower_bound
+          upper_bound
+        elsif upper_bound - average_max_value > average_max_value - lower_bound
+          lower_bound
         else
-          smallest_value_larger_than_mean
+          upper_bound
         end
       end
 
