@@ -8,6 +8,8 @@ module Physiqual
     before_filter :token, only: :callback
 
     rescue_from Errors::EmailNotFoundError, with: :email_not_found
+    rescue_from Errors::NoTokenExistsError, with: :no_token_exists
+    rescue_from Errors::ServiceProviderNotFoundError, with: :service_provider_not_found
 
     def index
       # from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
@@ -79,6 +81,16 @@ module Physiqual
                                  'address (or no email address was specified).'
     end
 
+    def no_token_exists
+      render status: 404, plain: 'ERROR: No token of the specified service ' \
+                                 'provider exists for the current user.'
+    end
+
+    def service_provider_not_found
+      render status: 404, plain: 'ERROR: The specified service provider does not exist ' \
+                                 '(or no service provider was specified).'
+    end
+
     def check_token
       # my_tokens = current_user.physiqual_tokens
       my_tokens = provider_tokens(params[:state])
@@ -92,17 +104,16 @@ module Physiqual
     end
 
     def set_token
+      # TODO: rename this method to find_or_create_token
       tokens = provider_tokens params[:provider]
-      head 404 and return if tokens.nil?
       @token = get_or_create_token(tokens)
     end
 
     def token
-      @token = current_user.physiqual_tokens.select { |x| x.class.csrf_token == params[:provider] }
-      head 404 if @token.blank?
-
-      # @token should always have length == 1
-      @token = @token.first
+      # TODO: rename this method to find_token
+      tokens = provider_tokens params[:provider]
+      fail Errors::NoTokenExistsError if tokens.blank?
+      @token = tokens.first
     end
 
     def provider_tokens(provider)
@@ -111,6 +122,8 @@ module Physiqual
         tokens = current_user.google_tokens
       elsif provider == FitbitToken.csrf_token
         tokens = current_user.fitbit_tokens
+      else
+        fail Errors::ServiceProviderNotFoundError
       end
       tokens
     end

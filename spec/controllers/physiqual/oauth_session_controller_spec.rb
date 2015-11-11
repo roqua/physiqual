@@ -154,9 +154,8 @@ module Physiqual
 
     describe 'set_token' do
       let(:provider) { GoogleToken.csrf_token }
-      it 'heads 404 if there is no provider' do
-        expect(subject).to receive(:head).with(404) { fail(StandardError, 'stop_execution') }
-        expect { subject.send(:set_token) }.to raise_error('stop_execution')
+      it 'raise an error if there is no provider' do
+        expect { subject.send(:set_token) }.to raise_error(Errors::ServiceProviderNotFoundError)
       end
 
       it 'sets a new token if there are no tokens' do
@@ -192,9 +191,8 @@ module Physiqual
         expect(subject.instance_variable_get(:@token)).to eq(token)
       end
 
-      it 'should head 404 if no tokens are present' do
-        expect(subject).to receive(:head).with(404)
-        subject.send(:token)
+      it 'should raise an error if no tokens are present' do
+        expect { subject.send(:token) }.to raise_error(Errors::NoTokenExistsError)
       end
     end
 
@@ -221,10 +219,11 @@ module Physiqual
         expect(result).to eq([fitbit_token])
       end
 
-      it 'returns nil if the provider is different' do
+      it 'raises an error if the provider is different' do
         expect(subject).to_not receive(:current_user)
-        result = subject.send(:provider_tokens, 'somethin-which-is-not-a-token')
-        expect(result).to eq(nil)
+        expect do
+          subject.send(:provider_tokens, 'somethin-which-is-not-a-provider')
+        end.to raise_error(Errors::ServiceProviderNotFoundError)
       end
     end
 
