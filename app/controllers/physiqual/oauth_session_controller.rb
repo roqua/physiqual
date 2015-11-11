@@ -2,6 +2,7 @@ require 'oauth2'
 module Physiqual
   class OauthSessionController < ApplicationController
     before_filter :sanitize_params, only: [:authorize, :callback]
+    before_filter :sanitize_export_params, only: [:index]
 
     before_filter :check_token, only: :index
     before_filter :find_or_create_token, only: :authorize
@@ -36,6 +37,8 @@ module Physiqual
         format.html { @values = Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
         format.json { render json: Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
         format.csv { render text: Exporters::CsvExporter.new.export(current_user, first_measurement, number_of_days) }
+        format.raw { render json: Exporters::RawExporter.new.export(current_user, first_measurement, number_of_days,
+                                                                    params[:service_provider], params[:data_source]) }
       end
       # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
       # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
@@ -133,6 +136,13 @@ module Physiqual
     def sanitize_params
       token_options = [GoogleToken.csrf_token, FitbitToken.csrf_token]
       params[:provider] = token_options.include?(params[:provider]) ? params[:provider] : nil
+    end
+
+    def sanitize_export_params
+      service_provider_options = [GoogleToken.csrf_token, FitbitToken.csrf_token]
+      params[:service_provider] = service_provider_options.include?(params[:service_provider]) ? params[:service_provider] : nil
+      data_source_options = ['heart_rate', 'calories', 'steps', 'activities', 'sleep']
+      params[:data_source] = data_source_options.include?(params[:data_source]) ? params[:data_source] : nil
     end
   end
 end
