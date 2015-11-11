@@ -4,8 +4,8 @@ module Physiqual
     before_filter :sanitize_params, only: [:authorize, :callback]
 
     before_filter :check_token, only: :index
-    before_filter :set_token, only: :authorize
-    before_filter :token, only: :callback
+    before_filter :find_or_create_token, only: :authorize
+    before_filter :find_token, only: :callback
 
     rescue_from Errors::EmailNotFoundError, with: :email_not_found
     rescue_from Errors::NoTokenExistsError, with: :no_token_exists
@@ -92,7 +92,6 @@ module Physiqual
     end
 
     def check_token
-      # my_tokens = current_user.physiqual_tokens
       my_tokens = provider_tokens(params[:state])
 
       if my_tokens.blank? || !my_tokens.first.complete?
@@ -103,14 +102,12 @@ module Physiqual
       end
     end
 
-    def set_token
-      # TODO: rename this method to find_or_create_token
+    def find_or_create_token
       tokens = provider_tokens params[:provider]
       @token = get_or_create_token(tokens)
     end
 
-    def token
-      # TODO: rename this method to find_token
+    def find_token
       tokens = provider_tokens params[:provider]
       fail Errors::NoTokenExistsError if tokens.blank?
       @token = tokens.first
