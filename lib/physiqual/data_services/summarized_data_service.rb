@@ -107,7 +107,7 @@ module Physiqual
       end
 
       def closest_value(lower_bound, upper_bound, average_max_value)
-        if (upper_bound - lower_bound).abs < 1e-6
+        if upper_bound == lower_bound
           upper_bound
         elsif upper_bound - average_max_value == average_max_value - lower_bound
           upper_bound
