@@ -1,113 +1,7 @@
 module Physiqual
   module DataServices
-    # rubocop:disable Metrics/MethodLength
     class GoogleService < DataService
-      def initialize(session)
-        @session = session
-      end
-
-      def service_name
-        GoogleToken.csrf_token
-      end
-
-      def sources
-        @datasources = @session.get('/dataSources')
-        @datasources = @datasources['dataSource'].map { |x| [x['dataType']['name'], x['dataStreamId']] }
-        @datasources
-      end
-
-      def heart_rate(from, to)
-        heart_rate_url = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'
-        activity_data(from, to, heart_rate_url, 'fpVal')
-      end
-
-      def steps(from, to)
-        steps_url = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
-        activity_data(from, to, steps_url, 'intVal')
-      end
-
-      def activities(from, to)
-        activity_url = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-        activity_data(from, to, activity_url, 'intVal') { |value| convert_number_to_activity(value) }
-      end
-
-      def sleep(from, to)
-        sleep_url = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-
-        from_nanos = convert_time_to_nanos(from)
-        to_nanos = convert_time_to_nanos(to)
-        res = access_datasource(sleep_url, from_nanos, to_nanos)
-
-        return [] if res.blank?
-        res = res['point']
-        results = []
-        results_hash = Hash.new(0)
-        res.each do |entry|
-          # 72 = sleeping
-          next unless entry['value'].first['intVal'] == 72
-          start = (entry['startTimeNanos'].to_i / 10e8).to_i
-          endd = (entry['endTimeNanos'].to_i / 10e8).to_i
-          actual_date = Time.at(endd).in_time_zone.beginning_of_day
-          results_hash[actual_date] += (endd - start) / 60
-        end
-
-        results_hash.each do |date, value|
-          results << { date_time_field => date, values_field => [value] }
-        end
-        results
-      end
-
-      def calories(from, to)
-        calories_url = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-        activity_data(from, to, calories_url, 'intVal')
-      end
-
-      def distance(from, to)
-        distance_url = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'
-        activity_data(from, to, distance_url, 'fpVal')
-      end
-
-      private
-
-      def activity_data(from, to, url, value_type)
-        from_nanos = convert_time_to_nanos(from)
-        to_nanos = convert_time_to_nanos(to)
-        res = access_datasource(url, from_nanos, to_nanos)
-        res = res['point']
-        return [] if res.blank?
-        results_hash = Hash.new(0)
-
-        res.each do |entry|
-          start = (entry['startTimeNanos'].to_i / 10e8).to_i
-          endd = (entry['endTimeNanos'].to_i / 10e8).to_i
-          actual_timestep = Time.at((start + endd) / 2)
-
-          # If the current timestep is higher than the final timestep, don't include it
-          next if actual_timestep > to
-          value = entry['value'].first[value_type].to_i
-          results_hash[actual_timestep] += value
-        end
-        results = []
-
-        results_hash.each do |date, value|
-          results << { date_time_field => date, values_field => [(block_given? ? yield(value) : value)] }
-        end
-        results
-      end
-
-      def access_datasource(id, from, to)
-        @session.get("/dataSources/#{id}/datasets/#{from}-#{to}")
-      end
-
-      def convert_time_to_nanos(time)
-        length = 19
-        time = "#{time.to_i}"
-        time = "#{time}#{('0' * (length - time.length))}"
-        time
-      end
-
-      def convert_number_to_activity(number)
-        activities =
+      ACTIVITIES =
           { 9 => 'Aerobics',
             10 => 'Badminton',
             11 => 'Baseball',
@@ -220,9 +114,109 @@ module Physiqual
             100 => 'Yoga',
             101 => 'Zumba' }
 
-        activities[number]
+      def initialize(session)
+        @session = session
+      end
+
+      def service_name
+        GoogleToken.csrf_token
+      end
+
+      def sources
+        @datasources = @session.get('/dataSources')
+        @datasources = @datasources['dataSource'].map { |x| [x['dataType']['name'], x['dataStreamId']] }
+        @datasources
+      end
+
+      def heart_rate(from, to)
+        heart_rate_url = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'
+        activity_data(from, to, heart_rate_url, 'fpVal')
+      end
+
+      def steps(from, to)
+        steps_url = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
+        activity_data(from, to, steps_url, 'intVal')
+      end
+
+      def activities(from, to)
+        activity_url = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
+        activity_data(from, to, activity_url, 'intVal') { |value| ACTIVITIES(value) }
+      end
+
+      def sleep(from, to)
+        sleep_url = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
+
+        from_nanos = convert_time_to_nanos(from)
+        to_nanos = convert_time_to_nanos(to)
+        res = access_datasource(sleep_url, from_nanos, to_nanos)
+
+        return [] if res.blank?
+        res = res['point']
+        results = []
+        results_hash = Hash.new(0)
+        res.each do |entry|
+          # 72 = sleeping
+          next unless entry['value'].first['intVal'] == 72
+          start = (entry['startTimeNanos'].to_i / 10e8).to_i
+          endd = (entry['endTimeNanos'].to_i / 10e8).to_i
+          actual_date = Time.at(endd).in_time_zone.beginning_of_day
+          results_hash[actual_date] += (endd - start) / 60
+        end
+
+        results_hash.each do |date, value|
+          results << { date_time_field => date, values_field => [value] }
+        end
+        results
+      end
+
+      def calories(from, to)
+        calories_url = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
+        activity_data(from, to, calories_url, 'intVal')
+      end
+
+      def distance(from, to)
+        distance_url = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'
+        activity_data(from, to, distance_url, 'fpVal')
+      end
+
+      private
+
+      def activity_data(from, to, url, value_type)
+        from_nanos = convert_time_to_nanos(from)
+        to_nanos = convert_time_to_nanos(to)
+        res = access_datasource(url, from_nanos, to_nanos)
+        res = res['point']
+        return [] if res.blank?
+        results_hash = Hash.new(0)
+
+        res.each do |entry|
+          start = (entry['startTimeNanos'].to_i / 10e8).to_i
+          endd = (entry['endTimeNanos'].to_i / 10e8).to_i
+          actual_timestep = Time.at((start + endd) / 2)
+
+          # If the current timestep is higher than the final timestep, don't include it
+          next if actual_timestep > to
+          value = entry['value'].first[value_type].to_i
+          results_hash[actual_timestep] += value
+        end
+        results = []
+
+        results_hash.each do |date, value|
+          results << { date_time_field => date, values_field => [(block_given? ? yield(value) : value)] }
+        end
+        results
+      end
+
+      def access_datasource(id, from, to)
+        @session.get("/dataSources/#{id}/datasets/#{from}-#{to}")
+      end
+
+      def convert_time_to_nanos(time)
+        length = 19
+        time = "#{time.to_i}"
+        time = "#{time}#{('0' * (length - time.length))}"
+        time
       end
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end
