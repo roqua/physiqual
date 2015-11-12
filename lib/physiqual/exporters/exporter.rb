@@ -34,6 +34,7 @@ module Physiqual
         heart_rate = data_aggregator.heart_rate(from, to)
         steps = data_aggregator.steps(from, to)
         calories = data_aggregator.calories(from, to)
+        distance = data_aggregator.distance(from, to)
 
         result = {}
         buckets.each do |bucket|
@@ -44,6 +45,7 @@ module Physiqual
           # result[date][:sleep] = steps[date]
           result[date][:calories] = calories[date]
           result[date][:activities] = activities[date]
+          result[date][:distance] = distance[date]
         end
         result
       end

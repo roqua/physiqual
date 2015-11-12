@@ -63,6 +63,10 @@ module Physiqual
       def steps(from, to)
         generate_time_series(from, to)
       end
+
+      def distance(from, to)
+        generate_time_series(from, to)
+      end
       # rubocop:enable Metrics/MethodLength
       #
 

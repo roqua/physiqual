@@ -62,6 +62,11 @@ module Physiqual
         activity_data(from, to, calories_url, 'intVal')
       end
 
+      def distance(from, to)
+        distance_url = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'
+        activity_data(from, to, distance_url, 'fpVal')
+      end
+
       private
 
       def activity_data(from, to, url, value_type)

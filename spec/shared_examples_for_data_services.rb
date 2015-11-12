@@ -41,11 +41,26 @@ module Physiqual
           @result == false ? test.skip : test.run
         end
 
-        it 'returns the activities in the correct format' do
+        it 'returns the sleep in the correct format' do
           check_result_format(@result)
         end
 
-        xit 'gets the activities from the correct date till the correct date' do
+        it 'gets the sleep from the correct date till the correct date' do
+          check_start_end_date(@result, from, to)
+        end
+      end
+
+      describe 'distance' do
+        around(:each) do |test|
+          @result = run_with_vcr(vcrs, :distance) { subject.distance(from, to) }
+          @result == false ? test.skip : test.run
+        end
+
+        it 'returns the distance in the correct format' do
+          check_result_format(@result)
+        end
+
+        it 'gets the distance from the correct date till the correct date' do
           check_start_end_date(@result, from, to)
         end
       end

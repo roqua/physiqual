@@ -5,6 +5,7 @@ module Physiqual
       let(:to) { Time.new(2015, 8, 4, 0, 0).in_time_zone }
       def check_result_format(result)
         expect(result).to be_a Array
+        return true if result.nil?
         result.each do |entry|
           expect(entry).to be_a Hash
           expect(entry.keys.length).to eq 2

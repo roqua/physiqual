@@ -28,6 +28,11 @@ module Physiqual
         sum_values(cluster_in_buckets(calories_measured, from, to))
       end
 
+      def distance(from, to)
+        distance = data_service.distance(from, to)
+        sum_values(cluster_in_buckets(distance, from, to))
+      end
+
       def steps(from, to)
         steps = data_service.steps(from, to)
         sum_values(cluster_in_buckets(steps, from, to))

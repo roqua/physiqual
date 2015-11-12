@@ -12,25 +12,18 @@ module Physiqual
     rescue_from Errors::ServiceProviderNotFoundError, with: :service_provider_not_found
 
     def index
-      # from = Time.new(2015, 8, 3).in_time_zone.beginning_of_day
-      # to = Time.new(2015, 9, 1).in_time_zone.beginning_of_day
+      frank = false
+      if frank
+        first_measurement = Time.new(2015, 8, 3, 10, 00).in_time_zone
+      else
+        first_measurement = Time.new(2015, 7, 15, 10, 30).in_time_zone
+      end
       # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
       # session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)
-      # render json: DataServices::GoogleService.new(session).steps(from, to) and return
-      # render json: DataServices::GoogleService.new(session).sleep(20.days.ago.beginning_of_day.in_time_zone,
-      # Time.zone.now) and return
-      # render json: DataServices::GoogleService.new(session).sources and return
-      # render json: DataServices::GoogleService.new(session).calories(from, to) and return
-      # render json: DataServices::FitbitService.new(session).calories(from, to) and return
-      # last_measurement_time = Time.now.change(hour: 22, min: 00)
-      # measurements_per_day = 3
-      # interval = 6
-      # service = DataServices::FitbitService.new(current_user.fitbit_tokens.first)
-      # render json: service.heart_rate(from, to) and return
-      # render json: DataServices::SummarizedDataService.new(service,
-      # last_measurement_time, measurements_per_day, interval, false).steps(from, to) and return
 
-      first_measurement = Time.new(2015, 8, 3, 10, 00).in_time_zone
+      # render json: DataServices::GoogleService.new(session).steps(from, to) and return
+      # render json: DataServices::FitbitService.new(session).calories(from, to) and return
+
       number_of_days = 30
       respond_to do |format|
         format.html { @values = Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }

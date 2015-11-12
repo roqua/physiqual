@@ -60,7 +60,7 @@ module Physiqual
         end
 
         it 'has the correct base url' do
-          expect(response).to redirect_to(/\A#{FitbitToken.oauth_site}#{FitbitToken.authorize_url}/)
+          expect(response).to redirect_to(/\A#{FitbitToken.authorize_url}/)
         end
 
         it 'adds the correct redirect url' do
