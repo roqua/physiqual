@@ -8,12 +8,7 @@ module Physiqual
       end
 
       def export_data(user, first_measurement, number_of_days)
-        tokens = []
-        if @service_provider == GoogleToken.csrf_token
-          tokens = user.google_tokens
-        elsif @service_provider == FitbitToken.csrf_token
-          tokens = user.fitbit_tokens
-        end
+        tokens = Token.provider_tokens(@service_provider, user)
         return [] unless !tokens.blank? && tokens.first.complete?
         token = tokens.first
         session = Sessions::TokenAuthorizedSession.new(token.token, token.class.base_uri)
