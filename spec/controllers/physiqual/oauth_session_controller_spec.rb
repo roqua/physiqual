@@ -1,5 +1,4 @@
 require 'rails_helper'
-# rubocop:disable Metrics/ModuleLength
 module Physiqual
   describe OauthSessionController do
     let(:user) { FactoryGirl.create(:physiqual_user) }
@@ -154,8 +153,15 @@ module Physiqual
 
     describe 'set_token' do
       let(:provider) { GoogleToken.csrf_token }
+
       it 'raise an error if there is no provider' do
+        expect(subject).to receive(:current_user).and_return(user)
         expect { subject.send(:find_or_create_token) }.to raise_error(Errors::ServiceProviderNotFoundError)
+      end
+
+      it 'raise an error if there is no user' do
+        subject.params[:provider] = provider
+        expect { subject.send(:find_or_create_token) }.to raise_error(Errors::EmailNotFoundError)
       end
 
       it 'sets a new token if there are no tokens' do
@@ -193,37 +199,6 @@ module Physiqual
 
       it 'should raise an error if no tokens are present' do
         expect { subject.send(:find_token) }.to raise_error(Errors::NoTokenExistsError)
-      end
-    end
-
-    describe 'provider_tokens' do
-      let(:google) { GoogleToken.csrf_token }
-      let(:fitbit) { FitbitToken.csrf_token }
-      let(:google_token) { FactoryGirl.build(:google_token, physiqual_user: user) }
-      let(:fitbit_token) { FactoryGirl.build(:fitbit_token, physiqual_user: user) }
-
-      before :each do
-        user.physiqual_tokens << google_token
-        user.physiqual_tokens << fitbit_token
-      end
-
-      it 'returns the fitbit token if fitbit is the provider' do
-        expect(subject).to receive(:current_user).and_return(user)
-        result = subject.send(:provider_tokens, google)
-        expect(result).to eq([google_token])
-      end
-
-      it 'returns the google token if google is the provider' do
-        expect(subject).to receive(:current_user).and_return(user)
-        result = subject.send(:provider_tokens, fitbit)
-        expect(result).to eq([fitbit_token])
-      end
-
-      it 'raises an error if the provider is different' do
-        expect(subject).to_not receive(:current_user)
-        expect do
-          subject.send(:provider_tokens, 'somethin-which-is-not-a-provider')
-        end.to raise_error(Errors::ServiceProviderNotFoundError)
       end
     end
 
@@ -266,4 +241,3 @@ module Physiqual
     end
   end
 end
-# rubocop:enable Metrics/ModuleLength
