@@ -24,7 +24,7 @@ module Physiqual
 
       private
 
-      def determine_time_span
+      def determine_time_span(first_measurement, number_of_days)
         from = first_measurement - Physiqual.hours_before_first_measurement.hours
         to = first_measurement + (number_of_days - 1).days +
              ((Physiqual.measurements_per_day - 1) * Physiqual.interval).hours
