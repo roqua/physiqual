@@ -97,5 +97,17 @@ module Physiqual
     def self.token_url
       fail 'Subclass does not implement token_url method'
     end
+
+    def self.provider_tokens(provider, user)
+      tokens = nil
+      if provider == GoogleToken.csrf_token
+        tokens = user.google_tokens
+      elsif provider == FitbitToken.csrf_token
+        tokens = user.fitbit_tokens
+      else
+        fail Errors::ServiceProviderNotFoundError
+      end
+      tokens
+    end
   end
 end

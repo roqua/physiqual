@@ -18,9 +18,7 @@ module Physiqual
 
     def current_user
       return @current_user if @current_user
-      if params[:email] && check_email(params[:email]) && User.find_by_email(params[:email]).id != session['user_id']
-        session.delete('user_id')
-      end
+      resolve_session_conflicts(params[:email])
       if session['user_id']
         @current_user ||= User.find(session['user_id'])
       else
@@ -29,6 +27,10 @@ module Physiqual
         session['user_id'] = @current_user.id
       end
       @current_user
+    end
+
+    def resolve_session_conflicts(email)
+      session.delete('user_id') if email && check_email(email) && User.find_by_email(email).id != session['user_id']
     end
 
     def check_email(email)
@@ -52,7 +54,7 @@ module Physiqual
     end
 
     def check_token
-      my_tokens = provider_tokens(params[:state])
+      my_tokens = Token.provider_tokens(params[:state], current_user)
 
       if my_tokens.blank? || !my_tokens.first.complete?
         redirect_to authorize_oauth_session_index_path(provider: params[:state])
@@ -63,26 +65,14 @@ module Physiqual
     end
 
     def find_or_create_token
-      tokens = provider_tokens params[:provider]
+      tokens = Token.provider_tokens params[:provider], current_user
       @token = get_or_create_token(tokens)
     end
 
     def find_token
-      tokens = provider_tokens params[:provider]
+      tokens = Token.provider_tokens params[:provider], current_user
       fail Errors::NoTokenExistsError if tokens.blank?
       @token = tokens.first
-    end
-
-    def provider_tokens(provider)
-      tokens = nil
-      if provider == GoogleToken.csrf_token
-        tokens = current_user.google_tokens
-      elsif provider == FitbitToken.csrf_token
-        tokens = current_user.fitbit_tokens
-      else
-        fail Errors::ServiceProviderNotFoundError
-      end
-      tokens
     end
 
     def get_or_create_token(tokens)
