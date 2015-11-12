@@ -37,8 +37,10 @@ module Physiqual
         format.html { @values = Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
         format.json { render json: Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
         format.csv { render text: Exporters::CsvExporter.new.export(current_user, first_measurement, number_of_days) }
-        format.raw { render json: Exporters::RawExporter.new.export(current_user, first_measurement, number_of_days,
-                                                                    params[:state], params[:data_source]) }
+        format.raw do
+          render json: Exporters::RawExporter.new.export(current_user, first_measurement, number_of_days,
+                                                         params[:state], params[:data_source])
+        end
       end
       # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
       # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
@@ -141,7 +143,7 @@ module Physiqual
     def sanitize_export_params
       service_provider_options = [GoogleToken.csrf_token, FitbitToken.csrf_token]
       params[:state] = service_provider_options.include?(params[:state]) ? params[:state] : nil
-      data_source_options = ['heart_rate', 'calories', 'steps', 'activities', 'sleep']
+      data_source_options = %w(heart_rate calories steps activities sleep)
       params[:data_source] = data_source_options.include?(params[:data_source]) ? params[:data_source] : nil
     end
   end
