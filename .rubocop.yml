@@ -30,11 +30,10 @@ MethodLength:
 # Limit modules to have a length of 200
 Metrics/ModuleLength:
   Max: 200
-
+  
 # Limit classes to have a length of 200
 Metrics/ClassLength:
   Max: 200
-
 
 ################################################################## DISABLED COPS
 # These cops are disabled because we think they are a Bad Idea. If you add one

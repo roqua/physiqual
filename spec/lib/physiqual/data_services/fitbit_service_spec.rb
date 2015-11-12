@@ -11,11 +11,12 @@ module Physiqual
       let(:session) { Sessions::TokenAuthorizedSession.new(token.token, FitbitToken.base_uri) }
       let(:subject) { described_class.new(session) }
       let(:time_format) { '%I:%M%p' }
-      before { subject.instance_variable_set(:@intraday, false) }
+      before { subject.instance_variable_set(:@intraday, true) }
       it_behaves_like 'a data_service',
                       steps:          'data_services/fitbit/steps',
                       heart_rate:     'data_services/fitbit/heart_rate',
                       sleep:          'data_services/fitbit/sleep',
+                      distance:       'data_services/fitbit/distance',
                       activities:     'data_services/fitbit/activities',
                       calories:       'data_services/fitbit/calories'
 
@@ -60,7 +61,7 @@ module Physiqual
         end
 
         it 'should call the route as containing the activity, from and 1min' do
-          subject.instance_variable_set(:@intraday, false)
+          subject.instance_variable_set(:@intraday, true)
           resource = 'activities'
           activity = 'heart'
           (from.to_date..to.to_date).each do |date|
@@ -115,6 +116,35 @@ module Physiqual
           expected = [{ subject.date_time_field => from, subject.values_field => [teststring] }]
 
           expect(result).to eq expected
+        end
+      end
+
+      describe 'process_intraday_entries' do
+        before :each do
+          date = from.to_date
+          dataset = { 'dataset' => [{ 'time' => '00:00:00', 'value' => 0 },
+                                    { 'time' => '00:01:00', 'value' => 1 },
+                                    { 'time' => '00:02:00', 'value' => 2 }] }
+          @result = subject.send(:process_intraday_entries, dataset, date)
+          expect(@result.length).to eq 3
+        end
+
+        it 'should return the correct date' do
+          expected_format = '%Y-%m-%d'
+          @result.each do |entry|
+            result = entry[subject.date_time_field].strftime(expected_format).to_s
+            expect(result).to match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/)
+            expect(result).to eq from.to_date.strftime(expected_format)
+          end
+        end
+
+        it 'should return the correct time' do
+          expected_format = '%H:%M:%S'
+          @result.each do |entry|
+            result = entry[subject.date_time_field].strftime(expected_format).to_s
+            expect(result).to match(/[0-9]{2}:[0-9]{2}:[0-9]{2}/)
+            expect(result).to eq from.to_date.strftime(expected_format)
+          end
         end
       end
 

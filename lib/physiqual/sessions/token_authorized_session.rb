@@ -7,11 +7,9 @@ module Physiqual
       end
 
       def get(path, params = {})
-        Rails.logger.debug "Calling #{@header}"
         result = HTTParty.get(full_url_for(path),
                               query: params,
                               headers: @header)
-
         JSON.parse(result.body)
       end
 

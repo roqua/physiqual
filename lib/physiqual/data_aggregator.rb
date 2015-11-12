@@ -7,23 +7,22 @@ module Physiqual
 
     def steps(from, to)
       result = retrieve_data_of_all_services { |service| service.steps(from, to) }
-      run_function(result) do |steps, data_entry|
-        [steps[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
-         data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max
-      end
+      max_from_both_services(result)
     end
 
     def heart_rate(from, to)
       result = retrieve_data_of_all_services { |service| service.heart_rate(from, to) }
-      run_function(result) do |heart_rates, data_entry|
-        [heart_rates[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
-         data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max
-      end
+      max_from_both_services(result)
+    end
+
+    def distance(from, to)
+      result = retrieve_data_of_all_services { |service| service.distance(from, to) }
+      max_from_both_services(result)
     end
 
     def sleep(from, to)
       result = retrieve_data_of_all_services { |service| service.sleep(from, to) }
-      run_function(result) do |sleep_data, data_entry|
+      merge_service_data(result) do |sleep_data, data_entry|
         # TODO: Mist hier een .flatten?
         [sleep_data[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
          data_entry[DataServices::DataService::VALUES_FIELD]].max
@@ -32,26 +31,30 @@ module Physiqual
 
     def calories(from, to)
       result = retrieve_data_of_all_services { |service| service.calories(from, to) }
-      run_function(result) do |calories, data_entry|
-        [calories[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
-         data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max
-      end
+      max_from_both_services(result)
     end
 
     def activities(from, to)
       result = retrieve_data_of_all_services { |service| service.activities(from, to) }
-      run_function(result) do |_activities, data_entry|
+      merge_service_data(result) do |_activities, data_entry|
         data_entry[DataServices::DataService::VALUES_FIELD]
       end
     end
 
     private
 
+    def max_from_both_services(result)
+      merge_service_data(result) do |data_array, data_entry|
+        [data_array[data_entry[DataServices::DataService::DATE_TIME_FIELD]],
+         data_entry[DataServices::DataService::VALUES_FIELD]].flatten.max
+      end
+    end
+
     def valid_result?(result)
       !result.compact.blank?
     end
 
-    def run_function(result)
+    def merge_service_data(result)
       aggregated_result = Hash.new(-1)
       result.compact.each do |service_result|
         service_result.each do |data_entry|
