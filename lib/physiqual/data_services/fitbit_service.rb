@@ -24,11 +24,6 @@ module Physiqual
         resource = 'activities'
         activity = 'heart'
         activity_call(from, to, resource, activity)
-        # activity_call(from, to, resource, activity).map do |hash|
-        # Rails.logger.info 'Hash:'
-        # Rails.logger.info hash
-        # { date_time_field => hash[date_time_field], values_field => [hash[values_field].first['restingHeartRate']] }
-        # end
       end
 
       def sleep(from, to)
@@ -85,12 +80,13 @@ module Physiqual
       def process_intraday_entries(entries, date)
         entries = entries['dataset']
         result = []
+
+        return {} if entries.nil?
         entries.each do |entry|
           value = entry['value']
           value = convert_to_int_if_needed(value)
-
-          # TODO: DOes this generate the correct date?
-          date = Time.parse("#{date.to_date} #{entry['time']}")
+          # TODO: Does this generate the correct date?
+          date = Time.parse("#{date} #{entry['time']}")
           result << { date_time_field => date, values_field => [value] }
         end
         result
