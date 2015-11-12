@@ -1,6 +1,12 @@
 module Physiqual
   module Exporters
     class RawExporter < Exporter
+      def configure(service_provider, data_source)
+        @service_provider = service_provider
+        @data_source = data_source
+        self
+      end
+
       def export_data(user, first_measurement, number_of_days)
         tokens = []
         if @service_provider == GoogleToken.csrf_token
@@ -20,9 +26,7 @@ module Physiqual
         service.send(@data_source.to_sym, from, to)
       end
 
-      def export(user, first_measurement, number_of_days, service_provider, data_source)
-        @service_provider = service_provider
-        @data_source = data_source
+      def export(user, first_measurement, number_of_days)
         result = export_data(user, first_measurement, number_of_days)
         result.to_json
       end

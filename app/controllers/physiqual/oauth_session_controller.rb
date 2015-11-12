@@ -38,8 +38,10 @@ module Physiqual
         format.json { render json: Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
         format.csv { render text: Exporters::CsvExporter.new.export(current_user, first_measurement, number_of_days) }
         format.raw do
-          render json: Exporters::RawExporter.new.export(current_user, first_measurement, number_of_days,
-                                                         params[:state], params[:data_source])
+          render json: Exporters::RawExporter
+            .new
+            .configure(params[:state], params[:data_source])
+            .export(current_user, first_measurement, number_of_days)
         end
       end
       # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
