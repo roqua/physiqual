@@ -16,7 +16,7 @@ module Physiqual
       end
       # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
       # session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)
-      
+
       # render json: DataServices::GoogleService.new(session).steps(from, to) and return
       # render json: DataServices::FitbitService.new(session).calories(from, to) and return
 
