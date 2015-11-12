@@ -5,16 +5,15 @@ module Physiqual
         format.html { @values = Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
         format.json { render json: Exporters::JsonExporter.new.export(current_user, first_measurement, number_of_days) }
         format.csv { render text: Exporters::CsvExporter.new.export(current_user, first_measurement, number_of_days) }
-        format.raw do
-          render json: Exporters::RawExporter
-            .new
-            .configure(params[:state], params[:data_source])
-            .export(current_user, first_measurement, number_of_days)
-        end
+        format.raw { render_raw(first_measurement, number_of_days) }
       end
     end
 
-    def render_raw(_first_measurement, _number_of_days)
+    def render_raw(first_measurement, number_of_days)
+      render json: Exporters::RawExporter
+        .new
+        .configure(params[:state], params[:data_source])
+        .export(current_user, first_measurement, number_of_days)
     end
 
     def current_user
