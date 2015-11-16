@@ -1,5 +1,5 @@
 module Physiqual
-  module OauthSessionHelper
+  module SessionsHelper
     def respond_to_formats(first_measurement, number_of_days)
 
       respond_to do |format|

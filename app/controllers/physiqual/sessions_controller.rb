@@ -1,14 +1,10 @@
 module Physiqual
   class SessionsController < ApplicationController
-    # TODO: rename helper
-    include OauthSessionHelper
+    include SessionsHelper
     before_filter :find_token, only: :create
 
     rescue_from Errors::ServiceProviderNotFoundError, with: :service_provider_not_found
     rescue_from Errors::NoTokenExistsError, with: :no_token_exists
-
-    def new
-    end
 
     def create
       reset_session
