@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :physiqual_user, class: Physiqual::User do
-    email 'john@doe.com'
+    user_id 'user_id123'
   end
 end

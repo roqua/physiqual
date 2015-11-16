@@ -5,4 +5,7 @@ Physiqual::Engine.routes.draw do
       get ':provider/authorize' => 'oauth_session#authorize', as: 'authorize'
     end
   end
+
+  get 'auth/:provider/callback', :to => 'sessions#create'
+  get 'auth/failure',            :to => 'sessions#failure'
 end

@@ -1,6 +1,6 @@
 module Physiqual
   module Errors
-    class EmailNotFoundError < StandardError
+    class UserIdNotFoundError < StandardError
     end
   end
 end

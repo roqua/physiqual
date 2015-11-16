@@ -1,4 +1,7 @@
 require 'jquery-rails'
+require 'omniauth-oauth2'
+require 'omniauth-google-oauth2'
+require 'omniauth-fitbit-oauth2'
 module Physiqual
   class << self
     mattr_accessor :google_client_id
@@ -17,14 +20,30 @@ module Physiqual
     yield self
   end
 
+  def self.google_omniauth
+
+  end
+
   class Engine < ::Rails::Engine
     isolate_namespace Physiqual
 
-    initializer :append_migrations do |app|
+    initializer 'physiqual.append_migrations' do |app|
       unless app.root.to_s.match root.to_s
         config.paths['db/migrate'].expanded.each do |expanded_path|
           app.config.paths['db/migrate'] << expanded_path
         end
+      end
+    end
+
+    initializer "physiqual.omniauth", before: :build_middleware_stack do |app|
+      app.middleware.use OmniAuth::Builder do
+        configure do |config|
+          config.path_prefix = '/physiqual/auth'
+        end
+
+        provider :google_oauth2, Physiqual.google_client_id, Physiqual.google_client_secret, prompt: 'consent'
+        provider :fitbit_oauth2, Physiqual.fitbit_client_id, Physiqual.fitbit_client_secret,
+                 scope: 'activity heartrate location nutrition profile settings sleep social weight'
       end
     end
 

@@ -22,7 +22,7 @@ module Physiqual
       def create_services(tokens, bucket_generator)
         tokens.map do |token|
           next unless token.complete?
-          session = Sessions::TokenAuthorizedSession.new(token.token, token.class.base_uri)
+          session = Sessions::TokenAuthorizedSession.new(token)
           service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
           service = DataServices::SummarizedDataService.new(service, bucket_generator)
           DataServices::CachedDataService.new service

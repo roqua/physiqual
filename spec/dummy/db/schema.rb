@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009140701) do
+ActiveRecord::Schema.define(version: 20151112152819) do
 
   create_table "physiqual_tokens", force: :cascade do |t|
     t.string   "token"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20151009140701) do
   add_index "physiqual_tokens", ["type", "physiqual_user_id"], name: "index_physiqual_tokens_on_type_and_physiqual_user_id", unique: true
 
   create_table "physiqual_users", force: :cascade do |t|
-    t.string   "email",      null: false
+    t.string   "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "physiqual_users", ["email"], name: "index_physiqual_users_on_email", unique: true
+  add_index "physiqual_users", ["user_id"], name: "index_physiqual_users_on_user_id", unique: true
 
 end

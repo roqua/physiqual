@@ -8,10 +8,9 @@ module Physiqual
       end
 
       def export_data(user, first_measurement, number_of_days)
-        tokens = Token.provider_tokens(@service_provider, user)
-        return [] unless !tokens.blank? && tokens.first.complete?
-        token = tokens.first
-        session = Sessions::TokenAuthorizedSession.new(token.token, token.class.base_uri)
+        token = Token.provider_token(@service_provider, user)
+        return [] unless token && token.complete?
+        session = Sessions::TokenAuthorizedSession.new(token)
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
         from, to = determine_time_span(first_measurement, number_of_days)
         service.send(@data_source.to_sym, from, to)

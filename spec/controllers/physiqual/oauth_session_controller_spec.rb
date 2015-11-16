@@ -6,8 +6,9 @@ module Physiqual
 
     describe 'before filters' do
       it 'calls the check_token method when calling index' do
+        session['physiqual_user_id'] = user.user_id
         expect(subject).to receive(:check_token) { fail(StandardError, 'stop_execution') }
-        expect { get :index, email: user.email }.to raise_error('stop_execution')
+        expect { get :index }.to raise_error('stop_execution')
       end
 
       it 'calls the find_or_create_token method when calling authorize' do
@@ -79,24 +80,6 @@ module Physiqual
       end
     end
 
-    describe 'callback' do
-    end
-
-    describe 'current_user' do
-      let(:provider) { GoogleToken.csrf_token }
-      it 'accepts a known email address' do
-        subject.params[:state] = provider
-        subject.params[:email] = user.email
-        subject.send(:current_user) # shouldn't raise anything
-      end
-
-      it 'does not accept an unknown email address' do
-        subject.params[:state] = provider
-        subject.params[:email] = 'test@example.com'
-        expect { subject.send(:current_user) }.to raise_error(Errors::EmailNotFoundError)
-      end
-    end
-
     describe 'check_token' do
       let(:provider) { GoogleToken.csrf_token }
       before :each do
@@ -161,7 +144,7 @@ module Physiqual
 
       it 'raise an error if there is no user' do
         subject.params[:provider] = provider
-        expect { subject.send(:find_or_create_token) }.to raise_error(Errors::EmailNotFoundError)
+        expect { subject.send(:find_or_create_token) }.to raise_error(Errors::UserIdNotFoundError)
       end
 
       it 'sets a new token if there are no tokens' do

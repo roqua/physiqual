@@ -35,7 +35,7 @@ module Physiqual
                                      access_type: 'offline',
                                      approval_prompt: 'force',
                                      state: csrf_token
-                                    )
+      )
     end
 
     def to_hash
@@ -45,15 +45,6 @@ module Physiqual
       token_hash[:refresh_token] = refresh_token
       token_hash[:expires_at] = valid_until.to_i
       token_hash
-    end
-
-    def retrieve_token!(code, url)
-      # This is needed for fitbit
-      access_token = get_token(code, url)
-      self.token = access_token.token
-      self.refresh_token = access_token.refresh_token
-      self.valid_until = Time.at(access_token.expires_at).in_time_zone
-      save!
     end
 
     def encode_key
@@ -98,16 +89,34 @@ module Physiqual
       fail 'Subclass does not implement token_url method'
     end
 
-    def self.provider_tokens(provider, user)
-      tokens = nil
+    def self.provider_selection(provider, user)
       if provider == GoogleToken.csrf_token
-        tokens = user.google_tokens
+        yield(user.google_tokens)
       elsif provider == FitbitToken.csrf_token
-        tokens = user.fitbit_tokens
+        yield(user.fitbit_tokens)
       else
         fail Errors::ServiceProviderNotFoundError
       end
-      tokens
+    end
+
+    def self.provider_token(provider, user)
+      resulting_tokens = nil
+      provider_selection(provider, user) do |tokens|
+        resulting_tokens = tokens.first
+      end
+      resulting_tokens
+    end
+
+    def self.create_provider_token(provider, user)
+      provider_selection(provider, user) do |tokens|
+        tokens.create
+      end
+    end
+
+    def self.find_or_create_provider_token(provider, user)
+      token = provider_token(provider, user)
+      token = create_provider_token(provider: provider, user: user) if token.nil?
+      token
     end
   end
 end
