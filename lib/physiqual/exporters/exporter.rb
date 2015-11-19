@@ -7,18 +7,27 @@ module Physiqual
           Physiqual.measurements_per_day,
           Physiqual.interval,
           Physiqual.hours_before_first_measurement)
+
         services = create_services(user.physiqual_tokens, bucket_generator)
         data_aggregator = DataAggregator.new(services, Physiqual.imputers)
 
-        from = first_measurement - Physiqual.hours_before_first_measurement.hours
-        to   = first_measurement + (number_of_days - 1).days +
-               ((Physiqual.measurements_per_day - 1) * Physiqual.interval).hours
+        from = from_time(first_measurement)
+        to = to_time(first_measurement, number_of_days)
 
         buckets = bucket_generator.generate(from, to)
         aggregate_data_into_buckets(from, to, data_aggregator, buckets)
       end
 
       private
+
+      def from_time(first_measurement)
+        first_measurement - Physiqual.hours_before_first_measurement.hours
+      end
+
+      def to_time(first_measurement, number_of_days)
+        first_measurement + (number_of_days - 1).days +
+          ((Physiqual.measurements_per_day - 1) * Physiqual.interval).hours
+      end
 
       def create_services(tokens, bucket_generator)
         tokens.map do |token|

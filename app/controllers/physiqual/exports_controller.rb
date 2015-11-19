@@ -14,21 +14,9 @@ module Physiqual
 
     def index
       respond_to do |format|
-        format.html do
-          @values = Exporters::JsonExporter.new.export(current_user.user_id,
-                                                       export_params[:first_measurement],
-                                                       export_params[:number_of_days])
-        end
-        format.json do
-          render json: Exporters::JsonExporter.new.export(current_user.user_id,
-                                                          export_params[:first_measurement],
-                                                          export_params[:number_of_days])
-        end
-        format.csv do
-          render text: Exporters::CsvExporter.new.export(current_user.user_id,
-                                                         export_params[:first_measurement],
-                                                         export_params[:number_of_days])
-        end
+        format.html { @values = json_export }
+        format.json { render json: json_export }
+        format.csv { render text: csv_export }
       end
     end
 
@@ -40,6 +28,18 @@ module Physiqual
     end
 
     private
+
+    def json_export
+      Exporters::JsonExporter.new.export(current_user.user_id,
+                                         export_params[:first_measurement],
+                                         export_params[:number_of_days])
+    end
+
+    def csv_export
+      Exporters::CsvExporter.new.export(current_user.user_id,
+                                        export_params[:first_measurement],
+                                        export_params[:number_of_days])
+    end
 
     def raw_params
       params.permit(:first_measurement, :number_of_days, :provider, :data_source)
