@@ -7,12 +7,13 @@ module Physiqual
 
     def assert_data_source
       data_source_options = %w(heart_rate calories steps activities sleep)
-      fail(Errors::InvalidParamsError, 'data source assertion') unless data_source_options.include?(params[:data_source])
+
+      fail(Errors::InvalidParamsError, 'data source') unless data_source_options.include?(params[:data_source])
     end
 
     def assert_first_measurement
       fail(Errors::InvalidParamsError, 'first measurement missing') unless params[:first_measurement]
-      m = %r(^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})).match(params[:first_measurement])
+      m = /^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})/.match(params[:first_measurement])
       fail(Errors::InvalidParamsError, 'incorrect format of first measurement') unless m
       params[:first_measurement] = Time.new(m[1], m[2], m[3], m[4], m[5]).in_time_zone
     end

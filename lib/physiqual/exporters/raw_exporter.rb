@@ -2,7 +2,7 @@ module Physiqual
   module Exporters
     class RawExporter < Exporter
       def configure(provider, data_source)
-        provider = provider
+        @provider = provider
         @data_source = data_source
         self
       end

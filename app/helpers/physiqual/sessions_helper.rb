@@ -8,7 +8,7 @@ module Physiqual
     def check_token
       tokens = current_user.physiqual_tokens
 
-      fail Errors::NoTokenExistsError if tokens.blank? || tokens.none? { |token| token.complete? }
+      fail Errors::NoTokenExistsError if tokens.blank? || tokens.none?(&:complete?)
     end
 
     def find_token

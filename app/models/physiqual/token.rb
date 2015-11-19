@@ -35,7 +35,7 @@ module Physiqual
                                      access_type: 'offline',
                                      approval_prompt: 'force',
                                      state: csrf_token
-      )
+                                    )
     end
 
     def to_hash

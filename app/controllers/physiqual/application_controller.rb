@@ -17,7 +17,7 @@ module Physiqual
     end
 
     def invalid_params(exception)
-      render status: 404, plain: "ERROR: The provided params are incorrect or not specified " \
+      render status: 404, plain: 'ERROR: The provided params are incorrect or not specified ' \
                                   "(#{exception.message})"
     end
   end

@@ -68,7 +68,7 @@ module Physiqual
       end
 
       it 'sets an existing token, according to the provider provided ' do
-        tok1 = FactoryGirl.create(:google_token, physiqual_user: user)
+        FactoryGirl.create(:google_token, physiqual_user: user)
         tok2 = FactoryGirl.create(:fitbit_token, physiqual_user: user)
         helper.params[:provider] = FitbitToken.csrf_token
         helper.find_token

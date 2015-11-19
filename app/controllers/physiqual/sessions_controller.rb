@@ -11,9 +11,9 @@ module Physiqual
       auth = request.env['omniauth.auth']
       Rails.logger.info "OmniAuth info: #{auth.to_yaml}"
       @token.update_attributes!(
-          token: auth['credentials']['token'],
-          refresh_token: auth['credentials']['refresh_token'],
-          valid_until: Time.at(auth['credentials']['expires_at']).in_time_zone
+        token: auth['credentials']['token'],
+        refresh_token: auth['credentials']['refresh_token'],
+        valid_until: Time.at(auth['credentials']['expires_at']).in_time_zone
       )
 
       redirect_to session.delete('physiqual_return_url')
@@ -37,7 +37,7 @@ module Physiqual
     # TODO: MOET NOG!
     def failure
       redirect_to new_session_url,
-                  flash: {error: 'Sorry, there was something wrong with your login attempt. Please try again.'}
+                  flash: { error: 'Sorry, there was something wrong with your login attempt. Please try again.' }
     end
 
     private

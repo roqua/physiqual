@@ -2,7 +2,7 @@ require 'rails_helper'
 module Physiqual
   describe SessionsController do
     let(:user) { FactoryGirl.create(:physiqual_user) }
-    let!(:base_url) { "http://test.host" }
+    let!(:base_url) { 'http://test.host' }
     # routes { Physiqual::Engine.routes }
 
     before :each do
@@ -17,11 +17,9 @@ module Physiqual
     end
 
     xdescribe 'failure' do
-
     end
 
     xdescribe 'destroy' do
-
     end
 
     describe 'authorize' do
@@ -40,7 +38,7 @@ module Physiqual
         expect(subject).to receive(:user_session).and_return('non-existing-user-id')
         pre_count = User.count
         get :authorize, provider: FitbitToken.csrf_token
-        expect(User.count).to eq pre_count+1
+        expect(User.count).to eq pre_count + 1
       end
 
       describe 'with token usage' do

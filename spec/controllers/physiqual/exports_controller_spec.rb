@@ -4,11 +4,10 @@ module Physiqual
     let!(:user) { FactoryGirl.create(:physiqual_user) }
     let!(:google_token) { FactoryGirl.create(:google_token, physiqual_user: user) }
     let!(:physiqual_token) { FactoryGirl.create(:fitbit_token, physiqual_user: user) }
-    let!(:params) { {first_measurement: '2015-06-14 10:00', number_of_days: '39',
-                     provider: GoogleToken.csrf_token, data_source: 'heart_rate'} }
-
-
-
+    let!(:params) do
+      { first_measurement: '2015-06-14 10:00', number_of_days: '39',
+        provider: GoogleToken.csrf_token, data_source: 'heart_rate' }
+    end
 
     before :each do
       subject.session['physiqual_user_id'] = user.user_id
@@ -98,7 +97,7 @@ module Physiqual
         exporter = Exporters::RawExporter.new
 
         expect(Exporters::RawExporter).to receive(:new).and_return(exporter)
-        expect(exporter).to receive(:export).and_return({"x"=>"y"})
+        expect(exporter).to receive(:export).and_return('x' => 'y')
         get :raw, params
 
         expect(response.body).to eq "{\"x\":\"y\"}"

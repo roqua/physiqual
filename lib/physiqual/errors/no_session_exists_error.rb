@@ -4,4 +4,3 @@ module Physiqual
     end
   end
 end
-

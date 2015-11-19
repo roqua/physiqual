@@ -21,7 +21,6 @@ module Physiqual
   end
 
   def self.google_omniauth
-
   end
 
   class Engine < ::Rails::Engine
@@ -35,7 +34,7 @@ module Physiqual
       end
     end
 
-    initializer "physiqual.omniauth", before: :build_middleware_stack do |app|
+    initializer 'physiqual.omniauth', before: :build_middleware_stack do |app|
       app.middleware.use OmniAuth::Builder do
         configure do |config|
           config.path_prefix = '/physiqual/auth'

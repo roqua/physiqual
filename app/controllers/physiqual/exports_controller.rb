@@ -14,23 +14,29 @@ module Physiqual
 
     def index
       respond_to do |format|
-        format.html { @values = Exporters::JsonExporter.new.export(current_user.user_id,
-                                                                   export_params[:first_measurement],
-                                                                   export_params[:number_of_days]) }
-        format.json { render json: Exporters::JsonExporter.new.export(current_user.user_id,
-                                                                      export_params[:first_measurement],
-                                                                      export_params[:number_of_days]) }
-        format.csv { render text: Exporters::CsvExporter.new.export(current_user.user_id,
-                                                                    export_params[:first_measurement],
-                                                                    export_params[:number_of_days]) }
+        format.html do
+          @values = Exporters::JsonExporter.new.export(current_user.user_id,
+                                                       export_params[:first_measurement],
+                                                       export_params[:number_of_days])
+        end
+        format.json do
+          render json: Exporters::JsonExporter.new.export(current_user.user_id,
+                                                          export_params[:first_measurement],
+                                                          export_params[:number_of_days])
+        end
+        format.csv do
+          render text: Exporters::CsvExporter.new.export(current_user.user_id,
+                                                         export_params[:first_measurement],
+                                                         export_params[:number_of_days])
+        end
       end
     end
 
     def raw
       render json: Exporters::RawExporter
-                       .new
-                       .configure(raw_params[:provider], raw_params[:data_source])
-                       .export(current_user.user_id, raw_params[:first_measurement], raw_params[:number_of_days])
+        .new
+        .configure(raw_params[:provider], raw_params[:data_source])
+        .export(current_user.user_id, raw_params[:first_measurement], raw_params[:number_of_days])
     end
 
     private
