@@ -4,7 +4,7 @@ module Physiqual
   require 'shared_examples_for_data_services'
 
   module DataServices
-    fdescribe GoogleService do
+    describe GoogleService do
       include_context 'data_service context'
 
       let(:token) { FactoryGirl.build(:google_token) }
