@@ -107,8 +107,9 @@ module Physiqual
       resulting_tokens
     end
 
-    def self.create_provider_token(provider, user)
+    def self.create_provider_token(provider:, user:)
       provider_selection(provider, user) do |tokens|
+        puts tokens
         tokens.create
       end
     end

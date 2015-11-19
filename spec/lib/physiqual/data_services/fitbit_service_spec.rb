@@ -8,7 +8,7 @@ module Physiqual
       include_context 'data_service context'
 
       let(:token) { FactoryGirl.build(:fitbit_token) }
-      let(:session) { Sessions::TokenAuthorizedSession.new(token.token, FitbitToken.base_uri) }
+      let(:session) { Sessions::TokenAuthorizedSession.new(token) }
       let(:subject) { described_class.new(session) }
       let(:time_format) { '%I:%M%p' }
       before { subject.instance_variable_set(:@intraday, true) }

@@ -19,18 +19,18 @@ module Physiqual
       end
 
       it 'returns the fitbit token if fitbit is the provider' do
-        result = described_class.send(:provider_tokens, google, user)
-        expect(result).to eq([google_token])
+        result = described_class.send(:provider_token, google, user)
+        expect(result).to eq(google_token)
       end
 
       it 'returns the google token if google is the provider' do
-        result = described_class.send(:provider_tokens, fitbit, user)
-        expect(result).to eq([fitbit_token])
+        result = described_class.send(:provider_token, fitbit, user)
+        expect(result).to eq(fitbit_token)
       end
 
       it 'raises an error if the provider is different' do
         expect do
-          described_class.send(:provider_tokens, 'somethin-which-is-not-a-provider', user)
+          described_class.send(:provider_token, 'somethin-which-is-not-a-provider', user)
         end.to raise_error(Errors::ServiceProviderNotFoundError)
       end
     end

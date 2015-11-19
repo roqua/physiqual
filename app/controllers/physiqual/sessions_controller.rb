@@ -5,12 +5,11 @@ module Physiqual
 
     rescue_from Errors::ServiceProviderNotFoundError, with: :service_provider_not_found
     rescue_from Errors::NoTokenExistsError, with: :no_token_exists
+    rescue_from Errors::NoSessionExistsError, with: :no_session_exists
 
     def create
-      reset_session
       auth = request.env['omniauth.auth']
       Rails.logger.info "OmniAuth info: #{auth.to_yaml}"
-
       @token.update_attributes!(
           token: auth['credentials']['token'],
           refresh_token: auth['credentials']['refresh_token'],
@@ -21,28 +20,30 @@ module Physiqual
     end
 
     def authorize
-      user = User.find_or_create_by(user_id: session['physiqual_user_id'])
-      provider = params[:provider]
+      return_url = sessions_params[:return_url] || '/'
+      user = User.find_or_create_by(user_id: user_session)
+      provider = sessions_params[:provider]
       token = Token.find_or_create_provider_token(provider, user)
 
       unless token.complete?
-        session['physiqual_return_url'] = params[:return_url]
+        session['physiqual_return_url'] = return_url
         omniauth_url = "/physiqual/auth/#{provider}"
         redirect_to omniauth_url and return
       end
 
-      redirect_to params[:return_url]
+      redirect_to return_url
     end
 
+    # TODO: MOET NOG!
     def failure
       redirect_to new_session_url,
                   flash: {error: 'Sorry, there was something wrong with your login attempt. Please try again.'}
     end
 
-    def destroy
-      reset_session
-      flash[:notice] = 'Logged out.'
-      redirect_to root_url
+    private
+
+    def sessions_params
+      params.permit(:provider, :return_url)
     end
   end
 end
