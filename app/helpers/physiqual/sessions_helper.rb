@@ -1,6 +1,6 @@
 module Physiqual
   module SessionsHelper
-    include ApplicationHelper
+    include Physiqual::ApplicationHelper
     def current_user
       @current_user ||= User.find_by_user_id(user_session)
     end

@@ -1,6 +1,6 @@
 module Physiqual
-  class ExportsController < ApplicationController
-    include SessionsHelper, ExportsHelper
+  class ExportsController < Physiqual::ApplicationController
+    include Physiqual::SessionsHelper, Physiqual::ExportsHelper
 
     before_filter :check_token, only: [:index, :raw]
     before_filter :assert_data_source, only: :raw

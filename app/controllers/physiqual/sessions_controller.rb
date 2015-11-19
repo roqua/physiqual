@@ -1,6 +1,6 @@
 module Physiqual
-  class SessionsController < ApplicationController
-    include SessionsHelper
+  class SessionsController < Physiqual::ApplicationController
+    include Physiqual::SessionsHelper
     before_filter :find_token, only: :create
 
     rescue_from Errors::ServiceProviderNotFoundError, with: :service_provider_not_found
