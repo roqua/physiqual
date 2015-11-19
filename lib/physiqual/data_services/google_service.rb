@@ -163,7 +163,7 @@ module Physiqual
       def activity_data(from, to, url, value_type, &block)
         res = point_results(from, to, url)
 
-        results_hash = loop_through_results(res) do |value, start, endd, results_hash|
+        results = loop_through_results(res) do |value, start, endd, results_hash|
           actual_timestep = Time.at((start + endd) / 2)
 
           # If the current timestep is higher than the final timestep, don't include it
@@ -171,20 +171,19 @@ module Physiqual
           results_hash[actual_timestep] += value[value_type].to_i
         end
 
-        hash_to_array(results_hash, &block)
+        hash_to_array(results, &block)
       end
 
       def specific_activity_data(from, to, url, activity_type, &block)
         res = point_results(from, to, url)
 
-        results_hash = loop_through_results(res) do |value, start, endd, results_hash|
-
+        results = loop_through_results(res) do |value, start, endd, results_hash|
           next unless value['intVal'] == activity_type
           actual_date = Time.at(endd).in_time_zone.beginning_of_day
           results_hash[actual_date] += (endd - start) / 60
         end
 
-        hash_to_array(results_hash, &block)
+        hash_to_array(results, &block)
       end
 
       def point_results(from, to, url)
