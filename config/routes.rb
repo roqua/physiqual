@@ -6,16 +6,9 @@ Physiqual::Engine.routes.draw do
   #   end
   # end
 
-  scope :export do
-    get '/', to: 'export#index'
-    resources :service_providers, only: [:show] do
-      member do
-        scope :raw do
+  resources :export, only: [:index]
+  get 'export/providers/:provider/data_source/:data_source', :to => 'export#raw'
 
-        end
-      end
-    end
-  end
 
   get 'auth/:provider/authorize', :to => 'sessions#authorize'
   get 'auth/:provider/callback',  :to => 'sessions#create'

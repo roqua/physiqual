@@ -1,7 +1,8 @@
 module Physiqual
   module Exporters
     class Exporter
-      def export_data(user, first_measurement, number_of_days)
+      def export_data(user_id, first_measurement, number_of_days)
+        user = User.find_by_user_id(user_id)
         bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
           Physiqual.measurements_per_day,
           Physiqual.interval,

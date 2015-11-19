@@ -1,28 +1,42 @@
 module Physiqual
   class ExportController < ApplicationController
-    include SessionsHelper
+    include SessionsHelper, ExportHelper
 
-    before_filter :sanitize_export_params, only: [:index]
+    before_filter :check_token, only: [:index, :raw]
+    before_filter :assert_data_source, only: :raw
+    before_filter :assert_service_provider, only: :raw
+    before_filter :assert_first_measurement, only: [:raw, :index]
+    before_filter :assert_number_of_days, only: [:raw, :index]
 
-    before_filter :check_token, only: :index
+    rescue_from Errors::ServiceProviderNotFoundError, with: :service_provider_not_found
+    rescue_from Errors::NoTokenExistsError, with: :no_token_exists
+    rescue_from Errors::InvalidParamsError, with: :invalid_params
 
     def index
-      frank = false
-      if frank
-        first_measurement = Time.new(2015, 8, 3, 10, 00).in_time_zone
-      else
-        first_measurement = Time.new(2015, 7, 15, 10, 30).in_time_zone
+      respond_to do |format|
+        format.html { @values = Exporters::JsonExporter.new.export(current_user.user_id,
+                                                                   export_params[:first_measurement],
+                                                                   export_params[:number_of_days]) }
+        format.json { render json: Exporters::JsonExporter.new.export(current_user.user_id,
+                                                                      export_params[:first_measurement],
+                                                                      export_params[:number_of_days]) }
+        format.csv { render text: Exporters::CsvExporter.new.export(current_user.user_id,
+                                                                    export_params[:first_measurement],
+                                                                    export_params[:number_of_days]) }
       end
-      # session = Sessions::TokenAuthorizedSession.new(current_user.google_tokens.first.token, GoogleToken.base_uri)
-      # session = Sessions::TokenAuthorizedSession.new(current_user.fitbit_tokens.first.token, FitbitToken.base_uri)
+    end
 
-      # render json: DataServices::GoogleService.new(session).steps(from, to) and return
-      # render json: DataServices::FitbitService.new(session).calories(from, to) and return
+    def raw
+      render json: Exporters::RawExporter
+                       .new
+                       .configure(raw_params[:provider], raw_params[:data_source])
+                       .export(current_user.user_id, raw_params[:first_measurement], raw_params[:number_of_days])
+    end
 
-      respond_to_formats(export_params[:first_measurement],
-                         export_params[:number_of_days])
-      # render json: FitbitService.new(current_user.fitbit_tokens.first).steps(from, to)
-      # render json: FitbitService.new(current_user.fitbit_tokens.first).heart_rate(from, to)
+    private
+
+    def raw_params
+      params.permit(:first_measurement, :number_of_days, :provider, :data_source)
     end
 
     def export_params
