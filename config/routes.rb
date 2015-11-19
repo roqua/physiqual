@@ -6,8 +6,8 @@ Physiqual::Engine.routes.draw do
   #   end
   # end
 
-  resources :export, only: [:index]
-  get 'export/providers/:provider/data_source/:data_source', :to => 'export#raw'
+  resources :exports, only: [:index]
+  get 'export/providers/:provider/data_source/:data_source', :to => 'exports#raw'
 
 
   get 'auth/:provider/authorize', :to => 'sessions#authorize'

@@ -1,5 +1,5 @@
 module Physiqual
-  module ExportHelper
+  module ExportsHelper
     def assert_service_provider
       service_provider_options = [GoogleToken.csrf_token, FitbitToken.csrf_token]
       fail Errors::ServiceProviderNotFoundError unless service_provider_options.include?(raw_params[:provider])
