@@ -8,8 +8,8 @@ module Physiqual
       'https://www.googleapis.com/auth/fitness.activity.read '\
       'https://www.googleapis.com/auth/fitness.body.read '\
       'https://www.googleapis.com/auth/fitness.location.read '\
-      'https://www.googleapis.com/auth/profile '\
-      'https://www.googleapis.com/auth/email'
+      'profile '\
+      'email'
     end
 
     def self.csrf_token
