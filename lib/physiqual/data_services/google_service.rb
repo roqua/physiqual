@@ -1,7 +1,7 @@
 module Physiqual
   module DataServices
     class GoogleService < DataService
-      ACTIVITIES = YAML.load_file('db/seeds/google_activities.yml')
+      ACTIVITIES = YAML.load_file("#{Physiqual::Engine.root}/db/seeds/google_activities.yml")
 
       HEART_RATE_URL = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'
       STEPS_URL      = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
