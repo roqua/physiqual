@@ -1,0 +1,24 @@
+<div>
+  <%= form_tag "test" do %>
+      <fieldset>
+        <%= label_tag :session_id %>
+        <%= text_field_tag :session_id, SecureRandom.hex(3) %>
+      </fieldset>
+      <fieldset>
+        <%= submit_tag 'Save'%>
+
+      </fieldset>
+  <% end %>
+
+  <% if session['physiqual_user_id'] %>
+  Current session: <%= session['physiqual_user_id'] %>
+      <% path = exports_path(format: :json,
+                             first_measurement:'2015-10-11 10:00',
+                             number_of_days: 30) %>
+      <%= link_to 'exports',path %>
+
+      <%= link_to 'auth', authorize_path(provider: Physiqual::GoogleToken.csrf_token, return_url:
+          path) %>
+
+  <%end%>
+</div>
