@@ -6,7 +6,8 @@ Physiqual::Engine.routes.draw do
   get 'auth/:provider/callback',  :to => 'sessions#create', as: 'callback'
   get 'auth/failure',             :to => 'sessions#failure', as: 'failure'
 
-  get 'test', to: 'test_login#index'
-  post 'test', to: 'test_login#create'
-  delete 'test', to: 'test_login#destroy'
+  if Rails.env.development?
+    get 'test', to: 'test_login#index'
+    post 'test', to: 'test_login#create'
+  end
 end

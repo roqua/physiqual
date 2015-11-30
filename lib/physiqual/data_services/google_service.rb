@@ -7,7 +7,7 @@ module Physiqual
       STEPS_URL      = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
       ACTIVITY_URL   = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
       SLEEP_URL      = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-      CALORIES_URL   = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
+      CALORIES_URL   = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'
       DISTANCE_URL   = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'
 
       def initialize(session)
@@ -37,7 +37,7 @@ module Physiqual
       end
 
       def calories(from, to)
-        activity_data(from, to, CALORIES_URL, 'intVal')
+        activity_data(from, to, CALORIES_URL, 'fpVal')
       end
 
       def distance(from, to)

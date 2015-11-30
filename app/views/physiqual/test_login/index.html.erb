@@ -13,12 +13,18 @@
   <% if session['physiqual_user_id'] %>
   Current session: <%= session['physiqual_user_id'] %>
       <% path = exports_path(format: :json,
-                             first_measurement:'2015-10-11 10:00',
+                             first_measurement:'2015-10-01 10:00',
                              number_of_days: 30) %>
       <%= link_to 'exports',path %>
+      <%= link_to 'exports (html) ', exports_path(format: :html,
+                                                  first_measurement:'2015-10-01 10:00',
+                                                  number_of_days: 30) %>
 
       <%= link_to 'auth', authorize_path(provider: Physiqual::GoogleToken.csrf_token, return_url:
           path) %>
 
   <%end%>
+<pre>
+  <%= @sources %>
+  </pre>
 </div>
