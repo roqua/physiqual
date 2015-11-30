@@ -1,6 +1,6 @@
 module Physiqual
   class ApplicationController < ActionController::Base
-    include ApplicationHelper
+    include Physiqual::ApplicationHelper
 
     def no_token_exists
       render status: 404, plain: 'ERROR: No token of the specified service ' \

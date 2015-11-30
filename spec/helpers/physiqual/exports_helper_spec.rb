@@ -52,13 +52,13 @@ module Physiqual
       it 'throws InvalidParamsError if the provided first measurement is not provided' do
         helper.params[:number_of_days] = nil
         expect { helper.assert_number_of_days }.to raise_error Errors::InvalidParamsError,
-                                                               'number of day missings'
+                                                               'number of days is missing'
       end
 
       it 'throws InvalidParamsError if the provided number of days is not allowed' do
         helper.params[:number_of_days] = 'not-allowed-provider'
         expect { helper.assert_number_of_days }.to raise_error Errors::InvalidParamsError,
-                                                               'number of days not int'
+                                                               'number of days not integer'
       end
 
       it 'does not fail if it is allowed' do

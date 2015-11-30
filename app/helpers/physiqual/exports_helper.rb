@@ -19,9 +19,9 @@ module Physiqual
     end
 
     def assert_number_of_days
-      fail(Errors::InvalidParamsError, 'number of day missings') unless params[:number_of_days]
+      fail(Errors::InvalidParamsError, 'number of days is missing') unless params[:number_of_days]
       number_of_days = params[:number_of_days].to_i.to_s
-      fail(Errors::InvalidParamsError, 'number of days not int') unless params[:number_of_days] == number_of_days
+      fail(Errors::InvalidParamsError, 'number of days not integer') unless params[:number_of_days] == number_of_days
       params[:number_of_days] = params[:number_of_days].to_i
     end
   end
