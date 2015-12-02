@@ -1,6 +1,6 @@
 module Physiqual
   module Errors
-    class EmailNotFoundError < StandardError
+    class NoSessionExistsError < StandardError
     end
   end
 end

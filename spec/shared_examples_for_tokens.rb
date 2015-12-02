@@ -61,39 +61,6 @@ module Physiqual
       end
     end
 
-    describe 'retrieve_token' do
-      let(:access_token) { double 'access_token' }
-      let(:code) { 'code' }
-      let(:url) { 'url' }
-      before do
-        allow(access_token).to receive(:token).and_return('the_token')
-        allow(access_token).to receive(:refresh_token).and_return('the_refresh_token')
-        allow(access_token).to receive(:expires_at).and_return(1.hour.from_now.in_time_zone.to_i)
-      end
-
-      it 'retrieves a token with the provided code and url' do
-        expect(subject).to receive(:get_token).with(code, url).and_return(access_token)
-        subject.retrieve_token! code, url
-      end
-
-      it 'saves the new token, refresh token and valid_until' do
-        subject.save!
-        subject.token = 'the_old_token'
-        subject.refresh_token = 'the_old_refresh_token'
-        subject.valid_until = 1.day.ago.in_time_zone
-
-        expect(subject).to receive(:get_token).with(code, url).and_return(access_token)
-        subject.retrieve_token! code, url
-        subject.reload
-        expect(subject.token).to eq access_token.token
-        expect(subject.refresh_token).to eq access_token.refresh_token
-        expect(subject.valid_until).to eq Time.at(access_token.expires_at)
-      end
-    end
-
-    describe 'get_token' do
-    end
-
     describe 'complete' do
       it 'is false if the token is blank' do
         subject.token = nil

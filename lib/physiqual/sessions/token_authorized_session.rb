@@ -1,9 +1,11 @@
 module Physiqual
   module Sessions
     class TokenAuthorizedSession
-      def initialize(token, base_uri)
-        @base_uri = base_uri
-        @header = { 'Authorization' => "Bearer #{token}" }
+      def initialize(token)
+        token.refresh! if token.expired?
+
+        @base_uri = token.class.base_uri
+        @header = { 'Authorization' => "Bearer #{token.token}" }
       end
 
       def get(path, params = {})

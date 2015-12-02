@@ -30,6 +30,10 @@ Gem::Specification.new do |s|
   # Jquery
   s.add_dependency 'jquery-rails'
 
+  # Omniauth google
+  s.add_dependency 'omniauth-google-oauth2'
+  s.add_dependency 'omniauth-fitbit-oauth2'
+
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rspec-rails'

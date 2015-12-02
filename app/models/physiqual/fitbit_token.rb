@@ -20,7 +20,7 @@ module Physiqual
     end
 
     def self.csrf_token
-      'fitbit'
+      'fitbit_oauth2'
     end
 
     def self.client_id

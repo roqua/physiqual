@@ -8,7 +8,7 @@ module Physiqual
       include_context 'data_service context'
 
       let(:token) { FactoryGirl.build(:google_token) }
-      let(:session) { Sessions::TokenAuthorizedSession.new(token.token, GoogleToken.base_uri) }
+      let(:session) { Sessions::TokenAuthorizedSession.new(token) }
       let(:subject) { described_class.new(session) }
 
       it_behaves_like 'a data_service',       steps:          'data_services/google/steps',

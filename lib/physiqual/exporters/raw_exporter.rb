@@ -1,17 +1,17 @@
 module Physiqual
   module Exporters
     class RawExporter < Exporter
-      def configure(service_provider, data_source)
-        @service_provider = service_provider
+      def configure(provider, data_source)
+        @provider = provider
         @data_source = data_source
         self
       end
 
-      def export_data(user, first_measurement, number_of_days)
-        tokens = Token.provider_tokens(@service_provider, user)
-        return [] unless !tokens.blank? && tokens.first.complete?
-        token = tokens.first
-        session = Sessions::TokenAuthorizedSession.new(token.token, token.class.base_uri)
+      def export_data(user_id, first_measurement, number_of_days)
+        user = User.find_by_user_id(user_id)
+        token = Token.provider_token(@provider, user)
+        return [] unless token && token.complete?
+        session = Sessions::TokenAuthorizedSession.new(token)
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
         from, to = determine_time_span(first_measurement, number_of_days)
         service.send(@data_source.to_sym, from, to)

@@ -7,11 +7,13 @@ module Physiqual
     def self.scope
       'https://www.googleapis.com/auth/fitness.activity.read '\
       'https://www.googleapis.com/auth/fitness.body.read '\
-      'https://www.googleapis.com/auth/fitness.location.read'
+      'https://www.googleapis.com/auth/fitness.location.read '\
+      'profile '\
+      'email'
     end
 
     def self.csrf_token
-      'google'
+      'google_oauth2'
     end
 
     def self.client_id

@@ -1,17 +1,18 @@
 module Physiqual
   module Exporters
     class Exporter
-      def export_data(user, first_measurement, number_of_days)
+      def export_data(user_id, first_measurement, number_of_days)
+        user = User.find_by_user_id(user_id)
         bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
           Physiqual.measurements_per_day,
           Physiqual.interval,
           Physiqual.hours_before_first_measurement)
+
         services = create_services(user.physiqual_tokens, bucket_generator)
         data_aggregator = DataAggregator.new(services, Physiqual.imputers)
 
-        from = first_measurement - Physiqual.hours_before_first_measurement.hours
-        to   = first_measurement + (number_of_days - 1).days +
-               ((Physiqual.measurements_per_day - 1) * Physiqual.interval).hours
+        from = from_time(first_measurement)
+        to = to_time(first_measurement, number_of_days)
 
         buckets = bucket_generator.generate(from, to)
         aggregate_data_into_buckets(from, to, data_aggregator, buckets)
@@ -19,10 +20,19 @@ module Physiqual
 
       private
 
+      def from_time(first_measurement)
+        first_measurement - Physiqual.hours_before_first_measurement.hours
+      end
+
+      def to_time(first_measurement, number_of_days)
+        first_measurement + (number_of_days - 1).days +
+          ((Physiqual.measurements_per_day - 1) * Physiqual.interval).hours
+      end
+
       def create_services(tokens, bucket_generator)
         tokens.map do |token|
           next unless token.complete?
-          session = Sessions::TokenAuthorizedSession.new(token.token, token.class.base_uri)
+          session = Sessions::TokenAuthorizedSession.new(token)
           service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
           service = DataServices::SummarizedDataService.new(service, bucket_generator)
           DataServices::CachedDataService.new service
