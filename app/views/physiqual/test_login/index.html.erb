@@ -15,8 +15,11 @@
       <% path = exports_path(format: :json,
                              first_measurement:'2015-10-01 10:00',
                              number_of_days: 30) %>
-      <%= link_to 'exports',path %>
+      <%= link_to 'exports', path %>
       <%= link_to 'exports (html) ', exports_path(format: :html,
+                                                  first_measurement:'2015-10-01 10:00',
+                                                  number_of_days: 30) %>
+      <%= link_to 'exports (csv) ', exports_path(format: :csv,
                                                   first_measurement:'2015-10-01 10:00',
                                                   number_of_days: 30) %>
 
