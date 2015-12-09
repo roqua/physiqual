@@ -36,10 +36,6 @@ module Physiqual
 
     initializer 'physiqual.omniauth', before: :build_middleware_stack do |app|
       app.middleware.use OmniAuth::Builder do
-        configure do |config|
-          config.path_prefix = '/physiqual/auth'
-        end
-
         provider :physiqual_google_oauth2, Physiqual.google_client_id, Physiqual.google_client_secret,
                  prompt: 'consent',
                  scope: GoogleToken.scope
