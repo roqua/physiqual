@@ -20,7 +20,9 @@ module Physiqual
 
       def sources
         @datasources = @session.get('/dataSources')
-        @datasources = @datasources['dataSource'].map { |x| [x['dataType']['name'], x['dataStreamId']] }
+        unless @datasources.blank?
+          @datasources = @datasources['dataSource'].map { |x| [x['dataType']['name'], x['dataStreamId']] }
+        end
         @datasources
       end
 
