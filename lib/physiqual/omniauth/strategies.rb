@@ -6,7 +6,7 @@ module OmniAuth
       end
 
       def path_prefix
-        "#{Physiqual::Engine.routes.url_helpers.exports_path}[0..-8]}auth"
+        '/physiqual/auth'
       end
     end
 
@@ -16,7 +16,7 @@ module OmniAuth
       end
 
       def path_prefix
-        "#{Physiqual::Engine.routes.url_helpers.exports_path}[0..-8]}auth"
+        '/physiqual/auth'
       end
     end
   end
