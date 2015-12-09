@@ -5,6 +5,7 @@ require 'physiqual/data_services'
 require 'physiqual/errors'
 require 'physiqual/exporters'
 require 'physiqual/imputers'
+require 'physiqual/omniauth'
 require 'physiqual/sessions'
 require 'physiqual/version'
 
