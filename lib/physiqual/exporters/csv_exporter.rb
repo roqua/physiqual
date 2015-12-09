@@ -4,7 +4,7 @@ module Physiqual
   module Exporters
     class CsvExporter < Exporter
       def export(user_id, first_measurement, number_of_days)
-        result = export_data(user_id, first_measurement, number_of_days)
+        result = export_data(user_id, first_measurement, number_of_days, provider = ActicalToken.csrf_token)
         Rails.logger.debug result
 
         csv_string = CSV.generate do |csv|

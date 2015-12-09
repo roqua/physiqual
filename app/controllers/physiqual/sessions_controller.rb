@@ -24,6 +24,7 @@ module Physiqual
       user = User.find_or_create_by(user_id: user_session)
       provider = sessions_params[:provider]
       token = Token.find_or_create_provider_token(provider, user)
+      Token.find_or_create_provider_token(ActicalToken.csrf_token, user)
 
       unless token.complete?
         session['physiqual_return_url'] = return_url

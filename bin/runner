@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+path_to_rails = File.dirname(File.expand_path(__FILE__))
+exec("#{path_to_rails}/rails runner #{ARGV[0]}")

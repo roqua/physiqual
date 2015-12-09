@@ -27,5 +27,13 @@ module Physiqual
     def self.token_url
       ''
     end
+
+    def complete?
+      true
+    end
+
+    def expired?
+      false
+    end
   end
 end

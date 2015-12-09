@@ -1,13 +1,25 @@
+require 'csv'
 module Physiqual
   module DataServices
     class ActicalService < DataService
 
       def initialize(session)
         @session = session
+        filename = "#{Physiqual::Engine.root}/ID999.csv"
+        @data = []
+        CSV.foreach(filename, :headers => true) do |row|
+          @data << row.to_hash
+        end
+        puts @data
+      end
+
+      def sources
+
+        steps(Time.new(2014,3,1,10,30), Time.new(2014,4,2,10,30))
       end
 
       def service_name
-        GoogleToken.csrf_token
+        ActicalToken.csrf_token
       end
 
       def heart_rate(from, to)
@@ -15,7 +27,14 @@ module Physiqual
       end
 
       def steps(from, to)
-        fail Errors::NotSupportedError, 'Steps Not supported by Actical!'
+        results = []
+        @data.each do |entry|
+          date = Time.strptime("#{entry['Date']}T#{entry['Time']}", '%d-%b-%YT%H:%M')
+          next if date < from || date > to
+          value = entry['Activity Counts']
+          results << { date_time_field => date, values_field => [value.to_i] }
+        end
+        results
       end
 
       def activities(from, to)

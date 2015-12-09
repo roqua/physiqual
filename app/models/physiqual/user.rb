@@ -5,6 +5,7 @@ module Physiqual
     has_many :physiqual_tokens, foreign_key: 'physiqual_user_id', class_name: 'Physiqual::Token'
     has_many :google_tokens, foreign_key: 'physiqual_user_id', class_name: 'Physiqual::GoogleToken'
     has_many :fitbit_tokens, foreign_key: 'physiqual_user_id', class_name: 'Physiqual::FitbitToken'
+    has_many :actical_tokens, foreign_key: 'physiqual_user_id', class_name: 'Physiqual::ActicalToken'
     validates :user_id, presence: true
 
     def find_tokens(csrf_token)

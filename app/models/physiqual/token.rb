@@ -94,6 +94,8 @@ module Physiqual
         yield(user.google_tokens)
       elsif provider == FitbitToken.csrf_token
         yield(user.fitbit_tokens)
+      elsif provider == ActicalToken.csrf_token
+        yield(user.actical_tokens)
       else
         fail Errors::ServiceProviderNotFoundError
       end

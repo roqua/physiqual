@@ -12,9 +12,9 @@ Physiqual.configure do |config|
   config.host_protocol        = ENV['HOST_PROTOCOL'] || 'http'
 
   # EMA Settings
-  config.measurements_per_day           = 1 # Number of measurements per day
-  config.interval                       = 24 # Number of hours between measurements
-  config.hours_before_first_measurement = 24 # Number of hours before the first measurement on a day
+  config.measurements_per_day           = 4 # Number of measurements per day
+  config.interval                       = 6 # Number of hours between measurements
+  config.hours_before_first_measurement = 6 # Number of hours before the first measurement on a day
 
   # Imputation
   config.imputers             = [Physiqual::Imputers::CatMullImputer]

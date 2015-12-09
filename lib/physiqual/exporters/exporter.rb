@@ -1,14 +1,22 @@
 module Physiqual
   module Exporters
     class Exporter
-      def export_data(user_id, first_measurement, number_of_days)
+      def export_data(user_id, first_measurement, number_of_days, provider = 'all')
         user = User.find_by_user_id(user_id)
         bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
           Physiqual.measurements_per_day,
           Physiqual.interval,
           Physiqual.hours_before_first_measurement)
 
-        services = create_services(user.physiqual_tokens, bucket_generator)
+        tokens = nil
+
+        if(provider == 'all')
+          tokens = user.physiqual_tokens
+        else
+          tokens = [Token.provider_token(provider, user)]
+        end
+
+        services = create_services(tokens, bucket_generator)
         data_aggregator = DataAggregator.new(services, Physiqual.imputers)
 
         from = from_time(first_measurement)

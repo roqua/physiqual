@@ -11,10 +11,10 @@ module Physiqual
       @sources = 'No google token'
       return unless session['physiqual_user_id']
       user = User.find_by_user_id(user_session)
+      @tokens = user.physiqual_tokens.map {|token| token.class.csrf_token} if user
       tok = Token.provider_token(GoogleToken.csrf_token, user)
       return unless tok && tok.complete?
-      session = Sessions::TokenAuthorizedSession.new(tok)
-      service = DataServices::GoogleService.new(session)
+      service = DataServices::ActicalService.new(nil)
       @sources = service.sources.to_yaml
     end
 

@@ -14,20 +14,30 @@
   Current session: <%= session['physiqual_user_id'] %>
       <% path = exports_path(format: :json,
                              first_measurement:'2015-10-01 10:00',
-                             number_of_days: 30) %>
+                             number_of_days: 30)
+      measurement = '2014-03-01 10:30'
+      number_of_days = 30
+      %>
       <%= link_to 'exports', path %>
       <%= link_to 'exports (html) ', exports_path(format: :html,
-                                                  first_measurement:'2015-10-01 10:00',
-                                                  number_of_days: 30) %>
+                                                  first_measurement:measurement,
+                                                  number_of_days: number_of_days) %>
+
+      <%= link_to 'exports (json) ', exports_path(format: :json,
+                                                  first_measurement:measurement,
+                                                  number_of_days: number_of_days) %>
+
       <%= link_to 'exports (csv) ', exports_path(format: :csv,
-                                                  first_measurement:'2015-10-01 10:00',
-                                                  number_of_days: 30) %>
+                                                  first_measurement:measurement,
+                                                  number_of_days: number_of_days) %>
 
       <%= link_to 'auth', authorize_path(provider: Physiqual::GoogleToken.csrf_token, return_url:
           path) %>
 
   <%end%>
-<pre>
+  <pre>
+  <%= @tokens %>
+
   <%= @sources %>
   </pre>
 </div>
