@@ -13,7 +13,7 @@ module Physiqual
     end
 
     def self.csrf_token
-      'google_oauth2'
+      'physiqual_google_oauth2'
     end
 
     def self.client_id

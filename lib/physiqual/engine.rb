@@ -40,10 +40,10 @@ module Physiqual
           config.path_prefix = '/physiqual/auth'
         end
 
-        provider :google_oauth2, Physiqual.google_client_id, Physiqual.google_client_secret,
+        provider :physiqual_google_oauth2, Physiqual.google_client_id, Physiqual.google_client_secret,
                  prompt: 'consent',
                  scope: GoogleToken.scope
-        provider :fitbit_oauth2, Physiqual.fitbit_client_id, Physiqual.fitbit_client_secret,
+        provider :physiqual_fitbit_oauth2, Physiqual.fitbit_client_id, Physiqual.fitbit_client_secret,
                  scope: FitbitToken.scope
       end
     end
