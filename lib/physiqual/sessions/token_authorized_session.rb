@@ -12,6 +12,7 @@ module Physiqual
         result = HTTParty.get(full_url_for(path),
                               query: params,
                               headers: @header)
+        Rails.logger.info result.to_yml
         JSON.parse(result.body)
       end
 
