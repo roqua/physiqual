@@ -43,7 +43,7 @@ module Physiqual
     end
 
     def raw_params
-      params.permit(:first_measurement, :number_of_days, :provider, :data_source)
+      params.permit(:first_measurement, :number_of_days, :provider, :data_source, :format)
     end
 
     def export_params
