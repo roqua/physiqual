@@ -6,6 +6,7 @@ module OmniAuth
       end
 
       def path_prefix
+        # TODO: fix hardcoded slug
         '/physiqual/auth'
       end
     end
@@ -16,6 +17,7 @@ module OmniAuth
       end
 
       def path_prefix
+        # TODO: fix hardcoded slug
         '/physiqual/auth'
       end
     end
