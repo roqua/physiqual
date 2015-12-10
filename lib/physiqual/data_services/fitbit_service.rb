@@ -85,9 +85,8 @@ module Physiqual
         entries.each do |entry|
           value = entry['value']
           value = convert_to_int_if_needed(value)
-          # TODO: Does this generate the correct date?
-          date = Time.parse("#{date} #{entry['time']}")
-          result << { date_time_field => date, values_field => [value] }
+          time_and_date = Time.parse("#{date} #{entry['time']}")
+          result << { date_time_field => time_and_date, values_field => [value] }
         end
         result
       end
