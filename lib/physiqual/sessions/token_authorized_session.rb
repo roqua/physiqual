@@ -12,7 +12,7 @@ module Physiqual
         result = HTTParty.get(full_url_for(path),
                               query: params,
                               headers: @header)
-        Rails.logger.info result.to_yaml
+        fail(Errors::UnexpectedHttpResponseError, result.response.to_s) unless result.response.code == '200'
         JSON.parse(result.body)
       end
 
