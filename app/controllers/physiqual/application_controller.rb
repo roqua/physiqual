@@ -25,6 +25,5 @@ module Physiqual
       render status: 404, plain: 'ERROR: Encountered an unexpected HTTP Response while retrieving data: ' \
                                   "(#{exception.message})"
     end
-    end
   end
 end

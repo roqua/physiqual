@@ -1,6 +1,6 @@
 require 'rails_helper'
 module Physiqual
-  describe SessionsController do
+  describe ApplicationController do
     describe 'error renderings head 404' do
       it 'no_token_exists' do
         expect(subject).to receive(:render)
@@ -35,6 +35,15 @@ module Physiqual
                 plain: 'ERROR: The provided params are incorrect or not specified (123)'
                ) { fail(StandardError, 'stop_execution') }
         expect { subject.invalid_params(exception) }.to raise_error('stop_execution')
+      end
+
+      it 'unexpected_http_response' do
+        exception = Exception.new('123')
+        expect(subject).to receive(:render)
+          .with(status: 404,
+                plain: 'ERROR: Encountered an unexpected HTTP Response while retrieving data: (123)'
+               ) { fail(StandardError, 'stop_execution') }
+        expect { subject.unexpected_http_response(exception) }.to raise_error('stop_execution')
       end
     end
   end
