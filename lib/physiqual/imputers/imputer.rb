@@ -15,9 +15,11 @@ module Physiqual
       private
 
       def impute!(array)
-        # Return an array of nils if there are not at least two values that do not need imputation
         nr_values_to_be_imputed = array.count { |elem| need_imputation?(elem) }
-        return Array.new(array.size, nil) if nr_values_to_be_imputed + 1 >= array.size
+        # Return an array of a single value if there is only one single non-nil/-1 value
+        return Array.new(array.size, single_value(array)) if nr_values_to_be_imputed + 1 == array.size
+        # Return an array of nils if all values need imputation
+        return Array.new(array.size, nil) if nr_values_to_be_imputed == array.size
 
         # Return if no nils or -1's
         return array unless array.any? { |elem| need_imputation?(elem) }
@@ -38,6 +40,10 @@ module Physiqual
 
       def need_imputation?(value)
         [nil, -1].include? value
+      end
+
+      def single_value(array)
+        array.find { |elem| !need_imputation(elem) }
       end
     end
   end
