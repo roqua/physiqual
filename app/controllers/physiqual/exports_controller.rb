@@ -11,6 +11,7 @@ module Physiqual
     rescue_from Errors::ServiceProviderNotFoundError, with: :service_provider_not_found
     rescue_from Errors::NoTokenExistsError, with: :no_token_exists
     rescue_from Errors::InvalidParamsError, with: :invalid_params
+    rescue_from Errors::UnexpectedHttpResponseError, with: :unexpected_http_response
 
     def index
       respond_to do |format|
@@ -46,7 +47,7 @@ module Physiqual
     end
 
     def export_params
-      params.permit(:first_measurement, :number_of_days)
+      params.permit(:first_measurement, :number_of_days, :format)
     end
   end
 end

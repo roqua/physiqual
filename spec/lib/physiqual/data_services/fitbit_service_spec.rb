@@ -140,10 +140,11 @@ module Physiqual
 
         it 'should return the correct time' do
           expected_format = '%H:%M:%S'
-          @result.each do |entry|
+          expected_times = %w(00:00:00 00:01:00 00:02:00)
+          @result.each_with_index do |entry, idx|
             result = entry[subject.date_time_field].strftime(expected_format).to_s
             expect(result).to match(/[0-9]{2}:[0-9]{2}:[0-9]{2}/)
-            expect(result).to eq from.to_date.strftime(expected_format)
+            expect(result).to eq expected_times[idx]
           end
         end
       end

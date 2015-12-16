@@ -20,5 +20,10 @@ module Physiqual
       render status: 404, plain: 'ERROR: The provided params are incorrect or not specified ' \
                                   "(#{exception.message})"
     end
+
+    def unexpected_http_response(exception)
+      render status: 404, plain: 'ERROR: Encountered an unexpected HTTP Response while retrieving data: ' \
+                                  "(#{exception.message})"
+    end
   end
 end
