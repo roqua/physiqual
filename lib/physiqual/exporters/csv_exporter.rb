@@ -9,7 +9,6 @@ module Physiqual
 
         csv_string = CSV.generate do |csv|
           csv << ['Date', result.first.second.keys].flatten
-          Rails.logger.debug csv
           result.keys.each do |key|
             csv << [key, result[key].values].flatten
           end
