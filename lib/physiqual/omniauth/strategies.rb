@@ -6,8 +6,7 @@ module OmniAuth
       end
 
       def path_prefix
-        # TODO: fix hardcoded slug
-        '/physiqual/auth'
+        "#{Rails.application.routes.url_helpers.physiqual_path}/auth"
       end
     end
 
@@ -17,8 +16,7 @@ module OmniAuth
       end
 
       def path_prefix
-        # TODO: fix hardcoded slug
-        '/physiqual/auth'
+        "#{Rails.application.routes.url_helpers.physiqual_path}/auth"
       end
     end
   end
