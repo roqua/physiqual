@@ -5,7 +5,10 @@ module Physiqual
         token.refresh! if token.expired?
 
         @base_uri = token.class.base_uri
-        @header = { 'Authorization' => "Bearer #{token.token}" }
+        @header = { 'Authorization' => "Bearer #{token.token}",
+                    'Accept-Encoding' => 'gzip',
+                    'User-Agent' => 'Physiqual (gzip)'
+                  }
       end
 
       def get(path, params = {})
