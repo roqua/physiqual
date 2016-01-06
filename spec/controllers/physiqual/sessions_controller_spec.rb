@@ -3,16 +3,16 @@ module Physiqual
   describe SessionsController do
     let(:user) { FactoryGirl.create(:physiqual_user) }
     let!(:base_url) { 'http://test.host' }
-    # routes { Physiqual::Engine.routes }
 
     before :each do
       subject.session['physiqual_user_id'] = user.user_id
+      @routes = Engine.routes
     end
 
     describe 'before filters' do
       it 'calls the find_token method when calling create' do
         expect(subject).to receive(:find_token) { fail(StandardError, 'stop_execution') }
-        expect { post :create }.to raise_error('stop_execution')
+        expect { post :create, provider: GoogleToken.csrf_token }.to raise_error('stop_execution')
       end
     end
 
@@ -24,7 +24,12 @@ module Physiqual
 
     describe 'authorize' do
       it 'heads 404 if no provider is given' do
-        get :authorize
+        # On a live server, this error actually renders as a 404 (both in development and in production)
+        expect { get :authorize }.to raise_error(ActionController::UrlGenerationError)
+      end
+
+      it 'heads 404 if unknown provider is given' do
+        get :authorize, provider: 'unknown'
         expect(response.status).to eq(404)
       end
 
