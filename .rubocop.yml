@@ -22,10 +22,9 @@ LineLength:
 AndOr:
   Enabled: false
 
-# Avoid methods longer than 10 lines of code
 MethodLength:
   CountComments: false  # count full line comments?
-  Max: 20
+  Max: 30
 
 # Limit modules to have a length of 200
 Metrics/ModuleLength:
