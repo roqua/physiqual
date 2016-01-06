@@ -12,6 +12,7 @@ module Physiqual
     before :each do
       subject.session['physiqual_user_id'] = user.user_id
       subject.params = params
+      @routes = Engine.routes
     end
 
     describe 'before filters' do
