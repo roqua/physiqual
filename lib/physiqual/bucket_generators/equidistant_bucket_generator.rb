@@ -25,7 +25,7 @@ module Physiqual
             end
 
             # CEST and CET fix
-            bucket_end  += bucket_start.utc_offset - bucket_end.utc_offset
+            bucket_end += bucket_start.utc_offset - bucket_end.utc_offset
             return result if bucket_end > to || bucket_end >= currently
             result << output_entry(bucket_start, bucket_end, [])
           end
