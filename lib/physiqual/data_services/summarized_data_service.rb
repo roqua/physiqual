@@ -115,7 +115,7 @@ module Physiqual
         if upper_bound == lower_bound
           upper_bound
         elsif upper_bound - average_max_value == average_max_value - lower_bound
-          upper_bound
+          [upper_bound, lower_bound].sum.to_f / 2.0
         elsif upper_bound - average_max_value > average_max_value - lower_bound
           lower_bound
         else

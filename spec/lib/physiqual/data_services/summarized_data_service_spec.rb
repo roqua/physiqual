@@ -81,10 +81,10 @@ module Physiqual
       end
 
       describe 'max_from_hash' do
-        it 'always gets the highest value closest to the mean of the max values on a tie' do
+        it 'always gets the mean value closest to the mean of the max values on a tie' do
           data = { 1 => 1, 2 => 1, 3 => 1, 4 => 1 }
           result = subject.send(:max_from_hash, data)
-          expect(result).to eq(3)
+          expect(result).to eq(2.5)
         end
 
         it 'returns the highest value from a hash of values' do
@@ -107,10 +107,10 @@ module Physiqual
       end
 
       describe 'representative_value_for_array' do
-        it 'always gets the highest value closest to the mean of the values on a tie' do
+        it 'always gets the mean value closest to the mean of the values on a tie' do
           data = [1, 2, 3, 4]
           result = subject.send(:representative_value_for_array, data)
-          expect(result).to eq(3)
+          expect(result).to eq(2.5)
         end
 
         it 'returns the highest value from a hash of values' do
@@ -164,9 +164,9 @@ module Physiqual
           expect(result).to eq(3)
         end
 
-        it 'returns the larger value if the values are equidistant from mean' do
+        it 'returns the mean value if the values are equidistant from mean' do
           result = subject.send(:closest_value, 3, 4, 3.5)
-          expect(result).to eq(4)
+          expect(result).to eq(3.5)
         end
 
         it 'returns the smaller value if it is closer to the mean' do
