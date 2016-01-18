@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-require 'shared_context_for_data_services'
+require 'shared_context_for_bucket_generators'
 module Physiqual
   module BucketGenerators
     describe EquidistantBucketGenerator do
