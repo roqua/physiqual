@@ -55,27 +55,22 @@ module Physiqual
       def activity_data(from, to, url, value_type, &block)
         res = point_results(from, to, url)
 
-        results = loop_through_results(res) do |value, start, endd, results_hash|
-          actual_timestep = Time.at((start + endd) / 2)
-
-          # If the current timestep is higher than the final timestep, don't include it
-          next if actual_timestep > to
-          results_hash[actual_timestep] += value[value_type].to_i
+        loop_through_results(res) do |value, start, endd, results_array|
+          current_value = value[value_type].to_i
+          current_value = [(block_given? ? block.call(current_value) : current_value)]
+          results_array << DataEntry.new(start: start, end: endd, values: current_value)
         end
-
-        hash_to_array(results, &block)
       end
 
-      def specific_activity_data(from, to, url, activity_type, &block)
+      def specific_activity_data(from, to, url, activity_type)
         res = point_results(from, to, url)
 
-        results = loop_through_results(res) do |value, start, endd, results_hash|
-          next unless value['intVal'] == activity_type
-          actual_date = Time.at(endd).in_time_zone.beginning_of_day
-          results_hash[actual_date] += (endd - start) / 60
-        end
+        loop_through_results(res) do |value, start, endd, results_array|
 
-        hash_to_array(results, &block)
+          # If the current activity is not the specified activity, skip it
+          next unless value['intVal'] == activity_type
+          results_array << DataEntry.new(start: start, end: endd, values: [(endd - start) / 60])
+        end
       end
 
       def point_results(from, to, url)
@@ -86,24 +81,21 @@ module Physiqual
         res
       end
 
-      def hash_to_array(hash, &block)
-        results = []
-        hash.each do |date, value|
-          results << { date_time_field => date, values_field => [(block_given? ? block.call(value) : value)] }
-        end
-        results
-      end
-
       def loop_through_results(res)
         return [] if res.blank?
-        results_hash = Hash.new(0)
+        results = []
 
         res.each do |entry|
           start = (entry['startTimeNanos'].to_i / 10e8).to_i
           endd = (entry['endTimeNanos'].to_i / 10e8).to_i
-          yield(entry['value'].first, start, endd, results_hash)
+
+          # If the current timestep is higher than the final timestep, don't include it
+          actual_timestep = Time.at((start + endd) / 2)
+          next if actual_timestep > to
+
+          yield(entry['value'].first, start, endd, results)
         end
-        results_hash
+        results
       end
 
       def access_datasource(id, from, to)
