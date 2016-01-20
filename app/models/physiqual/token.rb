@@ -3,11 +3,8 @@ module Physiqual
     self.table_name = 'physiqual_tokens'
 
     belongs_to :physiqual_user, class_name: 'Physiqual::User'
-    # validates :token, presence: true
-    # validates :refresh_token, presence: true
     validates :physiqual_user_id, presence: true
-    validates_uniqueness_of :physiqual_user_id, scope: :type
-    # validates :valid_until, presence: true
+    validates_uniqueness_of :physiqual_user_id
 
     def expired?
       valid_until.blank? || valid_until <= Time.now.in_time_zone
