@@ -70,7 +70,7 @@ module Physiqual
         before :each do
           expect(subject).to receive(:user_session).and_return(user.user_id)
           session['physiqual_return_url'] = nil
-          user.physiqual_tokens.destroy_all
+          user.physiqual_token.destroy if user.physiqual_token
         end
 
         it 'sets / if no return url is provided' do
@@ -91,7 +91,7 @@ module Physiqual
     describe 'redirects to the correct omniauth url for Google' do
       before :each do
         expect(subject).to receive(:user_session).and_return(user.user_id)
-        user.physiqual_tokens.destroy_all
+        user.physiqual_token.destroy if user.physiqual_token
         get :authorize, provider: GoogleToken.csrf_token
       end
 
@@ -104,7 +104,7 @@ module Physiqual
     describe 'redirects to the correct omniauth url for Fitbit' do
       before :each do
         expect(subject).to receive(:user_session).and_return(user.user_id)
-        user.physiqual_tokens.destroy_all
+        user.physiqual_token.destroy if user.physiqual_token
         get :authorize, provider: FitbitToken.csrf_token
       end
 

@@ -3,7 +3,6 @@ module Physiqual
   describe ExportsController do
     let!(:user) { FactoryGirl.create(:physiqual_user) }
     let!(:google_token) { FactoryGirl.create(:google_token, physiqual_user: user) }
-    let!(:physiqual_token) { FactoryGirl.create(:fitbit_token, physiqual_user: user) }
     let!(:params) do
       { first_measurement: '2015-06-14 10:00', number_of_days: '39',
         provider: GoogleToken.csrf_token, data_source: 'heart_rate' }

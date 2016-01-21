@@ -8,7 +8,7 @@ module Physiqual
           Physiqual.interval,
           Physiqual.hours_before_first_measurement)
 
-        services = create_services(user.physiqual_tokens, bucket_generator)
+        services = create_services([user.physiqual_token], bucket_generator)
         data_aggregator = DataAggregator.new(services, Physiqual.imputers)
 
         from = from_time(first_measurement)

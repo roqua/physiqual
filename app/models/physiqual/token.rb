@@ -97,7 +97,7 @@ module Physiqual
       end
     end
 
-    def self.provider_token(provider, user)
+    def self.find_provider_token(provider, user)
       resulting_token = user.physiqual_token
       return nil if resulting_token.blank? || resulting_token.type != provider_type(provider)
       resulting_token
@@ -109,7 +109,7 @@ module Physiqual
     end
 
     def self.find_or_create_provider_token(provider, user)
-      token = provider_token(provider, user)
+      token = find_provider_token(provider, user)
       token = create_provider_token(provider: provider, user: user) if token.nil?
       token
     end
