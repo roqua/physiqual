@@ -102,7 +102,7 @@ module Physiqual
 
         it 'converts convertable strings to ints' do
           integer = 123
-          entries = [{ datetimefield => from, valuefield => "#{integer}" }]
+          entries = [{ datetimefield => from, valuefield => integer.to_s }]
           result = subject.send(:process_entries, entries)
           expected = [{ subject.date_time_field => from, subject.values_field => [integer] }]
 

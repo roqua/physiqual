@@ -2,7 +2,7 @@ module Physiqual
   class DataEntry
     include Virtus.model
 
-    DATE_FORMAT = '%Y-%m-%d'
+    DATE_FORMAT = '%Y-%m-%d'.freeze
 
     attribute :start_date, DateTime
     attribute :end_date, DateTime

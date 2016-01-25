@@ -101,7 +101,7 @@ module Physiqual
         expect(exporter).to receive(:export).and_return('x' => 'y')
         get :raw, params
 
-        expect(response.body).to eq "{\"x\":\"y\"}"
+        expect(response.body).to eq '{"x":"y"}'
         expect(response.status).to eq 200
       end
     end
