@@ -10,75 +10,11 @@ module Physiqual
       # TODO: This should be figured out, how does it work to have a decorator pattern where one of the classes
       # also receives some other things during initialization
 
-      let(:last_measurement_time) { Time.now.change(hour: 22, min: 30, usec: 0) }
-      let(:interval) { 6 }
-      let(:measurements_per_day) { 3 }
-      let(:hours_before_first_measurement) { 12 } # previously: use_night == true
       let(:service) { MockService.new(nil) }
-      let(:bucket_generator_without_night) do
-        BucketGenerators::EquidistantBucketGenerator.new(
-          measurements_per_day,
-          interval,
-          interval)
-      end
-      let(:bucket_generator_with_night) do
-        BucketGenerators::EquidistantBucketGenerator.new(
-          measurements_per_day,
-          interval,
-          hours_before_first_measurement)
-      end
-      let(:subject) { SummarizedDataService.new(service, bucket_generator_without_night) }
+      let(:subject) { SummarizedDataService.new(service) }
 
       it_behaves_like 'a data_service'
       include_context 'data_service context'
-
-      describe 'cluster_in_buckets' do
-        let(:data) { service.steps(from, to) }
-        let(:from_subset) { (to - 1.day).change(hour: 10, min: 30) - interval.hours }
-        let(:to_subset) { (to - 1.day).change(hour: 22, min: 30) }
-        let(:data_subset) { data.select! { |x| x[subject.date_time_field].to_date == from_subset.to_date } }
-
-        it 'should output the correct format' do
-          @result = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
-          check_result_format(@result)
-        end
-
-        it 'should correctly cluster the data into buckets' do
-          res = []
-          (0...measurements_per_day).each do |meas|
-            beginn = from_subset + (meas * interval).hours
-            endd = from_subset + ((meas + 1) * interval).hours
-            res << data.select { |x| x[subject.date_time_field] <= endd && x[subject.date_time_field] > beginn }
-          end
-
-          full_result = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
-          res.each_with_index do |current_res, index|
-            # The results can be sorted, as the order in the values does not matter
-            expected = current_res.map { |x| x[subject.values_field] }.flatten.sort
-            result = full_result[index][subject.values_field].sort
-            expect(result.size).to eq expected.size
-            expect(result).to eq expected
-          end
-        end
-
-        describe 'should take the night flag into account' do
-          before do
-            subject = SummarizedDataService.new(service, bucket_generator_with_night)
-            full_with_night = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
-            @full_with_night = full_with_night.first[subject.values_field].sort
-
-            subject = SummarizedDataService.new(service, bucket_generator_without_night)
-            full_without_night = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
-            @full_without_night = full_without_night.first[subject.values_field].sort
-          end
-
-          # Should have more elements
-          it { expect(@full_with_night.size).to be > @full_without_night.length }
-
-          # Should be a superset
-          it { expect(@full_without_night - @full_with_night).to be_blank }
-        end
-      end
 
       describe 'max_from_hash' do
         it 'always gets the mean value closest to the mean of the max values on a tie' do
@@ -180,10 +116,9 @@ module Physiqual
         end
       end
 
-      describe 'with generated buckets' do
+      describe 'with data' do
         before do
           @data = service.steps(from, to)
-          @data = subject.send(:cluster_in_buckets, @data, from, to)
         end
 
         describe 'generate results in the correct format' do
@@ -221,7 +156,7 @@ module Physiqual
 
         describe 'histogram' do
           it 'behaves like a histogram' do
-            data = [{ subject.values_field => [1, 2, 3, 4] }]
+            data = [DataEntry.new(start_date: Time.now, end_date: Time.now, values: [1, 2, 3, 4] )]
             expected = { 1 => 1, 2 => 1, 3 => 1, 4 => 1 }
             expect(subject).to receive(:max_from_hash).with(expected)
             subject.send(:histogram, data)
@@ -234,61 +169,72 @@ module Physiqual
           let(:k) { 1 }
 
           it 'should also increase the k surrounding buckets' do
-            data = [{ subject.values_field => [5, 7] }]
+            data = [DataEntry.new(start_date: Time.now, end_date: Time.now, values: [5, 7] )]
             expected = { 4 => 1, 5 => 1, 6 => 2, 7 => 1, 8 => 1 }
             expect(subject).to receive(:max_from_hash).with(expected)
             subject.send(:soft_histogram, data, min, max, k)
           end
 
-          it 'should take the max into account' do
-            min = 10
-            data = [{ subject.values_field => [15, 8, 8, 8, 8] }]
-            expected = { 14 => 1, 15 => 1, 16 => 1 }
-            expect(subject).to receive(:max_from_hash).with(expected)
-            subject.send(:soft_histogram, data, min, max, k)
+          describe 'should take the min into account' do
+            let(:data) {[DataEntry.new(start_date: Time.now, end_date: Time.now, values:  [15, 8, 8, 8, 8] )]}
+            it 'should not return the 9 if 10 is min' do
+              min = 10
+              expected = { 14 => 1, 15 => 1, 16 => 1 }
+              expect(subject).to receive(:max_from_hash).with(expected)
+              subject.send(:soft_histogram, data, min, max, k)
+            end
 
-            min = 9
-            expected = { 9 => 4, 14 => 1, 15 => 1, 16 => 1 }
-            expect(subject).to receive(:max_from_hash).with(expected)
-            subject.send(:soft_histogram, data, min, max, k)
+            it 'should return 9 if 9 is min (but not 8)' do
+              min = 9
+              expected = { 9 => 4, 14 => 1, 15 => 1, 16 => 1 }
+              expect(subject).to receive(:max_from_hash).with(expected)
+              subject.send(:soft_histogram, data, min, max, k)
+            end
           end
 
-          it 'should take the max into account' do
-            max = 10
-            data = [{ subject.values_field => [5, 12, 12, 12, 12] }]
-            expected = { 4 => 1, 5 => 1, 6 => 1 }
-            expect(subject).to receive(:max_from_hash).with(expected)
-            subject.send(:soft_histogram, data, min, max, k)
-
-            max = 11
-            expected = { 4 => 1, 5 => 1, 6 => 1, 11 => 4 }
-            expect(subject).to receive(:max_from_hash).with(expected)
-            subject.send(:soft_histogram, data, min, max, k)
+          describe 'should take the max into account' do
+            let(:data) {[DataEntry.new(start_date: Time.now, end_date: Time.now, values:  [5, 12, 12, 12, 12] )]}
+            it 'should not return the 12 if 10 is max' do
+              max = 10
+              expected = { 4 => 1, 5 => 1, 6 => 1 }
+              expect(subject).to receive(:max_from_hash).with(expected)
+              subject.send(:soft_histogram, data, min, max, k)
+            end
+            it 'should return 11 if 11 is max (but not 12)' do
+              max = 11
+              expected = { 4 => 1, 5 => 1, 6 => 1, 11 => 4 }
+              expect(subject).to receive(:max_from_hash).with(expected)
+              subject.send(:soft_histogram, data, min, max, k)
+            end
           end
 
-          it 'should produce the expected result' do
-            k = 2
-            min = 5
-            max = 20
-            data = [{ subject.values_field => [1, 1, 1, 2, 2, 3, 4, 4, 5, 8, 10, 12, 12, 12, 66] }]
-            expected = { 5 => 4, 6 => 4, 7 => 2, 10 => 5, 11 => 4, 12 => 4, 13 => 3, 14 => 3, 8 => 2, 9 => 2 }
-            expect(subject).to receive(:max_from_hash).with(expected).and_call_original
-            result = subject.send(:soft_histogram, data, min, max, k)
-            expect(result.first[subject.values_field]).to eq([10])
-
-            min = 0
-            expected = { 3 => 9, 4 => 6, 5 => 4, 6 => 4, 7 => 2, 10 => 5, 11 => 4, 12 => 4, 13 => 3, 14 => 3, 8 => 2,
-                         9 => 2, 0 => 5, 1 => 6, 2 => 8 }
-            expect(subject).to receive(:max_from_hash).with(expected).and_call_original
-            result = subject.send(:soft_histogram, data, min, max, k)
-            expect(result.first[subject.values_field]).to eq([3])
+          describe 'should produce the expected result' do
+            let(:data) {[DataEntry.new(start_date: Time.now, end_date: Time.now,
+                                       values: [1, 1, 1, 2, 2, 3, 4, 4, 5, 8, 10, 12, 12, 12, 66] )]}
+            let(:k) {2}
+            let(:max) {20}
+            it 'with a min of 5' do
+              min = 5
+              expected = { 5 => 4, 6 => 4, 7 => 2, 10 => 5, 11 => 4, 12 => 4, 13 => 3, 14 => 3, 8 => 2, 9 => 2 }
+              expect(subject).to receive(:max_from_hash).with(expected).and_call_original
+              result = subject.send(:soft_histogram, data, min, max, k)
+              expect(result.first.values).to eq([10])
+            end
+            it 'with a min of 0' do
+              min = 0
+              expected = { 3 => 9, 4 => 6, 5 => 4, 6 => 4, 7 => 2, 10 => 5, 11 => 4, 12 => 4, 13 => 3, 14 => 3, 8 => 2,
+                           9 => 2, 0 => 5, 1 => 6, 2 => 8 }
+              expect(subject).to receive(:max_from_hash).with(expected).and_call_original
+              result = subject.send(:soft_histogram, data, min, max, k)
+              expect(result.first.values).to eq([3])
+            end
           end
         end
 
         describe 'sum_values' do
           it 'should sum the values according to the buckets' do
-            result = subject.send(:sum_values, @data).map { |x| x[subject.values_field] }
-            expected = @data.map { |x| [x[subject.values_field].sum] }
+            result = subject.send(:sum_values, @data).map { |x| x.values }
+            expected = @data.map { |x| [x.values.sum] }
 
             expected.zip(result) do |value, result_value|
               expect(value).to eq(result_value)

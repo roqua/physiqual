@@ -70,9 +70,10 @@ module Physiqual
       def soft_histogram(data, min, max, k)
         data.map do |entry|
           histogram = Hash.new(0)
-          entry[values_field].each do |current|
+          entry.values.each do |current|
             (current - k..current + k).each { |buck| histogram[buck] += 1 } if current
           end
+
           histogram.delete_if { |hist_key, _value| hist_key < min || hist_key > max }
           max_value = max_from_hash(histogram)
 
@@ -88,6 +89,7 @@ module Physiqual
         #
         # This guarantees that we always return a value that was measured and
         # not the result of intrapolation.
+
         return nil unless provided_hash.max
         max_values = provided_hash.map { |key, v| key if v == provided_hash.values.max }.compact
         return max_values.first if max_values.any? { |elem| elem.is_a? String }

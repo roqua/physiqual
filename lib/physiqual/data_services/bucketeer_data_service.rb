@@ -52,7 +52,7 @@ module Physiqual
         data.each do |entry|
           next unless entry.measurement_moment
 
-          while current_bucket < buckets.size && entry[date_time_field] > buckets[current_bucket].measurement_moment
+          while current_bucket < buckets.size && entry.measurement_moment > buckets[current_bucket].measurement_moment
             current_bucket += 1
           end
 

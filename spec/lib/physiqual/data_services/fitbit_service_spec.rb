@@ -92,30 +92,39 @@ module Physiqual
           entries = [{ datetimefield => from, valuefield => 132 },
                      { datetimefield => from, valuefield => 132 },
                      { datetimefield => from, valuefield => 132 }]
-          result = subject.send(:process_entries, entries)
+          @result = subject.send(:process_entries, entries)
 
-          expected = [{ subject.date_time_field => from, subject.values_field => [132] },
-                      { subject.date_time_field =>  from, subject.values_field => [132] },
-                      { subject.date_time_field =>  from, subject.values_field => [132] }]
-          expect(result).to eq expected
+          @expected = [DataEntry.new(start_date: from - 24.hours,
+                                     end_date: from, values: [132], measurement_moment: from),
+                      DataEntry.new(start_date: from - 24.hours,
+                                    end_date: from, values: [132], measurement_moment: from),
+                      DataEntry.new(start_date: from - 24.hours,
+                                    end_date: from, values: [132], measurement_moment: from)]
         end
 
         it 'converts convertable strings to ints' do
           integer = 123
           entries = [{ datetimefield => from, valuefield => integer.to_s }]
-          result = subject.send(:process_entries, entries)
-          expected = [{ subject.date_time_field => from, subject.values_field => [integer] }]
-
-          expect(result).to eq expected
+          @result = subject.send(:process_entries, entries)
+          @expected = [DataEntry.new(start_date: (from - 24.hours), end_date: from, values: [integer],
+                                     measurement_moment: from)]
         end
 
         it 'converts non-convertable strings not to ints' do
           teststring = 'test-string'
           entries = [{ datetimefield => from, valuefield => teststring }]
-          result = subject.send(:process_entries, entries)
-          expected = [{ subject.date_time_field => from, subject.values_field => [teststring] }]
+          @result = subject.send(:process_entries, entries)
+          @expected = [DataEntry.new(start_date: (from - 24.hours), end_date: from, values: [teststring],
+                                     measurement_moment: from)]
+        end
 
-          expect(result).to eq expected
+        after :each do
+          @result.zip(@expected).each do |result_value, expected_value|
+            expect(result_value.start_date).to eq expected_value.start_date
+            expect(result_value.end_date).to eq expected_value.end_date
+            expect(result_value.measurement_moment).to eq expected_value.measurement_moment
+            expect(result_value.values).to eq expected_value.values
+          end
         end
       end
 
@@ -132,7 +141,7 @@ module Physiqual
         it 'should return the correct date' do
           expected_format = '%Y-%m-%d'
           @result.each do |entry|
-            result = entry[subject.date_time_field].strftime(expected_format).to_s
+            result = entry.end_date.strftime(expected_format).to_s
             expect(result).to match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/)
             expect(result).to eq from.to_date.strftime(expected_format)
           end
@@ -142,7 +151,7 @@ module Physiqual
           expected_format = '%H:%M:%S'
           expected_times = %w(00:00:00 00:01:00 00:02:00)
           @result.each_with_index do |entry, idx|
-            result = entry[subject.date_time_field].strftime(expected_format).to_s
+            result = entry.end_date.strftime(expected_format).to_s
             expect(result).to match(/[0-9]{2}:[0-9]{2}:[0-9]{2}/)
             expect(result).to eq expected_times[idx]
           end

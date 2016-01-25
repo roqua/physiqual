@@ -4,11 +4,11 @@ module Physiqual
       ACTIVITIES = YAML.load_file("#{Physiqual::Engine.root}/db/seeds/google_activities.yml")
 
       HEART_RATE_URL = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'
-      STEPS_URL      = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
-      ACTIVITY_URL   = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-      SLEEP_URL      = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-      CALORIES_URL   = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'
-      DISTANCE_URL   = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'
+      STEPS_URL = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
+      ACTIVITY_URL = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
+      SLEEP_URL = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
+      CALORIES_URL = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'
+      DISTANCE_URL = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'
 
       def initialize(session)
         @session = session
@@ -57,9 +57,13 @@ module Physiqual
 
         loop_through_results(res) do |value, start, endd, results_array|
           current_value = value[value_type].to_i
-          current_value = [(block_given? ? yield current_value : current_value)]
-          measurement_moment = Time.at((start + endd) / 2)
-          results_array << DataEntry.new(start: start, end: endd, values: current_value,
+          current_value = [(block_given? ? block.call(current_value) : current_value)]
+          measurement_moment = Time.at((start + endd) / 2).in_time_zone
+
+          # If the current timestep is higher than the final timestep, don't include it
+          next if measurement_moment > to
+          results_array << DataEntry.new(start_date: Time.at(start).in_time_zone, end_date: Time.at(endd).in_time_zone,
+                                         values: current_value,
                                          measurement_moment: measurement_moment)
         end
       end
@@ -70,8 +74,13 @@ module Physiqual
         loop_through_results(res) do |value, start, endd, results_array|
           # If the current activity is not the specified activity, skip it
           next if value['intVal'] != activity_type
-          measurement_moment = Time.at((start + endd) / 2)
-          results_array << DataEntry.new(start: start, end: endd, values: [(endd - start) / 60],
+          measurement_moment = Time.at((start + endd) / 2).in_time_zone
+
+          # If the current timestep is higher than the final timestep, don't include it
+          next if measurement_moment > to
+
+          results_array << DataEntry.new(start_date: Time.at(start).in_time_zone, end_date: Time.at(endd).in_time_zone,
+                                         values: [(endd - start) / 60],
                                          measurement_moment: measurement_moment)
         end
       end
@@ -91,10 +100,6 @@ module Physiqual
         res.each do |entry|
           start = (entry['startTimeNanos'].to_i / 10e8).to_i
           endd = (entry['endTimeNanos'].to_i / 10e8).to_i
-
-          # If the current timestep is higher than the final timestep, don't include it
-          actual_timestep = Time.at((start + endd) / 2)
-          next if actual_timestep > to
 
           yield(entry['value'].first, start, endd, results)
         end
