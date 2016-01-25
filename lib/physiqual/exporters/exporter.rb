@@ -34,7 +34,8 @@ module Physiqual
           next unless token.complete?
           session = Sessions::TokenAuthorizedSession.new(token)
           service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
-          service = DataServices::SummarizedDataService.new(service, bucket_generator)
+          service = DataServices::BucketeerDataService.new(service, bucket_generator)
+          service = DataServices::SummarizedDataService.new(service)
           DataServices::CachedDataService.new service
         end.compact
       end
