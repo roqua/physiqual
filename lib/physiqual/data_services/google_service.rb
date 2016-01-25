@@ -68,7 +68,6 @@ module Physiqual
         res = point_results(from, to, url)
 
         loop_through_results(res) do |value, start, endd, results_array|
-
           # If the current activity is not the specified activity, skip it
           next if value['intVal'] != activity_type
           measurement_moment = Time.at((start + endd) / 2)

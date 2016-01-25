@@ -47,7 +47,7 @@ module Physiqual
         current_bucket = 0
 
         # Sort data array
-        data.sort_by! { |entry| entry.measurement_moment }
+        data.sort_by!(&:measurement_moment)
 
         data.each do |entry|
           next unless entry.measurement_moment

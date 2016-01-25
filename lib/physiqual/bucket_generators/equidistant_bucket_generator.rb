@@ -30,7 +30,7 @@ module Physiqual
             result << DataEntry.new(start_date: bucket_start,
                                     end_date: bucket_end,
                                     measurement_moment: bucket_end
-            )
+                                   )
           end
           first_measurement_of_the_day += 1.day
         end
