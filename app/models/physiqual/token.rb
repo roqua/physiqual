@@ -3,11 +3,9 @@ module Physiqual
     self.table_name = 'physiqual_tokens'
 
     belongs_to :physiqual_user, class_name: 'Physiqual::User'
-    # validates :token, presence: true
-    # validates :refresh_token, presence: true
     validates :physiqual_user_id, presence: true
-    validates_uniqueness_of :physiqual_user_id, scope: :type
-    # validates :valid_until, presence: true
+    validates_uniqueness_of :physiqual_user_id
+    validates_presence_of :type
 
     def expired?
       valid_until.blank? || valid_until <= Time.now.in_time_zone
@@ -89,33 +87,29 @@ module Physiqual
       fail 'Subclass does not implement token_url method'
     end
 
-    def self.provider_selection(provider, user)
+    def self.provider_type(provider)
       if provider == GoogleToken.csrf_token
-        yield(user.google_tokens)
+        Physiqual::GoogleToken.to_s
       elsif provider == FitbitToken.csrf_token
-        yield(user.fitbit_tokens)
+        Physiqual::FitbitToken.to_s
       else
         fail Errors::ServiceProviderNotFoundError
       end
     end
 
-    def self.provider_token(provider, user)
-      resulting_tokens = nil
-      provider_selection(provider, user) do |tokens|
-        resulting_tokens = tokens.first
-      end
-      resulting_tokens
+    def self.find_provider_token(provider, user)
+      resulting_token = user.physiqual_token
+      return nil if resulting_token.blank? || resulting_token.type != provider_type(provider)
+      resulting_token
     end
 
     def self.create_provider_token(provider:, user:)
-      provider_selection(provider, user) do |tokens|
-        puts tokens
-        tokens.create
-      end
+      user.physiqual_token.destroy if user.physiqual_token
+      user.create_physiqual_token(type: provider_type(provider))
     end
 
     def self.find_or_create_provider_token(provider, user)
-      token = provider_token(provider, user)
+      token = find_provider_token(provider, user)
       token = create_provider_token(provider: provider, user: user) if token.nil?
       token
     end
