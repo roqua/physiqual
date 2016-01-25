@@ -84,9 +84,12 @@ module Physiqual
         return {} if entries.nil?
         entries.each do |entry|
           value = entry['value']
-          value = convert_to_int_if_needed(value)
-          time_and_date = Time.parse("#{date} #{entry['time']}")
-          result << { date_time_field => time_and_date, values_field => [value] }
+          current_value = [convert_to_int_if_needed(value)]
+          endd = Time.parse("#{date} #{entry['time']}")
+          start = endd - 1.minute
+          measurement_moment = Time.at((start + endd) / 2)
+          result << DataEntry.new(start: start, end: endd, values: current_value,
+                                  measurement_moment: measurement_moment)
         end
         result
       end
@@ -95,8 +98,12 @@ module Physiqual
         result = []
         entries.each do |entry|
           value = entry['value']
-          value = convert_to_int_if_needed(value)
-          result << { date_time_field => entry['dateTime'].to_time, values_field => [value] }
+          current_value = [convert_to_int_if_needed(value)]
+          endd = entry['dateTime'].to_time
+          start = endd - 24.hours
+          measurement_moment = Time.at((start + endd) / 2)
+          result << DataEntry.new(start: start, end: endd, values: current_value,
+                                  measurement_moment: measurement_moment)
         end
         result
       end

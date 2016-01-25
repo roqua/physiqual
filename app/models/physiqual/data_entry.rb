@@ -6,9 +6,5 @@ class DataEntry
   attribute :start_date, DateTime
   attribute :end_date, DateTime
   attribute :values, Array
-
-  def measurement_moment
-    @measurement_moment ||= Time.at((start_date + end_date) / 2)
-    @measurement_moment
-  end
+  attribute :measurement_moment, DateTime
 end

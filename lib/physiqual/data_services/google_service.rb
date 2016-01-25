@@ -58,7 +58,9 @@ module Physiqual
         loop_through_results(res) do |value, start, endd, results_array|
           current_value = value[value_type].to_i
           current_value = [(block_given? ? block.call(current_value) : current_value)]
-          results_array << DataEntry.new(start: start, end: endd, values: current_value)
+          measurement_moment = Time.at((start + endd) / 2)
+          results_array << DataEntry.new(start: start, end: endd, values: current_value,
+                                         measurement_moment: measurement_moment)
         end
       end
 
@@ -68,8 +70,10 @@ module Physiqual
         loop_through_results(res) do |value, start, endd, results_array|
 
           # If the current activity is not the specified activity, skip it
-          next unless value['intVal'] == activity_type
-          results_array << DataEntry.new(start: start, end: endd, values: [(endd - start) / 60])
+          next if value['intVal'] != activity_type
+          measurement_moment = Time.at((start + endd) / 2)
+          results_array << DataEntry.new(start: start, end: endd, values: [(endd - start) / 60],
+                                         measurement_moment: measurement_moment)
         end
       end
 
