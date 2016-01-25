@@ -7,11 +7,11 @@ module Physiqual
     attribute :start_date, DateTime
     attribute :end_date, DateTime
     attribute :values, Array, default: []
-    attribute :measurement_moment, DateTime, default: default_measurement_moment
+    attribute :measurement_moment, DateTime, default: :default_measurement_moment
 
     def default_measurement_moment
       return nil if start_date.nil? || end_date.nil?
-      Time.at((start_date + end_date) / 2)
+      Time.at((start_date.to_i + end_date.to_i) / 2)
     end
   end
 end
