@@ -30,6 +30,9 @@ Gem::Specification.new do |s|
   # Jquery
   s.add_dependency 'jquery-rails'
 
+  # Virtus models
+  s.add_dependency 'virtus'
+
   # Omniauth google
   s.add_dependency 'omniauth-google-oauth2'
   s.add_dependency 'omniauth-fitbit-oauth2'
