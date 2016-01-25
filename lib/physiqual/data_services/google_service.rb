@@ -3,12 +3,12 @@ module Physiqual
     class GoogleService < DataService
       ACTIVITIES = YAML.load_file("#{Physiqual::Engine.root}/db/seeds/google_activities.yml")
 
-      HEART_RATE_URL = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'
-      STEPS_URL = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
-      ACTIVITY_URL = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-      SLEEP_URL = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-      CALORIES_URL = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'
-      DISTANCE_URL = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'
+      HEART_RATE_URL = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'.freeze
+      STEPS_URL = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'.freeze
+      ACTIVITY_URL = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'.freeze
+      SLEEP_URL = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'.freeze
+      CALORIES_URL = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'.freeze
+      DISTANCE_URL = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'.freeze
 
       def initialize(session)
         @session = session
@@ -52,12 +52,12 @@ module Physiqual
 
       private
 
-      def activity_data(from, to, url, value_type, &block)
+      def activity_data(from, to, url, value_type, &_block)
         res = point_results(from, to, url)
 
         loop_through_results(res) do |value, start, endd, results_array|
           current_value = value[value_type].to_i
-          current_value = [(block_given? ? block.call(current_value) : current_value)]
+          current_value = [(block_given? ? yield(current_value) : current_value)]
           measurement_moment = Time.at((start + endd) / 2).in_time_zone
 
           # If the current timestep is higher than the final timestep, don't include it
@@ -112,7 +112,7 @@ module Physiqual
 
       def convert_time_to_nanos(time)
         length = 19
-        time = "#{time.to_i}"
+        time = time.to_i.to_s
         time = "#{time}#{('0' * (length - time.length))}"
         time
       end

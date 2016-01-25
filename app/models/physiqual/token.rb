@@ -90,13 +90,9 @@ module Physiqual
     end
 
     def self.provider_selection(provider, user)
-      if provider == GoogleToken.csrf_token
-        yield(user.google_tokens)
-      elsif provider == FitbitToken.csrf_token
-        yield(user.fitbit_tokens)
-      else
-        fail Errors::ServiceProviderNotFoundError
-      end
+      yield(user.google_tokens) and return if provider == GoogleToken.csrf_token
+      yield(user.fitbit_tokens) and return if provider == FitbitToken.csrf_token
+      fail Errors::ServiceProviderNotFoundError
     end
 
     def self.provider_token(provider, user)

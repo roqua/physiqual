@@ -18,7 +18,7 @@ module Physiqual
         end
 
         it 'should respond with CSV' do
-          expect(csv? @result).to be_truthy
+          expect(csv?(@result)).to be_truthy
         end
 
         it 'should have the correct header' do

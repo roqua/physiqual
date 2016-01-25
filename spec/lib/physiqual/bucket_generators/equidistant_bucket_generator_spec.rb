@@ -14,7 +14,7 @@ module Physiqual
       describe 'generate' do
         before do
           @result = subject.generate(from, to)
-          @dates = @result.map { |x| x.end_date }
+          @dates = @result.map(&:end_date)
         end
 
         it 'should output the correct format' do

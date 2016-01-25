@@ -6,7 +6,6 @@ module Physiqual
 
   module DataServices
     describe BucketeerDataService do
-
       let(:last_measurement_time) { Time.now.change(hour: 22, min: 30, usec: 0) }
       let(:interval) { 6 }
       let(:measurements_per_day) { 3 }
@@ -14,15 +13,15 @@ module Physiqual
       let(:service) { MockService.new(nil) }
       let(:bucket_generator_without_night) do
         BucketGenerators::EquidistantBucketGenerator.new(
-            measurements_per_day,
-            interval,
-            interval)
+          measurements_per_day,
+          interval,
+          interval)
       end
       let(:bucket_generator_with_night) do
         BucketGenerators::EquidistantBucketGenerator.new(
-            measurements_per_day,
-            interval,
-            hours_before_first_measurement)
+          measurements_per_day,
+          interval,
+          hours_before_first_measurement)
       end
 
       let(:subject) { BucketeerDataService.new(service, bucket_generator_without_night) }
@@ -52,7 +51,7 @@ module Physiqual
           full_result = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
           res.each_with_index do |current_res, index|
             # The results can be sorted, as the order in the values does not matter
-            expected = current_res.map { |x| x.values }.flatten.sort
+            expected = current_res.map(&:values).flatten.sort
             result = full_result[index].values.sort
             expect(result.size).to eq expected.size
             expect(result).to eq expected
@@ -77,7 +76,6 @@ module Physiqual
           it { expect(@full_without_night - @full_with_night).to be_blank }
         end
       end
-
     end
   end
 end

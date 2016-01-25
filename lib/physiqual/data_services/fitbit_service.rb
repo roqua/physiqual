@@ -59,7 +59,7 @@ module Physiqual
                    intraday_summary(from, to, resource, subresource)
                  else
                    daily_summary(from, to, resource, subresource)
-        end
+                 end
         result
       end
 

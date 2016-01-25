@@ -156,7 +156,7 @@ module Physiqual
 
         describe 'histogram' do
           it 'behaves like a histogram' do
-            data = [DataEntry.new(start_date: Time.now, end_date: Time.now, values: [1, 2, 3, 4] )]
+            data = [DataEntry.new(start_date: Time.now, end_date: Time.now, values: [1, 2, 3, 4])]
             expected = { 1 => 1, 2 => 1, 3 => 1, 4 => 1 }
             expect(subject).to receive(:max_from_hash).with(expected)
             subject.send(:histogram, data)
@@ -169,14 +169,14 @@ module Physiqual
           let(:k) { 1 }
 
           it 'should also increase the k surrounding buckets' do
-            data = [DataEntry.new(start_date: Time.now, end_date: Time.now, values: [5, 7] )]
+            data = [DataEntry.new(start_date: Time.now, end_date: Time.now, values: [5, 7])]
             expected = { 4 => 1, 5 => 1, 6 => 2, 7 => 1, 8 => 1 }
             expect(subject).to receive(:max_from_hash).with(expected)
             subject.send(:soft_histogram, data, min, max, k)
           end
 
           describe 'should take the min into account' do
-            let(:data) {[DataEntry.new(start_date: Time.now, end_date: Time.now, values:  [15, 8, 8, 8, 8] )]}
+            let(:data) { [DataEntry.new(start_date: Time.now, end_date: Time.now, values:  [15, 8, 8, 8, 8])] }
             it 'should not return the 9 if 10 is min' do
               min = 10
               expected = { 14 => 1, 15 => 1, 16 => 1 }
@@ -193,7 +193,7 @@ module Physiqual
           end
 
           describe 'should take the max into account' do
-            let(:data) {[DataEntry.new(start_date: Time.now, end_date: Time.now, values:  [5, 12, 12, 12, 12] )]}
+            let(:data) { [DataEntry.new(start_date: Time.now, end_date: Time.now, values:  [5, 12, 12, 12, 12])] }
             it 'should not return the 12 if 10 is max' do
               max = 10
               expected = { 4 => 1, 5 => 1, 6 => 1 }
@@ -209,10 +209,12 @@ module Physiqual
           end
 
           describe 'should produce the expected result' do
-            let(:data) {[DataEntry.new(start_date: Time.now, end_date: Time.now,
-                                       values: [1, 1, 1, 2, 2, 3, 4, 4, 5, 8, 10, 12, 12, 12, 66] )]}
-            let(:k) {2}
-            let(:max) {20}
+            let(:data) do
+              [DataEntry.new(start_date: Time.now, end_date: Time.now,
+                             values: [1, 1, 1, 2, 2, 3, 4, 4, 5, 8, 10, 12, 12, 12, 66])]
+            end
+            let(:k) { 2 }
+            let(:max) { 20 }
             it 'with a min of 5' do
               min = 5
               expected = { 5 => 4, 6 => 4, 7 => 2, 10 => 5, 11 => 4, 12 => 4, 13 => 3, 14 => 3, 8 => 2, 9 => 2 }
@@ -233,7 +235,7 @@ module Physiqual
 
         describe 'sum_values' do
           it 'should sum the values according to the buckets' do
-            result = subject.send(:sum_values, @data).map { |x| x.values }
+            result = subject.send(:sum_values, @data).map(&:values)
             expected = @data.map { |x| [x.values.sum] }
 
             expected.zip(result) do |value, result_value|

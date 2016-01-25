@@ -96,10 +96,10 @@ module Physiqual
 
           @expected = [DataEntry.new(start_date: from - 24.hours,
                                      end_date: from, values: [132], measurement_moment: from),
-                      DataEntry.new(start_date: from - 24.hours,
-                                    end_date: from, values: [132], measurement_moment: from),
-                      DataEntry.new(start_date: from - 24.hours,
-                                    end_date: from, values: [132], measurement_moment: from)]
+                       DataEntry.new(start_date: from - 24.hours,
+                                     end_date: from, values: [132], measurement_moment: from),
+                       DataEntry.new(start_date: from - 24.hours,
+                                     end_date: from, values: [132], measurement_moment: from)]
         end
 
         it 'converts convertable strings to ints' do

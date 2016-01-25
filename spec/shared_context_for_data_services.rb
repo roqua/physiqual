@@ -17,7 +17,7 @@ module Physiqual
       end
 
       def check_start_end_date(result, from, to)
-        dates = result.map { |x| x.measurement_moment }
+        dates = result.map(&:measurement_moment)
         lowest_date = dates.min
         highest_date = dates.max
         expect(lowest_date).to be_between(from.beginning_of_day, to.end_of_day)
