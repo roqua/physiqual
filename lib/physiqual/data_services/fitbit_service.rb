@@ -1,6 +1,8 @@
 module Physiqual
   module DataServices
     class FitbitService < DataService
+      DATE_FORMAT = '%Y-%m-%d'.freeze
+      
       def initialize(session)
         @session = session
         @intraday = true
