@@ -45,26 +45,20 @@ module Physiqual
       def cluster_in_buckets(data, from, to)
         buckets = @bucket_generator.generate(from, to)
         current_bucket = 0
-
-        # Sort data array
         data.sort_by!(&:measurement_moment)
-
         data.each do |entry|
           next unless entry.measurement_moment
 
-          while current_bucket < buckets.size && entry.measurement_moment > buckets[current_bucket].measurement_moment
+          while current_bucket < buckets.size && entry.measurement_moment > buckets[current_bucket].end_date
             current_bucket += 1
           end
 
           break if current_bucket == buckets.size
+          next unless entry.measurement_moment > buckets[current_bucket].start_date
 
-          unless entry.measurement_moment > buckets[current_bucket].start_date
-            next
-          end
           values = entry.values
           buckets[current_bucket].values.push(*values)
         end
-
         buckets
       end
     end
