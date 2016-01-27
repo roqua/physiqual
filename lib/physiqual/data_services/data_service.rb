@@ -1,8 +1,6 @@
 module Physiqual
   module DataServices
     class DataService
-      DATE_FORMAT = '%Y-%m-%d'.freeze
-
       def service_name
         'general dataservice'
       end
