@@ -54,7 +54,6 @@ module Physiqual
 
       def activity_data(from, to, url, value_type, &_block)
         res = point_results(from, to, url)
-
         loop_through_results(res) do |value, start, endd, results_array|
           current_value = value[value_type].to_i
           current_value = [(block_given? ? yield(current_value) : current_value)]
@@ -70,7 +69,6 @@ module Physiqual
 
       def specific_activity_data(from, to, url, activity_type)
         res = point_results(from, to, url)
-
         loop_through_results(res) do |value, start, endd, results_array|
           # If the current activity is not the specified activity, skip it
           next if value['intVal'] != activity_type
@@ -78,7 +76,6 @@ module Physiqual
 
           # If the current timestep is higher than the final timestep, don't include it
           next if measurement_moment > to
-
           results_array << DataEntry.new(start_date: Time.at(start).in_time_zone, end_date: Time.at(endd).in_time_zone,
                                          values: [(endd - start) / 60],
                                          measurement_moment: measurement_moment)
@@ -96,11 +93,9 @@ module Physiqual
       def loop_through_results(res)
         return [] if res.blank?
         results = []
-
         res.each do |entry|
           start = (entry['startTimeNanos'].to_i / 10e8).to_i
           endd = (entry['endTimeNanos'].to_i / 10e8).to_i
-
           yield(entry['value'].first, start, endd, results)
         end
         results
