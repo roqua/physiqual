@@ -161,8 +161,8 @@ module Physiqual
       describe 'activity_call' do
         let(:activity) { 'heart' }
         let(:resource) { 'activities' }
-        let(:from_formatted) { from.strftime(DataService::DATE_FORMAT) }
-        let(:to_formatted) { to.strftime(DataService::DATE_FORMAT) }
+        let(:from_formatted) { from.strftime(described_class::DATE_FORMAT) }
+        let(:to_formatted) { to.strftime(described_class::DATE_FORMAT) }
 
         it 'calls intraday summary if intraday is true' do
           subject.instance_variable_set(:@intraday, true)
