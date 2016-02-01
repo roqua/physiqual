@@ -26,14 +26,13 @@ module Physiqual
 
       describe 'without correct tokens' do
         it 'redirects to the authorize path if the user does not have tokens' do
-          user.physiqual_tokens.destroy_all
+          user.physiqual_token.destroy if user.physiqual_token
           expect { helper.check_token }.to raise_error Errors::NoTokenExistsError
         end
 
         it 'redirects to the authorize path if the user only has incomplete token' do
-          user.google_tokens.create
-          user.google_tokens.each { |tok| expect(tok.complete?).to be_falsey }
-
+          user.create_physiqual_token(type: Physiqual::GoogleToken.to_s)
+          expect(user.physiqual_token.complete?).to be_falsey
           expect { helper.check_token }.to raise_error Errors::NoTokenExistsError
         end
       end
@@ -41,7 +40,7 @@ module Physiqual
       describe 'with tokens' do
         before :each do
           FactoryGirl.create(:google_token, physiqual_user: user)
-          user.google_tokens.each { |tok| expect(tok.complete?).to be_truthy }
+          expect(user.physiqual_token).to be_truthy
         end
 
         it 'does not fail' do
@@ -56,6 +55,7 @@ module Physiqual
       before { expect(helper).to receive(:current_user).and_return(user) }
 
       it 'raise an error if there is no provider' do
+        user.create_physiqual_token(type: Physiqual::GoogleToken.to_s)
         expect { helper.find_token }.to raise_error(Errors::ServiceProviderNotFoundError)
       end
 
@@ -68,12 +68,11 @@ module Physiqual
       end
 
       it 'sets an existing token, according to the provider provided ' do
-        FactoryGirl.create(:google_token, physiqual_user: user)
-        tok2 = FactoryGirl.create(:fitbit_token, physiqual_user: user)
+        FactoryGirl.create(:fitbit_token, physiqual_user: user)
         helper.params[:provider] = FitbitToken.csrf_token
         helper.find_token
         expect(helper.instance_variable_get(:@token)).to_not be_nil
-        expect(helper.instance_variable_get(:@token)).to eq tok2
+        expect(helper.instance_variable_get(:@token).type).to eq Physiqual::FitbitToken.to_s
       end
     end
   end

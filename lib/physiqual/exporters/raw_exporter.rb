@@ -9,7 +9,7 @@ module Physiqual
 
       def export_data(user_id, first_measurement, number_of_days)
         user = User.find_by_user_id(user_id)
-        token = Token.provider_token(@provider, user)
+        token = Token.find_provider_token(@provider, user)
         return [] unless token && token.complete?
         session = Sessions::TokenAuthorizedSession.new(token)
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)

@@ -4,6 +4,6 @@ class AddUniquenessToUserAndType < ActiveRecord::Migration
   end
 
   def down
-    remove_index :physiqual_tokens, [:type, :physiqual_user_id], unique: true
+    remove_index :physiqual_tokens, [:type, :physiqual_user_id]
   end
 end
