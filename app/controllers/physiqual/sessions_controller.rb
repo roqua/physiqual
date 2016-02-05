@@ -27,8 +27,7 @@ module Physiqual
 
       unless token.complete?
         session['physiqual_return_url'] = return_url
-        # TODO: fix hardcoded slug
-        omniauth_url = "/physiqual/auth/#{provider}"
+        omniauth_url = "#{Rails.application.routes.url_helpers.physiqual_path}/auth/#{provider}"
         redirect_to omniauth_url and return
       end
 
