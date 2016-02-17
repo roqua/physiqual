@@ -43,7 +43,7 @@ module Physiqual
       end
 
       def single_value(array)
-        array.find { |elem| !need_imputation(elem) }
+        array.find { |elem| !need_imputation?(elem) }
       end
     end
   end
