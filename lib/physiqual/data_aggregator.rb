@@ -78,7 +78,7 @@ module Physiqual
     end
 
     def retrieve_data_of_all_services
-      fail 'No services defined' if @data_services.compact.blank?
+      raise 'No services defined' if @data_services.compact.blank?
       @data_services.map do |service|
         begin
           yield(service)

@@ -47,7 +47,7 @@ module Physiqual
       end
 
       def activities(_from, _to)
-        fail Errors::NotSupportedError, 'Activities Not supported by fitbit!'
+        raise Errors::NotSupportedError, 'Activities Not supported by fitbit!'
       end
 
       private
@@ -55,11 +55,11 @@ module Physiqual
       def activity_call(from, to, resource, subresource)
         from = from.strftime(DATE_FORMAT)
         to = to.strftime(DATE_FORMAT)
-        if @intraday
-          result = intraday_summary(from, to, resource, subresource)
-        else
-          result = daily_summary(from, to, resource, subresource)
-        end
+        result = if @intraday
+                   intraday_summary(from, to, resource, subresource)
+                 else
+                   daily_summary(from, to, resource, subresource)
+                 end
         result
       end
 

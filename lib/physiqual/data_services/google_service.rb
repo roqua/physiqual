@@ -3,12 +3,12 @@ module Physiqual
     class GoogleService < DataService
       ACTIVITIES = YAML.load_file("#{Physiqual::Engine.root}/db/seeds/google_activities.yml")
 
-      HEART_RATE_URL = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'
-      STEPS_URL      = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
-      ACTIVITY_URL   = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-      SLEEP_URL      = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'
-      CALORIES_URL   = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'
-      DISTANCE_URL   = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'
+      HEART_RATE_URL = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'.freeze
+      STEPS_URL      = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'.freeze
+      ACTIVITY_URL   = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'.freeze
+      SLEEP_URL      = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'.freeze
+      CALORIES_URL   = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'.freeze
+      DISTANCE_URL   = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'.freeze
 
       def initialize(session)
         @session = session
@@ -86,10 +86,10 @@ module Physiqual
         res
       end
 
-      def hash_to_array(hash, &block)
+      def hash_to_array(hash, &_block)
         results = []
         hash.each do |date, value|
-          results << { date_time_field => date, values_field => [(block_given? ? block.call(value) : value)] }
+          results << { date_time_field => date, values_field => [(block_given? ? yield(value) : value)] }
         end
         results
       end
@@ -112,7 +112,7 @@ module Physiqual
 
       def convert_time_to_nanos(time)
         length = 19
-        time = "#{time.to_i}"
+        time = time.to_i.to_s
         time = "#{time}#{('0' * (length - time.length))}"
         time
       end

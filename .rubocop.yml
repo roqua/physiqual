@@ -10,6 +10,7 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - 'bin/*'
+  TargetRubyVersion: 2.2
 
 # Use UTF-8 as the source file encoding.
 Encoding:

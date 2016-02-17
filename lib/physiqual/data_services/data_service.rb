@@ -1,37 +1,37 @@
 module Physiqual
   module DataServices
     class DataService
-      DATE_FORMAT = '%Y-%m-%d'
-      DATE_TIME_FIELD = 'dateTime'
-      DATE_TIME_START_FIELD = 'dateTimeStart'
-      VALUES_FIELD = 'values'
+      DATE_FORMAT = '%Y-%m-%d'.freeze
+      DATE_TIME_FIELD = 'dateTime'.freeze
+      DATE_TIME_START_FIELD = 'dateTimeStart'.freeze
+      VALUES_FIELD = 'values'.freeze
 
       def service_name
         'general dataservice'
       end
 
       def steps(_from, _to)
-        fail 'Subclass does not implement steps method.'
+        raise 'Subclass does not implement steps method.'
       end
 
       def heart_rate(_from, _to)
-        fail 'Subclass does not implement heart_rate method.'
+        raise 'Subclass does not implement heart_rate method.'
       end
 
       def sleep(_from, _to)
-        fail 'Subclass does not implement sleep method.'
+        raise 'Subclass does not implement sleep method.'
       end
 
       def calories(_from, _to)
-        fail 'Subclass does not implement calories method.'
+        raise 'Subclass does not implement calories method.'
       end
 
       def distance(_from, _to)
-        fail 'Subclass does not implement distance method.'
+        raise 'Subclass does not implement distance method.'
       end
 
       def activities(_from, _to)
-        fail 'Subclass does not implement activities method.'
+        raise 'Subclass does not implement activities method.'
       end
 
       def date_time_field

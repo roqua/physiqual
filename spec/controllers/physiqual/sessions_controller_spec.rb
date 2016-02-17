@@ -11,7 +11,7 @@ module Physiqual
 
     describe 'before filters' do
       it 'calls the find_token method when calling create' do
-        expect(subject).to receive(:find_token) { fail(StandardError, 'stop_execution') }
+        expect(subject).to receive(:find_token) { raise(StandardError, 'stop_execution') }
         expect { post :create, provider: GoogleToken.csrf_token }.to raise_error('stop_execution')
       end
     end
