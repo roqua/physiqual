@@ -1,6 +1,7 @@
 inherit_from: rubocop-todo.yml
 
 AllCops:
+  TargetRubyVersion: 2.2
   Exclude:
     - 'config/**/*'
     - 'spec/dummy/config/**/*'
@@ -10,7 +11,6 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - 'bin/*'
-  TargetRubyVersion: 2.2
 
 # Use UTF-8 as the source file encoding.
 Encoding:
