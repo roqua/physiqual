@@ -23,6 +23,10 @@ module Physiqual
       'physiqual_fitbit_oauth2'
     end
 
+    def self.friendly_name
+      'fitbit'
+    end
+
     def self.client_id
       ENV['FITBIT_CLIENT_ID']
     end
