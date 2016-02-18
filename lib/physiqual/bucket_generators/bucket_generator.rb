@@ -2,7 +2,7 @@ module Physiqual
   module BucketGenerators
     module BucketGenerator
       def generate(_from, _to)
-        fail 'Not implemented by subclass'
+        raise 'Not implemented by subclass'
       end
 
       # Note that this function is no longer equivalent to the output_entry definition from data services.

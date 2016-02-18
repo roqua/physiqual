@@ -36,7 +36,7 @@ module Physiqual
         let(:data) { service.steps(from, to) }
         let(:from_subset) { (to - 1.day).change(hour: 10, min: 30) - interval.hours }
         let(:to_subset) { (to - 1.day).change(hour: 22, min: 30) }
-        let(:data_subset) { data.select! { |x| x[subject.date_time_field].to_date == (from_subset).to_date } }
+        let(:data_subset) { data.select! { |x| x[subject.date_time_field].to_date == from_subset.to_date } }
 
         it 'should output the correct format' do
           @result = subject.send(:cluster_in_buckets, data, from_subset, to_subset)
@@ -73,7 +73,7 @@ module Physiqual
           end
 
           # Should have more elements
-          it { expect(@full_with_night.size).to be > (@full_without_night.length) }
+          it { expect(@full_with_night.size).to be > @full_without_night.length }
 
           # Should be a superset
           it { expect(@full_without_night - @full_with_night).to be_blank }

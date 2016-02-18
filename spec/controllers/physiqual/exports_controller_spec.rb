@@ -17,7 +17,7 @@ module Physiqual
     describe 'before filters' do
       describe 'check_token' do
         before :each do
-          expect(subject).to receive(:check_token) { fail(StandardError, 'stop_execution') }
+          expect(subject).to receive(:check_token) { raise(StandardError, 'stop_execution') }
         end
         it 'calls the check_token method when calling index' do
           expect { get :index, params }.to raise_error('stop_execution')
@@ -29,17 +29,17 @@ module Physiqual
       end
 
       it 'calls the assert_data_source method when calling index' do
-        expect(subject).to receive(:assert_data_source) { fail(StandardError, 'stop_execution') }
+        expect(subject).to receive(:assert_data_source) { raise(StandardError, 'stop_execution') }
         expect { get :raw, params }.to raise_error('stop_execution')
       end
 
       it 'calls the assert_service_provider method when calling index' do
-        expect(subject).to receive(:assert_service_provider) { fail(StandardError, 'stop_execution') }
+        expect(subject).to receive(:assert_service_provider) { raise(StandardError, 'stop_execution') }
         expect { get :raw, params }.to raise_error('stop_execution')
       end
 
       describe 'assert_first_measurement' do
-        before { expect(subject).to receive(:assert_first_measurement) { fail(StandardError, 'stop_execution') } }
+        before { expect(subject).to receive(:assert_first_measurement) { raise(StandardError, 'stop_execution') } }
         it 'calls the assert_first_measurement method when calling index' do
           expect { get :index, params }.to raise_error('stop_execution')
         end
@@ -49,7 +49,7 @@ module Physiqual
       end
 
       describe 'assert_number_of_days' do
-        before { expect(subject).to receive(:assert_number_of_days) { fail(StandardError, 'stop_execution') } }
+        before { expect(subject).to receive(:assert_number_of_days) { raise(StandardError, 'stop_execution') } }
         it 'calls the assert_number_of_days method when calling index' do
           expect { get :index, params }.to raise_error('stop_execution')
         end
@@ -100,7 +100,7 @@ module Physiqual
         expect(exporter).to receive(:export).and_return('x' => 'y')
         get :raw, params
 
-        expect(response.body).to eq "{\"x\":\"y\"}"
+        expect(response.body).to eq '{"x":"y"}'
         expect(response.status).to eq 200
       end
     end

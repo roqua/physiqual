@@ -5,7 +5,7 @@ module Physiqual
       define_callbacks :process_impute
 
       def process_impute(_array)
-        fail 'Subclass does not implement process_impute! method.'
+        raise 'Subclass does not implement process_impute! method.'
       end
 
       def self.impute!(*args)

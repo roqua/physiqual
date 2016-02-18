@@ -7,12 +7,12 @@ module Physiqual
 
     def check_token
       token = current_user.physiqual_token
-      fail Errors::NoTokenExistsError if token.blank? || !token.complete?
+      raise Errors::NoTokenExistsError if token.blank? || !token.complete?
     end
 
     def find_token
       @token = Token.find_provider_token params[:provider], current_user
-      fail Errors::NoTokenExistsError if @token.nil?
+      raise Errors::NoTokenExistsError if @token.nil?
     end
   end
 end

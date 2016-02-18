@@ -17,7 +17,7 @@ module Physiqual
 
         it 'should respond with JSON' do
           result = subject.export(user, first_measurement, number_of_days)
-          expect(json? result).to be_truthy
+          expect(json?(result)).to be_truthy
         end
       end
 
