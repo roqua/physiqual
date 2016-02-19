@@ -9,7 +9,7 @@ module Physiqual
 
     def index
       @sources = 'No google token'
-      return unless session['physiqual_user_id']
+      return unless session['physiqual_user_id'] && User.find_by_user_id(user_session)
       user = User.find_by_user_id(user_session)
       tok = Token.find_provider_token(GoogleToken.csrf_token, user)
       return unless tok && tok.complete?
@@ -27,7 +27,7 @@ module Physiqual
     private
 
     def check_environment
-      fail 'Environment not development!!!' unless Rails.env.development?
+      raise 'Environment not development!!!' unless Rails.env.development?
     end
 
     def sessions_params

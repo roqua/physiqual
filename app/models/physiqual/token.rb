@@ -60,37 +60,37 @@ module Physiqual
     end
 
     def self.csrf_token
-      fail 'Subclass does not implement csrf method'
+      raise 'Subclass does not implement csrf method'
     end
 
     def self.scope
-      fail 'Subclass does not implement scope method'
+      raise 'Subclass does not implement scope method'
     end
 
     def self.client_id
-      fail 'Subclass does not implement client_id method'
+      raise 'Subclass does not implement client_id method'
     end
 
     def self.client_secret
-      fail 'Subclass does not implement client_secret method'
+      raise 'Subclass does not implement client_secret method'
     end
 
     def self.oauth_site
-      fail 'Subclass does not implement oauth_site method'
+      raise 'Subclass does not implement oauth_site method'
     end
 
     def self.authorize_url
-      fail 'Subclass does not implement authorize_url method'
+      raise 'Subclass does not implement authorize_url method'
     end
 
     def self.token_url
-      fail 'Subclass does not implement token_url method'
+      raise 'Subclass does not implement token_url method'
     end
 
     def self.provider_type(provider)
       return Physiqual::GoogleToken.to_s if provider == GoogleToken.csrf_token
       return Physiqual::FitbitToken.to_s if provider == FitbitToken.csrf_token
-      fail Errors::ServiceProviderNotFoundError
+      raise Errors::ServiceProviderNotFoundError
     end
 
     def self.find_provider_token(provider, user)

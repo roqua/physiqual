@@ -5,7 +5,7 @@ module Physiqual
       define_callbacks :process_impute
 
       def process_impute(_array)
-        fail 'Subclass does not implement process_impute! method.'
+        raise 'Subclass does not implement process_impute! method.'
       end
 
       def self.impute!(*args)
@@ -43,7 +43,7 @@ module Physiqual
       end
 
       def single_value(array)
-        array.find { |elem| !need_imputation(elem) }
+        array.find { |elem| !need_imputation?(elem) }
       end
     end
   end

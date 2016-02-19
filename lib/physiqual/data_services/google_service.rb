@@ -4,11 +4,11 @@ module Physiqual
       ACTIVITIES = YAML.load_file("#{Physiqual::Engine.root}/db/seeds/google_activities.yml")
 
       HEART_RATE_URL = 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm'.freeze
-      STEPS_URL = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'.freeze
-      ACTIVITY_URL = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'.freeze
-      SLEEP_URL = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'.freeze
-      CALORIES_URL = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'.freeze
-      DISTANCE_URL = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'.freeze
+      STEPS_URL      = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'.freeze
+      ACTIVITY_URL   = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'.freeze
+      SLEEP_URL      = 'derived:com.google.activity.segment:com.google.android.gms:merge_activity_segments'.freeze
+      CALORIES_URL   = 'derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended'.freeze
+      DISTANCE_URL   = 'derived:com.google.distance.delta:com.google.android.gms:pruned_distance'.freeze
 
       def initialize(session)
         @session = session
@@ -43,6 +43,7 @@ module Physiqual
       end
 
       def distance(from, to)
+        # Distance provided by the google fit api is in meters. (at least the delta is)
         activity_data(from, to, DISTANCE_URL, 'fpVal')
       end
 
