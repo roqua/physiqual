@@ -58,10 +58,10 @@ module Physiqual
         loop_through_results(res) do |value, start, endd, results_array|
           current_value = value[value_type].to_i
           current_value = [(block_given? ? yield(current_value) : current_value)]
-          measurement_moment = Time.at((start + endd) / 2).in_time_zone
+          measurement_moment = calculate_measurement_moment(start, endd)
 
           # If the current timestep is higher than the final timestep, don't include it
-          next if measurement_moment > to
+          next if measurement_moment_out_of_range?(measurement_moment, to)
           results_array << DataEntry.new(start_date: Time.at(start).in_time_zone, end_date: Time.at(endd).in_time_zone,
                                          values: current_value,
                                          measurement_moment: measurement_moment)
@@ -73,14 +73,21 @@ module Physiqual
         loop_through_results(res) do |value, start, endd, results_array|
           # If the current activity is not the specified activity, skip it
           next if value['intVal'] != activity_type
-          measurement_moment = Time.at((start + endd) / 2).in_time_zone
+          measurement_moment = calculate_measurement_moment(start, endd)
 
-          # If the current timestep is higher than the final timestep, don't include it
-          next if measurement_moment > to
+          next if measurement_moment_out_of_range?(measurement_moment, to)
           results_array << DataEntry.new(start_date: Time.at(start).in_time_zone, end_date: Time.at(endd).in_time_zone,
                                          values: [(endd - start) / 60],
                                          measurement_moment: measurement_moment)
         end
+      end
+
+      def measurement_moment_out_of_range?(measurement_moment, to)
+        measurement_moment > to
+      end
+
+      def calculate_measurement_moment(start, endd)
+          Time.at((start + endd) / 2).in_time_zone
       end
 
       def point_results(from, to, url)

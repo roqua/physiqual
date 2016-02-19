@@ -45,7 +45,7 @@ module Physiqual
         heart_rate = data_aggregator.heart_rate(from, to)
         steps = data_aggregator.steps(from, to)
         calories = data_aggregator.calories(from, to)
-        sleep = data_aggregator.sleep(from, to)
+        # sleep = data_aggregator.sleep(from, to)
         distance = data_aggregator.distance(from, to)
 
         result = {}
@@ -54,7 +54,7 @@ module Physiqual
           result[date] = {}
           result[date][:heart_rate] = heart_rate[date]
           result[date][:steps] = steps[date]
-          result[date][:sleep] = sleep[date]
+          # result[date][:sleep] = sleep[date]
           result[date][:calories] = calories[date]
           result[date][:activities] = activities[date]
           result[date][:distance] = distance[date]
