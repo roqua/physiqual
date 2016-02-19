@@ -87,7 +87,7 @@ module Physiqual
       end
 
       def calculate_measurement_moment(start, endd)
-          Time.at((start + endd) / 2).in_time_zone
+        Time.at((start + endd) / 2).in_time_zone
       end
 
       def point_results(from, to, url)

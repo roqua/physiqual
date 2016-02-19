@@ -49,12 +49,6 @@ module Physiqual
         buckets
       end
 
-      def current_bucket_is_the_correct_one?(current_bucket, entry, buckets)
-        bucket_still_in_bucketlist = current_bucket < buckets.size
-        entry_time_not_in_this_bucket = entry.measurement_moment > buckets[current_bucket].end_date
-        !(bucket_still_in_bucketlist && entry_time_not_in_this_bucket)
-      end
-
       def create_buckets(buckets, data)
         current_bucket = 0
         data.each do |entry|
@@ -70,6 +64,11 @@ module Physiqual
           values = entry.values
           buckets[current_bucket].values.push(*values)
         end
+        buckets
+      end
+
+      def current_bucket_is_the_correct_one?(current_bucket, entry, buckets)
+        !(current_bucket < buckets.size && entry.measurement_moment > buckets[current_bucket].end_date)
       end
     end
   end
