@@ -14,14 +14,8 @@ module Physiqual
       tok = Token.find_provider_token(GoogleToken.csrf_token, user)
       return unless tok && tok.complete?
       session = Sessions::TokenAuthorizedSession.new(tok)
-      bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(Physiqual.measurements_per_day,
-                                                                          Physiqual.interval,
-                                                                          Physiqual.hours_before_first_measurement
-                                                                         )
-      service = DataServices::SummarizedDataService.new DataServices::FitbitService.new(session), bucket_generator
-
-      # @sources = service.sources.to_yaml
-      @sources = service.steps(2.days.ago.in_time_zone, Time.zone.now)
+      service = DataServices::GoogleService.new(session)
+      @sources = service.sources.to_yaml
     end
 
     private
