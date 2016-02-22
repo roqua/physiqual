@@ -57,7 +57,7 @@ module Physiqual
 
     describe '#retrieve_data_of_all_services' do
       it 'is not publicly defined' do
-        expect(described_class.new 'services', 'imputers').to_not respond_to :retrieve_data_of_all_services
+        expect(described_class.new('services', 'imputers')).to_not respond_to :retrieve_data_of_all_services
       end
 
       it 'runs a function for all services' do
