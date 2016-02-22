@@ -24,7 +24,7 @@ module Physiqual
         it 'should have the correct header' do
           expect(@result).to include('Date')
           mock_result.first.second.keys.each do |key|
-            expect(@result).to include("#{key}")
+            expect(@result).to include(key.to_s)
           end
         end
       end

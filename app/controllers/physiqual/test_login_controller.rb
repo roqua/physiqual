@@ -21,7 +21,7 @@ module Physiqual
     private
 
     def check_environment
-      fail 'Environment not development!!!' unless Rails.env.development?
+      raise 'Environment not development!!!' unless Rails.env.development?
     end
 
     def sessions_params

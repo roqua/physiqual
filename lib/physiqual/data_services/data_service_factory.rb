@@ -10,7 +10,7 @@ module Physiqual
           return FitbitService.new(session)
 
         else
-          fail "Service #{service} not found"
+          raise "Service #{service} not found"
         end
       end
     end
