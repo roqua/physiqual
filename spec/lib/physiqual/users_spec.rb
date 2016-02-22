@@ -12,7 +12,7 @@ module Physiqual
 
       it 'returns the expected result' do
         expect(instance.send(:export)).to \
-          eq("\"user_id\";\"service_provider\"\n\"user_id123\";\"Google Fit\"\n\"user_id456\";\"fitbit\"\n")
+          eq("\"user_id\";\"service_provider\"\n\"user_id123\";\"Google Fit\"\n\"user_id456\";\"Fitbit\"\n")
       end
     end
 

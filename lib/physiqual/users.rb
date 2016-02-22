@@ -13,7 +13,7 @@ module Physiqual
     def export_lines(&_block)
       headers = %w(user_id service_provider)
       yield format_headers(headers)
-      Physiqual::User.includes(:physiqual_token).select('id, user_id').find_each do |user|
+      Physiqual::User.includes(:physiqual_token).find_each do |user|
         vals = {}
         vals['user_id'] = user.user_id
         vals['service_provider'] = user.physiqual_token.class.friendly_name if user.physiqual_token
