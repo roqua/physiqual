@@ -16,6 +16,10 @@ module Physiqual
       'physiqual_google_oauth2'
     end
 
+    def self.friendly_name
+      'Google Fit'
+    end
+
     def self.client_id
       ENV['GOOGLE_CLIENT_ID']
     end

@@ -63,6 +63,10 @@ module Physiqual
       raise 'Subclass does not implement csrf method'
     end
 
+    def self.friendly_name
+      raise 'Subclass does not implement friendly_name method'
+    end
+
     def self.scope
       raise 'Subclass does not implement scope method'
     end
