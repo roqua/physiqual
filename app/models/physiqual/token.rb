@@ -64,7 +64,7 @@ module Physiqual
     end
 
     def self.friendly_name
-      raise 'Subclass does not implement name method'
+      raise 'Subclass does not implement friendly_name method'
     end
 
     def self.scope

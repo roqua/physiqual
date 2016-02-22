@@ -24,7 +24,7 @@ module Physiqual
     end
 
     def self.friendly_name
-      'fitbit'
+      'Fitbit'
     end
 
     def self.client_id
