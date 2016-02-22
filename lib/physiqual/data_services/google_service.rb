@@ -43,6 +43,7 @@ module Physiqual
       end
 
       def distance(from, to)
+        # Distance provided by the google fit api is in meters. (at least the delta is)
         activity_data(from, to, DISTANCE_URL, 'fpVal')
       end
 

@@ -15,6 +15,8 @@ module Physiqual
       end
 
       def distance(from, to)
+        # Distance is always retrieved in the metric system if no 'Accept language'-header is set
+        # https://dev.fitbit.com/docs/basics/#units
         resource = 'activities'
         activity = 'distance'
         activity_call(from, to, resource, activity)
