@@ -53,7 +53,7 @@ module Physiqual
 
       private
 
-      def activity_data(from, to, url, value_type, &_block)
+      def activity_data(from, to, url, value_type)
         res = point_results(from, to, url)
         loop_through_results(res) do |value, start, endd, results_array|
           current_value = value[value_type].to_i
@@ -77,7 +77,7 @@ module Physiqual
 
           next if measurement_moment_out_of_range?(measurement_moment, to)
           results_array << DataEntry.new(start_date: Time.at(start).in_time_zone, end_date: Time.at(endd).in_time_zone,
-                                         values: [(endd - start) / 60],
+                                         values: [(endd - start) / 60], # Convert the time to minutes
                                          measurement_moment: measurement_moment)
         end
       end
