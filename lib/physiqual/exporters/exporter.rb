@@ -47,8 +47,9 @@ module Physiqual
         distance = data_imputer.distance(from, to)
 
         result = {}
+        Rails.logger.info buckets
         buckets.each do |bucket|
-          date = bucket[DataServices::DataService::DATE_TIME_FIELD]
+          date = bucket.end_date
           result[date] = {}
           result[date][:heart_rate] = heart_rate[date]
           result[date][:steps] = steps[date]
