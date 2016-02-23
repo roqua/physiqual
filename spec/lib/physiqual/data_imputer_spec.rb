@@ -3,9 +3,9 @@ module Physiqual
   describe DataImputer do
     let(:imputers) do
       [
-          instance_double('Imputer 1'),
-          instance_double('Imputer 2'),
-          instance_double('Imputer 3')
+        instance_double('Imputer 1'),
+        instance_double('Imputer 2'),
+        instance_double('Imputer 3')
       ]
     end
     let(:data_service) { DataServices::MockService.new(nil) }
@@ -20,7 +20,7 @@ module Physiqual
         meths.each do |meth|
           expect(data_service).to receive(meth).once.with(from, to).and_call_original
           instance = described_class.new data_service, imputers
-          #expect(instance).to receive(:impute_results).once.and_call_original
+          # expect(instance).to receive(:impute_results).once.and_call_original
           instance.send(meth, from, to)
         end
       end

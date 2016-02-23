@@ -43,7 +43,7 @@ module Physiqual
 
     def impute_results(results)
       result_hash = Hash.new(-1)
-      
+
       # Map the results from an array of objects to a hash
       results.each { |result| result_hash[result.end_date] = result.values }
 
