@@ -9,7 +9,7 @@ module Physiqual
       ]
     end
     let(:data_service) { DataServices::MockService.new(nil) }
-    fdescribe 'supported formats' do
+    describe 'supported formats' do
       it 'calls the data service correctly' do
         meths = [:steps, :heart_rate, :distance, :sleep, :calories, :activities]
         to = Time.zone.now
