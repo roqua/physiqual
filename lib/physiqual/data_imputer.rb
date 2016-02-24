@@ -6,32 +6,32 @@ module Physiqual
     end
 
     def steps(from, to)
-      result = retrieve_data_of_all_services { |service| service.steps(from, to) }
+      result = retrieve_data_from_service { |service| service.steps(from, to) }
       impute_results(result)
     end
 
     def heart_rate(from, to)
-      result = retrieve_data_of_all_services { |service| service.heart_rate(from, to) }
+      result = retrieve_data_from_service { |service| service.heart_rate(from, to) }
       impute_results(result)
     end
 
     def distance(from, to)
-      result = retrieve_data_of_all_services { |service| service.distance(from, to) }
+      result = retrieve_data_from_service { |service| service.distance(from, to) }
       impute_results(result)
     end
 
     def sleep(from, to)
-      result = retrieve_data_of_all_services { |service| service.sleep(from, to) }
+      result = retrieve_data_from_service { |service| service.sleep(from, to) }
       impute_results(result)
     end
 
     def calories(from, to)
-      result = retrieve_data_of_all_services { |service| service.calories(from, to) }
+      result = retrieve_data_from_service { |service| service.calories(from, to) }
       impute_results(result)
     end
 
     def activities(from, to)
-      result = retrieve_data_of_all_services { |service| service.activities(from, to) }
+      result = retrieve_data_from_service { |service| service.activities(from, to) }
       impute_results(result)
     end
 
