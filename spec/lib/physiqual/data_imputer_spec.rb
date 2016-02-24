@@ -82,5 +82,42 @@ module Physiqual
                              DateTime.new(3) => 3, DateTime.new(4) => 4)
       end
     end
+
+    describe '#retrieve_data_from_service' do
+      it 'is not publicly defined' do
+        expect(described_class.new('service', 'imputers')).to_not respond_to :retrieve_data_from_service
+      end
+
+      it 'runs a function for the services' do
+        service = 'service'
+        instance = described_class.new service, 'imputers'
+        service_result = []
+        instance.send(:retrieve_data_from_service) { |serv| service_result << serv }
+        expect(service_result).to eq [service]
+      end
+
+      it 'fails with a message if no services are defined' do
+        instance = described_class.new nil, 'imputers'
+        expect { instance.send(:retrieve_data_from_service) }.to raise_error 'No service defined'
+      end
+
+      describe 'can deal with a service that might not define the function' do
+        let(:service_obj) { double('Service') }
+        let(:result) { 'Called Service' }
+        let(:msg) { 'warn msg' }
+        let(:instance) { described_class.new service_obj, 'imputers' }
+
+        it 'does not raise an error' do
+          allow(service_obj).to receive(:defined_method).and_return('test')
+          expect { instance.send(:retrieve_data_from_service, &:defined_method) }.to_not raise_error
+        end
+
+        it 'logs the message' do
+          expect(service_obj).to receive(:not_defined_method).and_raise(Errors::NotSupportedError, msg).once
+          expect(Rails.logger).to receive(:warn).with(msg)
+          expect(instance.send(:retrieve_data_from_service, &:not_defined_method)).to eq nil
+        end
+      end
+    end
   end
 end
