@@ -39,24 +39,12 @@ module Physiqual
       end
 
       def aggregate_data_into_buckets(from, to, data_imputer, buckets)
-        activities = data_imputer.activities(from, to)
-        heart_rate = data_imputer.heart_rate(from, to)
-        steps = data_imputer.steps(from, to)
-        calories = data_imputer.calories(from, to)
-        # sleep = data_imputer.sleep(from, to)
-        distance = data_imputer.distance(from, to)
-
         result = {}
-        Rails.logger.info buckets
-        buckets.each do |bucket|
-          date = bucket.end_date
-          result[date] = {}
-          result[date][:heart_rate] = heart_rate[date]
-          result[date][:steps] = steps[date]
-          # result[date][:sleep] = sleep[date]
-          result[date][:calories] = calories[date]
-          result[date][:activities] = activities[date]
-          result[date][:distance] = distance[date]
+        [:activities, :heart_rate, :steps, :calories, :distance].each do |meth|
+          data[meth] = data_imputer.call(meth, from, to)
+          buckets.each do |bucket|
+            result[bucket.end_date][meth] = data[bucket.end_date]
+          end
         end
         result
       end
