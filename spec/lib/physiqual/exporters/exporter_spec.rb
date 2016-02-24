@@ -12,42 +12,46 @@ module Physiqual
         end
       end
 
-      describe 'create_services' do
+      describe 'create_service' do
         before :each do
           allow(Physiqual).to receive(:interval).and_return(6)
           allow(Physiqual).to receive(:measurements_per_day).and_return(3)
           allow(Physiqual).to receive(:hours_before_first_measurement).and_return(6)
         end
 
-        it 'should create services for each correct token provided' do
-          tokens = [FactoryGirl.build(:fitbit_token), FactoryGirl.build(:google_token)]
-          expect(tokens.all?(&:complete?)).to be_truthy
+        it 'should create a fitbit service for a correct fitbittoken provided' do
+          token = FactoryGirl.build(:fitbit_token)
+          expect(token.complete?).to be_truthy
           bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
             Physiqual.measurements_per_day,
             Physiqual.interval,
             Physiqual.hours_before_first_measurement)
-          result = subject.send(:create_services, tokens, bucket_generator)
-          expect(result.length).to eq(2)
+          result = subject.send(:create_service, token, bucket_generator)
+          expect(result.service_name).to end_with('fitbit_oauth2')
+        end
+
+        it 'should create a fitbit service for a correct fitbittoken provided' do
+          token = FactoryGirl.build(:google_token)
+          expect(token.complete?).to be_truthy
+          bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
+            Physiqual.measurements_per_day,
+            Physiqual.interval,
+            Physiqual.hours_before_first_measurement)
+          result = subject.send(:create_service, token, bucket_generator)
+          expect(result.service_name).to end_with('google_oauth2')
         end
 
         describe 'with incomplete services' do
-          let(:tokens) { [FactoryGirl.build(:fitbit_token), FactoryGirl.build(:google_token)] }
-          before do
-            allow(tokens.first).to receive(:complete?).and_return(false)
-            expect(tokens.all?(&:complete?)).to be_falsey
+          let(:token) { FactoryGirl.build(:fitbit_token) }
+          it 'should not create a service for a token which is not complete, but should return an empty array' do
+            allow(token).to receive(:complete?).and_return(false)
+            expect(token.complete?).to be_falsey
             bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
               Physiqual.measurements_per_day,
               Physiqual.interval,
               Physiqual.hours_before_first_measurement)
-            @result = subject.send(:create_services, tokens, bucket_generator)
-          end
-
-          it 'should not create a service for a token which is not complete' do
-            expect(@result.length).to eq(1)
-          end
-
-          it 'should remove the nil-services from the list of services' do
-            expect(@result).to_not include(nil)
+            result = subject.send(:create_service, token, bucket_generator)
+            expect(result).to eq([])
           end
         end
       end
