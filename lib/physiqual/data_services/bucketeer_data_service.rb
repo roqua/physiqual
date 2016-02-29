@@ -55,14 +55,14 @@ module Physiqual
           next unless entry.measurement_moment
 
           while current_bucket_smaller_than_number_buckets?(current_bucket, buckets) &&
-                entry_measurmenet_moment_outside_of_bucket?(current_bucket, entry, buckets)
+                entry_measurement_moment_outside_of_bucket?(current_bucket, entry, buckets)
             current_bucket += 1
           end
 
           # Note that the created buckets are in the interval (start_time, end-time]
           # (i.e., start_time < x <= end_time). This means startdates of two buckets
           # can be on the same data/ time, but a measurement on thtat exact moment will
-          # always endup in the previous bucket.
+          # always end up in the previous bucket.
           break if current_bucket == buckets.size
           next unless entry.measurement_moment > buckets[current_bucket].start_date
 
@@ -76,7 +76,7 @@ module Physiqual
         current_bucket < buckets.size
       end
 
-      def entry_measurmenet_moment_outside_of_bucket?(current_bucket, entry, buckets)
+      def entry_measurement_moment_outside_of_bucket?(current_bucket, entry, buckets)
         entry.measurement_moment > buckets[current_bucket].end_date
       end
     end
