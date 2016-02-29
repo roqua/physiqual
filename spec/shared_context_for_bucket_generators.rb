@@ -6,16 +6,12 @@ module Physiqual
       def check_result_format(result)
         expect(result).to be_a Array
         result.each do |entry|
-          expect(entry).to be_a Hash
-          expect(entry.keys.length).to eq 3
-          expect(entry.keys).to include Physiqual::DataServices::DataService.new.date_time_field
-          expect(entry.keys).to include Physiqual::DataServices::DataService.new.date_time_start_field
-          expect(entry.keys).to include Physiqual::DataServices::DataService.new.values_field
-          expect(entry[Physiqual::DataServices::DataService.new.date_time_field]).to be_a ActiveSupport::TimeWithZone
-          expect(entry[Physiqual::DataServices::DataService.new.date_time_start_field]).to be_a(
-            ActiveSupport::TimeWithZone)
-          expect(entry[Physiqual::DataServices::DataService.new.values_field]).to be_a Array
-          expect(entry[Physiqual::DataServices::DataService.new.values_field].any? { |x| x.is_a? Array }).to be_falsey
+          expect(entry).to be_a DataEntry
+          expect(entry.start_date).to be_a ActiveSupport::TimeWithZone
+          expect(entry.end_date).to be_a ActiveSupport::TimeWithZone
+          expect(entry.measurement_moment).to be_a ActiveSupport::TimeWithZone
+          expect(entry.values).to be_a Array
+          expect(entry.values.any? { |x| x.is_a? Array }).to be_falsey
         end
       end
 

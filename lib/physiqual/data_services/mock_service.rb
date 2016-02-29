@@ -4,6 +4,7 @@ module Physiqual
       # rubocop:disable Metrics/MethodLength
       def initialize(_session)
         @precision = 10.minutes
+        @measurements = []
       end
 
       def service_name
@@ -67,6 +68,7 @@ module Physiqual
       def distance(from, to)
         generate_time_series(from, to)
       end
+
       # rubocop:enable Metrics/MethodLength
       #
 
@@ -75,11 +77,13 @@ module Physiqual
       def generate_time_series(from, to)
         time = from
         res = []
+        index = 0
         while time < to
-          res << {
-            date_time_field => time,
-            values_field => [rand(100)]
-          }
+          res << DataEntry.new(start_date: time - @precision,
+                               end_date: time,
+                               measurement_moment: time,
+                               values: @measurements.blank? ? [rand(100)] : [@measurements[index]])
+          index = (index + 1) % @measurements.length unless @measurements.blank?
           time += @precision
         end
         res

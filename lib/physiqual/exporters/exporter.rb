@@ -8,14 +8,14 @@ module Physiqual
           Physiqual.interval,
           Physiqual.hours_before_first_measurement)
 
-        services = create_services([user.physiqual_token], bucket_generator)
-        data_aggregator = DataAggregator.new(services, Physiqual.imputers)
+        service = create_service(user.physiqual_token, bucket_generator)
+        data_imputer = DataImputer.new(service, Physiqual.imputers)
 
         from = from_time(first_measurement)
         to = to_time(first_measurement, number_of_days)
 
         buckets = bucket_generator.generate(from, to)
-        aggregate_data_into_buckets(from, to, data_aggregator, buckets)
+        aggregate_data_into_buckets(from, to, data_imputer, buckets)
       end
 
       private
@@ -29,34 +29,24 @@ module Physiqual
           ((Physiqual.measurements_per_day - 1) * Physiqual.interval).hours
       end
 
-      def create_services(tokens, bucket_generator)
-        tokens.map do |token|
-          next unless token.complete?
-          session = Sessions::TokenAuthorizedSession.new(token)
-          service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
-          service = DataServices::SummarizedDataService.new(service, bucket_generator)
-          DataServices::CachedDataService.new service
-        end.compact
+      def create_service(token, bucket_generator)
+        return [] unless token.complete?
+        session = Sessions::TokenAuthorizedSession.new(token)
+        service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
+        service = DataServices::BucketeerDataService.new(service, bucket_generator)
+        service = DataServices::SummarizedDataService.new(service)
+        DataServices::CachedDataService.new service
       end
 
-      def aggregate_data_into_buckets(from, to, data_aggregator, buckets)
-        activities = data_aggregator.activities(from, to)
-        heart_rate = data_aggregator.heart_rate(from, to)
-        steps = data_aggregator.steps(from, to)
-        calories = data_aggregator.calories(from, to)
-        # sleep = data_aggregator.sleep(from, to)
-        distance = data_aggregator.distance(from, to)
-
+      def aggregate_data_into_buckets(from, to, data_imputer, buckets)
         result = {}
-        buckets.each do |bucket|
-          date = bucket[DataServices::DataService::DATE_TIME_FIELD]
-          result[date] = {}
-          result[date][:heart_rate] = heart_rate[date]
-          result[date][:steps] = steps[date]
-          # result[date][:sleep] = sleep[date]
-          result[date][:calories] = calories[date]
-          result[date][:activities] = activities[date]
-          result[date][:distance] = distance[date]
+        [:activities, :heart_rate, :steps, :calories, :distance].each do |meth|
+          data = data_imputer.send(meth, from, to)
+          buckets.each do |bucket|
+            date = bucket.end_date
+            result[date] = {} if result[date].nil?
+            result[date][meth] = data[date]
+          end
         end
         result
       end

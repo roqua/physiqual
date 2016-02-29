@@ -53,30 +53,41 @@ module Physiqual
 
       private
 
-      def activity_data(from, to, url, value_type, &block)
+      def activity_data(from, to, url, value_type)
         res = point_results(from, to, url)
-
-        results = loop_through_results(res) do |value, start, endd, results_hash|
-          actual_timestep = Time.at((start + endd) / 2)
+        loop_through_results(res) do |value, start, endd, results_array|
+          current_value = value[value_type].to_i
+          current_value = [(block_given? ? yield(current_value) : current_value)]
+          measurement_moment = calculate_measurement_moment(start, endd)
 
           # If the current timestep is higher than the final timestep, don't include it
-          next if actual_timestep > to
-          results_hash[actual_timestep] += value[value_type].to_i
+          next if measurement_moment_out_of_range?(measurement_moment, to)
+          results_array << DataEntry.new(start_date: Time.at(start).in_time_zone, end_date: Time.at(endd).in_time_zone,
+                                         values: current_value,
+                                         measurement_moment: measurement_moment)
         end
-
-        hash_to_array(results, &block)
       end
 
-      def specific_activity_data(from, to, url, activity_type, &block)
+      def specific_activity_data(from, to, url, activity_type)
         res = point_results(from, to, url)
+        loop_through_results(res) do |value, start, endd, results_array|
+          # If the current activity is not the specified activity, skip it
+          next if value['intVal'] != activity_type
+          measurement_moment = calculate_measurement_moment(start, endd)
 
-        results = loop_through_results(res) do |value, start, endd, results_hash|
-          next unless value['intVal'] == activity_type
-          actual_date = Time.at(endd).in_time_zone.beginning_of_day
-          results_hash[actual_date] += (endd - start) / 60
+          next if measurement_moment_out_of_range?(measurement_moment, to)
+          results_array << DataEntry.new(start_date: Time.at(start).in_time_zone, end_date: Time.at(endd).in_time_zone,
+                                         values: [(endd - start) / 60], # Convert the time to minutes
+                                         measurement_moment: measurement_moment)
         end
+      end
 
-        hash_to_array(results, &block)
+      def measurement_moment_out_of_range?(measurement_moment, to)
+        measurement_moment > to
+      end
+
+      def calculate_measurement_moment(start, endd)
+        Time.at((start + endd) / 2).in_time_zone
       end
 
       def point_results(from, to, url)
@@ -87,24 +98,15 @@ module Physiqual
         res
       end
 
-      def hash_to_array(hash, &_block)
-        results = []
-        hash.each do |date, value|
-          results << { date_time_field => date, values_field => [(block_given? ? yield(value) : value)] }
-        end
-        results
-      end
-
       def loop_through_results(res)
         return [] if res.blank?
-        results_hash = Hash.new(0)
-
+        results = []
         res.each do |entry|
           start = (entry['startTimeNanos'].to_i / 10e8).to_i
           endd = (entry['endTimeNanos'].to_i / 10e8).to_i
-          yield(entry['value'].first, start, endd, results_hash)
+          yield(entry['value'].first, start, endd, results)
         end
-        results_hash
+        results
       end
 
       def access_datasource(id, from, to)

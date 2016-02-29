@@ -14,17 +14,19 @@
   Current session: <%= session['physiqual_user_id'] %>
       <% path = exports_path(format: :json,
                              first_measurement:'2015-10-01 10:00',
-                             number_of_days: 30) %>
+                             number_of_days: 5) %>
       <%= link_to 'exports', path %>
       <%= link_to 'exports (html) ', exports_path(format: :html,
                                                   first_measurement:'2015-10-01 10:00',
-                                                  number_of_days: 30) %>
+                                                  number_of_days: 5) %>
       <%= link_to 'exports (csv) ', exports_path(format: :csv,
                                                   first_measurement:'2015-10-01 10:00',
-                                                  number_of_days: 30) %>
+                                                  number_of_days: 5) %>
 
-      <%= link_to 'auth', authorize_path(provider: Physiqual::GoogleToken.csrf_token, return_url:
+      <%= link_to 'auth google', authorize_path(provider: Physiqual::GoogleToken.csrf_token, return_url:
           path) %>
+      <%= link_to 'auth fitbit', authorize_path(provider: Physiqual::FitbitToken.csrf_token, return_url:
+          '/') %>
 
   <%end%>
 <pre>

@@ -1,6 +1,8 @@
 module Physiqual
   module DataServices
     class FitbitService < DataService
+      DATE_FORMAT = '%Y-%m-%d'.freeze
+
       def initialize(session)
         @session = session
         @intraday = true
@@ -86,9 +88,15 @@ module Physiqual
         return {} if entries.nil?
         entries.each do |entry|
           value = entry['value']
-          value = convert_to_int_if_needed(value)
-          time_and_date = Time.parse("#{date} #{entry['time']}")
-          result << { date_time_field => time_and_date, values_field => [value] }
+          current_value = [convert_to_int_if_needed(value)]
+          endd = Time.parse("#{date} #{entry['time']}").in_time_zone
+
+          # The resolution of the data retrieved from intra-day fitbit is minutely.
+          # Each measurement interval therefore started 1 minute ago.
+          start = endd - 1.minute
+          measurement_moment = endd
+          result << DataEntry.new(start_date: start, end_date: endd, values: current_value,
+                                  measurement_moment: measurement_moment)
         end
         result
       end
@@ -97,8 +105,14 @@ module Physiqual
         result = []
         entries.each do |entry|
           value = entry['value']
-          value = convert_to_int_if_needed(value)
-          result << { date_time_field => entry['dateTime'].to_time, values_field => [value] }
+          current_value = [convert_to_int_if_needed(value)]
+          endd = entry['dateTime'].to_time.in_time_zone
+          # The resolution of the data retrieved from dayly fitbit api is daily.
+          # Each measurement interval therefore started 24 hours ago.
+          start = endd - 24.hours
+          measurement_moment = endd
+          result << DataEntry.new(start_date: start, end_date: endd, values: current_value,
+                                  measurement_moment: measurement_moment)
         end
         result
       end

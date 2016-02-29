@@ -1,4 +1,5 @@
 require 'jquery-rails'
+require 'virtus'
 require 'omniauth-oauth2'
 require 'omniauth-google-oauth2'
 require 'omniauth-fitbit-oauth2'

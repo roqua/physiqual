@@ -1,11 +1,6 @@
 module Physiqual
   module DataServices
     class DataService
-      DATE_FORMAT = '%Y-%m-%d'.freeze
-      DATE_TIME_FIELD = 'dateTime'.freeze
-      DATE_TIME_START_FIELD = 'dateTimeStart'.freeze
-      VALUES_FIELD = 'values'.freeze
-
       def service_name
         'general dataservice'
       end
@@ -32,25 +27,6 @@ module Physiqual
 
       def activities(_from, _to)
         raise 'Subclass does not implement activities method.'
-      end
-
-      def date_time_field
-        DATE_TIME_FIELD
-      end
-
-      def date_time_start_field
-        DATE_TIME_START_FIELD
-      end
-
-      def values_field
-        VALUES_FIELD
-      end
-
-      def output_entry(date, values)
-        {
-          date_time_field => date,
-          values_field => [values].flatten
-        }
       end
     end
   end
