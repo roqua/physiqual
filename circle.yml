@@ -2,7 +2,7 @@ machine:
   timezone:
     Europe/Amsterdam
   ruby:
-    version: 2.2.3
+    version: 2.2.4
 database:
   override:
     - bin/rake db:create db:migrate --trace
