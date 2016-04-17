@@ -64,7 +64,8 @@ Now you should be able to start your server.
 ## Dummy
 If you would like to run the dummy application, make a full checkout of Physiqual
 ```bash
-  git clone git@github.com:roqua/physiqual --shallow
+  git clone git@github.com:roqua/physiqual.git --shallow
+  bundle install
 ```
 
 And `cd` to `spec/dummy`. From this directory you can either run `bundle exec rails s` or create an apache v-host on passenger to run the server, for example:
