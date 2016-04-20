@@ -66,6 +66,7 @@ If you would like to run the dummy application, make a full checkout of Physiqua
 ```bash
   git clone git@github.com:roqua/physiqual.git --shallow
   bundle install
+  bundle exec rake db:setup
 ```
 
 And `cd` to `spec/dummy`. From this directory you can either run `bundle exec rails s` or create an apache v-host on passenger to run the server, for example:
