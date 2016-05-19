@@ -15,13 +15,15 @@ module Physiqual
         BucketGenerators::EquidistantBucketGenerator.new(
           measurements_per_day,
           interval,
-          interval)
+          interval
+        )
       end
       let(:bucket_generator_with_night) do
         BucketGenerators::EquidistantBucketGenerator.new(
           measurements_per_day,
           interval,
-          hours_before_first_measurement)
+          hours_before_first_measurement
+        )
       end
 
       let(:subject) { BucketeerDataService.new(service, bucket_generator_without_night) }

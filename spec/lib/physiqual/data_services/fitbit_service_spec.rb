@@ -37,8 +37,7 @@ module Physiqual
               { 'value' => 123, 'time' => Time.now.strftime(time_format) },
               { 'value' => 123, 'time' => Time.now.strftime(time_format) }
             ]
-          }
-          }
+          } }
           expect(session).to receive(:get).exactly(period).times.and_return(return_val)
           subject.send(:intraday_summary, from, to, 'activities', 'heart')
         end
