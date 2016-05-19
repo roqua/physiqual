@@ -7,8 +7,7 @@ module Physiqual
         @base_uri = token.class.base_uri
         @header = { 'Authorization' => "Bearer #{token.token}",
                     'Accept-Encoding' => 'gzip',
-                    'User-Agent' => 'Physiqual (gzip)'
-                  }
+                    'User-Agent' => 'Physiqual (gzip)' }
       end
 
       def get(path, params = {})

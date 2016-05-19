@@ -29,8 +29,7 @@ module Physiqual
             return result if bucket_end > to || bucket_end >= currently
             result << DataEntry.new(start_date: bucket_start,
                                     end_date: bucket_end,
-                                    measurement_moment: bucket_end
-                                   )
+                                    measurement_moment: bucket_end)
           end
           first_measurement_of_the_day += 1.day
         end
