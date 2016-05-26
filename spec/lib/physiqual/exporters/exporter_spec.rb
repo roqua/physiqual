@@ -25,7 +25,8 @@ module Physiqual
           bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
             Physiqual.measurements_per_day,
             Physiqual.interval,
-            Physiqual.hours_before_first_measurement)
+            Physiqual.hours_before_first_measurement
+          )
           result = subject.send(:create_service, token, bucket_generator)
           expect(result.service_name).to end_with('fitbit_oauth2')
         end
@@ -36,7 +37,8 @@ module Physiqual
           bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
             Physiqual.measurements_per_day,
             Physiqual.interval,
-            Physiqual.hours_before_first_measurement)
+            Physiqual.hours_before_first_measurement
+          )
           result = subject.send(:create_service, token, bucket_generator)
           expect(result.service_name).to end_with('google_oauth2')
         end
@@ -49,7 +51,8 @@ module Physiqual
             bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
               Physiqual.measurements_per_day,
               Physiqual.interval,
-              Physiqual.hours_before_first_measurement)
+              Physiqual.hours_before_first_measurement
+            )
             result = subject.send(:create_service, token, bucket_generator)
             expect(result).to eq([])
           end

@@ -6,7 +6,8 @@ module Physiqual
         bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
           Physiqual.measurements_per_day,
           Physiqual.interval,
-          Physiqual.hours_before_first_measurement)
+          Physiqual.hours_before_first_measurement
+        )
 
         service = create_service(user.physiqual_token, bucket_generator)
         data_imputer = DataImputer.new(service, Physiqual.imputers)

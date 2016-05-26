@@ -6,8 +6,7 @@ module Physiqual
         expect(subject).to receive(:render)
           .with(status: 404,
                 plain: 'ERROR: No token of the specified service ' \
-                                 'provider exists for the current user.'
-               ) { raise(StandardError, 'stop_execution') }
+                       'provider exists for the current user.') { raise(StandardError, 'stop_execution') }
         expect { subject.no_token_exists }.to raise_error('stop_execution')
       end
 
@@ -15,16 +14,15 @@ module Physiqual
         expect(subject).to receive(:render)
           .with(status: 404,
                 plain: 'ERROR: The specified service provider does not exist ' \
-                                            '(or no service provider was specified).'
-               ) { raise(StandardError, 'stop_execution') }
+                       '(or no service provider was specified).') { raise(StandardError, 'stop_execution') }
         expect { subject.service_provider_not_found }.to raise_error('stop_execution')
       end
 
       it 'no_session_exists' do
         expect(subject).to receive(:render)
           .with(status: 404,
-                plain: 'ERROR: Session token for user was not set (physiqual_user_id).'
-               ) { raise(StandardError, 'stop_execution') }
+                plain: 'ERROR: Session token for user was not set ' \
+                       '(physiqual_user_id).') { raise(StandardError, 'stop_execution') }
         expect { subject.no_session_exists }.to raise_error('stop_execution')
       end
 
@@ -32,8 +30,8 @@ module Physiqual
         exception = Exception.new('123')
         expect(subject).to receive(:render)
           .with(status: 404,
-                plain: 'ERROR: The provided params are incorrect or not specified (123)'
-               ) { raise(StandardError, 'stop_execution') }
+                plain: 'ERROR: The provided params are incorrect ' \
+                       'or not specified (123)') { raise(StandardError, 'stop_execution') }
         expect { subject.invalid_params(exception) }.to raise_error('stop_execution')
       end
 
@@ -41,8 +39,8 @@ module Physiqual
         exception = Exception.new('123')
         expect(subject).to receive(:render)
           .with(status: 404,
-                plain: 'ERROR: Encountered an unexpected HTTP Response while retrieving data: (123)'
-               ) { raise(StandardError, 'stop_execution') }
+                plain: 'ERROR: Encountered an unexpected HTTP Response ' \
+                       'while retrieving data: (123)') { raise(StandardError, 'stop_execution') }
         expect { subject.unexpected_http_response(exception) }.to raise_error('stop_execution')
       end
     end
