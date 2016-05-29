@@ -17,6 +17,7 @@ Install the dependencies by running:
 
 Initialize the database
 ``` ruby
+  bundle exec rake db:migrate
   bundle exec rake db:setup
 ```
 
@@ -60,6 +61,27 @@ end
 ```
 
 Now you should be able to start your server.
+
+On a page where the user has already been authenticated, you can implement the buttons for authorizing with the underlying services, e.g. google fit and/or fitbit:
+```ruby
+  <%= link_to 'auth google', physiqual.authorize_path(provider: Physiqual::GoogleToken.csrf_token, return_url: '/') %>
+  <%= link_to 'auth fitbit', physiqual.authorize_path(provider: Physiqual::FitbitToken.csrf_token, return_url: '/') %>
+```
+
+The next step is to set the cookie with the correct identifier for the present user. If the main application is using device, you could override the `SessionsController` as provided by devise:
+```ruby
+class SessionsController < Devise::SessionsController
+  def create
+    super
+    session['physiqual_user_id'] = current_user.id
+  end
+      
+  def destroy
+    super
+    session['physiqual_user_id'] = nil
+  end
+end
+```
 
 ## Dummy
 If you would like to run the dummy application, make a full checkout of Physiqual
