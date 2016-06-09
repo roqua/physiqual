@@ -9,7 +9,7 @@ module Physiqual
           Physiqual.hours_before_first_measurement
         )
 
-        service = create_service(user.physiqual_token, bucket_generator)
+        service = create_service(user, bucket_generator)
         data_imputer = DataImputer.new(service, Physiqual.imputers)
 
         from = from_time(first_measurement)
@@ -30,11 +30,13 @@ module Physiqual
           ((Physiqual.measurements_per_day - 1) * Physiqual.interval).hours
       end
 
-      def create_service(token, bucket_generator)
+      def create_service(user, bucket_generator)
+        puts 'token =' + (token = user.physiqual_token)
         return [] unless token.complete?
+        puts 'fixnum? ' + (user.user_id instance_of? Fixnum)
         session = Sessions::TokenAuthorizedSession.new(token)
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
-        service = DataServices::CassandraDataService.new(service)
+        service = DataServices::CassandraDataService.new(service, user)
         service = DataServices::BucketeerDataService.new(service, bucket_generator)
         service = DataServices::SummarizedDataService.new(service)
         DataServices::CachedDataService.new service

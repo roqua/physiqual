@@ -1,8 +1,9 @@
 module Physiqual
   module DataServices
     class CassandraDataService < DataServiceDecorator
-      def initialize(data_service)
+      def initialize(data_service, user)
         super(data_service)
+        @user = user
       end
 
       def service_name
