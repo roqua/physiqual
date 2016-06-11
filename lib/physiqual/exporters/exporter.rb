@@ -31,9 +31,8 @@ module Physiqual
       end
 
       def create_service(user, bucket_generator)
-        puts 'token =' + (token = user.physiqual_token)
+        token = user.physiqual_token
         return [] unless token.complete?
-        puts 'fixnum? ' + (user.user_id instance_of? Fixnum)
         session = Sessions::TokenAuthorizedSession.new(token)
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
         service = DataServices::CassandraDataService.new(service, user)

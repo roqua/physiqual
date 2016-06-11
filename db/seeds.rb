@@ -12,4 +12,7 @@ module Physiqual
     User.find_or_create_by(user_id: 'b')
     User.find_or_create_by(user_id: 'c')
   end
+  puts 'Initializing Cassandra'
+  connection = CassandraConnection.instance
+  connection.init_db
 end
