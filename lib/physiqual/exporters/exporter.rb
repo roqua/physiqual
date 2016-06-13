@@ -35,7 +35,7 @@ module Physiqual
         return [] unless token.complete?
         session = Sessions::TokenAuthorizedSession.new(token)
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
-        service = DataServices::CassandraDataService.new(service, user)
+        service = DataServices::CassandraDataService.new(service, user.user_id)
         service = DataServices::BucketeerDataService.new(service, bucket_generator)
         service = DataServices::SummarizedDataService.new(service)
         DataServices::CachedDataService.new service

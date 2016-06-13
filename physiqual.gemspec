@@ -40,6 +40,8 @@ Gem::Specification.new do |s|
   # Cassandra caching
   s.add_dependency 'cassandra-driver'
 
+  s.add_dependency 'sidekiq'
+
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rspec-rails'

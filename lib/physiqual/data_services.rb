@@ -8,6 +8,7 @@ require 'physiqual/data_services/mock_service'
 require 'physiqual/data_services/summarized_data_service'
 require 'physiqual/data_services/bucketeer_data_service'
 require 'physiqual/data_services/cassandra_data_service'
+require 'physiqual/data_services/cassandra_connection'
 
 module Physiqual
   module DataServices
