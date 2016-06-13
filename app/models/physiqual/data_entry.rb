@@ -5,7 +5,7 @@ module Physiqual
     DATE_FORMAT = '%Y-%m-%d'.freeze
 
     # The start date property is the start of this dataentry object, meaning it 
-    # denotes the actual start of the data in this measurment
+    # denotes the actual start of the data in this measurement
     attribute :start_date, DateTime
     
     # The end date property denotes the end of this measurement (exclusing the time). 
