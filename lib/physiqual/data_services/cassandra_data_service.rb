@@ -12,156 +12,94 @@ module Physiqual
       end
 
       def heart_rate(from, to)
-        entries = []
-        years(from, to) do |year, from_per_year, to_per_year|
-          entries += make_data_entries(@connection.query_heart_rate(@user_id, year, from_per_year, to_per_year))
-        end
-        new_entries = []
-        if entries.blank?
-          new_entries = data_service.heart_rate(from, to)
-        else
-          find_gaps(entries) do |from_gap, to_gap|
-            new_entries += data_service.heart_rate(from_gap, to_gap)
-          end
-          if entries.last.end_date < to
-            new_entries += data_service.heart_rate(entries.last.end_date, to)
-          end
-        end
-        if new_entries.present?
-          cache('heart_rate', @user_id, new_entries)
-        end
-        entries + new_entries
+        get_data('heart_rate', from, to)
       end
 
       def sleep(from, to)
-        entries = []
-        years(from, to) do |year, from_per_year, to_per_year|
-          entries += make_data_entries(@connection.query_sleep(@user_id, year, from_per_year, to_per_year))
-        end
-        new_entries = []
-        if entries.blank?
-          new_entries = data_service.sleep(from, to)
-        else
-          find_gaps(entries) do |from_gap, to_gap|
-            new_entries += data_service.sleep(from_gap, to_gap)
-          end
-          if entries.last.end_date < to
-            new_entries += data_service.sleep(entries.last.end_date, to)
-          end
-        end
-        if new_entries.present?
-          cache('sleep', @user_id, new_entries)
-        end
-        entries + new_entries
+        get_data('sleep', from, to)
       end
 
       def calories(from, to)
-        entries = []
-        years(from, to) do |year, from_per_year, to_per_year|
-          entries += make_data_entries(@connection.query_calories(@user_id, year, from_per_year, to_per_year))
-        end
-        new_entries = []
-        if entries.blank?
-          new_entries = data_service.calories(from, to)
-        else
-          find_gaps(entries) do |from_gap, to_gap|
-            new_entries += data_service.calories(from_gap, to_gap)
-          end
-          if entries.last.end_date < to
-            new_entries += data_service.calories(entries.last.end_date, to)
-          end
-        end
-        if new_entries.present?
-          cache('calories', @user_id, new_entries)
-        end
-        entries + new_entries
+        get_data('calories', from, to)
       end
 
       def distance(from, to)
-        entries = []
-        years(from, to) do |year, from_per_year, to_per_year|
-          entries += make_data_entries(@connection.query_distance(@user_id, year, from_per_year, to_per_year))
-        end
-        new_entries = []
-        if entries.blank?
-          new_entries = data_service.distance(from, to)
-        else
-          find_gaps(entries) do |from_gap, to_gap|
-            new_entries += data_service.distance(from_gap, to_gap)
-          end
-          if entries.last.end_date < to
-            new_entries += data_service.distance(entries.last.end_date, to)
-          end
-        end
-        if new_entries.present?
-          cache('distance', @user_id, new_entries)
-        end
-        entries + new_entries
+        get_data('distance', from, to)
       end
 
       def steps(from, to)
-        entries = []
-        years(from, to) do |year, from_per_year, to_per_year|
-          entries += make_data_entries(@connection.query_steps(@user_id, year, from_per_year, to_per_year))
-        end
-        new_entries = []
-        if entries.blank?
-          new_entries = data_service.steps(from, to)
-        else
-          find_gaps(entries) do |from_gap, to_gap|
-            new_entries += data_service.steps(from_gap, to_gap)
-          end
-          if entries.last.end_date < to
-            new_entries += data_service.steps(entries.last.end_date, to)
-          end
-        end
-        if new_entries.present?
-          cache('steps', @user_id, new_entries)
-        end
-        entries + new_entries
+        get_data('steps', from, to)
       end
 
       def activities(from, to)
-        entries = []
-        years(from, to) do |year, from_per_year, to_per_year|
-          entries += make_data_entries(@connection.query_activities(@user_id, year, from_per_year, to_per_year))
-        end
-        new_entries = []
-        if entries.blank?
-          new_entries = data_service.activities(from, to)
-        else
-          if entries.first.start_date > from
-            new_entries += data_service.activities(from, entries.last.start_date)
-          end
-          find_gaps(entries) do |from_gap, to_gap|
-            new_entries += data_service.activities(from_gap, to_gap)
-          end
-          if entries.last.end_date < to
-            new_entries += data_service.activities(entries.last.end_date, to)
-          end
-        end
-        if new_entries.present?
-          cache('activities', @user_id, new_entries)
-        end
-        entries + new_entries
+        get_data('activities', from, to)
       end
 
       private
+
+      def get_data(table, from, to)
+        entries = []
+        years(from, to) do |year, from_per_year, to_per_year|
+          entries += case table
+                       when 'heart_rate'
+                         make_data_entries(@connection.query_heart_rate(@user_id, year, from_per_year, to_per_year))
+                       when 'sleep'
+                         make_data_entries(@connection.query_sleep(@user_id, year, from_per_year, to_per_year))
+                       when 'calories'
+                         make_data_entries(@connection.query_calories(@user_id, year, from_per_year, to_per_year))
+                       when 'distance'
+                         make_data_entries(@connection.query_distance(@user_id, year, from_per_year, to_per_year))
+                       when 'steps'
+                         make_data_entries(@connection.query_steps(@user_id, year, from_per_year, to_per_year))
+                       when 'activities'
+                         make_data_entries(@connection.query_activities(@user_id, year, from_per_year, to_per_year))
+                     end
+        end
+        data_service_function = case table
+                                  when 'heart_rate'
+                                    data_service.method(:heart_rate)
+                                  when 'sleep'
+                                    data_service.method(:sleep)
+                                  when 'calories'
+                                    data_service.method(:calories)
+                                  when 'distance'
+                                    data_service.method(:distance)
+                                  when 'steps'
+                                    data_service.method(:steps)
+                                  when 'activities'
+                                    data_service.method(:activities)
+                                end
+        new_entries = []
+        if entries.blank?
+          new_entries = data_service_function.call(from, to)
+        else
+          find_gaps(entries) do |from_gap, to_gap|
+            new_entries += data_service_function.call(from_gap, to_gap)
+          end
+          if entries.last.end_date < to
+            new_entries += data_service_function.call(entries.last.end_date, to)
+          end
+        end
+        if new_entries.present?
+          cache(table, @user_id, new_entries)
+        end
+        entries + new_entries
+      end
 
       def years(from, to)
         from_year = from.strftime('%Y').to_i
         to_year = to.strftime('%Y').to_i
         (from_year..to_year).each do |year|
-          if from_year < year
-            from_per_year = Time.zone.local(year, 1, 1, 0, 0, 0)
-          else
-            from_per_year = from
-          end
-          if to_year > year
-            to_per_year = Time.zone.local(year, 12, 31, 23, 59, 59)
-          else
-            to_per_year = to
-          end
+          from_per_year = if from_year < year
+                            Time.zone.local(year, 1, 1, 0, 0, 0)
+                          else
+                            from
+                          end
+          to_per_year = if to_year > year
+                          Time.zone.local(year, 12, 31, 23, 59, 59)
+                        else
+                          to
+                        end
           yield(year, from_per_year, to_per_year)
         end
       end
@@ -180,8 +118,8 @@ module Physiqual
         entries = []
         results.each do |result|
           entries << DataEntry.new(start_date: result['start_date'].in_time_zone, end_date: result['end_date'].in_time_zone,
-                                         values: result['value'],
-                                         measurement_moment: result['time'].in_time_zone)
+                                   values: result['value'],
+                                   measurement_moment: result['time'].in_time_zone)
         end
         entries
       end

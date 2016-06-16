@@ -125,7 +125,7 @@ module Physiqual
 
 
 
-      def insert_heart_rate(user_id, year, times, start_dates, end_dates, values)
+      def insert(table, user_id, year, times, start_dates, end_dates, values)
         times_slices = times.each_slice(100).to_a
         start_dates_slices = start_dates.each_slice(100).to_a
         end_dates_slices = end_dates.each_slice(100).to_a
@@ -138,114 +138,25 @@ module Physiqual
 
           batch = @session.batch do |b|
             times_slice.each_with_index do |time, i|
-              b.add(@insert_heart_rate, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
+              case table
+                when 'heart_rate'
+                  b.add(@insert_heart_rate, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
+                when 'sleep'
+                  b.add(@insert_sleep, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
+                when 'calories'
+                  b.add(@insert_calories, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
+                when 'distance'
+                  b.add(@insert_distance, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
+                when 'steps'
+                  b.add(@insert_steps, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
+                when 'activities'
+                  b.add(@insert_activities, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, values_slice[i], 10])
+              end
             end
           end
           @session.execute(batch)
         end
       end
-
-      def insert_sleep(user_id, year, times, start_dates, end_dates, values)
-        times_slices = times.each_slice(100).to_a
-        start_dates_slices = start_dates.each_slice(100).to_a
-        end_dates_slices = end_dates.each_slice(100).to_a
-        values_slices = values.each_slice(100).to_a
-
-        times_slices.each_with_index do |times_slice, i|
-          start_dates_slice = start_dates_slices[i]
-          end_dates_slice = end_dates_slices[i]
-          values_slice = values_slices[i]
-
-          batch = @session.batch do |b|
-            times_slice.each_with_index do |time, i|
-              b.add(@insert_sleep, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
-            end
-          end
-          @session.execute(batch)
-        end
-      end
-
-      def insert_calories(user_id, year, times, start_dates, end_dates, values)
-        times_slices = times.each_slice(100).to_a
-        start_dates_slices = start_dates.each_slice(100).to_a
-        end_dates_slices = end_dates.each_slice(100).to_a
-        values_slices = values.each_slice(100).to_a
-
-        times_slices.each_with_index do |times_slice, i|
-          start_dates_slice = start_dates_slices[i]
-          end_dates_slice = end_dates_slices[i]
-          values_slice = values_slices[i]
-
-          batch = @session.batch do |b|
-            times_slice.each_with_index do |time, i|
-              b.add(@insert_calories, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
-            end
-          end
-          @session.execute(batch)
-        end
-      end
-
-      def insert_distance(user_id, year, times, start_dates, end_dates, values)
-        times_slices = times.each_slice(100).to_a
-        start_dates_slices = start_dates.each_slice(100).to_a
-        end_dates_slices = end_dates.each_slice(100).to_a
-        values_slices = values.each_slice(100).to_a
-
-        times_slices.each_with_index do |times_slice, i|
-          start_dates_slice = start_dates_slices[i]
-          end_dates_slice = end_dates_slices[i]
-          values_slice = values_slices[i]
-
-          batch = @session.batch do |b|
-            times_slice.each_with_index do |time, i|
-              b.add(@insert_distance, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
-            end
-          end
-          @session.execute(batch)
-        end
-      end
-
-      def insert_steps(user_id, year, times, start_dates, end_dates, values)
-        times_slices = times.each_slice(100).to_a
-        start_dates_slices = start_dates.each_slice(100).to_a
-        end_dates_slices = end_dates.each_slice(100).to_a
-        values_slices = values.each_slice(100).to_a
-
-        times_slices.each_with_index do |times_slice, i|
-          start_dates_slice = start_dates_slices[i]
-          end_dates_slice = end_dates_slices[i]
-          values_slice = values_slices[i]
-
-          batch = @session.batch do |b|
-            times_slice.each_with_index do |time, i|
-              b.add(@insert_steps, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, BigDecimal(values_slice[i], 10)])
-            end
-          end
-          @session.execute(batch)
-        end
-      end
-
-      def insert_activities(user_id, year, times, start_dates, end_dates, values)
-        times_slices = times.each_slice(100).to_a
-        start_dates_slices = start_dates.each_slice(100).to_a
-        end_dates_slices = end_dates.each_slice(100).to_a
-        values_slices = values.each_slice(100).to_a
-
-        times_slices.each_with_index do |times_slice, i|
-          start_dates_slice = start_dates_slices[i]
-          end_dates_slice = end_dates_slices[i]
-          values_slice = values_slices[i]
-
-          batch = @session.batch do |b|
-            times_slice.each_with_index do |time, i|
-              b.add(@insert_distance, arguments: [user_id, year, time.to_time, start_dates_slice[i].to_time, end_dates_slice[i].to_time, values_slice[i]])
-            end
-          end
-          @session.execute(batch)
-        end
-      end
-
-
 
       def query_heart_rate(user_id, year, from, to)
         @session.execute(@query_heart_rate, arguments: [user_id, year, from, to])
@@ -270,8 +181,6 @@ module Physiqual
       def query_activities(user_id, year, from, to)
         @session.execute(@query_activities, arguments: [user_id, year, from, to])
       end
-
-
 
       private
 
