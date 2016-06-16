@@ -37,7 +37,7 @@ module Physiqual
       private
 
       def from_cache(type)
-        Rails.logger.warn("#{type} of #{service_name} not from cache.. ") unless @cache.include? type
+        Rails.logger.warn("#{type} of #{service_name} not duplicate...") unless @cache.include? type
         @cache[type] = yield unless @cache.include? type
         @cache[type]
       end

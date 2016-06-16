@@ -40,7 +40,7 @@ module Physiqual
           batch = @session.batch do |b|
             times_slice.each_with_index do |time, j|
               insert_type = nil
-              value = BigDecimal(values_slice[j], 10)
+              value = BigDecimal(values_slice[j], Float::DIG + 1)
               case table
               when 'heart_rate'
                 insert_type = @insert_heart_rate
@@ -178,37 +178,37 @@ module Physiqual
         @query_heart_rate = @session.prepare('
           SELECT time, start_date, end_date, value
           FROM heart_rate
-          WHERE user_id = ? AND year = ? AND time >= ? AND time < ?
+          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
           ORDER BY time ASC
         ')
         @query_sleep = @session.prepare('
           SELECT time, start_date, end_date, value
           FROM sleep
-          WHERE user_id = ? AND year = ? AND time >= ? AND time < ?
+          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
           ORDER BY time ASC
         ')
         @query_calories = @session.prepare('
           SELECT time, start_date, end_date, value
           FROM calories
-          WHERE user_id = ? AND year = ? AND time >= ? AND time < ?
+          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
           ORDER BY time ASC
         ')
         @query_distance = @session.prepare('
           SELECT time, start_date, end_date, value
           FROM distance
-          WHERE user_id = ? AND year = ? AND time >= ? AND time < ?
+          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
           ORDER BY time ASC
         ')
         @query_steps = @session.prepare('
           SELECT time, start_date, end_date, value
           FROM steps
-          WHERE user_id = ? AND year = ? AND time >= ? AND time < ?
+          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
           ORDER BY time ASC
         ')
         @query_activities = @session.prepare('
           SELECT time, start_date, end_date, value
           FROM activities
-          WHERE user_id = ? AND year = ? AND time >= ? AND time < ?
+          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
           ORDER BY time ASC
         ')
       end
