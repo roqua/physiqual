@@ -41,34 +41,21 @@ module Physiqual
         entries = []
         years(from, to) do |year, from_per_year, to_per_year|
           entries += case table
-                       when 'heart_rate'
-                         make_data_entries(@connection.query_heart_rate(@user_id, year, from_per_year, to_per_year))
-                       when 'sleep'
-                         make_data_entries(@connection.query_sleep(@user_id, year, from_per_year, to_per_year))
-                       when 'calories'
-                         make_data_entries(@connection.query_calories(@user_id, year, from_per_year, to_per_year))
-                       when 'distance'
-                         make_data_entries(@connection.query_distance(@user_id, year, from_per_year, to_per_year))
-                       when 'steps'
-                         make_data_entries(@connection.query_steps(@user_id, year, from_per_year, to_per_year))
-                       when 'activities'
-                         make_data_entries(@connection.query_activities(@user_id, year, from_per_year, to_per_year))
+                     when 'heart_rate'
+                       make_data_entries(@connection.query_heart_rate(@user_id, year, from_per_year, to_per_year))
+                     when 'sleep'
+                       make_data_entries(@connection.query_sleep(@user_id, year, from_per_year, to_per_year))
+                     when 'calories'
+                       make_data_entries(@connection.query_calories(@user_id, year, from_per_year, to_per_year))
+                     when 'distance'
+                       make_data_entries(@connection.query_distance(@user_id, year, from_per_year, to_per_year))
+                     when 'steps'
+                       make_data_entries(@connection.query_steps(@user_id, year, from_per_year, to_per_year))
+                     when 'activities'
+                       make_data_entries(@connection.query_activities(@user_id, year, from_per_year, to_per_year))
                      end
         end
-        data_service_function = case table
-                                  when 'heart_rate'
-                                    data_service.method(:heart_rate)
-                                  when 'sleep'
-                                    data_service.method(:sleep)
-                                  when 'calories'
-                                    data_service.method(:calories)
-                                  when 'distance'
-                                    data_service.method(:distance)
-                                  when 'steps'
-                                    data_service.method(:steps)
-                                  when 'activities'
-                                    data_service.method(:activities)
-                                end
+        data_service_function = get_data_function(table)
         new_entries = []
         if entries.blank?
           new_entries = data_service_function.call(from, to)
@@ -84,6 +71,23 @@ module Physiqual
           cache(table, @user_id, new_entries)
         end
         entries + new_entries
+      end
+
+      def get_data_function(table)
+        case table
+        when 'heart_rate'
+          data_service.method(:heart_rate)
+        when 'sleep'
+          data_service.method(:sleep)
+        when 'calories'
+          data_service.method(:calories)
+        when 'distance'
+          data_service.method(:distance)
+        when 'steps'
+          data_service.method(:steps)
+        when 'activities'
+          data_service.method(:activities)
+        end
       end
 
       def years(from, to)
@@ -107,8 +111,8 @@ module Physiqual
       def find_gaps(entries)
         entries.each_with_index do |entry, i|
           break if i == entries.length - 1
-          if entry.end_date != entries[i+1].start_date
-            yield(entry.end_date, entries[i+1].start_date)
+          if entry.end_date != entries[i + 1].start_date
+            yield(entry.end_date, entries[i + 1].start_date)
           end
         end
       end
