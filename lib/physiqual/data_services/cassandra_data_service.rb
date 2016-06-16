@@ -119,7 +119,8 @@ module Physiqual
         return [] if results.blank?
         entries = []
         results.each do |result|
-          entries << DataEntry.new(start_date: result['start_date'].in_time_zone, end_date: result['end_date'].in_time_zone,
+          entries << DataEntry.new(start_date: result['start_date'].in_time_zone,
+                                   end_date: result['end_date'].in_time_zone,
                                    values: result['value'],
                                    measurement_moment: result['time'].in_time_zone)
         end
