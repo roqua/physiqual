@@ -18,27 +18,25 @@ module Physiqual
     private
 
     def store_data(connection, table, from, to)
-      begin
-        entries = DataServices::CassandraDataService.get_data(connection, @user_id, table, from, to)
-        data_service_function = get_data_function(table)
-        new_entries = []
-        if entries.blank?
-          new_entries = data_service_function.call(from, to)
-        else
-          if entries.first.start_date > from
-            new_entries += data_service_function.call(from, entries.first.start_date)
-          end
-          find_gaps(entries) do |from_gap, to_gap|
-            new_entries += data_service_function.call(from_gap, to_gap)
-          end
-          if entries.last.end_date < to
-            new_entries += data_service_function.call(entries.last.end_date, to)
-          end
+      entries = DataServices::CassandraDataService.get_data(connection, @user_id, table, from, to)
+      data_service_function = get_data_function(table)
+      new_entries = []
+      if entries.blank?
+        new_entries = data_service_function.call(from, to)
+      else
+        if entries.first.start_date > from
+          new_entries += data_service_function.call(from, entries.first.start_date)
         end
-        cache(connection, table, @user_id, new_entries) if new_entries.present?
+        find_gaps(entries) do |from_gap, to_gap|
+          new_entries += data_service_function.call(from_gap, to_gap)
+        end
+        if entries.last.end_date < to
+          new_entries += data_service_function.call(entries.last.end_date, to)
+        end
+      end
+      cache(connection, table, @user_id, new_entries) if new_entries.present?
       rescue Errors::NotSupportedError => e
         Rails.logger.warn e.message
-      end
 
     end
 
