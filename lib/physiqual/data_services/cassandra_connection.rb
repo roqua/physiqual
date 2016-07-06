@@ -36,7 +36,6 @@ module Physiqual
           values_slice = values_slices[i]
           batch = @session.batch do |b|
             times_slice.each_with_index do |time, j|
-              insert_type = nil
               value = BigDecimal(values_slice[j], Float::DIG + 1)
               case table
               when 'heart_rate'
