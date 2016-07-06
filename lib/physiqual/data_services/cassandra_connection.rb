@@ -34,7 +34,6 @@ module Physiqual
           start_dates_slice = start_dates_slices[i]
           end_dates_slice = end_dates_slices[i]
           values_slice = values_slices[i]
-
           batch = @session.batch do |b|
             times_slice.each_with_index do |time, j|
               insert_type = nil
