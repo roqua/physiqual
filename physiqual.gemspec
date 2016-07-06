@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'cassandra-driver'
 
   s.add_dependency 'sidekiq'
+  s.add_dependency 'sidekiq-status'
 
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'sqlite3'
