@@ -74,44 +74,48 @@ module Physiqual
 
       def cache_data(table, user_id, from, to)
         job = Physiqual::CacheWorker.perform_async(table, user_id, from, to)
-        while Sidekiq::Status::queued? job or Sidekiq::Status::working? job
-          Kernel::sleep(1)
+        while Sidekiq::Status.queued? job or Sidekiq::Status.working? job
+          Kernel.sleep(1)
         end
       end
 
-      def self.years(from, to)
-        from_year = from.strftime('%Y').to_i
-        to_year = to.strftime('%Y').to_i
-        (from_year..to_year).each do |year|
-          from_per_year = if from_year < year
-                            Time.zone.local(year, 1, 1, 0, 0, 0)
+      class << self
+        private
+
+        def years(from, to)
+          from_year = from.strftime('%Y').to_i
+          to_year = to.strftime('%Y').to_i
+          (from_year..to_year).each do |year|
+            from_per_year = if from_year < year
+                              Time.zone.local(year, 1, 1, 0, 0, 0)
+                            else
+                              from
+                            end
+            to_per_year = if to_year > year
+                            Time.zone.local(year, 12, 31, 23, 59, 59)
                           else
-                            from
+                            to
                           end
-          to_per_year = if to_year > year
-                          Time.zone.local(year, 12, 31, 23, 59, 59)
-                        else
-                          to
-                        end
-          yield(year, from_per_year, to_per_year)
+            yield(year, from_per_year, to_per_year)
+          end
         end
-      end
 
-      def self.make_data_entries(table, results)
-        return [] if results.blank?
-        entries = []
-        results.each do |result|
-          value = if table == 'activities'
-                    result['value']
-                  else
-                    result['value'].to_f
-                  end
-          entries << DataEntry.new(start_date: result['start_date'].in_time_zone,
-                                   end_date: result['end_date'].in_time_zone,
-                                   values: value,
-                                   measurement_moment: result['time'].in_time_zone)
+        def make_data_entries(table, results)
+          return [] if results.blank?
+          entries = []
+          results.each do |result|
+            value = if table == 'activities'
+                      result['value']
+                    else
+                      result['value'].to_f
+                    end
+            entries << DataEntry.new(start_date: result['start_date'].in_time_zone,
+                                     end_date: result['end_date'].in_time_zone,
+                                     values: value,
+                                     measurement_moment: result['time'].in_time_zone)
+          end
+          entries
         end
-        entries
       end
     end
   end

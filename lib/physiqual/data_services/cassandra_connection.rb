@@ -5,6 +5,7 @@ module Physiqual
   module DataServices
     class CassandraConnection
       include Singleton
+      SLICE_SIZE = 100
 
       def initialize
         @cluster = nil
@@ -27,11 +28,8 @@ module Physiqual
       end
 
       def insert(table, user_id, year, times, start_dates, end_dates, values)
-        times_slices = times.each_slice(100).to_a
-        start_dates_slices = start_dates.each_slice(100).to_a
-        end_dates_slices = end_dates.each_slice(100).to_a
-        values_slices = values.each_slice(100).to_a
-
+        times_slices, start_dates_slices, end_dates_slices, values_slices =
+          slice(times, start_dates, end_dates, values)
         times_slices.each_with_index do |times_slice, i|
           start_dates_slice = start_dates_slices[i]
           end_dates_slice = end_dates_slices[i]
@@ -64,6 +62,13 @@ module Physiqual
         end
       end
 
+      def slice(times, start_dates, end_dates, values)
+        return times.each_slice(SLICE_SIZE).to_a,
+            start_dates.each_slice(SLICE_SIZE).to_a,
+            end_dates.each_slice(SLICE_SIZE).to_a,
+            values.each_slice(SLICE_SIZE).to_a
+      end
+
       def query_heart_rate(user_id, year, from, to)
         @session.execute(@query_heart_rate, arguments: [user_id, year, from, to])
       end
@@ -91,126 +96,58 @@ module Physiqual
       private
 
       def init_db
-        @session.execute('
-          CREATE TABLE IF NOT EXISTS heart_rate (
-            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value decimal,
+        create_table('heart_rate', 'decimal')
+        create_table('sleep', 'decimal')
+        create_table('calories', 'decimal')
+        create_table('distance', 'decimal')
+        create_table('steps', 'decimal')
+        create_table('activities', 'varchar')
+      end
+
+      def create_table(name, value_type)
+        @session.execute("
+            CREATE TABLE IF NOT EXISTS #{name} (
+            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value #{value_type},
             PRIMARY KEY ((user_id, year), time)
           )
-        ')
-        @session.execute('
-          CREATE TABLE IF NOT EXISTS sleep (
-            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value decimal,
-            PRIMARY KEY ((user_id, year), time)
-          )
-        ')
-        @session.execute('
-          CREATE TABLE IF NOT EXISTS calories (
-            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value decimal,
-            PRIMARY KEY ((user_id, year), time)
-          )
-        ')
-        @session.execute('
-          CREATE TABLE IF NOT EXISTS distance (
-            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value decimal,
-            PRIMARY KEY ((user_id, year), time)
-          )
-        ')
-        @session.execute('
-          CREATE TABLE IF NOT EXISTS steps (
-            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value decimal,
-            PRIMARY KEY ((user_id, year), time)
-          )
-        ')
-        @session.execute('
-          CREATE TABLE IF NOT EXISTS activities (
-            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value varchar,
-            PRIMARY KEY ((user_id, year), time)
-          )
-        ')
+        ")
       end
 
       def init_insert
-        @insert_heart_rate = @session.prepare('
-          INSERT INTO heart_rate (
+        @insert_heart_rate = prepare_insert('heart_rate')
+        @insert_sleep = prepare_insert('sleep')
+        @insert_calories = prepare_insert('calories')
+        @insert_distance = prepare_insert('distance')
+        @insert_steps = prepare_insert('steps')
+        @insert_activities = prepare_insert('activities')
+      end
+
+      def prepare_insert(table_name)
+        @session.prepare("
+           INSERT INTO #{table_name} (
             user_id, year, time, start_date, end_date, value
           ) VALUES (
             ?, ?, ?, ?, ?, ?
           )
-        ')
-        @insert_sleep = @session.prepare('
-          INSERT INTO sleep (
-            user_id, year, time, start_date, end_date, value
-          ) VALUES (
-            ?, ?, ?, ?, ?, ?
-          )
-        ')
-        @insert_calories = @session.prepare('
-          INSERT INTO calories (
-            user_id, year, time, start_date, end_date, value
-          ) VALUES (
-            ?, ?, ?, ?, ?, ?
-          )
-        ')
-        @insert_distance = @session.prepare('
-          INSERT INTO distance (
-            user_id, year, time, start_date, end_date, value
-          ) VALUES (
-            ?, ?, ?, ?, ?, ?
-          )
-        ')
-        @insert_steps = @session.prepare('
-          INSERT INTO steps (
-            user_id, year, time, start_date, end_date, value
-          ) VALUES (
-            ?, ?, ?, ?, ?, ?
-          )
-        ')
-        @insert_activities = @session.prepare('
-          INSERT INTO activities (
-            user_id, year, time, start_date, end_date, value
-          ) VALUES (
-            ?, ?, ?, ?, ?, ?
-          )
-        ')
+        ")
       end
 
       def init_query
-        @query_heart_rate = @session.prepare('
+        @query_heart_rate = prepare_query('heart_rate')
+        @query_sleep = prepare_query('sleep')
+        @query_calories = prepare_query('calories')
+        @query_distance = prepare_query('distance')
+        @query_steps = prepare_query('steps')
+        @query_activities = prepare_query('activities')
+      end
+
+      def prepare_query(table_name)
+        @session.prepare("
           SELECT time, start_date, end_date, value
-          FROM heart_rate
+          FROM #{table_name}
           WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
           ORDER BY time ASC
-        ')
-        @query_sleep = @session.prepare('
-          SELECT time, start_date, end_date, value
-          FROM sleep
-          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
-          ORDER BY time ASC
-        ')
-        @query_calories = @session.prepare('
-          SELECT time, start_date, end_date, value
-          FROM calories
-          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
-          ORDER BY time ASC
-        ')
-        @query_distance = @session.prepare('
-          SELECT time, start_date, end_date, value
-          FROM distance
-          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
-          ORDER BY time ASC
-        ')
-        @query_steps = @session.prepare('
-          SELECT time, start_date, end_date, value
-          FROM steps
-          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
-          ORDER BY time ASC
-        ')
-        @query_activities = @session.prepare('
-          SELECT time, start_date, end_date, value
-          FROM activities
-          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
-          ORDER BY time ASC
-        ')
+        ")
       end
     end
   end
