@@ -76,8 +76,8 @@ module Physiqual
         @connection
       end
 
-      def cache_data(table, user_id, from, to)
-        job = Physiqual::CacheWorker.perform_async(table, user_id, from, to)
+      def cache_data(variable, user_id, from, to)
+        job = Physiqual::Workers::CacheWorker.perform_async(data_service, variable, user_id, from, to)
         while Sidekiq::Status.queued? job or Sidekiq::Status.working? job
           Kernel.sleep(1)
         end

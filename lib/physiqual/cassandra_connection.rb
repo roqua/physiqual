@@ -31,17 +31,17 @@ module Physiqual
       initialize_database(variables)
     end
 
-    def insert(table, user_id, year, times, start_dates, end_dates, values)
+    def insert(table, user_id, year, entries)
       # Slice the dates in chuncs of SLICE_SIZE
-      times_slices, start_dates_slices, end_dates_slices, values_slices = slice(times, start_dates, end_dates, values)
+      entries = entries.each_slice(SLICE_SIZE).to_a
 
-      # Merge all slices into one array
-      times_slices.zip!(start_dates_slices, end_dates_slices, values_slices)
-
-      times_slices.each_with_index do |times_slice, start_dates_slice, end_dates_slice, values_slice|
+      entries.each_with_index do |entry_slice|
         batch = @session.batch do |b|
-          zipped_slices = times_slice.zip(start_dates_slice, end_dates_slice, values_slice)
-          zipped_slices.each do |time, start_date, end_date, value|
+          entry_slice.each do |entry|
+            time = entry.measurement_moment
+            start_date = entry.start_date
+            end_date = entry.end_date
+            value = entry.values.first
             # If the table is 'activities', we should not convert the slice to a bigdecimal
             value = BigDecimal(value, Float::DIG + 1) if table != 'activities'
 
