@@ -9,6 +9,7 @@ require 'physiqual/omniauth'
 require 'physiqual/sessions'
 require 'physiqual/users'
 require 'physiqual/version'
+require 'physiqual/cassandra_connection'
 
 module Physiqual
 end

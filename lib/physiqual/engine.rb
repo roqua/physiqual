@@ -30,7 +30,6 @@ module Physiqual
     mattr_accessor :imputers
   end
 
-
   def self.configure(&_block)
     yield self
   end
