@@ -9,6 +9,10 @@ module Physiqual
     mattr_accessor :google_client_secret
     mattr_accessor :fitbit_client_id
     mattr_accessor :fitbit_client_secret
+    mattr_accessor :cassandra_username
+    mattr_accessor :cassandra_password
+    mattr_accessor :cassandra_host_urls
+    mattr_accessor :cassandra_keyspace
     mattr_accessor :host_url
     mattr_accessor :host_protocol
     mattr_accessor :measurements_per_day

@@ -11,6 +11,12 @@ Physiqual.configure do |config|
   config.host_url             = ENV['HOST_URL'] || 'physiqual.dev'
   config.host_protocol        = ENV['HOST_PROTOCOL'] || 'http'
 
+  # Cassandra settings
+  config.cassandra_username   = ENV['CASSANDRA_USERNAME'] || ''
+  config.cassandra_password   = ENV['CASSANDRA_PASSWORD'] || ''
+  config.cassandra_host_urls  = (ENV['CASSANDRA_HOST_URLS'] || 'physiqual.dev').split(' ')
+  config.cassandra_keyspace   = ENV['CASSANDRA_KEYSPACE']
+
   # EMA Settings
   config.measurements_per_day           = 1 # Number of measurements per day
   config.interval                       = 24 # Number of hours between measurements
