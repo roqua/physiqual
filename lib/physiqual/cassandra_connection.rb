@@ -8,18 +8,22 @@ module Physiqual
 
     def initialize
       # Setup the connection to the cluster
+      Rails.logger.info(Physiqual.cassandra_username)
+      Rails.logger.info(Physiqual.cassandra_password)
+      Rails.logger.info(Physiqual.cassandra_host_urls)
       if Physiqual.cassandra_username.blank? || Physiqual.cassandra_password.blank?
         cluster = Cassandra.cluster(
-          hosts: Physiqual.cassandra_host_urls
+          hosts: Physiqual.cassandra_urls
         )
       else
         cluster = Cassandra.cluster(
-          username: ENV['CASSANDRA_USERNAME'],
-          password: ENV['CASSANDRA_PASSWORD'],
-          hosts: Physiqual.cassandra_host_urls
+          username: Physiqual.cassandra_username,
+          password: Physiqual.cassandra_password,
+          hosts: Physiqual.cassandra_urls
         )
       end
-      @session = cluster.connect('physiqual')
+
+      @session = cluster.connect(Physiqual.cassandra_keyspace)
 
       variables = { 'heart_rate' => 'decimal',
                     'sleep' => 'decimal',
@@ -27,6 +31,7 @@ module Physiqual
                     'distance' => 'decimal',
                     'steps' => 'decimal',
                     'activities' => 'varchar' }
+
 
       initialize_database(variables)
     end
@@ -92,10 +97,16 @@ module Physiqual
       @insert_queries = {}
       @queries = {}
       variable_names.each do |variable, type|
+        create_table(variable, type)
         @insert_queries[variable] = prepare_insert(variable)
         @queries[variable] = prepare_query(variable)
-        create_table(variable, type)
       end
+    end
+
+    def create_keyspace(keypsace_name)
+      query = "CREATE KEYSPACE #{keyspace_name}
+      WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};"
+      @session.execute(query)
     end
 
     def prepare_insert(table_name)

@@ -5,26 +5,27 @@ module Physiqual
     class CacheWorker
       include Sidekiq::Worker
 
-      def perform(data_service, variable, user_id, from, to)
+      def perform(data_service, cassandra_dataservice, variable, user_id, from, to)
         @user_id = user_id
         @data_service = data_service
 
-        connection = DataServices::CassandraConnection.instance
-        from = Time.zone.parse(from)
-        to = Time.zone.parse(to)
-        store_data(connection, variable, from, to)
+        connection = CassandraConnection.instance
+
+        #  Sidekiq converts all dates to strings, so we have to parse them back to dates,
+        from = Time.zone.parse(from) if from.is_a? String
+        to = Time.zone.parse(to) if to.is_a? String
+        store_data(connection, cassandra_dataservice, variable, from, to)
       end
 
       private
 
-      def store_data(connection, table, from, to)
-        entries = DataServices::CassandraDataService.get_data(connection, @user_id, table, from, to)
-
+      def store_data(connection, cassandra_dataservice, table, from, to)
+        entries = cassandra_dataservice.get_data(connection, @user_id, table, from, to)
         # Retrieve the function to use for getting the data
         data_service_function = get_data_function(table)
 
         new_entries = []
-
+        Rails.logger.info('new entries')
         # If there were no enties in the first place, just make the call to the dataservice
         if entries.blank?
           new_entries = data_service_function.call(from, to)
@@ -33,15 +34,15 @@ module Physiqual
             new_entries += data_service_function.call(from, entries.first.start_date)
           end
 
-          find_gaps(entries) do |from_gap, to_gap|
-            new_entries += data_service_function.call(from_gap, to_gap)
-          end
+          # find_gaps(entries) do |from_gap, to_gap|
+          #   new_entries += data_service_function.call(from_gap, to_gap)
+          # end
 
           if entries.last.end_date < to
             new_entries += data_service_function.call(entries.last.end_date, to)
           end
         end
-
+        Rails.logger.info('caching new entries')
         # Cache the newly retrieved data
         cache(connection, table, @user_id, new_entries) if new_entries.present?
       rescue Errors::NotSupportedError => e
@@ -68,6 +69,7 @@ module Physiqual
       def find_gaps(entries)
         entries.each_with_index do |entry, i|
           break if i == entries.length - 1
+          # TODO: This is dramatically inefficient.
           if entry.end_date != entries[i + 1].start_date
             yield(entry.end_date, entries[i + 1].start_date)
           end
@@ -91,7 +93,7 @@ module Physiqual
         end
 
         # Insert the remaining data
-        connection.insert(table, user_id, year, entries)
+        connection.insert(table, user_id, year_of_old_entry, entries)
       end
     end
   end

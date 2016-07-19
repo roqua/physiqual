@@ -15,7 +15,7 @@ Physiqual.configure do |config|
   config.enable_cassandra     = ENV['ENABLE_CASSANDRA'] ? ENV['ENABLE_CASSANDRA'].downcase == 'true' : false
   config.cassandra_username   = ENV['CASSANDRA_USERNAME'] || ''
   config.cassandra_password   = ENV['CASSANDRA_PASSWORD'] || ''
-  config.cassandra_host_urls  = (ENV['CASSANDRA_HOST_URLS'] || 'physiqual.dev').split(' ')
+  config.cassandra_host_urls  = ENV['CASSANDRA_HOST_URLS'] || 'physiqual.dev'
   config.cassandra_keyspace   = ENV['CASSANDRA_KEYSPACE']
 
   # EMA Settings

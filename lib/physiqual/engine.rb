@@ -14,14 +14,18 @@ module Physiqual
     mattr_accessor :enable_cassandra
     mattr_accessor :cassandra_username
     mattr_accessor :cassandra_password
-    mattr_writer :cassandra_host_urls
+    mattr_accessor :cassandra_host_urls
+    mattr_accessor :cassandra_keyspace
 
-    def cassandra_host_urls
-      @cassandra_host_urls.split(' ') unless @cassandra_host_urls.blank?
+    def cassandra_urls
+      urls = self.cassandra_host_urls
+      a = urls.split(' ') unless urls.blank?
+      Rails.logger.info(urls)
+      Rails.logger.info(a)
+      a
     end
 
     mattr_accessor :cassandra_keyspace
-
     mattr_accessor :host_url
     mattr_accessor :host_protocol
     mattr_accessor :measurements_per_day
