@@ -21,25 +21,27 @@ module Physiqual
 
         it 'should create a fitbit service for a correct fitbittoken provided' do
           token = FactoryGirl.build(:fitbit_token)
+          user = FactoryGirl.build(:physiqual_user, physiqual_token: token)
           expect(token.complete?).to be_truthy
           bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
             Physiqual.measurements_per_day,
             Physiqual.interval,
             Physiqual.hours_before_first_measurement
           )
-          result = subject.send(:create_service, token, bucket_generator)
+          result = subject.send(:create_service, user, bucket_generator)
           expect(result.service_name).to end_with('fitbit_oauth2')
         end
 
         it 'should create a fitbit service for a correct fitbittoken provided' do
           token = FactoryGirl.build(:google_token)
+          user = FactoryGirl.build(:physiqual_user, physiqual_token: token)
           expect(token.complete?).to be_truthy
           bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
             Physiqual.measurements_per_day,
             Physiqual.interval,
             Physiqual.hours_before_first_measurement
           )
-          result = subject.send(:create_service, token, bucket_generator)
+          result = subject.send(:create_service, user, bucket_generator)
           expect(result.service_name).to end_with('google_oauth2')
         end
 
@@ -47,13 +49,14 @@ module Physiqual
           let(:token) { FactoryGirl.build(:fitbit_token) }
           it 'should not create a service for a token which is not complete, but should return an empty array' do
             allow(token).to receive(:complete?).and_return(false)
+            user = FactoryGirl.build(:physiqual_user, physiqual_token: token)
             expect(token.complete?).to be_falsey
             bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
               Physiqual.measurements_per_day,
               Physiqual.interval,
               Physiqual.hours_before_first_measurement
             )
-            result = subject.send(:create_service, token, bucket_generator)
+            result = subject.send(:create_service, user, bucket_generator)
             expect(result).to eq([])
           end
         end
