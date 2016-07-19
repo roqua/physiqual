@@ -6,7 +6,6 @@ module Physiqual
       def initialize(data_service, user_id)
         super(data_service)
         @user_id = user_id
-        @connection = CassandraConnection.instance
       end
 
       def service_name
@@ -15,32 +14,32 @@ module Physiqual
 
       def heart_rate(from, to)
         cache_data('heart_rate', @user_id, from, to)
-        CassandraDataService.get_data(@connection, @user_id, 'heart_rate', from, to)
+        CassandraDataService.get_data(cassandra_connection, @user_id, 'heart_rate', from, to)
       end
 
       def sleep(from, to)
         cache_data('sleep', @user_id, from, to)
-        CassandraDataService.get_data(@connection, @user_id, 'sleep', from, to)
+        CassandraDataService.get_data(cassandra_connection, @user_id, 'sleep', from, to)
       end
 
       def calories(from, to)
         cache_data('calories', @user_id, from, to)
-        CassandraDataService.get_data(@connection, @user_id, 'calories', from, to)
+        CassandraDataService.get_data(cassandra_connection, @user_id, 'calories', from, to)
       end
 
       def distance(from, to)
         cache_data('distance', @user_id, from, to)
-        CassandraDataService.get_data(@connection, @user_id, 'distance', from, to)
+        CassandraDataService.get_data(cassandra_connection, @user_id, 'distance', from, to)
       end
 
       def steps(from, to)
         cache_data('steps', @user_id, from, to)
-        CassandraDataService.get_data(@connection, @user_id, 'steps', from, to)
+        CassandraDataService.get_data(cassandra_connection, @user_id, 'steps', from, to)
       end
 
       def activities(from, to)
         cache_data('activities', @user_id, from, to)
-        CassandraDataService.get_data(@connection, @user_id, 'activities', from, to)
+        CassandraDataService.get_data(cassandra_connection, @user_id, 'activities', from, to)
       end
 
       def self.get_data(connection, user_id, table, from, to)
@@ -71,6 +70,11 @@ module Physiqual
       end
 
       private
+
+      def cassandra_connection
+        @connection ||= CassandraConnection.instance
+        @connection
+      end
 
       def cache_data(table, user_id, from, to)
         job = Physiqual::CacheWorker.perform_async(table, user_id, from, to)

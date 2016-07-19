@@ -34,9 +34,17 @@ module Physiqual
         token = user.physiqual_token
         return [] unless token.complete?
         session = Sessions::TokenAuthorizedSession.new(token)
+
+        # Create the actual service accessing the service provider
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
-        service = DataServices::CassandraDataService.new(service, user.user_id)
+
+        # Enable caching with cassandra if it is enabled
+        service = DataServices::CassandraDataService.new(service, user.user_id) if Physiqual.enable_cassandra
+
+        # Transform the raw data into buckets
         service = DataServices::BucketeerDataService.new(service, bucket_generator)
+
+        # Generate a summary score per bucket
         service = DataServices::SummarizedDataService.new(service)
         DataServices::CachedDataService.new service
       end

@@ -9,10 +9,19 @@ module Physiqual
     mattr_accessor :google_client_secret
     mattr_accessor :fitbit_client_id
     mattr_accessor :fitbit_client_secret
+
+    # Cassandra settings
+    mattr_accessor :enable_cassandra
     mattr_accessor :cassandra_username
     mattr_accessor :cassandra_password
-    mattr_accessor :cassandra_host_urls
+    mattr_writer :cassandra_host_urls
+
+    def cassandra_host_urls
+      @cassandra_host_urls.split(' ') unless @cassandra_host_urls.blank?
+    end
+
     mattr_accessor :cassandra_keyspace
+
     mattr_accessor :host_url
     mattr_accessor :host_protocol
     mattr_accessor :measurements_per_day
@@ -20,6 +29,7 @@ module Physiqual
     mattr_accessor :hours_before_first_measurement
     mattr_accessor :imputers
   end
+
 
   def self.configure(&_block)
     yield self
