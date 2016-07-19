@@ -5,6 +5,7 @@ module Physiqual
     class CacheWorker
       include Sidekiq::Worker
 
+      # rubocop:disable Metrics/ParameterLists
       def perform(data_service, cassandra_dataservice, variable, user_id, from, to)
         @user_id = user_id
         @data_service = data_service
@@ -16,6 +17,7 @@ module Physiqual
         to = Time.zone.parse(to) if to.is_a? String
         store_data(connection, cassandra_dataservice, variable, from, to)
       end
+      # rubocop:enable Metrics/ParameterLists
 
       private
 
