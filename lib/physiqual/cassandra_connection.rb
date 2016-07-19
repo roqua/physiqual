@@ -32,7 +32,6 @@ module Physiqual
                     'steps' => 'decimal',
                     'activities' => 'varchar' }
 
-
       initialize_database(variables)
     end
 
@@ -103,7 +102,7 @@ module Physiqual
       end
     end
 
-    def create_keyspace(keypsace_name)
+    def create_keyspace(_keypsace_name)
       query = "CREATE KEYSPACE #{keyspace_name}
       WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};"
       @session.execute(query)

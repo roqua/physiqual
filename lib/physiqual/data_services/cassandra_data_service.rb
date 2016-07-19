@@ -3,10 +3,10 @@ require 'sidekiq-status'
 module Physiqual
   module DataServices
     class CassandraDataService < DataServiceDecorator
-      def initialize(data_service, user_id)
+      def initialize(data_service, user_id, cassandra_connection)
         super(data_service)
         @user_id = user_id
-        @cassandra_connection ||= CassandraConnection.instance
+        @cassandra_connection ||= cassandra_connection
       end
 
       def service_name
@@ -47,18 +47,18 @@ module Physiqual
         entries = []
         years(from, to) do |year, from_per_year, to_per_year|
           case variable
-            when 'heart_rate'
-              query_result = connection.query_heart_rate(user_id, year, from_per_year, to_per_year)
-            when 'sleep'
-              query_result = connection.query_sleep(user_id, year, from_per_year, to_per_year)
-            when 'calories'
-              query_result = connection.query_calories(user_id, year, from_per_year, to_per_year)
-            when 'distance'
-              query_result = connection.query_distance(user_id, year, from_per_year, to_per_year)
-            when 'steps'
-              query_result = connection.query_steps(user_id, year, from_per_year, to_per_year)
-            when 'activities'
-              query_result = connection.query_activities(user_id, year, from_per_year, to_per_year)
+          when 'heart_rate'
+            query_result = connection.query_heart_rate(user_id, year, from_per_year, to_per_year)
+          when 'sleep'
+            query_result = connection.query_sleep(user_id, year, from_per_year, to_per_year)
+          when 'calories'
+            query_result = connection.query_calories(user_id, year, from_per_year, to_per_year)
+          when 'distance'
+            query_result = connection.query_distance(user_id, year, from_per_year, to_per_year)
+          when 'steps'
+            query_result = connection.query_steps(user_id, year, from_per_year, to_per_year)
+          when 'activities'
+            query_result = connection.query_activities(user_id, year, from_per_year, to_per_year)
           end
 
           entries += make_data_entries(variable, query_result)
@@ -67,10 +67,10 @@ module Physiqual
       end
 
       private
-      
+
       def cache_data(variable, user_id, from, to)
         job = Physiqual::Workers::CacheWorker.perform_async(data_service, self, variable, user_id, from, to)
-        #job = Physiqual::Workers::CacheWorker.new.perform(data_service, self, variable, user_id, from, to)
+        # job = Physiqual::Workers::CacheWorker.new.perform(data_service, self, variable, user_id, from, to)
         while Sidekiq::Status.queued? job or Sidekiq::Status.working? job
           Rails.logger.info('Sleeping!')
           Kernel.sleep(1)
@@ -91,7 +91,7 @@ module Physiqual
         return [] if results.blank?
         entries = []
         results.each do |result|
-          # TODO Should this be to_i or to_f
+          # TODO: Should this be to_i or to_f
           value = table == 'activities' ? result['value'] : result['value'].to_i
           entries << DataEntry.new(start_date: result['start_date'].in_time_zone,
                                    end_date: result['end_date'].in_time_zone,

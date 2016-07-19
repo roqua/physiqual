@@ -39,7 +39,9 @@ module Physiqual
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
 
         # Enable caching with cassandra if it is enabled
-        service = DataServices::CassandraDataService.new(service, user.user_id) if Physiqual.enable_cassandra
+        if Physiqual.enable_cassandra
+          service = DataServices::CassandraDataService.new(service, user.user_id, CassandraConnection.instance)
+        end
 
         # Transform the raw data into buckets
         service = DataServices::BucketeerDataService.new(service, bucket_generator)

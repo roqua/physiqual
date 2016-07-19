@@ -18,7 +18,7 @@ module Physiqual
     mattr_accessor :cassandra_keyspace
 
     def cassandra_urls
-      urls = self.cassandra_host_urls
+      urls = cassandra_host_urls
       a = urls.split(' ') unless urls.blank?
       Rails.logger.info(urls)
       Rails.logger.info(a)

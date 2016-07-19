@@ -40,16 +40,15 @@ module Physiqual
       end
 
       describe 'insert' do
-        it "should insert data in the database in batches" do
+        it 'should insert data in the database in batches' do
           expect(true).to eq false
         end
 
-        it "should be able to work with nil values" do
+        it 'should be able to work with nil values' do
           expect(true).to eq false
         end
 
         it 'should convert values to big decimal values if needed' do
-
         end
       end
 

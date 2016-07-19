@@ -51,18 +51,18 @@ module Physiqual
 
       def get_data_function(table)
         case table
-          when 'heart_rate'
-            @data_service.method(:heart_rate)
-          when 'sleep'
-            @data_service.method(:sleep)
-          when 'calories'
-            @data_service.method(:calories)
-          when 'distance'
-            @data_service.method(:distance)
-          when 'steps'
-            @data_service.method(:steps)
-          when 'activities'
-            @data_service.method(:activities)
+        when 'heart_rate'
+          @data_service.method(:heart_rate)
+        when 'sleep'
+          @data_service.method(:sleep)
+        when 'calories'
+          @data_service.method(:calories)
+        when 'distance'
+          @data_service.method(:distance)
+        when 'steps'
+          @data_service.method(:steps)
+        when 'activities'
+          @data_service.method(:activities)
         end
       end
 
