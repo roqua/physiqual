@@ -2,6 +2,22 @@ module Physiqual
   require 'rails_helper'
   describe CassandraConnection do
     describe 'initialize' do
+      it 'should setup the cassandracluster' do
+        expect_any_instance_of(described_class)
+          .to receive(:initialize_cassandra_cluster) { raise(StandardError, 'stop_execution') }
+        expect { described_class.instance }.to raise_error('stop_execution')
+      end
+
+      it 'should initialize the database' do
+        session =  double('session')
+        cluster =  double('cluster')
+        allow(cluster).to receive(:connect).and_return(session)
+        expect_any_instance_of(described_class)
+          .to receive(:initialize_database) { raise(StandardError, 'stop_execution') }
+        allow_any_instance_of(described_class)
+          .to receive(:initialize_cassandra_cluster).and_return(cluster)
+        expect { described_class.instance }.to raise_error('stop_execution')
+      end
     end
 
     describe 'with mock connection' do
@@ -40,6 +56,9 @@ module Physiqual
       end
 
       describe 'insert' do
+        let(:table) { 'activities' }
+        let(:year) { 2013 }
+        let(:user_id) { 10 }
         it 'should call execute on the session object x nr of times' do
           slice_size = 3
           entries = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
@@ -253,12 +272,10 @@ module Physiqual
       describe 'prepare_query' do
         it 'should use the provided name in the query' do
           table_name = 'some random variable name'
-          qry = "
-          SELECT time, start_date, end_date, value
-          FROM #{table_name}
-          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
-          ORDER BY time ASC
-          "
+          qry = 'SELECT time, start_date, end_date, value'\
+          "FROM #{table_name}"\
+          'WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?'\
+          'ORDER BY time ASC'
           session = double('session')
           expect(session).to receive(:prepare).with(qry)
           described_class.instance.instance_variable_set(:@session, session)
@@ -270,12 +287,9 @@ module Physiqual
         it 'should use the provided name in the query' do
           name = 'some random variable name'
           value_type = 'some random variable type'
-          query = "
-            CREATE TABLE IF NOT EXISTS #{name} (
-            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value #{value_type},
-            PRIMARY KEY ((user_id, year), time)
-          )
-          "
+          query = "CREATE TABLE IF NOT EXISTS #{name} ("\
+            "user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value #{value_type},"\
+            'PRIMARY KEY ((user_id, year), time))'
           session = double('session')
           expect(session).to receive(:execute).with(query)
           described_class.instance.instance_variable_set(:@session, session)

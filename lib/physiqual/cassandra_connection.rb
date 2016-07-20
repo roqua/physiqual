@@ -8,9 +8,6 @@ module Physiqual
 
     def initialize
       # Setup the connection to the cluster
-      Rails.logger.info(Physiqual.cassandra_username)
-      Rails.logger.info(Physiqual.cassandra_password)
-      Rails.logger.info(Physiqual.cassandra_host_urls)
       cluster = initialize_cassandra_cluster
       @session = cluster.connect(Physiqual.cassandra_keyspace)
 
@@ -112,22 +109,17 @@ module Physiqual
     end
 
     def prepare_query(table_name)
-      query = "
-          SELECT time, start_date, end_date, value
-          FROM #{table_name}
-          WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
-          ORDER BY time ASC
-        "
+      query = 'SELECT time, start_date, end_date, value'\
+          "FROM #{table_name}"\
+          'WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?'\
+          'ORDER BY time ASC'
       @session.prepare(query)
     end
 
     def create_table(name, value_type)
-      query = "
-            CREATE TABLE IF NOT EXISTS #{name} (
-            user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value #{value_type},
-            PRIMARY KEY ((user_id, year), time)
-          )
-        "
+      query = "CREATE TABLE IF NOT EXISTS #{name} ("\
+            "user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value #{value_type},"\
+            'PRIMARY KEY ((user_id, year), time))'
       @session.execute(query)
     end
   end
