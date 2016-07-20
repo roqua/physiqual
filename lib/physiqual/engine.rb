@@ -17,11 +17,6 @@ module Physiqual
     mattr_accessor :cassandra_host_urls
     mattr_accessor :cassandra_keyspace
 
-    def cassandra_urls
-      urls = cassandra_host_urls
-      urls.split(' ') unless urls.blank?
-    end
-
     mattr_accessor :cassandra_keyspace
     mattr_accessor :host_url
     mattr_accessor :host_protocol
@@ -29,6 +24,11 @@ module Physiqual
     mattr_accessor :interval
     mattr_accessor :hours_before_first_measurement
     mattr_accessor :imputers
+  end
+
+  def self.cassandra_urls
+    urls = cassandra_host_urls
+    urls.split(' ') unless urls.blank?
   end
 
   def self.configure(&_block)
