@@ -35,27 +35,31 @@ module Physiqual
       initialize_database(variables)
     end
 
-    def insert(table, user_id, year, entries)
+    def insert(variable, user_id, year, entries)
       # Slice the dates in chuncs of SLICE_SIZE
       entries = entries.each_slice(SLICE_SIZE).to_a
 
       entries.each_with_index do |entry_slice|
-        batch = @session.batch do |b|
-          entry_slice.each do |entry|
-            time = entry.measurement_moment
-            start_date = entry.start_date
-            end_date = entry.end_date
-            value = entry.values.first
-            # If the table is 'activities', we should not convert the slice to a bigdecimal
-            value = BigDecimal(value, Float::DIG + 1) if table != 'activities'
+        current_batch = create_batches(entry_slice, variable, user_id, year)
+        @session.execute(current_batch)
+      end
+    end
 
-            # Retrieve the prepared statement
-            insert_type = @insert_queries[table]
-            b.add(insert_type, arguments: [user_id, year, time.to_time, start_date.to_time,
-                                           end_date.to_time, value])
-          end
+    def create_batches(entry_slice, variable, user_id, year)
+      @session.batch do |batch|
+        entry_slice.each do |entry|
+          value = entry.values.first
+          # If the table is 'activities', we should not convert the slice to a bigdecimal
+          value = BigDecimal(value, Float::DIG + 1) if variable != 'activities'
+
+          # Retrieve the prepared statement
+          insert_type = @insert_queries[variable]
+          batch.add(insert_type,
+                    arguments: [user_id, year,
+                                entry.measurement_moment.to_time,
+                                entry.start_date.to_time,
+                                entry.end_date.to_time, value])
         end
-        @session.execute(batch)
       end
     end
 
@@ -84,13 +88,6 @@ module Physiqual
     end
 
     private
-
-    def slice(times, start_dates, end_dates, values)
-      [times.each_slice(SLICE_SIZE).to_a,
-       start_dates.each_slice(SLICE_SIZE).to_a,
-       end_dates.each_slice(SLICE_SIZE).to_a,
-       values.each_slice(SLICE_SIZE).to_a]
-    end
 
     def initialize_database(variable_names)
       @insert_queries = {}

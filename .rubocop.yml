@@ -30,6 +30,9 @@ MethodLength:
 # Limit modules to have a length of 200
 Metrics/ModuleLength:
   Max: 200
+  Exclude:
+    -  'spec/**/*'
+
   
 # Limit classes to have a length of 200
 Metrics/ClassLength:

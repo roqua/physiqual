@@ -40,15 +40,99 @@ module Physiqual
       end
 
       describe 'insert' do
-        it 'should insert data in the database in batches' do
+        it 'should call execute on the session object x nr of times' do
           # expect(true).to eq false
+          slice_size = 3
+          entries = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+          stub_const('Physiqual::CassandraConnection::SLICE_SIZE', slice_size)
+          expect(described_class::SLICE_SIZE).to eq(slice_size)
+
+          (entries.length / slice_size).times do
+            rand = SecureRandom.hex(10)
+            expect(@session).to receive(:execute).with(rand)
+            expect(described_class.instance).to receive(:create_batches).with(any_args, user_id, year).and_return(rand)
+          end
+
+          described_class.instance.instance_variable_set(:@session, @session)
+          described_class.instance.insert(table, user_id, year, entries)
+        end
+      end
+
+      fdescribe 'create_batches' do
+        let(:table) { 'activities' }
+        let(:year) { 2013 }
+        let(:user_id) { 10 }
+
+        it 'should call the correct cassandra batch functions' do
+          entry_slice = [FactoryGirl.build(:data_entry)]
+          entry = entry_slice.first
+          table = 'heart_rate'
+          arguments = [user_id, year, entry.measurement_moment.to_time,
+                       entry.start_date.to_time,
+                       entry.end_date.to_time, entry.values.first]
+
+          batch = double(:batch)
+          expect(batch).to receive(:add).with(@insert_queries[table], arguments: arguments)
+          expect(@session).to receive(:batch).and_yield(batch)
+          described_class.instance.instance_variable_set(:@session, @session)
+
+          described_class.instance.create_batches(entry_slice, table, user_id, year)
         end
 
-        it 'should be able to work with nil values' do
-          # expect(true).to eq false
+        it 'should add each of the entry slices to the batch' do
+          entry_slice = [
+            FactoryGirl.build(:data_entry),
+            FactoryGirl.build(:data_entry),
+            FactoryGirl.build(:data_entry),
+            FactoryGirl.build(:data_entry),
+            FactoryGirl.build(:data_entry)
+          ]
+          entry = entry_slice.first
+          table = 'heart_rate'
+          arguments = [user_id, year, entry.measurement_moment.to_time,
+                       entry.start_date.to_time,
+                       entry.end_date.to_time, entry.values.first]
+
+          batch = double(:batch)
+          expect(batch).to receive(:add).with(@insert_queries[table], arguments: arguments)
+            .exactly(entry_slice.length).times
+          expect(@session).to receive(:batch).and_yield(batch)
+          described_class.instance.instance_variable_set(:@session, @session)
+
+          described_class.instance.create_batches(entry_slice, table, user_id, year)
         end
 
-        it 'should convert values to big decimal values if needed' do
+        it 'should not transform the values of a variable to big float if the variable type is activities' do
+          entry_slice = [FactoryGirl.build(:data_entry, values: ['running'])]
+          entry = entry_slice.first
+          arguments = [user_id, year, entry.measurement_moment.to_time,
+                       entry.start_date.to_time,
+                       entry.end_date.to_time, entry.values.first]
+
+          batch = double(:batch)
+          expect(batch).to receive(:add).with(@insert_queries[table], arguments: arguments)
+          expect(@session).to receive(:batch).and_yield(batch)
+          described_class.instance.instance_variable_set(:@session, @session)
+          described_class.instance.create_batches(entry_slice, table, user_id, year)
+        end
+
+        it 'should transform the float data to a big float whenever the data is not activity data' do
+          entry_slice = [FactoryGirl.build(:data_entry, values: [1.21312])]
+          table = 'heart_rate'
+          entry = entry_slice.first
+          value = BigDecimal(entry.values.first, Float::DIG + 1)
+          arguments = [user_id, year, entry.measurement_moment.to_time,
+                       entry.start_date.to_time,
+                       entry.end_date.to_time, value]
+
+          batch = double(:batch)
+          expect(batch).to receive(:add).with(@insert_queries[table], arguments: arguments)
+          expect(@session).to receive(:batch).and_yield(batch)
+          described_class.instance.instance_variable_set(:@session, @session)
+          described_class.instance.create_batches(entry_slice, table, user_id, year)
+        end
+
+        xit 'should return batches' do
         end
       end
 
@@ -114,27 +198,6 @@ module Physiqual
 
       # private methods
 
-      describe 'slice' do
-        let!(:times) { [1, 2, 3, 4, 5, 6] }
-        let(:start_dates) { [6, 5, 4, 3, 2, 1] }
-        let(:end_dates) { %w(a c d e f) }
-        let(:values) { %w(f e d c b a) }
-        let(:number_of_variables) { 4 }
-        let(:number_of_entries) { times.length }
-        it 'should slice the provided arrays in the slice_size' do
-          stub_const('Physiqual::CassandraConnection::SLICE_SIZE', 2)
-          expect(described_class::SLICE_SIZE).to eq(2)
-          res = described_class.instance.send(:slice, times, start_dates, end_dates, values)
-          res.each { |x| expect(x.length).to eq((number_of_entries.to_f / described_class::SLICE_SIZE.to_f).ceil) }
-        end
-
-        it 'should be able to deal with SLICE_SIZE > then the number of entries' do
-          res = described_class.instance.send(:slice, times, start_dates, end_dates, values)
-          expect(res.length).to eq(number_of_variables)
-          res.each { |x| expect(x.length).to eq((number_of_entries.to_f / described_class::SLICE_SIZE.to_f).ceil) }
-        end
-      end
-
       describe 'initialize_database' do
         before(:each) do
           allow_any_instance_of(described_class).to receive(:initialize_database).and_call_original
@@ -196,7 +259,7 @@ module Physiqual
           FROM #{table_name}
           WHERE user_id = ? AND year = ? AND time >= ? AND time <= ?
           ORDER BY time ASC
-        "
+          "
           session = double('session')
           expect(session).to receive(:prepare).with(qry)
           described_class.instance.instance_variable_set(:@session, session)
@@ -213,7 +276,7 @@ module Physiqual
             user_id text, year int, time timestamp, start_date timestamp, end_date timestamp, value #{value_type},
             PRIMARY KEY ((user_id, year), time)
           )
-        "
+          "
           session = double('session')
           expect(session).to receive(:execute).with(query)
           described_class.instance.instance_variable_set(:@session, session)
