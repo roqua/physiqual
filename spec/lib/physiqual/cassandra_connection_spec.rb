@@ -58,7 +58,7 @@ module Physiqual
         end
       end
 
-      fdescribe 'create_batches' do
+      describe 'create_batches' do
         let(:table) { 'activities' }
         let(:year) { 2013 }
         let(:user_id) { 10 }
