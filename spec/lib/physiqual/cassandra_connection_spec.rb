@@ -41,7 +41,6 @@ module Physiqual
 
       describe 'insert' do
         it 'should call execute on the session object x nr of times' do
-          # expect(true).to eq false
           slice_size = 3
           entries = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
           stub_const('Physiqual::CassandraConnection::SLICE_SIZE', slice_size)

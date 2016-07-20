@@ -11,18 +11,7 @@ module Physiqual
       Rails.logger.info(Physiqual.cassandra_username)
       Rails.logger.info(Physiqual.cassandra_password)
       Rails.logger.info(Physiqual.cassandra_host_urls)
-      if Physiqual.cassandra_username.blank? || Physiqual.cassandra_password.blank?
-        cluster = Cassandra.cluster(
-          hosts: Physiqual.cassandra_urls
-        )
-      else
-        cluster = Cassandra.cluster(
-          username: Physiqual.cassandra_username,
-          password: Physiqual.cassandra_password,
-          hosts: Physiqual.cassandra_urls
-        )
-      end
-
+      cluster = initialize_cassandra_cluster
       @session = cluster.connect(Physiqual.cassandra_keyspace)
 
       variables = { 'heart_rate' => 'decimal',
@@ -88,6 +77,18 @@ module Physiqual
     end
 
     private
+
+    def initialize_cassandra_cluster
+      if Physiqual.cassandra_username.blank? || Physiqual.cassandra_password.blank?
+        return Cassandra.cluster(hosts: Physiqual.cassandra_urls)
+      end
+
+      Cassandra.cluster(
+        username: Physiqual.cassandra_username,
+        password: Physiqual.cassandra_password,
+        hosts: Physiqual.cassandra_urls
+      )
+    end
 
     def initialize_database(variable_names)
       @insert_queries = {}

@@ -15,40 +15,41 @@ module Physiqual
         #  Sidekiq converts all dates to strings, so we have to parse them back to dates,
         from = Time.zone.parse(from) if from.is_a? String
         to = Time.zone.parse(to) if to.is_a? String
-        store_data(connection, cassandra_dataservice, variable, from, to)
+        entries = cassandra_dataservice.get_data(connection, @user_id, table, from, to)
+        store_data(connection, entries, variable, from, to)
       end
       # rubocop:enable Metrics/ParameterLists
 
       private
 
-      def store_data(connection, cassandra_dataservice, table, from, to)
-        entries = cassandra_dataservice.get_data(connection, @user_id, table, from, to)
+      def store_data(connection, entries, table, from, to)
         # Retrieve the function to use for getting the data
         data_service_function = get_data_function(table)
 
-        new_entries = []
-        Rails.logger.info('new entries')
         # If there were no enties in the first place, just make the call to the dataservice
-        if entries.blank?
-          new_entries = data_service_function.call(from, to)
-        else
-          if entries.first.start_date > from
-            new_entries += data_service_function.call(from, entries.first.start_date)
-          end
-
-          # find_gaps(entries) do |from_gap, to_gap|
-          #   new_entries += data_service_function.call(from_gap, to_gap)
-          # end
-
-          if entries.last.end_date < to
-            new_entries += data_service_function.call(entries.last.end_date, to)
-          end
-        end
+        new_entries = if entries.blank?
+                        data_service_function.call(from, to)
+                      else
+                        partial_entries(data_service_function, from, to, entries, false)
+                      end
         Rails.logger.info('caching new entries')
         # Cache the newly retrieved data
         cache(connection, table, @user_id, new_entries) if new_entries.present?
       rescue Errors::NotSupportedError => e
         Rails.logger.warn e.message
+      end
+
+      def partial_entries(data_service_function, from, to, entries, fill_gaps)
+        new_entries = []
+
+        new_entries << data_service_function.call(from, entries.first.start_date) if entries.first.start_date > from
+
+        find_gaps(entries) do |from_gap, to_gap|
+          new_entries << data_service_function.call(from_gap, to_gap)
+        end if fill_gaps
+
+        new_entries << data_service_function.call(entries.last.end_date, to) if entries.last.end_date < to
+        new_entries
       end
 
       def get_data_function(table)
