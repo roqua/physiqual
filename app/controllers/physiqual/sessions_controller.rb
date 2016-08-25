@@ -21,9 +21,9 @@ module Physiqual
 
     def authorize
       return_url = sessions_params[:return_url] || '/'
-      user = User.find_or_create_by(user_id: user_session)
+      user = Physiqual::User.find_or_create_by(user_id: user_session)
       provider = sessions_params[:provider]
-      token = Token.find_or_create_provider_token(provider, user)
+      token = Physiqual::Token.find_or_create_provider_token(provider, user)
 
       unless token.complete?
         session['physiqual_return_url'] = return_url
