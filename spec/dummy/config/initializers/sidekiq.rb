@@ -7,6 +7,7 @@ Sidekiq.configure_client do |config|
     # accepts :expiration (optional)
     chain.add Sidekiq::Status::ClientMiddleware, expiration: 30.minutes # default
   end
+  config.redis = { url: ENV['REDIS_URL'] }
 end
 
 Sidekiq.configure_server do |config|
@@ -19,4 +20,5 @@ Sidekiq.configure_server do |config|
     # accepts :expiration (optional)
     chain.add Sidekiq::Status::ClientMiddleware, expiration: 30.minutes # default
   end
+  config.redis = { url: ENV['REDIS_URL'] }
 end
