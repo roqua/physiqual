@@ -16,6 +16,9 @@ module Physiqual
     mattr_accessor :cassandra_password
     mattr_accessor :cassandra_host_urls
     mattr_accessor :cassandra_keyspace
+    
+    # Redis settings
+    mattr_accessor :redis_url
 
     mattr_accessor :cassandra_keyspace
     mattr_accessor :host_url
