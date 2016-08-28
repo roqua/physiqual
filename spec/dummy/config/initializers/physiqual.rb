@@ -17,6 +17,9 @@ Physiqual.configure do |config|
   config.cassandra_password   = ENV['CASSANDRA_PASSWORD'] || ''
   config.cassandra_host_urls  = ENV['CASSANDRA_HOST_URLS'] || 'physiqual.dev'
   config.cassandra_keyspace   = ENV['CASSANDRA_KEYSPACE']
+  
+  # Redis settings
+  config.redis_url            = ENV['REDIS_URL'] || 'physiqual.dev'
 
   # EMA Settings
   config.measurements_per_day           = 1 # Number of measurements per day
