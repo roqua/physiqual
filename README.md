@@ -2,6 +2,12 @@
 Ruby Engine for merging multiple data sources with diary questionnaire data
 
 [![Code Climate](https://codeclimate.com/github/roqua/physiqual/badges/gpa.svg)](https://codeclimate.com/github/roqua/physiqual) [![Test Coverage](https://codeclimate.com/github/roqua/physiqual/badges/coverage.svg)](https://codeclimate.com/github/roqua/physiqual/coverage) [![Dependency Status](https://gemnasium.com/roqua/physiqual.svg)](https://gemnasium.com/roqua/physiqual) [![Circle CI](https://circleci.com/gh/roqua/physiqual/tree/master.svg?style=svg)](https://circleci.com/gh/roqua/physiqual/tree/master)
+## Requirements
+Physiqual requires the following additional software for caching:
+* A Redis database
+* A Cassandra database
+
+Make sure the Cassandra database has a keyspace set up for use in Physiqual.
 
 ## Installation
 Add Physiqual to your Gemfile. Currently Physiqual is not yet on RubyGems, this will happen after Physiqual is in a more stable beta state.
@@ -42,6 +48,15 @@ Physiqual.configure do |config|
   config.host_url             = ENV['HOST_URL'] || 'physiqual.dev'
   config.host_protocol        = ENV['HOST_PROTOCOL'] || 'http'
 
+  # Cassandra settings
+  config.cassandra_username   = ENV['CASSANDRA_USERNAME'] || ''
+  config.cassandra_password   = ENV['CASSANDRA_PASSWORD'] || ''
+  config.cassandra_host_urls  = (ENV['CASSANDRA_HOST_URLS'] || 'physiqual.dev').split(' ')
+  config.cassandra_keyspace   = ENV['CASSANDRA_KEYSPACE']
+  
+  # Redis settings
+  config.redis_url            = ENV['REDIS_URL']
+
   # EMA Settings
   config.measurements_per_day           = 3 # Number of measurements per day, from the end of day downwards
   config.interval                       = 6 # Number of hours between measurements
@@ -58,6 +73,12 @@ Physiqual.configure do |config|
   config.imputers             = [Physiqual::Imputers::CatMullImputer]
 end
 ```
+
+On the machine(s) that will handle caching, install Physiqual as well. Then run the following:
+```bash
+  bundle exec sidekiq
+```
+This will allow Physiqual to cache data asynchronously to your Cassandra database.
 
 Now you should be able to start your server.
 

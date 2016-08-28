@@ -9,12 +9,29 @@ module Physiqual
     mattr_accessor :google_client_secret
     mattr_accessor :fitbit_client_id
     mattr_accessor :fitbit_client_secret
+
+    # Cassandra settings
+    mattr_accessor :enable_cassandra
+    mattr_accessor :cassandra_username
+    mattr_accessor :cassandra_password
+    mattr_accessor :cassandra_host_urls
+    mattr_accessor :cassandra_keyspace
+    
+    # Redis settings
+    mattr_accessor :redis_url
+
+    mattr_accessor :cassandra_keyspace
     mattr_accessor :host_url
     mattr_accessor :host_protocol
     mattr_accessor :measurements_per_day
     mattr_accessor :interval
     mattr_accessor :hours_before_first_measurement
     mattr_accessor :imputers
+  end
+
+  def self.cassandra_urls
+    urls = cassandra_host_urls
+    urls.split(' ') unless urls.blank?
   end
 
   def self.configure(&_block)

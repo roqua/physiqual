@@ -9,7 +9,7 @@ module Physiqual
           Physiqual.hours_before_first_measurement
         )
 
-        service = create_service(user.physiqual_token, bucket_generator)
+        service = create_service(user, bucket_generator)
         data_imputer = DataImputer.new(service, Physiqual.imputers)
 
         from = from_time(first_measurement)
@@ -30,11 +30,23 @@ module Physiqual
           ((Physiqual.measurements_per_day - 1) * Physiqual.interval).hours
       end
 
-      def create_service(token, bucket_generator)
+      def create_service(user, bucket_generator)
+        token = user.physiqual_token
         return [] unless token.complete?
         session = Sessions::TokenAuthorizedSession.new(token)
+
+        # Create the actual service accessing the service provider
         service = DataServices::DataServiceFactory.fabricate!(token.class.csrf_token, session)
+
+        # Enable caching with cassandra if it is enabled
+        if Physiqual.enable_cassandra
+          service = DataServices::CassandraDataService.new(service, user.user_id, CassandraConnection.instance)
+        end
+
+        # Transform the raw data into buckets
         service = DataServices::BucketeerDataService.new(service, bucket_generator)
+
+        # Generate a summary score per bucket
         service = DataServices::SummarizedDataService.new(service)
         DataServices::CachedDataService.new service
       end

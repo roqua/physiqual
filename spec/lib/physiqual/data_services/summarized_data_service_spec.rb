@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/ModuleLength
 module Physiqual
   require 'rails_helper'
 

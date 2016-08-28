@@ -67,7 +67,7 @@ module Physiqual
           next unless entry.measurement_moment > buckets[current_bucket].start_date
 
           values = entry.values
-          buckets[current_bucket].values.push(*values)
+          buckets[current_bucket].values.concat(values)
         end
         buckets
       end
