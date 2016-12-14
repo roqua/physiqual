@@ -35,6 +35,10 @@ Metrics/ModuleLength:
 Metrics/ClassLength:
   Max: 200
 
+# Limit blocks to have a length of 50 (only needed for physiqual.gemspec)
+Metrics/BlockLength:
+  Max: 50
+
 ################################################################## DISABLED COPS
 # These cops are disabled because we think they are a Bad Idea. If you add one
 # here, make sure to add a comment describing what the cop does, and why this
