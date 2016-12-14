@@ -12,6 +12,7 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+gem 'codeclimate-test-reporter'
 gem 'pry-byebug'
 gem 'pry-rails'
 gem 'ruby-debug-passenger'

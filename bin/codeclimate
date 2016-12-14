@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'rubygems'
+gem 'codeclimate-test-reporter'
 require "codeclimate-test-reporter"
 require "tmpdir"
 
