@@ -53,6 +53,9 @@ Gem::Specification.new do |s|
   # freeze and change time for tests
   s.add_development_dependency 'timecop'
 
+  # code coverage
+  s.add_development_dependency 'simplecov'
+
   # vcr to capture service responses
   s.add_development_dependency 'vcr'
 end

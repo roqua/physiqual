@@ -19,16 +19,15 @@ require 'rubygems'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-# Codeclimate integration
-if ENV['CODECLIMATE_REPO_TOKEN']
-  require 'codeclimate-test-reporter'
-  CodeClimate::TestReporter.start
-end
-
 require 'webmock/rspec'
 require 'factory_girl_rails'
 require 'timecop'
+require 'simplecov'
 require 'vcr'
+
+# Start coverage report
+SimpleCov.start
+
 # Do not allow any network connections in tests, mock them
 WebMock.disable_net_connect!(allow_localhost: true)
 
