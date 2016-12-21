@@ -12,5 +12,4 @@ test:
         environment:
           RAILS_ENV: test
           RACK_ENV: test
-    - bundle exec codeclimate-test-reporter
     - bundle exec rubocop
