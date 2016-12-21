@@ -4,6 +4,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 require 'physiqual/version'
 
 # Describe your gem and declare its dependencies:
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
   s.name        = 'physiqual'
   s.version     = Physiqual::VERSION
@@ -58,3 +59,4 @@ Gem::Specification.new do |s|
   # vcr to capture service responses
   s.add_development_dependency 'vcr'
 end
+# rubocop:enable Metrics/BlockLength

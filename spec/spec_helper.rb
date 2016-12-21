@@ -22,11 +22,13 @@ require 'rubygems'
 require 'webmock/rspec'
 require 'factory_girl_rails'
 require 'timecop'
-require 'simplecov'
 require 'vcr'
 
-# Start coverage report
-SimpleCov.start
+# Start coverage report on circleci
+if ENV['CI']
+  require 'simplecov'
+  SimpleCov.start
+end
 
 # Do not allow any network connections in tests, mock them
 WebMock.disable_net_connect!(allow_localhost: true)
