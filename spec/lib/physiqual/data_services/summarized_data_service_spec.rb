@@ -176,7 +176,7 @@ module Physiqual
           end
 
           describe 'should take the min into account' do
-            let(:data) { [DataEntry.new(start_date: Time.now, end_date: Time.now, values:  [15, 8, 8, 8, 8])] }
+            let(:data) { [DataEntry.new(start_date: Time.now, end_date: Time.now, values: [15, 8, 8, 8, 8])] }
             it 'should not return the 9 if 10 is min' do
               min = 10
               expected = { 14 => 1, 15 => 1, 16 => 1 }
@@ -193,7 +193,7 @@ module Physiqual
           end
 
           describe 'should take the max into account' do
-            let(:data) { [DataEntry.new(start_date: Time.now, end_date: Time.now, values:  [5, 12, 12, 12, 12])] }
+            let(:data) { [DataEntry.new(start_date: Time.now, end_date: Time.now, values: [5, 12, 12, 12, 12])] }
             it 'should not return the 12 if 10 is max' do
               max = 10
               expected = { 4 => 1, 5 => 1, 6 => 1 }

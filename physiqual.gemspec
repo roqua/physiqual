@@ -4,6 +4,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 require 'physiqual/version'
 
 # Describe your gem and declare its dependencies:
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
   s.name        = 'physiqual'
   s.version     = Physiqual::VERSION
@@ -37,9 +38,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-google-oauth2'
   s.add_dependency 'omniauth-fitbit-oauth2'
 
-  s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'rspec_junit_formatter'
   s.add_development_dependency 'factory_girl_rails'
 
   s.add_development_dependency 'webmock'
@@ -53,6 +54,11 @@ Gem::Specification.new do |s|
   # freeze and change time for tests
   s.add_development_dependency 'timecop'
 
+  # code coverage
+  s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'coveralls'
+
   # vcr to capture service responses
   s.add_development_dependency 'vcr'
 end
+# rubocop:enable Metrics/BlockLength

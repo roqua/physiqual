@@ -8,7 +8,7 @@ database:
     - bin/rake db:create db:migrate --trace
 test:
   override:
-    - bundle exec rspec spec:
+    - bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml:
         environment:
           RAILS_ENV: test
           RACK_ENV: test

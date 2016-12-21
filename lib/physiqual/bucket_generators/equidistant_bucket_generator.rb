@@ -16,7 +16,7 @@ module Physiqual
         result = []
         loop do
           @measurements_per_day.times do |measurement_index|
-            if measurement_index == 0
+            if measurement_index.zero?
               bucket_start = first_measurement_of_the_day
               bucket_end   = bucket_start + @hours_before_first_measurement.hours
             else
