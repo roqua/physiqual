@@ -24,8 +24,10 @@ require 'factory_girl_rails'
 require 'timecop'
 require 'vcr'
 
-# Start coverage report on circleci
+# Start coverage report on CircleCI
 if ENV['CI']
+  require 'coveralls'
+  Coveralls.wear!
   require 'simplecov'
   SimpleCov.start
 end

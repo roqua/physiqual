@@ -55,6 +55,7 @@ Gem::Specification.new do |s|
 
   # code coverage
   s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'coveralls'
 
   # vcr to capture service responses
   s.add_development_dependency 'vcr'
