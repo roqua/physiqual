@@ -1,7 +1,9 @@
 # Physiqual
 Ruby Engine for merging multiple data sources with diary questionnaire data
 
-[![Code Climate](https://codeclimate.com/github/roqua/physiqual/badges/gpa.svg)](https://codeclimate.com/github/roqua/physiqual) [![Test Coverage](https://codeclimate.com/github/roqua/physiqual/badges/coverage.svg)](https://codeclimate.com/github/roqua/physiqual/coverage) [![Dependency Status](https://gemnasium.com/roqua/physiqual.svg)](https://gemnasium.com/roqua/physiqual) [![Circle CI](https://circleci.com/gh/roqua/physiqual/tree/master.svg?style=svg)](https://circleci.com/gh/roqua/physiqual/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/roqua/physiqual/badge.svg?branch=master&service=github)](https://coveralls.io/github/roqua/physiqual?branch=master)
+[![Dependency Status](https://gemnasium.com/roqua/physiqual.svg)](https://gemnasium.com/roqua/physiqual)
+[![Circle CI](https://circleci.com/gh/roqua/physiqual/tree/master.svg?style=svg)](https://circleci.com/gh/roqua/physiqual/tree/master)
 
 ## Installation
 Add Physiqual to your Gemfile. Currently Physiqual is not yet on RubyGems, this will happen after Physiqual is in a more stable beta state.
