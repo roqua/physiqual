@@ -29,7 +29,7 @@ module Physiqual
     end
 
     def self.oauth_site
-      'https://accounts.google.com'
+      'accounts.google.com'
     end
 
     def self.authorize_url
