@@ -39,7 +39,7 @@ module Physiqual
     initializer 'physiqual.omniauth', before: :build_middleware_stack do |app|
       app.middleware.use OmniAuth::Builder do
         provider :physiqual_google_oauth2, Physiqual.google_client_id, Physiqual.google_client_secret,
-                 prompt: 'consent',
+                 prompt: 'consent', skip_jwt: true,
                  scope: GoogleToken.scope
         provider :physiqual_fitbit_oauth2, Physiqual.fitbit_client_id, Physiqual.fitbit_client_secret,
                  scope: FitbitToken.scope

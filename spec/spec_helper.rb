@@ -19,16 +19,19 @@ require 'rubygems'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-# Codeclimate integration
-if ENV['CODECLIMATE_REPO_TOKEN']
-  require 'codeclimate-test-reporter'
-  CodeClimate::TestReporter.start
-end
-
 require 'webmock/rspec'
 require 'factory_girl_rails'
 require 'timecop'
 require 'vcr'
+
+# Start coverage report on CircleCI
+if ENV['CI']
+  require 'coveralls'
+  Coveralls.wear!
+  require 'simplecov'
+  SimpleCov.start
+end
+
 # Do not allow any network connections in tests, mock them
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -44,9 +47,11 @@ end
 
 RSpec.configure do |config|
   # Let rspec fail if there is a focus committed
-  config.before(:example, :focus) do
-    raise 'This example was committed with `:focus` and should not have been'
-  end if ENV['CI']
+  if ENV['CI']
+    config.before(:example, :focus) do
+      raise 'This example was committed with `:focus` and should not have been'
+    end
+  end
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

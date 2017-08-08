@@ -4,10 +4,10 @@ module Physiqual
       def self.fabricate!(service, session)
         case service
         when GoogleToken.csrf_token
-          return GoogleService.new(session)
+          GoogleService.new(session)
 
         when FitbitToken.csrf_token
-          return FitbitService.new(session)
+          FitbitService.new(session)
 
         else
           raise "Service #{service} not found"
