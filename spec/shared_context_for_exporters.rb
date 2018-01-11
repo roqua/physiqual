@@ -1,7 +1,7 @@
 module Physiqual
   module Exporters
     shared_context 'exporter context' do
-      let(:user) { FactoryGirl.create(:physiqual_user) }
+      let(:user) { FactoryBot.create(:physiqual_user) }
       let(:first_measurement) { Time.new(2015, 7, 4, 10, 0).in_time_zone }
       let(:number_of_days) { 1 }
       let(:mock_result) do

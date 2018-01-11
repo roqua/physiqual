@@ -7,7 +7,7 @@ module Physiqual
     describe GoogleService do
       include_context 'data_service context'
 
-      let(:token) { FactoryGirl.build(:google_token) }
+      let(:token) { FactoryBot.build(:google_token) }
       let(:session) { Sessions::TokenAuthorizedSession.new(token) }
       let(:subject) { described_class.new(session) }
 

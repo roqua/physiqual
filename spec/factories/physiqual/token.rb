@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :physiqual_token, class: Physiqual::Token do
     token 'the_token'
     refresh_token 'the_refresh_token'

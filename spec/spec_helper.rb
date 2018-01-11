@@ -20,7 +20,7 @@ require 'rubygems'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'webmock/rspec'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'timecop'
 require 'vcr'
 

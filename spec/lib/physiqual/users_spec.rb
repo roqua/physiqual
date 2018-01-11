@@ -5,10 +5,10 @@ module Physiqual
     let(:instance) { described_class.new }
 
     describe '#export' do
-      let!(:user) { FactoryGirl.create(:physiqual_user) }
-      let!(:user2) { FactoryGirl.create(:physiqual_user, :second) }
-      let!(:google_token) { FactoryGirl.create(:google_token, physiqual_user: user) }
-      let!(:fitbit_token) { FactoryGirl.create(:fitbit_token, physiqual_user: user2) }
+      let!(:user) { FactoryBot.create(:physiqual_user) }
+      let!(:user2) { FactoryBot.create(:physiqual_user, :second) }
+      let!(:google_token) { FactoryBot.create(:google_token, physiqual_user: user) }
+      let!(:fitbit_token) { FactoryBot.create(:fitbit_token, physiqual_user: user2) }
 
       it 'returns the expected result' do
         expect(instance.send(:export)).to \
@@ -17,16 +17,16 @@ module Physiqual
     end
 
     describe '#export_lines' do
-      let!(:user) { FactoryGirl.create(:physiqual_user) }
-      let!(:google_token) { FactoryGirl.create(:google_token, physiqual_user: user) }
+      let!(:user) { FactoryBot.create(:physiqual_user) }
+      let!(:google_token) { FactoryBot.create(:google_token, physiqual_user: user) }
 
       it 'yields control the correct amount of times for one user' do
         expect { |b| instance.send(:export_lines, &b) }.to yield_control.exactly(2).times
       end
 
       it 'yields control the correct amount of times for two users' do
-        user2 = FactoryGirl.create(:physiqual_user, :second)
-        FactoryGirl.create(:fitbit_token, physiqual_user: user2)
+        user2 = FactoryBot.create(:physiqual_user, :second)
+        FactoryBot.create(:fitbit_token, physiqual_user: user2)
         expect { |b| instance.send(:export_lines, &b) }.to yield_control.exactly(3).times
       end
     end

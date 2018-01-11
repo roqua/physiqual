@@ -3,7 +3,7 @@ module Physiqual
   module Sessions
     describe TokenAuthorizedSession do
       describe 'get' do
-        let(:token) { FactoryGirl.build(:google_token) }
+        let(:token) { FactoryBot.build(:google_token) }
         it 'should raise an error when there is a weird response' do
           error_msg = 'error'
           result = double('result')

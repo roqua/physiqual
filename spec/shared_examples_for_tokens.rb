@@ -1,7 +1,7 @@
 module Physiqual
   shared_examples_for 'a token' do
     before :each do
-      subject.physiqual_user = FactoryGirl.create(:physiqual_user)
+      subject.physiqual_user = FactoryBot.create(:physiqual_user)
     end
 
     it 'should define a base uri' do

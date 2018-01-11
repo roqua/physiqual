@@ -1,7 +1,7 @@
 require 'rails_helper'
 module Physiqual
   describe SessionsController do
-    let(:user) { FactoryGirl.create(:physiqual_user) }
+    let(:user) { FactoryBot.create(:physiqual_user) }
     let!(:base_url) { 'http://test.host' }
 
     before :each do
@@ -58,7 +58,7 @@ module Physiqual
         end
 
         it 'creates a new token if it does not yet exist' do
-          FactoryGirl.create(:fitbit_token, physiqual_user: user)
+          FactoryBot.create(:fitbit_token, physiqual_user: user)
 
           pre_count = FitbitToken.count
           get :authorize, provider: FitbitToken.csrf_token

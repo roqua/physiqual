@@ -20,7 +20,7 @@ module Physiqual
         end
 
         it 'should create a fitbit service for a correct fitbittoken provided' do
-          token = FactoryGirl.build(:fitbit_token)
+          token = FactoryBot.build(:fitbit_token)
           expect(token.complete?).to be_truthy
           bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
             Physiqual.measurements_per_day,
@@ -32,7 +32,7 @@ module Physiqual
         end
 
         it 'should create a fitbit service for a correct fitbittoken provided' do
-          token = FactoryGirl.build(:google_token)
+          token = FactoryBot.build(:google_token)
           expect(token.complete?).to be_truthy
           bucket_generator = BucketGenerators::EquidistantBucketGenerator.new(
             Physiqual.measurements_per_day,
@@ -44,7 +44,7 @@ module Physiqual
         end
 
         describe 'with incomplete services' do
-          let(:token) { FactoryGirl.build(:fitbit_token) }
+          let(:token) { FactoryBot.build(:fitbit_token) }
           it 'should not create a service for a token which is not complete, but should return an empty array' do
             allow(token).to receive(:complete?).and_return(false)
             expect(token.complete?).to be_falsey

@@ -1,7 +1,7 @@
 require 'rails_helper'
 module Physiqual
   describe SessionsHelper do
-    let(:user) { FactoryGirl.create(:physiqual_user) }
+    let(:user) { FactoryBot.create(:physiqual_user) }
     before :each do
       session['physiqual_user_id'] = user.user_id
     end
@@ -39,7 +39,7 @@ module Physiqual
 
       describe 'with tokens' do
         before :each do
-          FactoryGirl.create(:google_token, physiqual_user: user)
+          FactoryBot.create(:google_token, physiqual_user: user)
           expect(user.physiqual_token).to be_truthy
         end
 
@@ -60,7 +60,7 @@ module Physiqual
       end
 
       it 'sets a token if there is a token' do
-        tok = FactoryGirl.create(:google_token, physiqual_user: user)
+        tok = FactoryBot.create(:google_token, physiqual_user: user)
         helper.params[:provider] = provider
         helper.find_token
         expect(helper.instance_variable_get(:@token)).to_not be_nil
@@ -68,7 +68,7 @@ module Physiqual
       end
 
       it 'sets an existing token, according to the provider provided ' do
-        FactoryGirl.create(:fitbit_token, physiqual_user: user)
+        FactoryBot.create(:fitbit_token, physiqual_user: user)
         helper.params[:provider] = FitbitToken.csrf_token
         helper.find_token
         expect(helper.instance_variable_get(:@token)).to_not be_nil

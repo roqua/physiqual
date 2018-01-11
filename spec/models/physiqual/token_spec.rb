@@ -1,17 +1,17 @@
 module Physiqual
   describe Token do
-    let(:user) { FactoryGirl.create(:physiqual_user) }
+    let(:user) { FactoryBot.create(:physiqual_user) }
     it 'should not be possible to have a person with the same token type twice' do
-      FactoryGirl.create(:physiqual_token, :google, physiqual_user: user)
-      token2 = FactoryGirl.build(:physiqual_token, :google, physiqual_user: user)
+      FactoryBot.create(:physiqual_token, :google, physiqual_user: user)
+      token2 = FactoryBot.build(:physiqual_token, :google, physiqual_user: user)
       expect(token2.valid?).to be_falsey
     end
 
     describe 'find_provider_token' do
       let(:google) { GoogleToken.csrf_token }
       let(:fitbit) { FitbitToken.csrf_token }
-      let(:google_token) { FactoryGirl.create(:google_token, physiqual_user: user) }
-      let(:fitbit_token) { FactoryGirl.create(:fitbit_token, physiqual_user: user) }
+      let(:google_token) { FactoryBot.create(:google_token, physiqual_user: user) }
+      let(:fitbit_token) { FactoryBot.create(:fitbit_token, physiqual_user: user) }
 
       it 'returns the fitbit token if fitbit is the provider' do
         fitbit_token
