@@ -12,7 +12,7 @@ module Physiqual
         before do
           allow_any_instance_of(Exporter)
             .to receive(:export_data).with(user, first_measurement, number_of_days)
-            .and_return(mock_result)
+                                     .and_return(mock_result)
         end
 
         it 'should respond with JSON' do
@@ -25,7 +25,7 @@ module Physiqual
         # rubocop:disable Style/DoubleNegation
         !!JSON.parse(json)
         # rubocop:enable Style/DoubleNegation
-      rescue
+      rescue StandardError
         false
       end
     end

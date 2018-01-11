@@ -21,8 +21,7 @@ module Physiqual
     yield self
   end
 
-  def self.google_omniauth
-  end
+  def self.google_omniauth; end
 
   class Engine < ::Rails::Engine
     isolate_namespace Physiqual

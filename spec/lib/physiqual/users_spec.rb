@@ -32,10 +32,10 @@ module Physiqual
     end
 
     describe '#format_headers' do
-      let(:headers) { %w(header_one header_two) }
+      let(:headers) { %w[header_one header_two] }
 
       it 'works with one header' do
-        my_headers = %w(profile_id)
+        my_headers = %w[profile_id]
         result = instance.send(:format_headers, my_headers)
         expect(result).to eq '"profile_id"'
       end
@@ -52,7 +52,7 @@ module Physiqual
     end
 
     describe '#format_hash' do
-      let(:headers) { %w(completed_at updated_at profile_id) }
+      let(:headers) { %w[completed_at updated_at profile_id] }
       let(:date_string) { '01-01-2001' }
       let(:date2_string) { '01-02-2001' }
       let(:profile_id) { 'aaaa-aaab' }

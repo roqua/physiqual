@@ -9,7 +9,7 @@ module Physiqual
 
         csv_string = CSV.generate do |csv|
           csv << ['Date', result.first.second.keys].flatten
-          result.keys.each do |key|
+          result.each_key do |key|
             csv << [key, result[key].values].flatten
           end
         end

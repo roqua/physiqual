@@ -6,7 +6,7 @@ module Physiqual
     end
 
     def assert_data_source
-      data_source_options = %w(heart_rate calories steps activities sleep)
+      data_source_options = %w[heart_rate calories steps activities sleep]
 
       raise(Errors::InvalidParamsError, 'data source') unless data_source_options.include?(params[:data_source])
     end

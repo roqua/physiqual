@@ -11,12 +11,12 @@ module Physiqual
     let(:data_service) { DataServices::MockService.new(nil) }
     describe 'supported formats' do
       it 'calls the data service correctly' do
-        meths = [:steps, :heart_rate, :distance, :sleep, :calories, :activities]
+        meths = %i[steps heart_rate distance sleep calories activities]
         to = Time.zone.now
         from = to - 40.minutes
         data_service.instance_variable_set(:@measurements, [1, 2, 3, nil])
         expect(imputers[0]).to receive(:impute!).with([1, 2, 3, nil]).and_return([1, 2, 3, 4])
-          .exactly(meths.length).times
+                                                .exactly(meths.length).times
         expect(imputers[1]).to_not receive(:impute!)
         expect(imputers[2]).to_not receive(:impute!)
         meths.each do |meth|
@@ -30,7 +30,7 @@ module Physiqual
     describe '#impute_results' do
       it 'Runs the impute function on all provided imputers' do
         to_impute = [1, 2, 3, nil]
-        imputers.each { |imp| expect(imp).to receive(:impute!).once { to_impute } }
+        imputers.each { |imp| expect(imp).to(receive(:impute!).once { to_impute }) }
 
         instance = described_class.new 'services', imputers
 
@@ -47,7 +47,7 @@ module Physiqual
 
       it 'Changes the values of the result according to the result of the imputers' do
         to_impute = [1, 2, 3, nil]
-        imputers.each { |imp| expect(imp).to receive(:impute!).once { [1, 2, nil, 4] } }
+        imputers.each { |imp| expect(imp).to(receive(:impute!).once { [1, 2, nil, 4] }) }
 
         instance = described_class.new 'services', imputers
         data = []
@@ -64,22 +64,22 @@ module Physiqual
 
       it 'only reimputes missing values' do
         to_impute = [1, nil, nil, nil]
-        expect(imputers[0]).to receive(:impute!).with(to_impute).once { [1, 2, nil, nil] }
-        expect(imputers[1]).to receive(:impute!).with([1, 2, nil, nil]).once { [1, 2, 3, nil] }
-        expect(imputers[2]).to receive(:impute!).with([1, 2, 3, nil]).once { [1, 2, 3, 4] }
+        expect(imputers[0]).to(receive(:impute!).with(to_impute).once { [1, 2, nil, nil] })
+        expect(imputers[1]).to(receive(:impute!).with([1, 2, nil, nil]).once { [1, 2, 3, nil] })
+        expect(imputers[2]).to(receive(:impute!).with([1, 2, 3, nil]).once { [1, 2, 3, 4] })
 
         data = []
         to_impute.each_with_index do |value, index|
-          data << DataEntry.new(start_date: DateTime.new(index),
-                                end_date: DateTime.new(index + 1),
-                                measurement_moment: DateTime.new(index + 0.5),
+          data << DataEntry.new(start_date: Date.new(index),
+                                end_date: Date.new(index + 1),
+                                measurement_moment: Date.new(index + 0.5),
                                 values: [value])
         end
 
         @instance = described_class.new 'services', imputers
         result = @instance.send(:impute_results, data)
-        expect(result).to eq(DateTime.new(1) => 1, DateTime.new(2) => 2,
-                             DateTime.new(3) => 3, DateTime.new(4) => 4)
+        expect(result).to eq(Date.new(1) => 1, Date.new(2) => 2,
+                             Date.new(3) => 3, Date.new(4) => 4)
       end
     end
 

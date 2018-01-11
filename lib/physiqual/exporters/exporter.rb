@@ -41,7 +41,7 @@ module Physiqual
 
       def aggregate_data_into_buckets(from, to, data_imputer, buckets)
         result = {}
-        [:activities, :heart_rate, :steps, :calories, :distance].each do |meth|
+        %i[activities heart_rate steps calories distance].each do |meth|
           data = data_imputer.send(meth, from, to)
           buckets.each do |bucket|
             date = bucket.end_date

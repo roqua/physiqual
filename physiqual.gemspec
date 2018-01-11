@@ -4,7 +4,6 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 require 'physiqual/version'
 
 # Describe your gem and declare its dependencies:
-# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
   s.name        = 'physiqual'
   s.version     = Physiqual::VERSION
@@ -20,13 +19,13 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 4.2.4'
 
-  s.add_dependency 'oauth2'
-  s.add_dependency 'httparty'
   s.add_dependency 'active_interaction'
+  s.add_dependency 'httparty'
+  s.add_dependency 'oauth2'
 
   # imputation
-  s.add_dependency 'spliner'
   s.add_dependency 'interpolator'
+  s.add_dependency 'spliner'
 
   # Jquery
   s.add_dependency 'jquery-rails'
@@ -35,13 +34,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'virtus'
 
   # Omniauth google
-  s.add_dependency 'omniauth-google-oauth2'
   s.add_dependency 'omniauth-fitbit-oauth2'
+  s.add_dependency 'omniauth-google-oauth2'
 
-  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'rspec_junit_formatter'
-  s.add_development_dependency 'factory_bot_rails'
+  s.add_development_dependency 'sqlite3'
 
   s.add_development_dependency 'webmock'
 
@@ -55,8 +54,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'timecop'
 
   # code coverage
-  s.add_development_dependency 'simplecov'
   s.add_development_dependency 'coveralls'
+  s.add_development_dependency 'simplecov'
 
   # vcr to capture service responses
   s.add_development_dependency 'vcr'

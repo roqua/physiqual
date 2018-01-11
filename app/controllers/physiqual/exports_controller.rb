@@ -1,12 +1,13 @@
 module Physiqual
   class ExportsController < Physiqual::ApplicationController
-    include Physiqual::SessionsHelper, Physiqual::ExportsHelper
+    include Physiqual::ExportsHelper
+    include Physiqual::SessionsHelper
 
-    before_filter :check_token, only: [:index, :raw]
+    before_filter :check_token, only: %i[index raw]
     before_filter :assert_data_source, only: :raw
     before_filter :assert_service_provider, only: :raw
-    before_filter :assert_first_measurement, only: [:raw, :index]
-    before_filter :assert_number_of_days, only: [:raw, :index]
+    before_filter :assert_first_measurement, only: %i[raw index]
+    before_filter :assert_number_of_days, only: %i[raw index]
 
     rescue_from Errors::ServiceProviderNotFoundError, with: :service_provider_not_found
     rescue_from Errors::NoTokenExistsError, with: :no_token_exists

@@ -53,7 +53,10 @@ module Physiqual
       def histogram(data)
         data.map do |entry|
           result = Hash.new(0)
+          # rubocop:disable Performance/HashEachMethods
+          # Disabled: This is not a hash
           entry.values.each { |val| result[val] += 1 }
+          # rubocop:enable Performance/HashEachMethods
           max_value = max_from_hash(result)
           entry.values = [max_value].flatten
           entry
@@ -70,10 +73,13 @@ module Physiqual
       def soft_histogram(data, min, max, k)
         data.map do |entry|
           histogram = Hash.new(0)
+          # rubocop:disable Performance/HashEachMethods
+          # Disabled: This is not a hash
           entry.values.each do |current|
             (current - k..current + k).each { |buck| histogram[buck] += 1 } if current
           end
-
+          # rubocop:enable Performance/HashEachMethods
+          #
           histogram.delete_if { |hist_key, _value| hist_key < min || hist_key > max }
           max_value = max_from_hash(histogram)
 
