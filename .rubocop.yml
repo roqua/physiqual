@@ -31,6 +31,9 @@ MethodLength:
 Metrics/ModuleLength:
   Max: 200
   
+Metrics/BlockLength:
+  Max: 250
+  
 # Limit classes to have a length of 200
 Metrics/ClassLength:
   Max: 200

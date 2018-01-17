@@ -148,7 +148,7 @@ module Physiqual
 
         it 'should return the correct time' do
           expected_format = '%H:%M:%S'
-          expected_times = %w(00:00:00 00:01:00 00:02:00)
+          expected_times = %w[00:00:00 00:01:00 00:02:00]
           @result.each_with_index do |entry, idx|
             result = entry.end_date.strftime(expected_format).to_s
             expect(result).to match(/[0-9]{2}:[0-9]{2}:[0-9]{2}/)

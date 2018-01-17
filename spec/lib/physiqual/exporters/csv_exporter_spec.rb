@@ -12,7 +12,7 @@ module Physiqual
         before do
           allow_any_instance_of(Exporter)
             .to receive(:export_data).with(user, first_measurement, number_of_days)
-            .and_return(mock_result)
+                                     .and_return(mock_result)
 
           @result = subject.export(user, first_measurement, number_of_days)
         end
@@ -23,7 +23,7 @@ module Physiqual
 
         it 'should have the correct header' do
           expect(@result).to include('Date')
-          mock_result.first.second.keys.each do |key|
+          mock_result.first.second.each_key do |key|
             expect(@result).to include(key.to_s)
           end
         end

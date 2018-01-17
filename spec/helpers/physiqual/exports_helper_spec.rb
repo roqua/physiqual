@@ -22,7 +22,7 @@ module Physiqual
       end
 
       it 'does not fail if it is allowed' do
-        %w(heart_rate calories steps activities sleep).each do |data_source|
+        %w[heart_rate calories steps activities sleep].each do |data_source|
           helper.params[:data_source] = data_source
           helper.assert_data_source
         end

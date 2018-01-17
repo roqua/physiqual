@@ -11,7 +11,7 @@ module Physiqual
     private
 
     def export_lines(&_block)
-      headers = %w(user_id service_provider)
+      headers = %w[user_id service_provider]
       yield format_headers(headers)
       Physiqual::User.includes(:physiqual_token).find_each do |user|
         vals = {}
